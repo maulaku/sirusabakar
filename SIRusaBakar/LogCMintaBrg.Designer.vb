@@ -20,21 +20,6 @@ Partial Class LogCMintaBrg
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LogCMintaBrg))
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.Bnew = New System.Windows.Forms.ToolStripButton
-        Me.Bsave = New System.Windows.Forms.ToolStripButton
-        Me.Bdelete = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.Nfirst = New System.Windows.Forms.ToolStripButton
-        Me.NPrev = New System.Windows.Forms.ToolStripButton
-        Me.Nnext = New System.Windows.Forms.ToolStripButton
-        Me.Nlast = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.SearchCat = New System.Windows.Forms.ToolStripComboBox
-        Me.SearchBox = New System.Windows.Forms.ToolStripTextBox
-        Me.Bfind = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.Bclose = New System.Windows.Forms.ToolStripButton
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -67,125 +52,27 @@ Partial Class LogCMintaBrg
         Me.BTambah = New System.Windows.Forms.Button
         Me.BHapus = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.ToolStrip1.SuspendLayout()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
+        Me.btnNew = New System.Windows.Forms.ToolStripButton
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton
+        Me.btnSave = New System.Windows.Forms.ToolStripButton
+        Me.btnDelete = New System.Windows.Forms.ToolStripButton
+        Me.btnRefresh = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
+        Me.cmbSearch = New System.Windows.Forms.ToolStripComboBox
+        Me.txtSearch = New System.Windows.Forms.ToolStripTextBox
+        Me.btnSearch = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Bnew, Me.Bsave, Me.Bdelete, Me.ToolStripSeparator1, Me.Nfirst, Me.NPrev, Me.Nnext, Me.Nlast, Me.ToolStripSeparator2, Me.SearchCat, Me.SearchBox, Me.Bfind, Me.ToolStripSeparator3, Me.Bclose})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(617, 25)
-        Me.ToolStrip1.TabIndex = 25
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'Bnew
-        '
-        Me.Bnew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Bnew.Image = CType(resources.GetObject("Bnew.Image"), System.Drawing.Image)
-        Me.Bnew.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Bnew.Name = "Bnew"
-        Me.Bnew.Size = New System.Drawing.Size(23, 22)
-        Me.Bnew.Text = "New"
-        '
-        'Bsave
-        '
-        Me.Bsave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Bsave.Image = CType(resources.GetObject("Bsave.Image"), System.Drawing.Image)
-        Me.Bsave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Bsave.Name = "Bsave"
-        Me.Bsave.Size = New System.Drawing.Size(23, 22)
-        Me.Bsave.Text = "Save"
-        '
-        'Bdelete
-        '
-        Me.Bdelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Bdelete.Image = CType(resources.GetObject("Bdelete.Image"), System.Drawing.Image)
-        Me.Bdelete.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Bdelete.Name = "Bdelete"
-        Me.Bdelete.Size = New System.Drawing.Size(23, 22)
-        Me.Bdelete.Text = "Delete"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'Nfirst
-        '
-        Me.Nfirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Nfirst.Image = CType(resources.GetObject("Nfirst.Image"), System.Drawing.Image)
-        Me.Nfirst.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Nfirst.Name = "Nfirst"
-        Me.Nfirst.Size = New System.Drawing.Size(23, 22)
-        Me.Nfirst.Text = "First"
-        '
-        'NPrev
-        '
-        Me.NPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.NPrev.Image = CType(resources.GetObject("NPrev.Image"), System.Drawing.Image)
-        Me.NPrev.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.NPrev.Name = "NPrev"
-        Me.NPrev.Size = New System.Drawing.Size(23, 22)
-        Me.NPrev.Text = "Prev"
-        '
-        'Nnext
-        '
-        Me.Nnext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Nnext.Image = CType(resources.GetObject("Nnext.Image"), System.Drawing.Image)
-        Me.Nnext.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Nnext.Name = "Nnext"
-        Me.Nnext.Size = New System.Drawing.Size(23, 22)
-        Me.Nnext.Text = "Next"
-        '
-        'Nlast
-        '
-        Me.Nlast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Nlast.Image = CType(resources.GetObject("Nlast.Image"), System.Drawing.Image)
-        Me.Nlast.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Nlast.Name = "Nlast"
-        Me.Nlast.Size = New System.Drawing.Size(23, 22)
-        Me.Nlast.Text = "Last"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'SearchCat
-        '
-        Me.SearchCat.Name = "SearchCat"
-        Me.SearchCat.Size = New System.Drawing.Size(75, 25)
-        '
-        'SearchBox
-        '
-        Me.SearchBox.Name = "SearchBox"
-        Me.SearchBox.Size = New System.Drawing.Size(80, 25)
-        '
-        'Bfind
-        '
-        Me.Bfind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Bfind.Image = CType(resources.GetObject("Bfind.Image"), System.Drawing.Image)
-        Me.Bfind.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Bfind.Name = "Bfind"
-        Me.Bfind.Size = New System.Drawing.Size(23, 22)
-        Me.Bfind.Text = "Find"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'Bclose
-        '
-        Me.Bclose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Bclose.Image = CType(resources.GetObject("Bclose.Image"), System.Drawing.Image)
-        Me.Bclose.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Bclose.Name = "Bclose"
-        Me.Bclose.Size = New System.Drawing.Size(23, 22)
-        Me.Bclose.Text = "Close"
         '
         'Label1
         '
@@ -474,11 +361,146 @@ Partial Class LogCMintaBrg
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Detail"
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripButton7, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(617, 25)
+        Me.ToolStrip1.TabIndex = 93
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnNew
+        '
+        Me.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnNew.Image = CType(resources.GetObject("btnNew.Image"), System.Drawing.Image)
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(23, 22)
+        Me.btnNew.Text = "New"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnEdit.Image = CType(resources.GetObject("btnEdit.Image"), System.Drawing.Image)
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(23, 22)
+        Me.btnEdit.Text = "ToolStripButton9"
+        '
+        'btnSave
+        '
+        Me.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(23, 22)
+        Me.btnSave.Text = "Save"
+        '
+        'btnDelete
+        '
+        Me.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnDelete.Image = CType(resources.GetObject("btnDelete.Image"), System.Drawing.Image)
+        Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(23, 22)
+        Me.btnDelete.Text = "Delete"
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
+        Me.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(23, 22)
+        Me.btnRefresh.Text = "ToolStripButton10"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton4
+        '
+        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
+        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton4.Name = "ToolStripButton4"
+        Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton4.Text = "First"
+        '
+        'ToolStripButton5
+        '
+        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
+        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton5.Name = "ToolStripButton5"
+        Me.ToolStripButton5.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton5.Text = "Prev"
+        '
+        'ToolStripButton6
+        '
+        Me.ToolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton6.Image = CType(resources.GetObject("ToolStripButton6.Image"), System.Drawing.Image)
+        Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton6.Name = "ToolStripButton6"
+        Me.ToolStripButton6.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton6.Text = "Next"
+        '
+        'ToolStripButton7
+        '
+        Me.ToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton7.Image = CType(resources.GetObject("ToolStripButton7.Image"), System.Drawing.Image)
+        Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton7.Name = "ToolStripButton7"
+        Me.ToolStripButton7.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton7.Text = "Last"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'cmbSearch
+        '
+        Me.cmbSearch.Items.AddRange(New Object() {"Kode Tarif", "Daerah", "Tujuan"})
+        Me.cmbSearch.Name = "cmbSearch"
+        Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(80, 25)
+        '
+        'btnSearch
+        '
+        Me.btnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
+        Me.btnSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(23, 22)
+        Me.btnSearch.Text = "Find"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'btnCancel
+        '
+        Me.btnCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(23, 22)
+        Me.btnCancel.Text = "Close"
+        '
         'LogCMintaBrg
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(617, 423)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.UserID)
         Me.Controls.Add(Me.Bagian)
@@ -490,33 +512,17 @@ Partial Class LogCMintaBrg
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "LogCMintaBrg"
         Me.Text = "Logistik Permintaan Barang"
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents Bnew As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Bsave As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Bdelete As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents Nfirst As System.Windows.Forms.ToolStripButton
-    Friend WithEvents NPrev As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Nnext As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Nlast As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents SearchCat As System.Windows.Forms.ToolStripComboBox
-    Friend WithEvents SearchBox As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents Bfind As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents Bclose As System.Windows.Forms.ToolStripButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -549,4 +555,21 @@ Partial Class LogCMintaBrg
     Friend WithEvents BTambah As System.Windows.Forms.Button
     Friend WithEvents BHapus As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnEdit As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnSave As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnDelete As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnRefresh As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton7 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents cmbSearch As System.Windows.Forms.ToolStripComboBox
+    Friend WithEvents txtSearch As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents btnSearch As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents btnCancel As System.Windows.Forms.ToolStripButton
 End Class
