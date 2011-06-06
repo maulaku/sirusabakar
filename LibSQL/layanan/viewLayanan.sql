@@ -33,9 +33,19 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW vwLogClientPermintaan AS
-select	a.id, a.no_permintaan, a.tgl_permintaan, a.id_bagian, a.status,
-		b.id as lineid, b.itemcat_id, b.itemkel_id, b.itemjenis_id, b.item_id, b.item_kode,
-		b.item_name, b.uom
+select	a.id,
+			a.no_permintaan, 
+			a.tgl_permintaan, 
+			a.id_bagian, 
+			a.status,
+			b.id as lineid, 
+			b.itemcat_id, 
+			b.itemkel_id, 
+			b.itemjenis_id, 
+			b.item_id, 
+			b.item_kode,
+			b.item_name, 
+			b.uom
 from tr_log_client_permintaan_hdr a with (nolock)
 	inner join tr_log_client_permintaan_det b with (NOLOCK)
 	on a.id=b.permintaanid;
