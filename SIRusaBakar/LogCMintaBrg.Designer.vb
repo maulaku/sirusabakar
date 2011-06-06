@@ -34,9 +34,6 @@ Partial Class LogCMintaBrg
         Me.SearchBox = New System.Windows.Forms.ToolStripTextBox
         Me.Bfind = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripButton9 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton10 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
         Me.Bclose = New System.Windows.Forms.ToolStripButton
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
@@ -51,24 +48,24 @@ Partial Class LogCMintaBrg
         Me.Label11 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
         Me.Label13 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.NoPermintaan = New System.Windows.Forms.TextBox
+        Me.StatusPermintaan = New System.Windows.Forms.ComboBox
+        Me.Tgl_Permintaan = New System.Windows.Forms.DateTimePicker
+        Me.Bagian = New System.Windows.Forms.ComboBox
+        Me.CategoryItem = New System.Windows.Forms.ComboBox
+        Me.UserID = New System.Windows.Forms.TextBox
+        Me.KelompokItem = New System.Windows.Forms.ComboBox
+        Me.JenisItem = New System.Windows.Forms.ComboBox
+        Me.KodeItem = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
-        Me.TextBox5 = New System.Windows.Forms.TextBox
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.TextBox7 = New System.Windows.Forms.TextBox
-        Me.TextBox8 = New System.Windows.Forms.TextBox
+        Me.NamaItem = New System.Windows.Forms.TextBox
+        Me.Satuan = New System.Windows.Forms.TextBox
+        Me.Stok = New System.Windows.Forms.TextBox
+        Me.Min = New System.Windows.Forms.TextBox
+        Me.Permintaan = New System.Windows.Forms.TextBox
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
+        Me.BTambah = New System.Windows.Forms.Button
+        Me.BHapus = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,7 +74,7 @@ Partial Class LogCMintaBrg
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Bnew, Me.Bsave, Me.Bdelete, Me.ToolStripSeparator1, Me.Nfirst, Me.NPrev, Me.Nnext, Me.Nlast, Me.ToolStripSeparator2, Me.SearchCat, Me.SearchBox, Me.Bfind, Me.ToolStripSeparator3, Me.ToolStripButton9, Me.ToolStripButton10, Me.ToolStripSeparator4, Me.Bclose})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Bnew, Me.Bsave, Me.Bdelete, Me.ToolStripSeparator1, Me.Nfirst, Me.NPrev, Me.Nnext, Me.Nlast, Me.ToolStripSeparator2, Me.SearchCat, Me.SearchBox, Me.Bfind, Me.ToolStripSeparator3, Me.Bclose})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(617, 25)
@@ -181,32 +178,6 @@ Partial Class LogCMintaBrg
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripButton9
-        '
-        Me.ToolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton9.Image = CType(resources.GetObject("ToolStripButton9.Image"), System.Drawing.Image)
-        Me.ToolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton9.Name = "ToolStripButton9"
-        Me.ToolStripButton9.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton9.Text = "Password"
-        Me.ToolStripButton9.Visible = False
-        '
-        'ToolStripButton10
-        '
-        Me.ToolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton10.Image = CType(resources.GetObject("ToolStripButton10.Image"), System.Drawing.Image)
-        Me.ToolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton10.Name = "ToolStripButton10"
-        Me.ToolStripButton10.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton10.Text = "Users"
-        Me.ToolStripButton10.Visible = False
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        Me.ToolStripSeparator4.Visible = False
-        '
         'Bclose
         '
         Me.Bclose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -300,7 +271,7 @@ Partial Class LogCMintaBrg
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(384, 52)
+        Me.Label10.Location = New System.Drawing.Point(466, 52)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(41, 13)
         Me.Label10.TabIndex = 35
@@ -333,74 +304,75 @@ Partial Class LogCMintaBrg
         Me.Label13.TabIndex = 38
         Me.Label13.Text = "Permintaan"
         '
-        'TextBox1
+        'NoPermintaan
         '
-        Me.TextBox1.Location = New System.Drawing.Point(104, 28)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 39
+        Me.NoPermintaan.Location = New System.Drawing.Point(104, 28)
+        Me.NoPermintaan.Name = "NoPermintaan"
+        Me.NoPermintaan.Size = New System.Drawing.Size(100, 20)
+        Me.NoPermintaan.TabIndex = 39
         '
-        'ComboBox1
+        'StatusPermintaan
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(514, 28)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(90, 21)
-        Me.ComboBox1.TabIndex = 40
+        Me.StatusPermintaan.FormattingEnabled = True
+        Me.StatusPermintaan.Location = New System.Drawing.Point(514, 28)
+        Me.StatusPermintaan.Name = "StatusPermintaan"
+        Me.StatusPermintaan.Size = New System.Drawing.Size(90, 21)
+        Me.StatusPermintaan.TabIndex = 40
         '
-        'DateTimePicker1
+        'Tgl_Permintaan
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(104, 54)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(100, 20)
-        Me.DateTimePicker1.TabIndex = 41
+        Me.Tgl_Permintaan.CustomFormat = "dd MMM yyyy"
+        Me.Tgl_Permintaan.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.Tgl_Permintaan.Location = New System.Drawing.Point(104, 54)
+        Me.Tgl_Permintaan.Name = "Tgl_Permintaan"
+        Me.Tgl_Permintaan.Size = New System.Drawing.Size(129, 20)
+        Me.Tgl_Permintaan.TabIndex = 41
         '
-        'ComboBox2
+        'Bagian
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(104, 80)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox2.TabIndex = 42
+        Me.Bagian.FormattingEnabled = True
+        Me.Bagian.Location = New System.Drawing.Point(104, 80)
+        Me.Bagian.Name = "Bagian"
+        Me.Bagian.Size = New System.Drawing.Size(100, 21)
+        Me.Bagian.TabIndex = 42
         '
-        'ComboBox3
+        'CategoryItem
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(112, 22)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox3.TabIndex = 43
+        Me.CategoryItem.FormattingEnabled = True
+        Me.CategoryItem.Location = New System.Drawing.Point(112, 22)
+        Me.CategoryItem.Name = "CategoryItem"
+        Me.CategoryItem.Size = New System.Drawing.Size(100, 21)
+        Me.CategoryItem.TabIndex = 43
         '
-        'TextBox2
+        'UserID
         '
-        Me.TextBox2.Location = New System.Drawing.Point(504, 54)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 44
+        Me.UserID.Location = New System.Drawing.Point(504, 54)
+        Me.UserID.Name = "UserID"
+        Me.UserID.Size = New System.Drawing.Size(100, 20)
+        Me.UserID.TabIndex = 44
         '
-        'ComboBox4
+        'KelompokItem
         '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(310, 22)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox4.TabIndex = 45
+        Me.KelompokItem.FormattingEnabled = True
+        Me.KelompokItem.Location = New System.Drawing.Point(310, 22)
+        Me.KelompokItem.Name = "KelompokItem"
+        Me.KelompokItem.Size = New System.Drawing.Size(100, 21)
+        Me.KelompokItem.TabIndex = 45
         '
-        'ComboBox5
+        'JenisItem
         '
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(476, 22)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox5.TabIndex = 46
+        Me.JenisItem.FormattingEnabled = True
+        Me.JenisItem.Location = New System.Drawing.Point(476, 22)
+        Me.JenisItem.Name = "JenisItem"
+        Me.JenisItem.Size = New System.Drawing.Size(100, 21)
+        Me.JenisItem.TabIndex = 46
         '
-        'TextBox3
+        'KodeItem
         '
-        Me.TextBox3.Location = New System.Drawing.Point(112, 49)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox3.TabIndex = 47
+        Me.KodeItem.Location = New System.Drawing.Point(112, 49)
+        Me.KodeItem.Name = "KodeItem"
+        Me.KodeItem.Size = New System.Drawing.Size(100, 20)
+        Me.KodeItem.TabIndex = 47
         '
         'Label14
         '
@@ -411,40 +383,40 @@ Partial Class LogCMintaBrg
         Me.Label14.TabIndex = 48
         Me.Label14.Text = "Kode Item"
         '
-        'TextBox4
+        'NamaItem
         '
-        Me.TextBox4.Location = New System.Drawing.Point(278, 49)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox4.TabIndex = 49
+        Me.NamaItem.Location = New System.Drawing.Point(278, 49)
+        Me.NamaItem.Name = "NamaItem"
+        Me.NamaItem.Size = New System.Drawing.Size(182, 20)
+        Me.NamaItem.TabIndex = 49
         '
-        'TextBox5
+        'Satuan
         '
-        Me.TextBox5.Location = New System.Drawing.Point(431, 49)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(63, 20)
-        Me.TextBox5.TabIndex = 50
+        Me.Satuan.Location = New System.Drawing.Point(513, 49)
+        Me.Satuan.Name = "Satuan"
+        Me.Satuan.Size = New System.Drawing.Size(63, 20)
+        Me.Satuan.TabIndex = 50
         '
-        'TextBox6
+        'Stok
         '
-        Me.TextBox6.Location = New System.Drawing.Point(112, 75)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(55, 20)
-        Me.TextBox6.TabIndex = 51
+        Me.Stok.Location = New System.Drawing.Point(112, 75)
+        Me.Stok.Name = "Stok"
+        Me.Stok.Size = New System.Drawing.Size(55, 20)
+        Me.Stok.TabIndex = 51
         '
-        'TextBox7
+        'Min
         '
-        Me.TextBox7.Location = New System.Drawing.Point(227, 75)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(55, 20)
-        Me.TextBox7.TabIndex = 52
+        Me.Min.Location = New System.Drawing.Point(227, 75)
+        Me.Min.Name = "Min"
+        Me.Min.Size = New System.Drawing.Size(55, 20)
+        Me.Min.TabIndex = 52
         '
-        'TextBox8
+        'Permintaan
         '
-        Me.TextBox8.Location = New System.Drawing.Point(354, 75)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(55, 20)
-        Me.TextBox8.TabIndex = 53
+        Me.Permintaan.Location = New System.Drawing.Point(354, 75)
+        Me.Permintaan.Name = "Permintaan"
+        Me.Permintaan.Size = New System.Drawing.Size(55, 20)
+        Me.Permintaan.TabIndex = 53
         '
         'DataGridView1
         '
@@ -454,47 +426,47 @@ Partial Class LogCMintaBrg
         Me.DataGridView1.Size = New System.Drawing.Size(556, 160)
         Me.DataGridView1.TabIndex = 54
         '
-        'Button1
+        'BTambah
         '
-        Me.Button1.Location = New System.Drawing.Point(112, 101)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 55
-        Me.Button1.Text = "Tambah"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTambah.Location = New System.Drawing.Point(112, 101)
+        Me.BTambah.Name = "BTambah"
+        Me.BTambah.Size = New System.Drawing.Size(75, 23)
+        Me.BTambah.TabIndex = 55
+        Me.BTambah.Text = "Tambah"
+        Me.BTambah.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BHapus
         '
-        Me.Button2.Location = New System.Drawing.Point(197, 101)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 56
-        Me.Button2.Text = "Hapus"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BHapus.Location = New System.Drawing.Point(197, 101)
+        Me.BHapus.Name = "BHapus"
+        Me.BHapus.Size = New System.Drawing.Size(75, 23)
+        Me.BHapus.TabIndex = 56
+        Me.BHapus.Text = "Hapus"
+        Me.BHapus.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Button2)
+        Me.GroupBox1.Controls.Add(Me.BHapus)
         Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.BTambah)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.TextBox8)
+        Me.GroupBox1.Controls.Add(Me.Permintaan)
         Me.GroupBox1.Controls.Add(Me.Label10)
-        Me.GroupBox1.Controls.Add(Me.TextBox7)
+        Me.GroupBox1.Controls.Add(Me.Min)
         Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
+        Me.GroupBox1.Controls.Add(Me.Stok)
         Me.GroupBox1.Controls.Add(Me.Label12)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
+        Me.GroupBox1.Controls.Add(Me.Satuan)
         Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.ComboBox3)
+        Me.GroupBox1.Controls.Add(Me.NamaItem)
+        Me.GroupBox1.Controls.Add(Me.CategoryItem)
         Me.GroupBox1.Controls.Add(Me.Label14)
-        Me.GroupBox1.Controls.Add(Me.ComboBox4)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Controls.Add(Me.ComboBox5)
+        Me.GroupBox1.Controls.Add(Me.KelompokItem)
+        Me.GroupBox1.Controls.Add(Me.KodeItem)
+        Me.GroupBox1.Controls.Add(Me.JenisItem)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 107)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(592, 306)
@@ -508,11 +480,11 @@ Partial Class LogCMintaBrg
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(617, 423)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.ComboBox2)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.UserID)
+        Me.Controls.Add(Me.Bagian)
+        Me.Controls.Add(Me.Tgl_Permintaan)
+        Me.Controls.Add(Me.StatusPermintaan)
+        Me.Controls.Add(Me.NoPermintaan)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -544,9 +516,6 @@ Partial Class LogCMintaBrg
     Friend WithEvents SearchBox As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents Bfind As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton9 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton10 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents Bclose As System.Windows.Forms.ToolStripButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -561,23 +530,23 @@ Partial Class LogCMintaBrg
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox4 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox5 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents NoPermintaan As System.Windows.Forms.TextBox
+    Friend WithEvents StatusPermintaan As System.Windows.Forms.ComboBox
+    Friend WithEvents Tgl_Permintaan As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Bagian As System.Windows.Forms.ComboBox
+    Friend WithEvents CategoryItem As System.Windows.Forms.ComboBox
+    Friend WithEvents UserID As System.Windows.Forms.TextBox
+    Friend WithEvents KelompokItem As System.Windows.Forms.ComboBox
+    Friend WithEvents JenisItem As System.Windows.Forms.ComboBox
+    Friend WithEvents KodeItem As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents NamaItem As System.Windows.Forms.TextBox
+    Friend WithEvents Satuan As System.Windows.Forms.TextBox
+    Friend WithEvents Stok As System.Windows.Forms.TextBox
+    Friend WithEvents Min As System.Windows.Forms.TextBox
+    Friend WithEvents Permintaan As System.Windows.Forms.TextBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents BTambah As System.Windows.Forms.Button
+    Friend WithEvents BHapus As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
 End Class

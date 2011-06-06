@@ -162,4 +162,8 @@ Public Class LogCMintaBrg
         'txtSatuan.Text = ""
         'txtMinimum.Text = ""
     End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StatusPermintaan.SelectedIndexChanged
+
+    End Sub
 End Class

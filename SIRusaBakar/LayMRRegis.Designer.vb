@@ -40,8 +40,8 @@ Partial Class LayMRRegis
         Me.TextBox5 = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.Tgl_Regist = New System.Windows.Forms.DateTimePicker
+        Me.No_Regist = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -243,19 +243,19 @@ Partial Class LayMRRegis
         Me.TextBox2.Size = New System.Drawing.Size(204, 20)
         Me.TextBox2.TabIndex = 19
         '
-        'DateTimePicker1
+        'Tgl_Regist
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(106, 71)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(189, 20)
-        Me.DateTimePicker1.TabIndex = 31
+        Me.Tgl_Regist.Location = New System.Drawing.Point(106, 71)
+        Me.Tgl_Regist.Name = "Tgl_Regist"
+        Me.Tgl_Regist.Size = New System.Drawing.Size(189, 20)
+        Me.Tgl_Regist.TabIndex = 31
         '
-        'TextBox1
+        'No_Regist
         '
-        Me.TextBox1.Location = New System.Drawing.Point(106, 45)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 30
+        Me.No_Regist.Location = New System.Drawing.Point(106, 45)
+        Me.No_Regist.Name = "No_Regist"
+        Me.No_Regist.Size = New System.Drawing.Size(100, 20)
+        Me.No_Regist.TabIndex = 30
         '
         'Label2
         '
@@ -512,8 +512,8 @@ Partial Class LayMRRegis
         Me.ClientSize = New System.Drawing.Size(926, 410)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Tgl_Regist)
+        Me.Controls.Add(Me.No_Regist)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
@@ -552,8 +552,8 @@ Partial Class LayMRRegis
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Tgl_Regist As System.Windows.Forms.DateTimePicker
+    Friend WithEvents No_Regist As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
