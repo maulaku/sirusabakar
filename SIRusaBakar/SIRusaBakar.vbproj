@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABF856A2-0A23-4FB4-85E1-3608893701AB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SIRusaBakar.My.MyApplication</StartupObject>
+    <RootNamespace>SIRusaBakar</RootNamespace>
+    <AssemblyName>SIRusaBakar</AssemblyName>
+    <MyType>WindowsForms</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SIRusaBakar.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SIRusaBakar.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrowseMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseMaster.Designer.vb">
+      <DependentUpon>BrowseMaster.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayLabPemeriksaan.Designer.vb">
+      <DependentUpon>LayLabPemeriksaan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayLabPemeriksaan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayLabDiagnosa.Designer.vb">
+      <DependentUpon>LayLabDiagnosa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayLabDiagnosa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayMRRegis.Designer.vb">
+      <DependentUpon>LayMRRegis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayMRRegis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayPoliPemeriksaan.Designer.vb">
+      <DependentUpon>LayPoliPemeriksaan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayPoliPemeriksaan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayPoliQueue.Designer.vb">
+      <DependentUpon>LayPoliQueue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayPoliQueue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogCMintaBrg.Designer.vb">
+      <DependentUpon>LogCMintaBrg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LogCMintaBrg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.vb">
+      <DependentUpon>MainMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MCoa.designer.vb">
+      <DependentUpon>MCoa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MCoa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MGiziDiet.designer.vb">
+      <DependentUpon>MGiziDiet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MGiziDiet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MGiziMenu.designer.vb">
+      <DependentUpon>MGiziMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MGiziMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MKelas.designer.vb">
+      <DependentUpon>MKelas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MKelas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLogAlkes.designer.vb">
+      <DependentUpon>MLogAlkes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MLogAlkes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLogInvATK.designer.vb">
+      <DependentUpon>MLogInvATK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MLogInvATK.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MObat.designer.vb">
+      <DependentUpon>MObat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MObat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MObatHarga.designer.vb">
+      <DependentUpon>MObatHarga.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MObatHarga.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleSIRS.vb" />
+    <Compile Include="MPerawatSAK.designer.vb">
+      <DependentUpon>MPerawatSAK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MPerawatSAK.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPerush.designer.vb">
+      <DependentUpon>MPerush.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MPerush.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPerushJenis.designer.vb">
+      <DependentUpon>MPerushJenis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MPerushJenis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MTarifAmbulance.designer.vb">
+      <DependentUpon>MTarifAmbulance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MTarifAmbulance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="LayMRDaftarPasien.designer.vb">
+      <DependentUpon>LayMRDaftarPasien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LayMRDaftarPasien.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BrowseMaster.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayLabPemeriksaan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LayLabPemeriksaan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayLabDiagnosa.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LayLabDiagnosa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayMRRegis.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LayMRRegis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayPoliPemeriksaan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LayPoliPemeriksaan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayPoliQueue.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LayPoliQueue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogCMintaBrg.resx">
+      <DependentUpon>LogCMintaBrg.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCoa.resx">
+      <DependentUpon>MCoa.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGiziDiet.resx">
+      <DependentUpon>MGiziDiet.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGiziMenu.resx">
+      <DependentUpon>MGiziMenu.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MKelas.resx">
+      <DependentUpon>MKelas.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLogAlkes.resx">
+      <DependentUpon>MLogAlkes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLogInvATK.resx">
+      <DependentUpon>MLogInvATK.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MObat.resx">
+      <DependentUpon>MObat.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MObatHarga.resx">
+      <DependentUpon>MObatHarga.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPerawatSAK.resx">
+      <DependentUpon>MPerawatSAK.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPerush.resx">
+      <DependentUpon>MPerush.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPerushJenis.resx">
+      <DependentUpon>MPerushJenis.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MTarifAmbulance.resx">
+      <DependentUpon>MTarifAmbulance.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayMRDaftarPasien.resx">
+      <DependentUpon>LayMRDaftarPasien.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

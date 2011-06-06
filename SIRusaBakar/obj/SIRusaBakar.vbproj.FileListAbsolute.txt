@@ -1,0 +1,51 @@
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.exe
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.pdb
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.xml
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MCoa.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MGiziDiet.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MGiziMenu.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MKelas.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MLogAlkes.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MLogInvATK.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MObat.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MObatHarga.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerawatSAK.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerush.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerushJenis.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MTarifAmbulance.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.Resources.resources
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.vbproj.GenerateResource.Cache
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.exe
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.xml
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.pdb
+C:\Documents and Settings\Ivhan\Desktop\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MainMenu.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.exe
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.xml
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.pdb
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.exe
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.pdb
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\bin\Debug\SIRusaBakar.xml
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.BrowseMaster.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayLabPemeriksaan.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayLabDiagnosa.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayMRRegis.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayPoliPemeriksaan.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayPoliQueue.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MainMenu.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MCoa.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MGiziDiet.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MGiziMenu.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MKelas.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MLogAlkes.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MLogInvATK.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MObat.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MObatHarga.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerawatSAK.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerush.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPerushJenis.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MTarifAmbulance.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.Resources.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.LayMRDaftarPasien.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.vbproj.GenerateResource.Cache
