@@ -78,3 +78,32 @@ CREATE TABLE msHistoryLayanan (
 	PRIMARY KEY (id)
 );
 
+DROP TABLE tr_log_client_permintaan_hdr;
+CREATE TABLE tr_log_client_permintaan_hdr(
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[no_permintaan] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[tgl_permintaan] [datetime] NOT NULL,
+	[id_bagian] [int] NOT NULL,
+	[status] [int] NULL,
+	[createby] [int] NULL,
+	[updateby] [int] NULL,
+	[createtime] [datetime] NULL,
+	[updatetime] [datetime] NULL,
+ CONSTRAINT [PK_tr_log_client_permintaaan_hdr] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY];
+
+DROP TABLE tr_log_client_permintaan_det;
+CREATE TABLE tr_log_client_permintaan_det(
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[permintaanid] [int] NOT NULL,
+	[itemcat_id] [int] NOT NULL,
+	[itemkel_id] [int] NOT NULL,
+	[itemjenis_id] [int] NOT NULL,
+	[item_id] [int] NOT NULL,
+	[item_kode] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[item_name] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[uom] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY];
