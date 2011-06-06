@@ -1,6 +1,6 @@
 -- RANCANGAN DELETE DATA--
 ----------------------------------------------------------
--- Create by : Ivhan Famly Gunawan
+-- Create by : Ivhan Famly Gunawan....
 -- Date : April 2011
 -- Database : SQL Server
 -- Penulisan : Campur
