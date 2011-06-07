@@ -8,19 +8,25 @@ Public Class LogCMintaBrg
                 If statusForm <> "edit" Then
                     btnNew.PerformClick()
                 End If
+                'New
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.F3) Then
                 If statusForm <> "new" Then
                     btnEdit.PerformClick()
                 End If
+                'Edit
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.F4) Then
                 btnSave.PerformClick()
+                'Save
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.F5) Then
                 btnRefresh.PerformClick()
+                'Refresh
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Up) Or msg.WParam.ToInt32 = Convert.ToInt32(Keys.Down) Then
                 DataGridView1.Focus()
+                'Up
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Escape) Then
                 If statusForm = "new" Or statusForm = "edit" Then
                     btnCancel.PerformClick()
+                    'Cancel
                 Else
                     Dim tny As Integer
                     tny = MessageBox.Show("Mau Keluar dari Layanan Medical Record : Registrasi Pasien ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -29,9 +35,11 @@ Public Class LogCMintaBrg
                     Else
                         Return MyBase.ProcessCmdKey(msg, keyData)
                     End If
+                    'Exit
                 End If
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Delete) Then
                 btnDelete.PerformClick()
+                'Delete
             Else
                 Return MyBase.ProcessCmdKey(msg, keyData)
             End If
@@ -80,18 +88,15 @@ Public Class LogCMintaBrg
 
         'DataGridView1.Enabled = True
     End Sub
-    Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT id,kode_inv_atk,nama_inv_atk,jenis_inv_atk,group_inv_atk,satuan,minimum,note" & _
-               " FROM ms_inv_atk" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
+    Sub GridData()
+        'Call bukaserver()
+        'PSQL = ""
+        'PSQL = "SELECT * from vwLogClientPermintaan ORDER BY id"
 
-        dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        dtadapter.Fill(dttable)
-
+        'dttable.Clear()
+        'dtadapter = New Odbc.OdbcDataAdapter(PSQL, koneksi)
+        'dtadapter.Fill(dttable)
+        DataGridView1.DataSource = get_tabel("select * from vwLogClientPermintaan Order By ID")
 
         'DataGridView1.DataSource = dttable
 
@@ -99,12 +104,12 @@ Public Class LogCMintaBrg
         'DataGridView1.Columns(7).Visible = False
         'DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
-        dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
+        'dttable.Dispose()
+        'dtadapter.Dispose()
+        'dtadapter = Nothing
+        'con.Close()
     End Sub
-    Sub tampilData()
+    Sub TampilData()
         If dttable.Rows.Count = 0 Then
             MsgBox("Data ATK : Tidak Ada", MsgBoxStyle.Information, "Data ATK")
 
@@ -129,33 +134,33 @@ Public Class LogCMintaBrg
             'txtCatatanSebelumnya.Text = (DataGridView1.Item(7, i).Value).Replace(ControlChars.Lf, vbCrLf)
 
         End If
-        formatGrid()
+        'formatGrid()
     End Sub
-    Sub formatGrid()
-        Dim dc As DataGridViewColumn
-        'For Each dc In DataGridView1.Columns
-        '    Select Case dc.Name
-        '        Case "kode_inv_atk"
-        '            dc.HeaderText = "Kode ATK"
-        '            dc.Width = 100
-        '        Case "nama_inv_atk"
-        '            dc.HeaderText = "Nama ATK"
-        '            dc.Width = 100
-        '        Case "group_inv_atk"
-        '            dc.HeaderText = "Group ATK"
-        '            dc.Width = 100
-        '        Case "jenis_inv_atk"
-        '            dc.HeaderText = "Jenis ATK"
-        '            dc.Width = 100
-        '        Case "satuan"
-        '            dc.HeaderText = "Satuan"
-        '            dc.Width = 100
-        '        Case "minimum"
-        '            dc.HeaderText = "Minimum"
-        '            dc.Width = 100
-        '    End Select
-        'Next
-    End Sub
+    'Sub formatGrid()
+    'Dim dc As DataGridViewColumn
+    'For Each dc In DataGridView1.Columns
+    '    Select Case dc.Name
+    '        Case "kode_inv_atk"
+    '            dc.HeaderText = "Kode ATK"
+    '            dc.Width = 100
+    '        Case "nama_inv_atk"
+    '            dc.HeaderText = "Nama ATK"
+    '            dc.Width = 100
+    '        Case "group_inv_atk"
+    '            dc.HeaderText = "Group ATK"
+    '            dc.Width = 100
+    '        Case "jenis_inv_atk"
+    '            dc.HeaderText = "Jenis ATK"
+    '            dc.Width = 100
+    '        Case "satuan"
+    '            dc.HeaderText = "Satuan"
+    '            dc.Width = 100
+    '        Case "minimum"
+    '            dc.HeaderText = "Minimum"
+    '            dc.Width = 100
+    '    End Select
+    'Next
+    'End Sub
     Sub kosong()
         'txtKodeATK.Text = ""
         'txtNamaATK.Text = ""
@@ -163,7 +168,7 @@ Public Class LogCMintaBrg
         'txtMinimum.Text = ""
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StatusPermintaan.SelectedIndexChanged
-
+    Private Sub LogCMintaBrg_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        GridData()
     End Sub
 End Class

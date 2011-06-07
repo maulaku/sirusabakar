@@ -89,7 +89,7 @@ Public Class MLogAlkes
                " ORDER BY id"
 
         dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
         dtadapter.Fill(dttable)
 
 
@@ -205,7 +205,7 @@ Public Class MLogAlkes
                             cmbJenisAlkes.Text & "'," & cmbGroupAlkes.Text & "','" & txtSatuan.Text & _
                             "'," & txtMinimum.Text & "," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Delete Data dengan Kode Alkes : " & txtKodeAlkes.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -246,7 +246,7 @@ Public Class MLogAlkes
                             txtMinimum.Text & "," & _
                             " '" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Input Data BARU ALKES dengan Kode ALKES : " & txtKodeAlkes.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "edit"
@@ -261,7 +261,7 @@ Public Class MLogAlkes
                             " '" & txtCatatan.Text & "'," & idUser
 
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Edit Data LAMA ALKES dengan Kode ALKES : " & txtKodeAlkes.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Select
@@ -325,7 +325,7 @@ Public Class MLogAlkes
                         " ORDER BY id"
 
                 dttable.Clear()
-                dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+                'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
                 dtadapter.Fill(dttable)
 
                 DataGridView1.DataSource = dttable

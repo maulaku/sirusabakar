@@ -48,4 +48,57 @@ select	a.id,
 			b.uom
 from tr_log_client_permintaan_hdr a with (nolock)
 	inner join tr_log_client_permintaan_det b with (NOLOCK)
-	on a.id=b.permintaanid;
+	on a.id=b.permintaanid
+	ORDER BY id;
+	
+	
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayLabDiagnosa]'))
+DROP VIEW [dbo].[vwLayLabDiagnosa]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwLayLabDiagnosa
+AS
+SELECT   TOP (100) PERCENT id, 
+			noMR, 
+			title, 
+			patientName, 
+			panggilan, 
+			sex, 
+			tempatLahir, 
+			tglLahir, 
+			umur, 
+			agama, 
+			sukuBangsa, 
+			wargaNegara, 
+			golDarah, 
+			statusMR, 
+			pendidikan, 
+			pekerjaan, 
+			alamat, 
+			provinsi, 
+			kota, 
+			kodePos, 
+			telepon, 
+			handphone, 
+			kabupaten, 
+			kecamatan, 
+			kelurahan,
+			namaIstri, 
+			namaSuami, 
+			namaAyah, 
+			namaIbu, 
+			statusPenanggung,
+			namaP, 
+			hubunganP, 
+			hubunganPLain, 
+			alamatP, 
+			teleponP, 
+			handphoneP, 
+			note
+FROM         dbo.trLayMRDaftar
+WHERE     (status = 1)
+ORDER BY id;
+

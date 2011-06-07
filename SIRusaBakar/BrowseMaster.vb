@@ -16,7 +16,7 @@ Public Class BrowseMaster
                        " ORDER BY ta.id"
 
                 dttable.Clear()
-                dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+                dtadapter = New Odbc.OdbcDataAdapter(PSQL, koneksi)
                 dtadapter.Fill(dttable)
 
                 DataGridView1.DataSource = dttable

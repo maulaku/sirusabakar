@@ -89,7 +89,7 @@ Public Class LayMRRegis
                " ORDER BY id"
 
         dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
         dtadapter.Fill(dttable)
 
 
@@ -132,7 +132,7 @@ Public Class LayMRRegis
         formatGrid()
     End Sub
     Sub formatGrid()
-        Dim dc As DataGridViewColumn
+        'Dim dc As DataGridViewColumn
         'For Each dc In DataGridView1.Columns
         '    Select Case dc.Name
         '        Case "kode_inv_atk"

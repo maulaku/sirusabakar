@@ -47,7 +47,7 @@ Public Class LayMRDaftarPasien
         Try
             Call bukaServer()
             PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'"
-            cmd = New SqlClient.SqlCommand(PSQL, con)
+            'cmd = New SqlClient.SqlCommand(PSQL, con)
             lastKode = cmd.ExecuteScalar
 
             If lastKode = "" Then
@@ -208,7 +208,7 @@ Public Class LayMRDaftarPasien
                " ORDER BY id"
 
         dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
         dtadapter.Fill(dttable)
 
 
@@ -369,7 +369,7 @@ Public Class LayMRDaftarPasien
                 '        "','" & txtParaMedis.Text & "','" & txtParaMedisPP.Text & _
                 '        "','" & txtOksigen.Text & "','" & txtMonitor.Text & "','" & txtCatatan.Text & "'," & idUser
 
-                cmd = New SqlClient.SqlCommand(PSQL, con)
+                'cmd = New SqlClient.SqlCommand(PSQL, con)
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("Sukses Delete Data dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -458,7 +458,7 @@ Public Class LayMRDaftarPasien
                             " '" & txtHPPenanggung.Text & "'," & _
                             " '" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Input Data BARU MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "edit"
@@ -475,7 +475,7 @@ Public Class LayMRDaftarPasien
                     '        " " & CDec(txtMonitor.Text) & "," & _
                     '        " '" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Edit Data LAMA MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Select

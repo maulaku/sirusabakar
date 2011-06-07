@@ -45,10 +45,11 @@ Public Class LayLabDiagnosa
         Dim formatKode As String
         formatKode = Format(Now(), "MMddyy")
         Try
-            Call bukaServer()
-            PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'"
-            cmd = New SqlClient.SqlCommand(PSQL, con)
-            lastKode = cmd.ExecuteScalar
+            'Call bukaServer()
+            'PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'"
+            'cmd = New SqlClient.SqlCommand(PSQL, con)
+            'lastKode = cmd.ExecuteScalar
+            lastKode = get_number("SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'")
 
             'If lastKode = "" Then
             '    txtNoMR.Text = formatKode + "00001"
@@ -69,7 +70,7 @@ Public Class LayLabDiagnosa
                 '        txtNoMR.Text = "HABIS"
                 '        Me.Dispose()
             End Select
-            con.Close()
+            'con.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -192,27 +193,28 @@ Public Class LayLabDiagnosa
         DataGridView1.Enabled = True
     End Sub
     Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT " & _
-                    "/*0*/id,/*1*/noMR,/*2*/title,/*3*/patientName,/*4*/panggilan," & _
-                    "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
-                    "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
-                    "/*15*/pekerjaan,/*16*/alamat,/*17*/provinsi,/*18*/kota,/*19*/kodePos," & _
-                    "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
-                    "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
-                    "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
-                    "/*35*/handphoneP,/*36*/note" & _
-               " FROM trLayMRDaftar" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
+        'Call bukaserver()
+        'PSQL = ""
+        'PSQL = "SELECT " & _
+        '            "/*0*/id,/*1*/noMR,/*2*/title,/*3*/patientName,/*4*/panggilan," & _
+        '            "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
+        '            "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
+        '            "/*15*/pekerjaan,/*16*/alamat,/*17*/provinsi,/*18*/kota,/*19*/kodePos," & _
+        '            "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
+        '            "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
+        '            "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
+        '            "/*35*/handphoneP,/*36*/note" & _
+        '       " FROM trLayMRDaftar" & _
+        '       " WHERE status=1" & _
+        '       " ORDER BY id"
+        PSQL = "select * from vwLayLogDiagnosa order by ID"
+        'dttable.Clear()
+        ''dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        ''dtadapter.Fill(dttable)
+        'dttable = get_tabel(PSQL)
 
-        dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        dtadapter.Fill(dttable)
-
-
-        DataGridView1.DataSource = dttable
+        'DataGridView1.DataSource = dttable
+        DataGridView1.DataSource = get_tabel(PSQL)
 
         For i As Integer = 0 To 36
             DataGridView1.Columns(i).Visible = False
@@ -226,9 +228,9 @@ Public Class LayLabDiagnosa
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
         dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
+        'dtadapter.Dispose()
+        'dtadapter = Nothing
+        'con.Close()
     End Sub
     Sub tampilData()
         If dttable.Rows.Count = 0 Then

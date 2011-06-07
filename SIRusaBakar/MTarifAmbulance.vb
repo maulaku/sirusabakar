@@ -95,7 +95,7 @@ Public Class MTarifAmbulance
                " ORDER BY id"
 
         dttable.Clear()
-        dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
         dtadapter.Fill(dttable)
 
 
@@ -228,7 +228,7 @@ Public Class MTarifAmbulance
                             "','" & txtParaMedis.Text & "','" & txtParaMedisPP.Text & _
                             "','" & txtOksigen.Text & "','" & txtMonitor.Text & "','" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Delete Data dengan Kode Tarif Ambulance : " & txtKodeTarif.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -274,7 +274,7 @@ Public Class MTarifAmbulance
                             " " & CDec(txtMonitor.Text) & "," & _
                             " '" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Input Data BARU TARIF AMBULANCE dengan Kode TARIF : " & txtKodeTarif.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "edit"
@@ -291,7 +291,7 @@ Public Class MTarifAmbulance
                             " " & CDec(txtMonitor.Text) & "," & _
                             " '" & txtCatatan.Text & "'," & idUser
 
-                    cmd = New SqlClient.SqlCommand(PSQL, con)
+                    'cmd = New SqlClient.SqlCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Edit Data LAMA TARIF AMBULANCE dengan Kode TARIF : " & txtKodeTarif.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Select
@@ -356,7 +356,7 @@ Public Class MTarifAmbulance
 
 
                 dttable.Clear()
-                dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+                'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
                 dtadapter.Fill(dttable)
 
                 DataGridView1.DataSource = dttable
