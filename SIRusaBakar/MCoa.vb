@@ -75,32 +75,32 @@ Public Class MCoa
 
         DataGridView1.Enabled = True
     End Sub
-    Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
-               " FROM ms_coa" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
+    Sub TampilDataGrid(ByVal sql As String)
+        'Call bukaServer()
+        'PSQL = ""
+        'PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
+        '       " FROM ms_coa" & _
+        '       " WHERE status=1" & _
+        '       " ORDER BY id"
 
-        dttable.Clear()
+        'dttable.Clear()
         'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        dtadapter.Fill(dttable)
+        'dtadapter.Fill(dttable)
 
 
-        DataGridView1.DataSource = dttable
+        DataGridView1.DataSource = get_tabel(sql)
 
-        DataGridView1.Columns(0).Visible = False
-        DataGridView1.Columns(4).Visible = False
+        DataGridView1.Columns("id").Visible = False
+        DataGridView1.Columns("note").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
-        dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
+        'dttable.Dispose()
+        'dtadapter.Dispose()
+        'dtadapter = Nothing
+        'con.Close()
     End Sub
-    Sub tampilData()
-        If dttable.Rows.Count = 0 Then
+    Sub tampilData(ByVal row As Integer)
+        If DataGridView1.RowCount = 0 Then
             MsgBox("Data COA : Tidak Ada", MsgBoxStyle.Information, "Data COA")
 
             btnSearch.Enabled = False
@@ -109,18 +109,18 @@ Public Class MCoa
         Else
 
             txtCatatan.Text = ""
-            Dim i As Integer
-            If status = 0 Then
-                i = 0
-            Else
-                i = DataGridView1.CurrentRow.Index
-            End If
+            'Dim i As Integer
+            'If status = 0 Then
+            '    i = 0
+            'Else
+            '    i = DataGridView1.CurrentRow.Index
+            'End If
 
-            idForm = DataGridView1.Item(0, i).Value
-            txtKodeCOA.Text = DataGridView1.Item(1, i).Value
-            txtNamaCOA.Text = DataGridView1.Item(2, i).Value
-            txtTipeCoa.Text = DataGridView1.Item(3, i).Value
-            txtCatatanSebelumnya.Text = (DataGridView1.Item(4, i).Value).Replace(ControlChars.Lf, vbCrLf)
+            idForm = DataGridView1.Item(0, row).Value
+            txtKodeCOA.Text = DataGridView1.Item(1, row).Value
+            txtNamaCOA.Text = DataGridView1.Item(2, row).Value
+            txtTipeCoa.Text = DataGridView1.Item(3, row).Value
+            txtCatatanSebelumnya.Text = (DataGridView1.Item(4, row).Value).Replace(ControlChars.Lf, vbCrLf)
 
         End If
         formatGrid()
@@ -150,8 +150,8 @@ Public Class MCoa
         Try
             tombolHidup()
             nonAktif()
-            munculData()
-            tampilData()
+            TampilDataGrid("select * from vwmscoa")
+            tampilData(0)
             cmbSearch.SelectedIndex = 0
 
             If cmbSearch.SelectionLength <> 0 Then
@@ -164,7 +164,7 @@ Public Class MCoa
         Me.txtSearch.TextBox.Select()
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
-        statusForm = "new"
+        statusForm = "NEW"
         tombolMati()
         kosong()
         aktif()
@@ -178,94 +178,114 @@ Public Class MCoa
             Dim tanya As Integer
             tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKodeCOA.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
-                Call bukaserver()
-                Try
-                    PSQL = "EXEC sp_delete_coa " & _
-                            idForm & ",'" & txtKodeCOA.Text & "','" & txtNamaCOA.Text & "','" & _
-                            txtKodeCOA.Text & "'," & idUser
+                statusForm = "DEL"
+                PSQL = "EXEC sp_coa" & _
+                                    " '" & statusForm & "'," & _
+                                    "  " & idForm & "," & _
+                                    " '" & txtKodeCOA.Text & "'," & _
+                                    " '" & txtNamaCOA.Text & "'," & _
+                                    " '" & txtTipeCoa.Text & "'," & _
+                                    " '" & txtCatatan.Text & "'," & idUser
+                exec_cmd(PSQL)
+                'Call bukaServer()
+                'Try
+                '    PSQL = "EXEC sp_delete_coa " & _
+                '            idForm & ",'" & txtKodeCOA.Text & "','" & txtNamaCOA.Text & "','" & _
+                '            txtKodeCOA.Text & "'," & idUser
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Delete Data dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '    'cmd = New SqlClient.SqlCommand(PSQL, con)
+                '    cmd.ExecuteNonQuery()
+                MessageBox.Show("Sukses Delete Data dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    munculData()
-                    tampilData()
-                Catch Salah As Exception
-                    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+                TampilDataGrid("select * from vwmscoa")
+                tampilData(0)
+                'Catch Salah As Exception
+                '    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'End Try
             End If
-            con.Close()
-            cmd.Dispose()
+            'con.Close()
+            'cmd.Dispose()
         End If
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         If txtKodeCOA.Text = "" Then
             MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
         Else
-            statusForm = "edit"
-            tombolmati()
+            statusForm = "EDIT"
+            tombolMati()
             aktif()
             txtKodeCOA.Focus()
         End If
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Try
-            Call bukaserver()
+        'Try
+        'Call bukaServer()
+        PSQL = "EXEC sp_coa" & _
+                                    " '" & statusForm & "'," & _
+                                    "  " & idForm & "," & _
+                                    " '" & txtKodeCOA.Text & "'," & _
+                                    " '" & txtNamaCOA.Text & "'," & _
+                                    " '" & txtTipeCoa.Text & "'," & _
+                                    " '" & txtCatatan.Text & "'," & idUser
+        exec_cmd(PSQL)
+        Select Case statusForm
+            Case "NEW"
+                'PSQL = "EXEC sp_coa" & _
+                '        " '" & statusForm & "'," & _
+                '        "  " & idForm & "," & _
+                '        " '" & txtKodeCOA.Text & "'," & _
+                '        " '" & txtNamaCOA.Text & "'," & _
+                '        " '" & txtTipeCoa.Text & "'," & _
+                '        " '" & txtCatatan.Text & "'," & idUser
 
-            Select Case statusForm
-                Case "new"
-                    PSQL = "EXEC sp_insert_coa" & _
-                            " '" & txtKodeCOA.Text & "'," & _
-                            " '" & txtNamaCOA.Text & "'," & _
-                            " '" & txtTipeCoa.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
+                'cmd = New SqlClient.SqlCommand(PSQL, con)
+                'cmd.ExecuteNonQuery()
+                MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Case "EDIT"
+                'PSQL = "EXEC sp_update_coa" & _
+                '        "  " & idForm & "," & _
+                '        " '" & txtKodeCOA.Text & "'," & _
+                '        " '" & txtNamaCOA.Text & "'," & _
+                '        " '" & txtTipeCoa.Text & "'," & _
+                '        " '" & txtCatatan.Text & "'," & idUser
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Case "edit"
-                    PSQL = "EXEC sp_update_coa" & _
-                            "  " & idForm & "," & _
-                            " '" & txtKodeCOA.Text & "'," & _
-                            " '" & txtNamaCOA.Text & "'," & _
-                            " '" & txtTipeCoa.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
+                'cmd = New SqlClient.SqlCommand(PSQL, con)
+                'cmd.ExecuteNonQuery()
+                MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Select
+        'Catch Salah As Exception
+        '    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Select
-        Catch Salah As Exception
-            MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-        munculData()
-        tampilData()
+        TampilDataGrid("select * from vwmscoa")
+        tampilData(0)
         tombolHidup()
         nonAktif()
         txtSearch.Focus()
-        matiServer()
+        'matiServer()
         statusForm = ""
     End Sub
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Select Case statusForm
-            Case "new"
+            Case "NEW"
                 tombolHidup()
-                tampilData()
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "edit"
+            Case "EDIT"
                 tombolHidup()
-                tampilData()
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
+            Case Else
+                Me.Close()
         End Select
         txtSearch.Focus()
     End Sub
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        status = 1
-        tampilData()
-        status = 0
+        'status = 1
+        tampilData(DataGridView1.CurrentRow.Index)
+        'status = 0
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
@@ -276,37 +296,38 @@ Public Class MCoa
             dataCari = "tipe_coa"
         End If
 
-        Try
-            If txtSearch.Text = "" Then
-                MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'Try
+        If txtSearch.Text = "" Then
+            MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            'Call bukaServer()
+            'PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
+            '        " FROM ms_coa" & _
+            '        " WHERE status=1 " & _
+            '        " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
+            '        " ORDER BY id"
+
+            'dttable.Clear()
+            ''dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+            'dtadapter.Fill(dttable)
+
+            'DataGridView1.DataSource = dttable
+            TampilDataGrid("select * from vwmscoa where " & dataCari & " like '%" & txtSearch.Text & "%'")
+
+            If DataGridView1.RowCount = 0 Then
+                MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                btnRefresh.PerformClick()
             Else
-                Call bukaServer()
-                PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
-                        " FROM ms_coa" & _
-                        " WHERE status=1 " & _
-                        " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
-                        " ORDER BY id"
-
-                dttable.Clear()
-                'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-                dtadapter.Fill(dttable)
-
-                DataGridView1.DataSource = dttable
-
-                If dttable.Rows.Count = 0 Then
-                    MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    btnRefresh.PerformClick()
-                Else
-                    tampilData()
-                    dttable.Dispose()
-                    dtadapter.Dispose()
-                    dtadapter = Nothing
-                    con.Close()
-                End If
+                tampilData(0)
+                'dttable.Dispose()
+                'dtadapter.Dispose()
+                'dtadapter = Nothing
+                'con.Close()
             End If
-        Catch salah As Exception
-            MsgBox(salah.Message)
-        End Try
+        End If
+        'Catch salah As Exception
+        '    MsgBox(salah.Message)
+        'End Try
     End Sub
     Private Sub cmbSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         e.Handled = True
@@ -315,8 +336,8 @@ Public Class MCoa
         e.Handled = True
     End Sub
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        munculData()
-        tampilData()
+        TampilDataGrid("select * from vwmscoa")
+        tampilData(0)
         txtSearch.Text = ""
         txtSearch.Focus()
     End Sub
@@ -326,11 +347,48 @@ Public Class MCoa
         End If
     End Sub
     Private Sub DataGridView1_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyUp
-        status = 1
-        tampilData()
-        status = 0
+        'status = 1
+        tampilData(DataGridView1.CurrentRow.Index)
+        'status = 0
     End Sub
     Private Sub DataGridView1_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         btnEdit.PerformClick()
     End Sub
+
+    Private Sub btnLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLast.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, DataGridView1.RowCount - 1)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnFirst_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFirst.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, 0)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = -1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i + 1 < DataGridView1.RowCount Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i + 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
+    End Sub
+
+    Private Sub btnPrev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrev.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = 1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i - 1 >= 0 Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i - 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
+    End Sub
+
 End Class

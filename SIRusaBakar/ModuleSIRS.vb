@@ -4,21 +4,26 @@ Module ModuleSIRS
 
     'Public con As New SqlClient.SqlConnection
     Public con As New Odbc.OdbcConnection
+
     'Public cmd As New SqlClient.SqlCommand
     Public cmd As New Odbc.OdbcCommand
+
     'Public dtreader As SqlClient.SqlDataReader
     Public dtreader As Odbc.OdbcDataReader
 
     'Public dtadapter As New SqlClient.SqlDataAdapter
     Public dtadapter As New Odbc.OdbcDataAdapter
+
     Public idUser, idForm As Integer
     Public posisiForm, statusForm As String
+
     Sub bukaServer()
         Try
             'koneksi = "Data Source=XPINX2PIN\SQLEXPRESS;Initial Catalog=RSBK;Integrated Security=True"
             'koneksi = "DSN=RSBK"
             'con = New SqlClient.SqlConnection(koneksi)
             'con = New Odbc.OdbcConnection(koneksi)
+
             con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
             con.Open()
             idUser = 1
@@ -27,10 +32,12 @@ Module ModuleSIRS
             End
         End Try
     End Sub
+
     Sub matiServer()
         con.Close()
         'cmd.Dispose()
     End Sub
+
     Public Function get_number(ByVal sql As String) As String
         Try
             Call bukaServer()
@@ -45,6 +52,20 @@ Module ModuleSIRS
             End
         End Try
     End Function
+
+    Public Sub exec_cmd(ByVal sql As String)
+        Try
+            Call bukaServer()
+            cmd.Connection = con
+            cmd.CommandText = sql
+            cmd.ExecuteNonQuery()
+            Call matiServer()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "SQL Command Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
     Public Function get_tabel(ByVal sql As String) As DataTable
         Try
             Call bukaServer()
@@ -59,4 +80,6 @@ Module ModuleSIRS
             End
         End Try
     End Function
+
+
 End Module
