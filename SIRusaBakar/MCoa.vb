@@ -46,7 +46,6 @@ Public Class MCoa
         btnSave.Enabled = True
         btnDelete.Enabled = False
         btnEdit.Enabled = False
-
         btnSearch.Enabled = False
         btnRefresh.Enabled = False
     End Sub
@@ -55,7 +54,6 @@ Public Class MCoa
         btnSave.Enabled = False
         btnDelete.Enabled = True
         btnEdit.Enabled = True
-
         btnSearch.Enabled = True
         btnRefresh.Enabled = True
     End Sub
@@ -64,7 +62,6 @@ Public Class MCoa
         txtNamaCOA.Enabled = True
         txtTipeCoa.Enabled = True
         txtCatatan.Enabled = True
-
         DataGridView1.Enabled = False
     End Sub
     Sub nonAktif()
@@ -72,7 +69,6 @@ Public Class MCoa
         txtNamaCOA.Enabled = False
         txtTipeCoa.Enabled = False
         txtCatatan.Enabled = False
-
         DataGridView1.Enabled = True
     End Sub
     Sub TampilDataGrid(ByVal sql As String)
@@ -84,14 +80,10 @@ Public Class MCoa
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data COA : Tidak Ada", MsgBoxStyle.Information, "Data COA")
-
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
-
         Else
-
             txtCatatan.Text = ""
-
             idForm = DataGridView1.Item(0, row).Value
             txtKodeCOA.Text = DataGridView1.Item(1, row).Value
             txtNamaCOA.Text = DataGridView1.Item(2, row).Value
@@ -174,18 +166,13 @@ Public Class MCoa
         End If
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
         kirimData()
-
-      
         Select Case statusForm
             Case "NEW"
                 MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
                 MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
-
-
         TampilDataGrid("select * from vwMsCoa")
         tampilData(0)
         tombolHidup()
@@ -208,12 +195,9 @@ Public Class MCoa
             Case Else
                 Me.Close()
         End Select
-        'txtSearch.Focus()
     End Sub
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        'status = 1
         tampilData(DataGridView1.CurrentRow.Index)
-        'status = 0
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
@@ -223,8 +207,6 @@ Public Class MCoa
         Else
             dataCari = "tipeCoa"
         End If
-
-        'Try
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
@@ -235,15 +217,8 @@ Public Class MCoa
                 btnRefresh.PerformClick()
             Else
                 tampilData(0)
-                'dttable.Dispose()
-                'dtadapter.Dispose()
-                'dtadapter = Nothing
-                'con.Close()
             End If
         End If
-        'Catch salah As Exception
-        '    MsgBox(salah.Message)
-        'End Try
     End Sub
     Private Sub cmbSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         e.Handled = True
@@ -263,9 +238,7 @@ Public Class MCoa
         End If
     End Sub
     Private Sub DataGridView1_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyUp
-        'status = 1
         tampilData(DataGridView1.CurrentRow.Index)
-        'status = 0
     End Sub
     Private Sub DataGridView1_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         btnEdit.PerformClick()
