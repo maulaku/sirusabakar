@@ -31,6 +31,7 @@ Partial Class MGiziMenu
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.Button4 = New System.Windows.Forms.Button
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.Button2 = New System.Windows.Forms.Button
         Me.Button1 = New System.Windows.Forms.Button
@@ -153,6 +154,7 @@ Partial Class MGiziMenu
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Button1)
@@ -166,6 +168,15 @@ Partial Class MGiziMenu
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Makanan"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(180, 14)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(28, 23)
+        Me.Button4.TabIndex = 8
+        Me.Button4.Text = "..."
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -195,7 +206,7 @@ Partial Class MGiziMenu
         '
         'TextBox7
         '
-        Me.TextBox7.Location = New System.Drawing.Point(232, 16)
+        Me.TextBox7.Location = New System.Drawing.Point(260, 16)
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New System.Drawing.Size(46, 20)
         Me.TextBox7.TabIndex = 3
@@ -210,7 +221,7 @@ Partial Class MGiziMenu
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(186, 19)
+        Me.Label8.Location = New System.Drawing.Point(214, 19)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(40, 13)
         Me.Label8.TabIndex = 1
@@ -504,4 +515,5 @@ Partial Class MGiziMenu
     Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

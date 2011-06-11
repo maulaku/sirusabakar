@@ -1,22 +1,5 @@
 
 Public Class MainMenu
-    Private Sub COAToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem.Click
-        Dim a As New MCoa
-        a.Show()
-        a.MdiParent = Me
-    End Sub
-
-    Private Sub GiziDietToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GiziDietToolStripMenuItem.Click
-        Dim a As New MGiziDiet
-        a.Show()
-        a.MdiParent = Me
-    End Sub
-
-    Private Sub GiziMenuToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GiziMenuToolStripMenuItem.Click
-        Dim a As New MGiziMenu
-        a.Show()
-        a.MdiParent = Me
-    End Sub
 
     Private Sub LogistikAlkesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogistikAlkesToolStripMenuItem.Click
         Dim a As New MLogAlkes
@@ -56,5 +39,29 @@ Public Class MainMenu
 
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub COAToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem1.Click
+        Dim a As New MCoa
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub DietToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DietToolStripMenuItem.Click
+        Dim a As New MGiziDiet
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub MenuToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuToolStripMenuItem.Click
+        Dim a As New MGiziMenu
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub MakananToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MakananToolStripMenuItem1.Click
+        Dim a As New MGiziMakanan
+        a.Show()
+        a.MdiParent = Me
     End Sub
 End Class

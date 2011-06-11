@@ -31,3 +31,20 @@ FROM msDiet with (NOLOCK)
 WHERE status=1
 ORDER BY id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsMakanan'))
+DROP VIEW vwMsMakanan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsMakanan AS
+select top (10) id,namamakanan,catatan 
+from msmakanan with (NOLOCK)
+where status = 1
+order by id
+GO

@@ -17,12 +17,15 @@ GO
 
 --#######################################################################-- sp_coa 
 
+IF Objectproperty(Object_Id('spMsCoa'), N'isprocedure') = 1
+DROP PROCEDURE spMsCoa
+GO
+------------------------------------------
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER PROCEDURE [dbo].[spMsCoa] (
+Create PROCEDURE spMsCoa (
 	/* 1*/ @in_Tindakan				VARCHAR(4),
 	/* 2*/ @in_id		 			INT,
 	/* 3*/ @in_kodecoa 				VARCHAR(20),
@@ -83,7 +86,7 @@ BEGIN
 				END
 			END
 		END
-	---------------------------------------------------
+	--------------------------------------------------- New COA
 	ELSE IF @in_Tindakan='EDIT'
 		BEGIN
 --			SET @in_catatanBaru = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_idpengguna) + ' , tanggal : ' +
@@ -118,6 +121,7 @@ BEGIN
 				END
 			SET @tipeTindakan = 'UPDATE';
 		END
+		---------------------------------------------------- Update COA
 	ELSE IF @in_Tindakan='DEL'
 		BEGIN
 			UPDATE mscoa SET
@@ -127,7 +131,7 @@ BEGIN
 			WHERE id = @in_id;
 			SET @tipeTindakan = 'DELETE';
 		END
-
+--------------------------------------------------------- Delete COA
 	INSERT INTO mshistory (
 				/* 1*/ tipeform,
 				/* 2*/ tipeTindakan,
@@ -203,7 +207,7 @@ BEGIN
 				END
 			END
 		END
-------------------------------------------------------------------- Edit MsDiet
+------------------------------------------------------------------- New MsDiet
 	ELSE IF @in_Tindakan='EDIT'
 		BEGIN	
 			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
@@ -231,6 +235,7 @@ BEGIN
 				END
 			SET @action_type = 'UPDATE';
 		END
+		----------------------------------------------------------- Update Diet
 	ELSE IF @in_Tindakan='DEL'
 		BEGIN
 			UPDATE msdiet SET
@@ -240,7 +245,116 @@ BEGIN
 			WHERE id = @in_id;
 			SET @action_type = 'DELETE';
 		END
+------------------------------------------------------------------ Delete Diet
+	
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @form_type,
+				/* 2*/ @action_type,
+				/* 3*/ @action_desc,
+				/* 4*/ @in_user	
+	);
+							  
+END
+GO
 
+
+--############################################################################# spMsMakanan
+
+IF Objectproperty(Object_Id('spMsMakanan'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsMakanan]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE spMsMakanan (
+	/* 1*/ @in_Tindakan				VARCHAR(4),
+	/* 2*/ @in_id		 			INT,
+	/* 3*/ @in_nama_makanan			VARCHAR(100),
+	/* 4*/ @in_note					VARCHAR(4000),
+	/* 5*/ @in_user					INT,
+	/* 6*/ @out_keterangan			VARCHAR(500) OUTPUT
+	)
+AS
+	DECLARE 	
+		@in_new_note				VARCHAR(5000),
+		@in_new_note_update		VARCHAR(5000),
+		@form_type 					VARCHAR(100),
+		@action_type				VARCHAR(100),
+		@action_desc				VARCHAR(1000),
+		@hitung						INT;
+BEGIN
+	SET @form_type = 'MsMakanan';
+	SET @action_desc =	'NAMA MAKANAN : ' + @in_nama_makanan + CHAR(10);
+
+	SET @in_new_note = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , tanggal : ' +
+	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
+	
+	IF @in_Tindakan='NEW'
+		BEGIN	
+			/* Cek data sudah Ada */
+			BEGIN
+				SET @hitung = (SELECT COUNT(NamaMakanan) from MsMakanan where Status = 1 and NamaMakanan = @in_nama_makanan group by namamakanan);
+				IF @hitung > 1
+					SET @out_keterangan = 'Kode Duplikasi'
+				ELSE				
+				BEGIN	
+					INSERT INTO msMakanan (
+								/* 1*/ namaMakanan,
+								/* 2*/ catatan,
+								/* 3*/ dibuatoleh
+					) VALUES ( 				
+								/* 1*/ @in_nama_makanan,			  									  
+								/* 2*/ @in_new_note,					  
+								/* 3*/ @in_user
+					);												
+					SET @action_type = 'NEW';					
+				END
+			END
+		END
+------------------------------------------------------------------- New Makanan
+	ELSE IF @in_Tindakan='EDIT'
+		BEGIN	
+			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+										+dbo.fnAmbilCatatanMakanan(@in_id);	
+			IF @in_note = ''
+				BEGIN
+					UPDATE msMakanan SET
+								/* 1*/ namaMakanan 			= @in_nama_makanan,
+								/* 2*/ dieditoleh 			= @in_user,
+								/* 3*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msMakanan SET
+								/* 1*/ namamakanan 			= @in_nama_makanan,
+								/* 2*/ catatan 				= @in_new_note_update,
+								/* 3*/ dieditoleh 			= @in_user,
+								/* 4*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @action_desc =	@action_desc + CHAR(10) +
+										'NOTE : ' + @in_new_note + CHAR(10);
+				END
+			SET @action_type = 'UPDATE';
+		END		
+------------------------------------------------------------------- Edit Makanan
+	ELSE IF @in_Tindakan='DEL'
+		BEGIN
+			UPDATE msMakanan SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 		= @in_user,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+			SET @action_type = 'DELETE';
+		END
+------------------------------------------------------------------- Delete makanan
 	
 	INSERT INTO mshistory (
 				/* 1*/ tipeform,

@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MGiziMakanan.Designer.vb">
+      <DependentUpon>MGiziMakanan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MGiziMakanan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LayLabPemeriksaan.Designer.vb">
       <DependentUpon>LayLabPemeriksaan.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGiziMakanan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MGiziMakanan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayLabPemeriksaan.resx">
       <SubType>Designer</SubType>
