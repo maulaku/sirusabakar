@@ -5,8 +5,8 @@
 -- Database : SQL Server
 -- Penulisan : Indonesia
 ----------------------------------------------------------
-USE [SIRS]
-GO
+--USE [SIRS]
+--GO
 ----------------------------------------------------------
 -- komposisi penamaan FN 
 ----------------------------------------------------------
@@ -14,10 +14,9 @@ GO
 -- 1. fn = function
 -- 2. nama function (tindakan)
 -- 3. nama object
-----------------------------------------------------------
 
-IF OBJECT_ID (N'fnAmbilNamaLengkap', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilNamaLengkap;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilNamaLengkap') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilNamaLengkap
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -27,26 +26,21 @@ GO
 
 CREATE FUNCTION fnAmbilNamaLengkap
 (
-@in_idPengguna 				INT
+	@in_idPengguna 				INT
 )
-
 RETURNS VARCHAR(200)
-
 BEGIN
-	RETURN (SELECT 
-							t2.namaLengkap 
-						FROM 
-							msPengguna t1 with (NOLOCK)
-							Inner Join msKaryawan t2 with (NOLOCK) on t1.ID_Karyawan = t2.ID 
-						WHERE 
-							t1.id = @in_IdPengguna
+	RETURN (SELECT t2.namaLengkap 
+			FROM msPengguna t1 with (NOLOCK)
+			INNER JOIN msKaryawan t2 with (NOLOCK) on t1.ID_Karyawan = t2.ID 
+			WHERE t1.id = @in_idPengguna)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanCOA', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanCOA;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanCOA') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanCOA
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -68,8 +62,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanDiet', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanDiet;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanDiet') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanDiet
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -91,8 +85,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanKelas', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanKelas;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanKelas') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanKelas
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -108,19 +102,14 @@ CREATE FUNCTION fnAmbilCatatanKelas
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN (SELECT 
-							catatan
-						FROM 
-							mskelas
-						WHERE 
-							id = @in_id)
+	RETURN (SELECT catatan FROM mskelas WHERE id = @in_id)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanMakanan', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanMakanan;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanMakanan') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanMakanan
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -128,26 +117,22 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fnAmbilCatatanMakanan(
+CREATE FUNCTION fnAmbilCatatanMakanan
+(
 	@in_id 						INT
 )
 
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN (SELECT 
-							catatan
-						FROM 
-							msmakanan
-						WHERE 
-							id = @in_id)
+	RETURN (SELECT catatan FROM msmakanan WHERE id = @in_id)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanAlkes', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanAlkess;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanAlkes') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanAlkes
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -163,19 +148,14 @@ CREATE FUNCTION fnAmbilCatatanAlkes
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN (SELECT 
-							catatan
-						FROM 
-							msalkes
-						WHERE 
-							id = @in_id)
+	RETURN (SELECT catatan FROM msalkes	WHERE id = @in_id)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanInvAtk', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanInvAtk;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanInvAtk') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanInvAtk
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -191,20 +171,14 @@ CREATE FUNCTION fnAmbilCatatanInvAtk
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN 
-	(SELECT 
-		catatan
-	FROM 
-		msinvatk
-	WHERE 
-	id = @in_id)
+	RETURN (SELECT catatan FROM msinvatk WHERE id = @in_id)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanObat', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanObat;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanObat') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanObat
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -220,20 +194,14 @@ CREATE FUNCTION fnAmbilCatatanObat
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN 
-	(SELECT 
-		catatan
-	FROM 
-		ms_obat
-	WHERE 
-	id = @in_id)
+	RETURN (SELECT catatan FROM ms_obat WHERE id = @in_id)
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnAmbilCatatanTarifAmbulance', N'FN') IS NOT NULL
-    DROP FUNCTION fnAmbilCatatanTarifAmbulance;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanTarifAmbulance') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanTarifAmbulance
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -248,13 +216,7 @@ CREATE FUNCTION fnAmbilCatatanTarifAmbulance(
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN 
-	(SELECT 
-		catatan
-	FROM 
-		msTarifAmbulance
-	WHERE 
-	id = @inId)
+	RETURN (SELECT catatan FROM msTarifAmbulance WHERE id = @inId)
 END;
 GO
 

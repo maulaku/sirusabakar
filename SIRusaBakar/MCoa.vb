@@ -3,6 +3,7 @@ Public Class MCoa
     Dim dttable As New DataTable
     Dim status As Integer = 0
     Dim dataCari As String
+    Dim keterangan As String
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Try
             If msg.WParam.ToInt32 = Convert.ToInt32(Keys.F2) Then
@@ -280,13 +281,15 @@ Public Class MCoa
     End Sub
     Private Sub kirimData()
         Try
-            PSQL = "EXEC sp_coa" & _
+            PSQL = "EXEC spMsCoa" & _
                     " '" & statusForm & "'," & _
                     "  " & idForm & "," & _
                     " '" & txtKodeCOA.Text & "'," & _
                     " '" & txtNamaCOA.Text & "'," & _
                     " '" & txtTipeCoa.Text & "'," & _
-                    " '" & txtCatatan.Text & "'," & idUser
+                    " '" & txtCatatan.Text & "'," & _
+                    "  " & idUser & "," & _
+                    " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception
             MsgBox(ex.Message)

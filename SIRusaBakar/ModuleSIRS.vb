@@ -10,8 +10,8 @@ Module ModuleSIRS
     Public posisiForm, statusForm As String
     Sub bukaServer()
         Try
-            'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
-            con.ConnectionString = "DSN=RSBK"
+            con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
+            'con.ConnectionString = "DSN=RSBK"
             con.Open()
             idUser = 1
         Catch salah As Exception

@@ -10,7 +10,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW vwMsCoa AS
 SELECT top (10) id,kodeCoa,namaCoa,tipeCoa,catatan
-FROM msCoa
+FROM msCoa with (NOLOCK)
 WHERE status=1
 ORDER BY id
 GO
@@ -27,7 +27,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW vwMsDiet AS
 SELECT top (10) id,kodeDiet,namaDiet,catatan
-FROM msDiet
+FROM msDiet with (NOLOCK)
 WHERE status=1
 ORDER BY id
 GO
