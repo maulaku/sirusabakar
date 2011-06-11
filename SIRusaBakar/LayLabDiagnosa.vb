@@ -49,7 +49,7 @@ Public Class LayLabDiagnosa
             'PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'"
             'cmd = New SqlClient.SqlCommand(PSQL, con)
             'lastKode = cmd.ExecuteScalar
-            lastKode = get_number("SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'")
+            lastKode = getNumber("SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'")
 
             'If lastKode = "" Then
             '    txtNoMR.Text = formatKode + "00001"
@@ -214,7 +214,7 @@ Public Class LayLabDiagnosa
         'dttable = get_tabel(PSQL)
 
         'DataGridView1.DataSource = dttable
-        DataGridView1.DataSource = get_tabel(PSQL)
+        DataGridView1.DataSource = getTabel(PSQL)
 
         For i As Integer = 0 To 36
             DataGridView1.Columns(i).Visible = False

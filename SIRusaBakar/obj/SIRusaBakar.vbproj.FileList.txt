@@ -21,5 +21,10 @@ obj\Debug\SIRusaBakar.vbproj.GenerateResource.Cache
 bin\Debug\SIRusaBakar.exe
 bin\Debug\SIRusaBakar.pdb
 bin\Debug\SIRusaBakar.xml
-obj\Debug\SIRusaBakar.LLabDiagnosa.resources
 obj\Debug\SIRusaBakar.LayMRDaftarPasien.resources
+obj\Debug\SIRusaBakar.LayLabPemeriksaan.resources
+obj\Debug\SIRusaBakar.LayLabDiagnosa.resources
+obj\Debug\SIRusaBakar.LayMRRegis.resources
+obj\Debug\SIRusaBakar.LayPoliPemeriksaan.resources
+obj\Debug\SIRusaBakar.LayPoliQueue.resources
+obj\Debug\SIRusaBakar.LogCMintaBrg.resources

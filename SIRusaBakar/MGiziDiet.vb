@@ -85,7 +85,7 @@ Public Class MGiziDiet
         'dtadapter.Fill(dttable)
 
 
-        DataGridView1.DataSource = get_tabel(Sql)
+        DataGridView1.DataSource = getTabel(sql)
 
         DataGridView1.Columns("id").Visible = False
         DataGridView1.Columns("note").Visible = False

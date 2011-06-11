@@ -96,7 +96,7 @@ Public Class LogCMintaBrg
         'dttable.Clear()
         'dtadapter = New Odbc.OdbcDataAdapter(PSQL, koneksi)
         'dtadapter.Fill(dttable)
-        DataGridView1.DataSource = get_tabel("select * from vwLogClientPermintaan Order By ID")
+        DataGridView1.DataSource = getTabel("select * from vwLogClientPermintaan Order By ID")
 
         'DataGridView1.DataSource = dttable
 

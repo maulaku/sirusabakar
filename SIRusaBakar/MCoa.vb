@@ -88,10 +88,10 @@ Public Class MCoa
         'dtadapter.Fill(dttable)
 
 
-        DataGridView1.DataSource = get_tabel(sql)
+        DataGridView1.DataSource = getTabel(sql)
 
         DataGridView1.Columns("id").Visible = False
-        DataGridView1.Columns("note").Visible = False
+        DataGridView1.Columns("catatan").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
         'dttable.Dispose()
@@ -147,19 +147,19 @@ Public Class MCoa
         txtTipeCoa.Text = ""
     End Sub
     Private Sub MCoa_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Try
-            tombolHidup()
-            nonAktif()
-            TampilDataGrid("select * from vwmscoa")
-            tampilData(0)
-            cmbSearch.SelectedIndex = 0
+        'Try
+        tombolHidup()
+        nonAktif()
+        TampilDataGrid("select * from vwMsCoa")
+        tampilData(0)
+        cmbSearch.SelectedIndex = 0
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
-        Catch salah As Exception
-            MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        If cmbSearch.SelectionLength <> 0 Then
+            cmbSearch.SelectedIndex = 0
+        End If
+        'Catch salah As Exception
+        '    MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
 
         Me.txtSearch.TextBox.Select()
     End Sub
@@ -187,7 +187,7 @@ Public Class MCoa
                 '                    " '" & txtNamaCOA.Text & "'," & _
                 '                    " '" & txtTipeCoa.Text & "'," & _
                 '                    " '" & txtCatatan.Text & "'," & idUser
-                'exec_cmd(PSQL)
+                'execCmd(PSQL)
                 'Call bukaServer()
                 'Try
                 '    PSQL = "EXEC sp_delete_coa " & _
@@ -228,7 +228,7 @@ Public Class MCoa
         '                            " '" & txtNamaCOA.Text & "'," & _
         '                            " '" & txtTipeCoa.Text & "'," & _
         '                            " '" & txtCatatan.Text & "'," & idUser
-        'exec_cmd(PSQL)
+        'execCmd(PSQL)
         kirim_data()
         Select Case statusForm
             Case "NEW"
@@ -259,7 +259,7 @@ Public Class MCoa
         '    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
 
-        TampilDataGrid("select * from vwmscoa")
+        TampilDataGrid("select * from vwMsCoa")
         tampilData(0)
         tombolHidup()
         nonAktif()
@@ -401,6 +401,6 @@ Public Class MCoa
                 " '" & txtNamaCOA.Text & "'," & _
                 " '" & txtTipeCoa.Text & "'," & _
                 " '" & txtCatatan.Text & "'," & idUser
-        exec_cmd(PSQL)
+        execCmd(PSQL)
     End Sub
 End Class
