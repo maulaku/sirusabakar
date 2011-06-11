@@ -72,49 +72,49 @@ Public Class MGiziDiet
 
         DataGridView1.Enabled = True
     End Sub
-    Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT id,kode_diet,nama_diet,note" & _
-               " FROM ms_diet" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
+    Sub TampilDataGrid(ByVal sql As String)
+        'Call bukaserver()
+        'PSQL = ""
+        'PSQL = "SELECT id,kode_diet,nama_diet,note" & _
+        '       " FROM ms_diet" & _
+        '       " WHERE status=1" & _
+        '       " ORDER BY id"
 
-        dttable.Clear()
-        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        dtadapter.Fill(dttable)
+        'dttable.Clear()
+        ''dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        'dtadapter.Fill(dttable)
 
 
-        DataGridView1.DataSource = dttable
+        DataGridView1.DataSource = get_tabel(Sql)
 
-        DataGridView1.Columns(0).Visible = False
-        DataGridView1.Columns(3).Visible = False
+        DataGridView1.Columns("id").Visible = False
+        DataGridView1.Columns("note").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
-        dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
+        'dttable.Dispose()
+        'dtadapter.Dispose()
+        'dtadapter = Nothing
+        'con.Close()
     End Sub
-    Sub tampilData()
-        If dttable.Rows.Count = 0 Then
+    Sub tampilData(ByVal row As Integer)
+        If DataGridView1.RowCount = 0 Then
             MsgBox("Data Diet : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
 
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
             txtCatatan.Text = ""
-            Dim i As Integer
-            If status = 0 Then
-                i = 0
-            Else
-                i = DataGridView1.CurrentRow.Index
-            End If
+            'Dim i As Integer
+            'If status = 0 Then
+            '    i = 0
+            'Else
+            '    i = DataGridView1.CurrentRow.Index
+            'End If
 
-            idForm = DataGridView1.Item(0, i).Value
-            txtKodeDiet.Text = DataGridView1.Item(1, i).Value
-            txtNamaDiet.Text = DataGridView1.Item(2, i).Value
-            txtCatatanSebelumnya.Text = (DataGridView1.Item(3, i).Value).Replace(ControlChars.Lf, vbCrLf)
+            idForm = DataGridView1.Item(0, row).Value
+            txtKodeDiet.Text = DataGridView1.Item(1, row).Value
+            txtNamaDiet.Text = DataGridView1.Item(2, row).Value
+            txtCatatanSebelumnya.Text = (DataGridView1.Item(3, row).Value).Replace(ControlChars.Lf, vbCrLf)
 
         End If
         formatGrid()
@@ -140,8 +140,8 @@ Public Class MGiziDiet
         Try
             tombolHidup()
             nonAktif()
-            munculData()
-            tampilData()
+            TampilDataGrid("select * from vwMsDiet")
+            tampilData(0)
 
             If cmbSearch.SelectionLength <> 0 Then
                 cmbSearch.SelectedIndex = 0
@@ -153,7 +153,7 @@ Public Class MGiziDiet
         Me.txtSearch.TextBox.Select()
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
-        statusForm = "new"
+        statusForm = "NEW"
         tombolMati()
         kosong()
         aktif()
@@ -167,6 +167,7 @@ Public Class MGiziDiet
             Dim tanya As Integer
             tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKodeDiet.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
+                statusForm = "DEL"
                 Call bukaServer()
                 Try
                     PSQL = "EXEC sp_delete_diet " & _
@@ -177,8 +178,8 @@ Public Class MGiziDiet
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    munculData()
-                    tampilData()
+                    'TampilDataGrid()
+                    'tampilData()
                 Catch Salah As Exception
                     MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -228,8 +229,8 @@ Public Class MGiziDiet
             MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        munculData()
-        tampilData()
+        'munculData()
+        'tampilData()
         tombolHidup()
         nonAktif()
         txtSearch.Focus()
@@ -241,12 +242,12 @@ Public Class MGiziDiet
         Select Case statusForm
             Case "new"
                 tombolHidup()
-                tampilData()
+                tampilData(0)
                 nonAktif()
                 statusForm = ""
             Case "edit"
                 tombolHidup()
-                tampilData()
+                tampilData(0)
                 nonAktif()
                 statusForm = ""
         End Select
@@ -255,7 +256,7 @@ Public Class MGiziDiet
 
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         status = 1
-        tampilData()
+        tampilData(0)
         status = 0
     End Sub
 
@@ -291,7 +292,7 @@ Public Class MGiziDiet
                     MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     btnRefresh.PerformClick()
                 Else
-                    tampilData()
+                    tampilData(0)
                     dttable.Dispose()
                     dtadapter.Dispose()
                     dtadapter = Nothing
@@ -310,8 +311,8 @@ Public Class MGiziDiet
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        munculData()
-        tampilData()
+        'munculData()
+        'tampilData()
         txtSearch.Text = ""
         txtSearch.Focus()
     End Sub
@@ -327,7 +328,7 @@ Public Class MGiziDiet
 
     Private Sub DataGridView1_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyUp
         status = 1
-        tampilData()
+        tampilData(0)
         status = 0
     End Sub
 End Class

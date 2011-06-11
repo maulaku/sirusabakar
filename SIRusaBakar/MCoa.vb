@@ -179,14 +179,15 @@ Public Class MCoa
             tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKodeCOA.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
-                PSQL = "EXEC sp_coa" & _
-                                    " '" & statusForm & "'," & _
-                                    "  " & idForm & "," & _
-                                    " '" & txtKodeCOA.Text & "'," & _
-                                    " '" & txtNamaCOA.Text & "'," & _
-                                    " '" & txtTipeCoa.Text & "'," & _
-                                    " '" & txtCatatan.Text & "'," & idUser
-                exec_cmd(PSQL)
+                kirim_data()
+                'PSQL = "EXEC sp_coa" & _
+                '                    " '" & statusForm & "'," & _
+                '                    "  " & idForm & "," & _
+                '                    " '" & txtKodeCOA.Text & "'," & _
+                '                    " '" & txtNamaCOA.Text & "'," & _
+                '                    " '" & txtTipeCoa.Text & "'," & _
+                '                    " '" & txtCatatan.Text & "'," & idUser
+                'exec_cmd(PSQL)
                 'Call bukaServer()
                 'Try
                 '    PSQL = "EXEC sp_delete_coa " & _
@@ -220,14 +221,15 @@ Public Class MCoa
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         'Try
         'Call bukaServer()
-        PSQL = "EXEC sp_coa" & _
-                                    " '" & statusForm & "'," & _
-                                    "  " & idForm & "," & _
-                                    " '" & txtKodeCOA.Text & "'," & _
-                                    " '" & txtNamaCOA.Text & "'," & _
-                                    " '" & txtTipeCoa.Text & "'," & _
-                                    " '" & txtCatatan.Text & "'," & idUser
-        exec_cmd(PSQL)
+        'PSQL = "EXEC sp_coa" & _
+        '                            " '" & statusForm & "'," & _
+        '                            "  " & idForm & "," & _
+        '                            " '" & txtKodeCOA.Text & "'," & _
+        '                            " '" & txtNamaCOA.Text & "'," & _
+        '                            " '" & txtTipeCoa.Text & "'," & _
+        '                            " '" & txtCatatan.Text & "'," & idUser
+        'exec_cmd(PSQL)
+        kirim_data()
         Select Case statusForm
             Case "NEW"
                 'PSQL = "EXEC sp_coa" & _
@@ -280,7 +282,7 @@ Public Class MCoa
             Case Else
                 Me.Close()
         End Select
-        txtSearch.Focus()
+        'txtSearch.Focus()
     End Sub
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         'status = 1
@@ -391,4 +393,14 @@ Public Class MCoa
         End If
     End Sub
 
+    Private Sub kirim_data()
+        PSQL = "EXEC sp_coa" & _
+                " '" & statusForm & "'," & _
+                "  " & idForm & "," & _
+                " '" & txtKodeCOA.Text & "'," & _
+                " '" & txtNamaCOA.Text & "'," & _
+                " '" & txtTipeCoa.Text & "'," & _
+                " '" & txtCatatan.Text & "'," & idUser
+        exec_cmd(PSQL)
+    End Sub
 End Class
