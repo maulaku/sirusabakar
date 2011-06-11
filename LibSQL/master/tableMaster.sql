@@ -15,7 +15,15 @@ GO
 -- 2. Coa : nama table
 ----------------------------------------------------------------------------------------------------------
 
-DROP TABLE msCoa;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'mscoa') AND type in (N'U'))
+DROP TABLE mscoa
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msCoa (
 	id						INT IDENTITY(1,1) NOT NULL,
 	kodeCoa 				VARCHAR(20) NOT NULL,

@@ -1,7 +1,7 @@
 USE SIRS
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwMsCoa]'))
-DROP VIEW [dbo].[vwMsCoa]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsCoa'))
+DROP VIEW vwMsCoa
 GO
 ------------------------------------------
 SET ANSI_NULLS ON
@@ -17,8 +17,8 @@ GO
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwMsDiet]'))
-DROP VIEW [dbo].[vwMsDiet]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsDiet'))
+DROP VIEW vwMsDiet
 GO
 ------------------------------------------
 SET ANSI_NULLS ON

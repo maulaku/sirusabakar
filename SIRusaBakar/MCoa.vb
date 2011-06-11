@@ -89,7 +89,6 @@ Public Class MCoa
             txtNamaCOA.Text = DataGridView1.Item(2, row).Value
             txtTipeCoa.Text = DataGridView1.Item(3, row).Value
             txtCatatanSebelumnya.Text = (DataGridView1.Item(4, row).Value).Replace(ControlChars.Lf, vbCrLf)
-
         End If
         formatGrid()
     End Sub

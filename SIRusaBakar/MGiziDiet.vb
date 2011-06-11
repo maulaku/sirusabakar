@@ -73,49 +73,22 @@ Public Class MGiziDiet
         DataGridView1.Enabled = True
     End Sub
     Sub TampilDataGrid(ByVal sql As String)
-        'Call bukaserver()
-        'PSQL = ""
-        'PSQL = "SELECT id,kode_diet,nama_diet,note" & _
-        '       " FROM ms_diet" & _
-        '       " WHERE status=1" & _
-        '       " ORDER BY id"
-
-        'dttable.Clear()
-        ''dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        'dtadapter.Fill(dttable)
-
-
         DataGridView1.DataSource = getTabel(sql)
-
         DataGridView1.Columns("id").Visible = False
         DataGridView1.Columns("note").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
-
-        'dttable.Dispose()
-        'dtadapter.Dispose()
-        'dtadapter = Nothing
-        'con.Close()
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data Diet : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
-
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
             txtCatatan.Text = ""
-            'Dim i As Integer
-            'If status = 0 Then
-            '    i = 0
-            'Else
-            '    i = DataGridView1.CurrentRow.Index
-            'End If
-
             idForm = DataGridView1.Item(0, row).Value
             txtKodeDiet.Text = DataGridView1.Item(1, row).Value
             txtNamaDiet.Text = DataGridView1.Item(2, row).Value
             txtCatatanSebelumnya.Text = (DataGridView1.Item(3, row).Value).Replace(ControlChars.Lf, vbCrLf)
-
         End If
         formatGrid()
     End Sub

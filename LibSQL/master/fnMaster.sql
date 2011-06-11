@@ -1,23 +1,23 @@
 -- RANCANGAN FUNCTION SIRS --
 ----------------------------------------------------------
--- Create by : Ivhan Famly Gunawan
+-- Create by : Ivhan Famly Gunawan & Findy Effendy
 -- Date : April 2011
 -- Database : SQL Server
--- Penulisan : Campur
+-- Penulisan : Indonesia
 ----------------------------------------------------------
 USE [SIRS]
 GO
 ----------------------------------------------------------
 -- komposisi penamaan FN 
 ----------------------------------------------------------
--- contoh : fn_get_full_name_user
+-- contoh : fnAmbilNamaLengkap
 -- 1. fn = function
 -- 2. nama function (tindakan)
 -- 3. nama object
 ----------------------------------------------------------
 
-IF OBJECT_ID (N'fn_get_full_name_user', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_full_name_user;
+IF OBJECT_ID (N'fnAmbilNamaLengkap', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilNamaLengkap;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -25,26 +25,28 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_full_name_user
-(@in_user_id INT)
+CREATE FUNCTION fnAmbilNamaLengkap
+(
+@in_idPengguna 				INT
+)
 
 RETURNS VARCHAR(200)
 
 BEGIN
 	RETURN (SELECT 
-							t2.full_name 
+							t2.namaLengkap 
 						FROM 
-							ms_user t1, ms_employee t2 
+							msPengguna t1 with (NOLOCK)
+							Inner Join msKaryawan t2 with (NOLOCK) on t1.ID_Karyawan = t2.ID 
 						WHERE 
-							t1.id = @in_user_id
-							AND t1.id_employee = t2.id)
+							t1.id = @in_IdPengguna
 END;
 GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fn_get_note_coa', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_coa;
+IF OBJECT_ID (N'fnAmbilCatatanCOA', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanCOA;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -52,7 +54,54 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_note_coa(
+CREATE FUNCTION fnAmbilCatatanCOA
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT  catatan	FROM mscoa WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF OBJECT_ID (N'fnAmbilCatatanDiet', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanDiet;
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanDiet
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT catatan FROM msdiet WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF OBJECT_ID (N'fnAmbilCatatanKelas', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanKelas;
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanKelas
+(
 	@in_id 						INT
 )
 
@@ -60,9 +109,9 @@ RETURNS VARCHAR(200)
 
 BEGIN
 	RETURN (SELECT 
-							note
+							catatan
 						FROM 
-							ms_coa
+							mskelas
 						WHERE 
 							id = @in_id)
 END;
@@ -70,8 +119,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fn_get_note_diet', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_diet;
+IF OBJECT_ID (N'fnAmbilCatatanMakanan', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanMakanan;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -79,7 +128,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_note_diet(
+CREATE FUNCTION fnAmbilCatatanMakanan(
 	@in_id 						INT
 )
 
@@ -87,9 +136,9 @@ RETURNS VARCHAR(200)
 
 BEGIN
 	RETURN (SELECT 
-							note
+							catatan
 						FROM 
-							ms_diet
+							msmakanan
 						WHERE 
 							id = @in_id)
 END;
@@ -97,8 +146,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fn_get_note_kelas', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_kelas;
+IF OBJECT_ID (N'fnAmbilCatatanAlkes', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanAlkess;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -106,7 +155,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_note_kelas(
+CREATE FUNCTION fnAmbilCatatanAlkes
+(
 	@in_id 						INT
 )
 
@@ -114,9 +164,9 @@ RETURNS VARCHAR(200)
 
 BEGIN
 	RETURN (SELECT 
-							note
+							catatan
 						FROM 
-							ms_kelas
+							msalkes
 						WHERE 
 							id = @in_id)
 END;
@@ -124,8 +174,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fn_get_note_makanan', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_makanan;
+IF OBJECT_ID (N'fnAmbilCatatanInvAtk', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanInvAtk;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -133,61 +183,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_note_makanan(
-	@in_id 						INT
-)
-
-RETURNS VARCHAR(200)
-
-BEGIN
-	RETURN (SELECT 
-							note
-						FROM 
-							ms_makanan
-						WHERE 
-							id = @in_id)
-END;
-GO
-
---#######################################################################--
-
-IF OBJECT_ID (N'fn_get_note_alkes', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_alkes;
-GO
-----------SCALAR VALUED FUNCTION----------
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE FUNCTION fn_get_note_alkes(
-	@in_id 						INT
-)
-
-RETURNS VARCHAR(200)
-
-BEGIN
-	RETURN (SELECT 
-							note
-						FROM 
-							ms_alkes
-						WHERE 
-							id = @in_id)
-END;
-GO
-
---#######################################################################--
-
-IF OBJECT_ID (N'fn_get_note_inv_atk', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_inv_atk;
-GO
-----------SCALAR VALUED FUNCTION----------
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE FUNCTION fn_get_note_inv_atk(
+CREATE FUNCTION fnAmbilCatatanInvAtk
+(
 	@in_id 	INT
 )
 
@@ -196,9 +193,9 @@ RETURNS VARCHAR(200)
 BEGIN
 	RETURN 
 	(SELECT 
-		note
+		catatan
 	FROM 
-		ms_inv_atk
+		msinvatk
 	WHERE 
 	id = @in_id)
 END;
@@ -206,8 +203,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fn_get_note_obat', N'FN') IS NOT NULL
-    DROP FUNCTION fn_get_note_obat;
+IF OBJECT_ID (N'fnAmbilCatatanObat', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanObat;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -215,7 +212,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fn_get_note_obat(
+CREATE FUNCTION fnAmbilCatatanObat
+(
 	@in_id 	INT
 )
 
@@ -224,7 +222,7 @@ RETURNS VARCHAR(200)
 BEGIN
 	RETURN 
 	(SELECT 
-		note
+		catatan
 	FROM 
 		ms_obat
 	WHERE 
@@ -234,8 +232,8 @@ GO
 
 --#######################################################################--
 
-IF OBJECT_ID (N'fnGetNoteTarifAmbulance', N'FN') IS NOT NULL
-    DROP FUNCTION fnGetNoteTarifAmbulance;
+IF OBJECT_ID (N'fnAmbilCatatanTarifAmbulance', N'FN') IS NOT NULL
+    DROP FUNCTION fnAmbilCatatanTarifAmbulance;
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -243,7 +241,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fnGetNoteTarifAmbulance(
+CREATE FUNCTION fnAmbilCatatanTarifAmbulance(
 	@inId 	INT
 )
 
@@ -252,7 +250,7 @@ RETURNS VARCHAR(200)
 BEGIN
 	RETURN 
 	(SELECT 
-		note
+		catatan
 	FROM 
 		msTarifAmbulance
 	WHERE 
