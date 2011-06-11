@@ -1,6 +1,4 @@
 Public Class MCoa
-
-    Dim dttable As New DataTable
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String
@@ -120,7 +118,6 @@ Public Class MCoa
             nonAktif()
             TampilDataGrid("select * from vwMsCoa")
             tampilData(0)
-            cmbSearch.SelectedIndex = 0
 
             If cmbSearch.SelectionLength <> 0 Then
                 cmbSearch.SelectedIndex = 0
@@ -128,7 +125,7 @@ Public Class MCoa
 
             Me.txtSearch.TextBox.Select()
         Catch ex As Exception
-            MsgBox("Load Data Gagal !", MsgBoxStyle.Critical)
+            MessageBox.Show(ex.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
@@ -207,6 +204,7 @@ Public Class MCoa
         Else
             dataCari = "tipeCoa"
         End If
+
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
@@ -279,6 +277,7 @@ Public Class MCoa
             tampilData(DataGridView1.CurrentRow.Index)
         End If
     End Sub
+
     Private Sub kirimData()
         Try
             PSQL = "EXEC spMsCoa" & _

@@ -1,7 +1,7 @@
 Public Class MGiziDiet
-    Dim dttable As New DataTable
     Dim status As Integer = 0
     Dim dataCari As String
+    Dim keterangan As String
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Try
             If msg.WParam.ToInt32 = Convert.ToInt32(Keys.F2) Then
@@ -75,7 +75,7 @@ Public Class MGiziDiet
     Sub TampilDataGrid(ByVal sql As String)
         DataGridView1.DataSource = getTabel(sql)
         DataGridView1.Columns("id").Visible = False
-        DataGridView1.Columns("note").Visible = False
+        DataGridView1.Columns("catatan").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
     End Sub
     Sub tampilData(ByVal row As Integer)
@@ -122,8 +122,6 @@ Public Class MGiziDiet
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
-        Me.txtSearch.TextBox.Select()
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
         statusForm = "NEW"
@@ -141,24 +139,12 @@ Public Class MGiziDiet
             tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKodeDiet.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
-                Call bukaServer()
-                Try
-                    PSQL = "EXEC sp_delete_diet " & _
-                            idForm & ",'" & txtKodeDiet.Text & "','" & txtNamaDiet.Text & "'," & _
-                            idUser
+                kirimData()
+                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                    'TampilDataGrid()
-                    'tampilData()
-                Catch Salah As Exception
-                    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+                TampilDataGrid("select * from vwmsdiet")
+                tampilData(0)
             End If
-            con.Close()
-            cmd.Dispose()
         End If
     End Sub
 
@@ -174,107 +160,61 @@ Public Class MGiziDiet
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Try
-            Call bukaServer()
-
-            Select Case statusForm
-                Case "new"
-                    PSQL = "EXEC sp_insert_diet" & _
-                            " '" & txtKodeDiet.Text & "'," & _
-                            " '" & txtNamaDiet.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
-
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Case "edit"
-                    PSQL = "EXEC sp_update_diet" & _
-                            "  " & idForm & "," & _
-                            " '" & txtKodeDiet.Text & "'," & _
-                            " '" & txtNamaDiet.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
-
-                    ''cmd = New SqlClient.SqlCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Select
-        Catch Salah As Exception
-            MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-        'munculData()
-        'tampilData()
+        kirimData()
+        Select Case statusForm
+            Case "NEW"
+                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Case "EDIT"
+                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtKodeDiet.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Select
+        TampilDataGrid("select * from vwMsDiet")
+        tampilData(0)
         tombolHidup()
         nonAktif()
         txtSearch.Focus()
-        matiServer()
         statusForm = ""
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Select Case statusForm
-            Case "new"
+            Case "NEW"
                 tombolHidup()
                 tampilData(0)
                 nonAktif()
                 statusForm = ""
-            Case "edit"
+            Case "EDIt"
                 tombolHidup()
                 tampilData(0)
                 nonAktif()
                 statusForm = ""
+            Case Else
+                Me.Close()
         End Select
-        txtSearch.Focus()
     End Sub
 
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        status = 1
-        tampilData(0)
-        status = 0
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
+        tampilData(DataGridView1.CurrentRow.Index)
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "kode_diet"
+            dataCari = "kodediet"
         ElseIf cmbSearch.SelectedIndex = 1 Then
-            dataCari = "nama_diet"
+            dataCari = "namadiet"
         End If
 
-        Try
-            If txtSearch.Text = "" Then
-                MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        If txtSearch.Text = "" Then
+            MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            TampilDataGrid("SELECT * FROM vwmsdiet WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
+
+            If DataGridView1.RowCount = 0 Then
+                MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                btnRefresh.PerformClick()
             Else
-                Call bukaServer()
-                PSQL = "SELECT id,kode_diet,nama_diet,note" & _
-                        " FROM ms_diet" & _
-                        " WHERE status=1 " & _
-                        " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
-                        " ORDER BY id"
-
-                dttable.Clear()
-                'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-                dtadapter.Fill(dttable)
-
-                DataGridView1.DataSource = dttable
-
-                If dttable.Rows.Count = 0 Then
-                    MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    btnRefresh.PerformClick()
-                Else
-                    tampilData(0)
-                    dttable.Dispose()
-                    dtadapter.Dispose()
-                    dtadapter = Nothing
-                    con.Close()
-                End If
+                tampilData(0)
             End If
-        Catch salah As Exception
-            MsgBox(salah.Message)
-        End Try
+        End If
     End Sub
     Private Sub cmbSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbSearch.KeyPress
         e.Handled = True
@@ -284,8 +224,8 @@ Public Class MGiziDiet
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        'munculData()
-        'tampilData()
+        TampilDataGrid("select * from vwmsdiet")
+        tampilData(0)
         txtSearch.Text = ""
         txtSearch.Focus()
     End Sub
@@ -300,8 +240,58 @@ Public Class MGiziDiet
     End Sub
 
     Private Sub DataGridView1_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyUp
-        status = 1
-        tampilData(0)
-        status = 0
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLast.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, DataGridView1.RowCount - 1)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnFirst_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFirst.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, 0)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnPrev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrev.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = 1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i - 1 >= 0 Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i - 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
+    End Sub
+
+    Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = -1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i + 1 < DataGridView1.RowCount Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i + 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
+    End Sub
+
+    Private Sub kirimData()
+        Try
+            PSQL = "EXEC spMsDiet" & _
+                    " '" & statusForm & "'," & _
+                    "  " & idForm & "," & _
+                    " '" & txtKodeDiet.Text & "'," & _
+                    " '" & txtNamaDiet.Text & "'," & _
+                    " '" & txtCatatan.Text & "'," & _
+                    "  " & idUser & "," & _
+                    " '" & keterangan & "'"
+            execCmd(PSQL)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
