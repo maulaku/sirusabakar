@@ -76,28 +76,10 @@ Public Class MCoa
         DataGridView1.Enabled = True
     End Sub
     Sub TampilDataGrid(ByVal sql As String)
-        'Call bukaServer()
-        'PSQL = ""
-        'PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
-        '       " FROM ms_coa" & _
-        '       " WHERE status=1" & _
-        '       " ORDER BY id"
-
-        'dttable.Clear()
-        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        'dtadapter.Fill(dttable)
-
-
         DataGridView1.DataSource = getTabel(sql)
-
         DataGridView1.Columns("id").Visible = False
         DataGridView1.Columns("catatan").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
-
-        'dttable.Dispose()
-        'dtadapter.Dispose()
-        'dtadapter = Nothing
-        'con.Close()
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
@@ -109,12 +91,6 @@ Public Class MCoa
         Else
 
             txtCatatan.Text = ""
-            'Dim i As Integer
-            'If status = 0 Then
-            '    i = 0
-            'Else
-            '    i = DataGridView1.CurrentRow.Index
-            'End If
 
             idForm = DataGridView1.Item(0, row).Value
             txtKodeCOA.Text = DataGridView1.Item(1, row).Value
@@ -129,13 +105,13 @@ Public Class MCoa
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
-                Case "kode_coa"
+                Case "kodeCoa"
                     dc.HeaderText = "Kode COA"
                     dc.Width = 100
-                Case "nama_coa"
+                Case "namaCoa"
                     dc.HeaderText = "Nama COA"
                     dc.Width = 100
-                Case "tipe_coa"
+                Case "tipeCoa"
                     dc.HeaderText = "Tipe COA"
                     dc.Width = 100
             End Select
@@ -147,21 +123,21 @@ Public Class MCoa
         txtTipeCoa.Text = ""
     End Sub
     Private Sub MCoa_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Try
-        tombolHidup()
-        nonAktif()
-        TampilDataGrid("select * from vwMsCoa")
-        tampilData(0)
-        cmbSearch.SelectedIndex = 0
-
-        If cmbSearch.SelectionLength <> 0 Then
+        Try
+            tombolHidup()
+            nonAktif()
+            TampilDataGrid("select * from vwMsCoa")
+            tampilData(0)
             cmbSearch.SelectedIndex = 0
-        End If
-        'Catch salah As Exception
-        '    MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
 
-        Me.txtSearch.TextBox.Select()
+            If cmbSearch.SelectionLength <> 0 Then
+                cmbSearch.SelectedIndex = 0
+            End If
+
+            Me.txtSearch.TextBox.Select()
+        Catch ex As Exception
+            MsgBox("Load Data Gagal !", MsgBoxStyle.Critical)
+        End Try
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
         statusForm = "NEW"
@@ -179,33 +155,12 @@ Public Class MCoa
             tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKodeCOA.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
-                kirim_data()
-                'PSQL = "EXEC sp_coa" & _
-                '                    " '" & statusForm & "'," & _
-                '                    "  " & idForm & "," & _
-                '                    " '" & txtKodeCOA.Text & "'," & _
-                '                    " '" & txtNamaCOA.Text & "'," & _
-                '                    " '" & txtTipeCoa.Text & "'," & _
-                '                    " '" & txtCatatan.Text & "'," & idUser
-                'execCmd(PSQL)
-                'Call bukaServer()
-                'Try
-                '    PSQL = "EXEC sp_delete_coa " & _
-                '            idForm & ",'" & txtKodeCOA.Text & "','" & txtNamaCOA.Text & "','" & _
-                '            txtKodeCOA.Text & "'," & idUser
-
-                '    'cmd = New SqlClient.SqlCommand(PSQL, con)
-                '    cmd.ExecuteNonQuery()
+                kirimData()
                 MessageBox.Show("Sukses Delete Data dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmscoa")
                 tampilData(0)
-                'Catch Salah As Exception
-                '    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                'End Try
             End If
-            'con.Close()
-            'cmd.Dispose()
         End If
     End Sub
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
@@ -219,52 +174,23 @@ Public Class MCoa
         End If
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        'Try
-        'Call bukaServer()
-        'PSQL = "EXEC sp_coa" & _
-        '                            " '" & statusForm & "'," & _
-        '                            "  " & idForm & "," & _
-        '                            " '" & txtKodeCOA.Text & "'," & _
-        '                            " '" & txtNamaCOA.Text & "'," & _
-        '                            " '" & txtTipeCoa.Text & "'," & _
-        '                            " '" & txtCatatan.Text & "'," & idUser
-        'execCmd(PSQL)
-        kirim_data()
+
+        kirimData()
+
+      
         Select Case statusForm
             Case "NEW"
-                'PSQL = "EXEC sp_coa" & _
-                '        " '" & statusForm & "'," & _
-                '        "  " & idForm & "," & _
-                '        " '" & txtKodeCOA.Text & "'," & _
-                '        " '" & txtNamaCOA.Text & "'," & _
-                '        " '" & txtTipeCoa.Text & "'," & _
-                '        " '" & txtCatatan.Text & "'," & idUser
-
-                'cmd = New SqlClient.SqlCommand(PSQL, con)
-                'cmd.ExecuteNonQuery()
                 MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                'PSQL = "EXEC sp_update_coa" & _
-                '        "  " & idForm & "," & _
-                '        " '" & txtKodeCOA.Text & "'," & _
-                '        " '" & txtNamaCOA.Text & "'," & _
-                '        " '" & txtTipeCoa.Text & "'," & _
-                '        " '" & txtCatatan.Text & "'," & idUser
-
-                'cmd = New SqlClient.SqlCommand(PSQL, con)
-                'cmd.ExecuteNonQuery()
                 MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
-        'Catch Salah As Exception
-        '    MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
+
 
         TampilDataGrid("select * from vwMsCoa")
         tampilData(0)
         tombolHidup()
         nonAktif()
         txtSearch.Focus()
-        'matiServer()
         statusForm = ""
     End Sub
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
@@ -291,30 +217,18 @@ Public Class MCoa
     End Sub
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "kode_coa"
+            dataCari = "kodeCoa"
         ElseIf cmbSearch.SelectedIndex = 1 Then
-            dataCari = "nama_coa"
+            dataCari = "namaCoa"
         Else
-            dataCari = "tipe_coa"
+            dataCari = "tipeCoa"
         End If
 
         'Try
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
-            'Call bukaServer()
-            'PSQL = "SELECT id,kode_coa,nama_coa,tipe_coa,note" & _
-            '        " FROM ms_coa" & _
-            '        " WHERE status=1 " & _
-            '        " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
-            '        " ORDER BY id"
-
-            'dttable.Clear()
-            ''dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-            'dtadapter.Fill(dttable)
-
-            'DataGridView1.DataSource = dttable
-            TampilDataGrid("select * from vwmscoa where " & dataCari & " like '%" & txtSearch.Text & "%'")
+            TampilDataGrid("SELECT * FROM vwmscoa WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
 
             If DataGridView1.RowCount = 0 Then
                 MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -392,15 +306,18 @@ Public Class MCoa
             tampilData(DataGridView1.CurrentRow.Index)
         End If
     End Sub
-
-    Private Sub kirim_data()
-        PSQL = "EXEC sp_coa" & _
-                " '" & statusForm & "'," & _
-                "  " & idForm & "," & _
-                " '" & txtKodeCOA.Text & "'," & _
-                " '" & txtNamaCOA.Text & "'," & _
-                " '" & txtTipeCoa.Text & "'," & _
-                " '" & txtCatatan.Text & "'," & idUser
-        execCmd(PSQL)
+    Private Sub kirimData()
+        Try
+            PSQL = "EXEC sp_coa" & _
+                    " '" & statusForm & "'," & _
+                    "  " & idForm & "," & _
+                    " '" & txtKodeCOA.Text & "'," & _
+                    " '" & txtNamaCOA.Text & "'," & _
+                    " '" & txtTipeCoa.Text & "'," & _
+                    " '" & txtCatatan.Text & "'," & idUser
+            execCmd(PSQL)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

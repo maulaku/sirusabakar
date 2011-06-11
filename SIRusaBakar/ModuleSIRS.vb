@@ -56,7 +56,7 @@ Module ModuleSIRS
             dtadapter = Nothing
             Call matiServer()
         Catch salah As Exception
-            MessageBox.Show(salah.Message, "Table Tidak Bisa Dibuat !", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(salah.Message, "Tabel Tidak Bisa Dibuat !", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End
         End Try
     End Function
