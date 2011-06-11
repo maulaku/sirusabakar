@@ -3,307 +3,315 @@
 -- Create by : Ivhan Famly Gunawan
 -- Date : April 2011
 -- Database : SQL Server
--- Penulisan : Campur (English + Indonesia)
+-- Penulisan : Indonesia
 ----------------------------------------------------------------------------------------------------------
 USE [SIRS]
 GO
 ----------------------------------------------------------------------------------------------------------
 -- Composition Word for Table's Name 
 ----------------------------------------------------------------------------------------------------------
--- Example : ms_coa
+-- Example : msCoa
 -- 1. ms : jenis table (master, transaksi)
--- 2. coa : nama table
+-- 2. Coa : nama table
 ----------------------------------------------------------------------------------------------------------
 
-DROP TABLE ms_coa;
-CREATE TABLE ms_coa (
+DROP TABLE msCoa;
+CREATE TABLE msCoa (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_coa 			VARCHAR(20) NOT NULL,
-	nama_coa 			VARCHAR (100) NOT NULL,
-	tipe_coa 			VARCHAR (100),
+	kodeCoa 				VARCHAR(20) NOT NULL,
+	namaCoa 				VARCHAR(100) NOT NULL,
+	tipeCoa 				VARCHAR(100),
 	--------------------------------
-	note 					TEXT 			DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_diet;
-CREATE TABLE ms_diet (
+DROP TABLE msDiet;
+CREATE TABLE msDiet (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_diet 			VARCHAR(20) NOT NULL,
-	nama_diet 			VARCHAR(100) NOT NULL,
+	kodeDiet 			VARCHAR(20) NOT NULL,
+	namaDiet 			VARCHAR(100) NOT NULL,
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_menu_makanan;
-CREATE TABLE ms_menu_makanan (
+DROP TABLE msMenuMakanan;
+CREATE TABLE msMenuMakanan (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_menu 			VARCHAR(20) NOT NULL,
-	id_diet 				INT NOT NULL, -- refer : id -- table : ms_diet
+	kodeMenuMakanan 	VARCHAR(20) NOT NULL,
+	id_diet 				INT NOT NULL, -- refer : id -- table : msDiet
 	kelompok				VARCHAR(100),
 	waktu					VARCHAR(100),
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_menu_makanan_det;
-CREATE TABLE ms_menu_makanan_det (
+DROP TABLE msMenuMakananDet;
+CREATE TABLE msMenuMakananDet (
 	id						INT IDENTITY(1,1) NOT NULL,
-	id_menu_makanan 	INT NOT NULL, -- refer : id -- table : ms_menu_makanan
-	id_makanan			INT NOT NULL, -- refer : id -- table : ms_makanan
+	id_menuMakanan 	INT NOT NULL, -- refer : id -- table : msMenuMakanan
+	id_makanan			INT NOT NULL, -- refer : id -- table : msMakanan
 	jumlah				INT NOT NULL,
 	--------------------------------
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_makanan;
-CREATE TABLE ms_makanan (
+DROP TABLE msMakanan;
+CREATE TABLE msMakanan (
 	id						INT IDENTITY(1,1) NOT NULL,
-	nama_makanan 		VARCHAR(100) NOT NULL,
+	namaMakanan 		VARCHAR(100) NOT NULL,
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
-	PRIMARY KEY (id)	
+	PRIMARY KEY (id)
 );
 
-DROP TABLE ms_obat;
-CREATE TABLE ms_obat (
+DROP TABLE msObat;
+CREATE TABLE msObat (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_obat			VARCHAR(20) NOT NULL,
-	nama_obat 			VARCHAR(100) NOT NULL,
-	golongan_obat		VARCHAR(100),
-	kategory_obat		VARCHAR(100),
-	satuan_beli			VARCHAR(100),
-	satuan_jual			VARCHAR(100),
+	kodeObat				VARCHAR(20) NOT NULL,
+	namaObat 			VARCHAR(100) NOT NULL,
+	golonganObat		VARCHAR(100),
+	kategoryObat		VARCHAR(100),
+	satuanBeli			VARCHAR(100),
+	satuanJual			VARCHAR(100),
 	isi					INT,
-	stok_min				INT,
+	stokMin				INT,
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_kelas;
-CREATE TABLE ms_kelas (
+DROP TABLE msKelas;
+CREATE TABLE msKelas (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_kelas 			VARCHAR(20) NOT NULL,
-	nama_kelas 			VARCHAR(100),
+	kodeKelas 			VARCHAR(20) NOT NULL,
+	namaKelas 			VARCHAR(100),
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_alkes;
-CREATE TABLE ms_alkes (
+DROP TABLE msAlkes;
+CREATE TABLE msAlkes (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_alkes 			VARCHAR(20) NOT NULL,
-	nama_alkes 			VARCHAR(100),
-	jenis_alkes 		VARCHAR(100),
-	group_alkes 		VARCHAR(100),
+	kodeAlkes 			VARCHAR(20) NOT NULL,
+	namaAlkes 			VARCHAR(100),
+	jenisAlkes 			VARCHAR(100),
+	kelompokAlkes 		VARCHAR(100),
 	satuan				VARCHAR(100),
 	minimum				INT,
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_inv_atk;
-CREATE TABLE ms_inv_atk (
+DROP TABLE msInvAtk;
+CREATE TABLE msInvAtk (
 	id						INT IDENTITY(1,1) NOT NULL,
-	kode_inv_atk 		VARCHAR(20) NOT NULL,
-	nama_inv_atk 		VARCHAR(100),
-	jenis_inv_atk 		VARCHAR(100),
-	group_inv_atk 		VARCHAR(100),
+	kodeInvAtk 			VARCHAR(20) NOT NULL,
+	namaInvAtk 			VARCHAR(100),
+	jenisInvAtk 		VARCHAR(100),
+	kelompokInvAtk 	VARCHAR(100),
 	satuan				VARCHAR(100),
 	minimum				INT,
 	--------------------------------
-	note 					TEXT DEFAULT '-',
-	status 				INT DEFAULT 1, --> if u delete data then status = 0, else status = 1
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_history;
-CREATE TABLE ms_history (
+DROP TABLE msHistory;
+CREATE TABLE msHistory (
 	id INT IDENTITY(1,1) NOT NULL,
-	form_type 			VARCHAR(100),
-	action_type 		VARCHAR(100),
-	action_desc 		VARCHAR(1000),
-	create_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	tipeForm 			VARCHAR(100),
+	tipeTindakan 		VARCHAR(100),
+	deskripsiTindakan VARCHAR(1000),
+	dibuatOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 
 	PRIMARY KEY (id)
 );
 
-DROP TABLE ms_user;
-CREATE TABLE ms_user (
-	id					INT IDENTITY(1,1) NOT NULL,
-	id_employee 	INT NOT NULL, -- refer --> id : ms_employee
-	user_name 		VARCHAR (20) NOT NULL,
-	pass 				VARCHAR (20) NOT NULL,
-	--------------------------------
-	note 				TEXT DEFAULT '-',
-	status 			INT DEFAULT 1,
-	--------------------------------
-	create_by 		INT,
-	update_by 		INT,
-	create_time 	DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 	DATETIME DEFAULT CURRENT_TIMESTAMP,
-	
-	PRIMARY KEY (id)	
-);
-
-DROP TABLE ms_employee;
-CREATE TABLE ms_employee (
+DROP TABLE msPengguna;
+CREATE TABLE msPengguna (
 	id						INT IDENTITY(1,1) NOT NULL,
-	nip_employee 		VARCHAR(20) NOT NULL, --> NIP = No Induk Pegawai
-	full_name 			VARCHAR (100) NOT NULL,
-	birth_place 		VARCHAR (50),
-	birth_date 			DATETIME,
-	religion 			VARCHAR(50),
-	gender 				VARCHAR(50),
-	address 				VARCHAR(500),
-	phone_no 			VARCHAR(30), 
-	mobile_no 			VARCHAR(30),
-	city 					VARCHAR(30),
-	sub_district 		VARCHAR(30),
-	education 			VARCHAR(30),
-	employee_status 	VARCHAR(30),
+	id_karyawan 		INT NOT NULL, -- refer --> id : msKaryawan
+	namaPengguna 		VARCHAR (20) NOT NULL,
+	sandiPengguna 		VARCHAR (20) NOT NULL,
 	--------------------------------
-	job_id 				INT, -- refer --> id : ms_job
-	job_position 		VARCHAR(30),
-	--------------------------------
-	maritaal_status 	VARCHAR(30),
-	bank_id 				INT,
-	bank_account 		VARCHAR(20),
-	--------------------------------
-	note 					TEXT DEFAULT '-',
+	catatan 				TEXT DEFAULT '-',
 	status 				INT DEFAULT 1,
 	--------------------------------
-	create_by 			INT,
-	update_by 			INT,
-	create_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE ms_job;
-CREATE TABLE ms_job (
-	id					INT IDENTITY(1,1) NOT NULL,
-	job_name 		VARCHAR(100) NOT NULL,
+DROP TABLE msKaryawan;
+CREATE TABLE msKaryawan (
+	id						INT IDENTITY(1,1) NOT NULL,
+	nipKaryawan 		VARCHAR(20) NOT NULL, --> NIP = No Induk Pegawai
+	namaLengkap 		VARCHAR (100) NOT NULL,
+	tempatLahir 		VARCHAR (50),
+	tglLahir 			DATETIME,
+	agama 				VARCHAR(50),
+	jenisKelamin 		VARCHAR(50),
+	alamat 				VARCHAR(500),
+	telepon 				VARCHAR(30), 
+	handphone 			VARCHAR(30),
+	kota 					VARCHAR(30),
+	subDistrict 		VARCHAR(30),
+	education 			VARCHAR(30),
+	employeeStatus 	VARCHAR(30),
 	--------------------------------
-	note 				TEXT DEFAULT '-',
-	status 			INT DEFAULT 1,
+	id_pekerjaan 		INT, -- refer --> id : msPekerjaan
+	posisiPekerjaan 	VARCHAR(30),
 	--------------------------------
-	create_by 		INT,
-	update_by 		INT,
-	create_time 	DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 	DATETIME DEFAULT CURRENT_TIMESTAMP,
+	statusNikah 		VARCHAR(30),
+	namaBank 			VARCHAR(30),
+	accountBank 		VARCHAR(20),
+	--------------------------------
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE msTarifAmbulance;
-CREATE TABLE msTarifAmbulance (
-	id								INT IDENTITY(1,1) NOT NULL,
-	kodeTarif 				VARCHAR(100) NOT NULL,
-	daerah 						TEXT DEFAULT '-',
-	tujuan 						INT DEFAULT 1,
-	tarif							DECIMAL,
+DROP TABLE msPekerjaan;
+CREATE TABLE msPekerjaan(
+	id						INT IDENTITY(1,1) NOT NULL,
+	namaPekerjaan 		VARCHAR(100) NOT NULL,
+	--------------------------------
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)	
+);
+
+DROP TABLE msTarifAmbulans;
+CREATE TABLE msTarifAmbulans (
+	id							INT IDENTITY(1,1) NOT NULL,
+	kodeTarifAmbulans 	VARCHAR(100) NOT NULL,
+	daerah 					TEXT DEFAULT '-',
+	tujuan 					INT DEFAULT 1,
+	tarif						DECIMAL,
 	pendampingMedis		DECIMAL,
-	paraMedis					DECIMAL,
+	paraMedis				DECIMAL,
 	paraMedisPP				DECIMAL,
-	oksigen						DECIMAL,
-	monitor						DECIMAL,
+	oksigen					DECIMAL,
+	monitor					DECIMAL,
 	--------------------------------
-	note 							TEXT DEFAULT '-',
-	status 						INT DEFAULT 1,
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
 	--------------------------------
-	create_by 				INT,
-	update_by 				INT,
-	create_time 			DATETIME DEFAULT CURRENT_TIMESTAMP,
-	update_time 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
 	
 	PRIMARY KEY (id)	
 );
 
-DROP TABLE tr_log_client_permintaaan_hdr;
-CREATE TABLE tr_log_client_permintaaan_hdr(
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[no_permintaan] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[tgl_permintaan] [datetime] NOT NULL,
-	[id_bagian] [int] NOT NULL,
-	[status] [int] NULL,
-	[createby] [int] NULL,
-	[updateby] [int] NULL,
-	[createtime] [datetime] NULL,
-	[updatetime] [datetime] NULL,
- CONSTRAINT [PK_tr_log_client_permintaaan_hdr] PRIMARY KEY CLUSTERED 
-(
-	[id] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY];
 
-INSERT INTO ms_job (job_name) VALUES ('admin');
-INSERT INTO ms_employee (nip_employee,full_name,job_id) VALUES ('ADMIN1', 'NAMA ADMIN',1);
-INSERT INTO ms_user (id_employee,user_name,pass) VALUES (1,'ADMIN','ADMIN');
+DROP TABLE msObatHarga;
+CREATE TABLE msObatHarga (
+	id							INT IDENTITY(1,1) NOT NULL,
+	id_obat 					INT NOT NULL, -- refer : id : ms_obat
+	kodePenerimaan 		VARCHAR(10),
+	tglPenerimaan 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	jumlahPenerimaan		INT,
+	tglKadaluarsa			DATETIME,
+	hargaBeli				DECIMAL,
+	hargaJual				DECIMAL,
+	margin					DECIMAL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)	
+);
+
+
+INSERT INTO msPekerjaan(namaPekerjaan) VALUES ('admin');
+INSERT INTO msKaryawan(nipKaryawan,namaLengkap,id_pekerjaan) VALUES ('ADMIN1', 'IVHAN',1);
+INSERT INTO msPengguna(id_karyawan,namaPengguna,sandiPengguna) VALUES (1,'ADMIN','ADMIN');
