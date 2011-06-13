@@ -74,4 +74,10 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub PendidikanToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PendidikanToolStripMenuItem.Click
+        Dim a As New MPendidikan
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class

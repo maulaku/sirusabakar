@@ -242,3 +242,26 @@ BEGIN
 	RETURN (SELECT  catatan	FROM msAgama WHERE id = @in_id)
 END;
 GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanPendidikan') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanPendidikan
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanPendidikan
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT  catatan	FROM msPendidikan WHERE id = @in_id)
+END;
+GO

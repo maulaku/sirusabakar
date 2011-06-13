@@ -60,8 +60,25 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW vwMsAgama AS
-select top (10) id,namamakanan,catatan 
-from msmakanan with (NOLOCK)
+select top (10) id,namaAgama,catatan 
+from msAgama with (NOLOCK)
+where status = 1
+order by id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsPendidikan'))
+DROP VIEW vwMsPendidikan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsPendidikan AS
+select top (10) id,namaPendidikan,catatan 
+from msPendidikan with (NOLOCK)
 where status = 1
 order by id
 GO

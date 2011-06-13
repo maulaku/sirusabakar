@@ -472,6 +472,22 @@ CREATE TABLE msAgama (
 	PRIMARY KEY (id)
 );
 
+DROP TABLE msPendidikan;
+CREATE TABLE msPendidikan(
+	id						INT IDENTITY(1,1) NOT NULL,
+	namaPendidikan		VARCHAR(100) NOT NULL,
+	--------------------------------
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)	
+);
+
 INSERT INTO msPekerjaan(namaPekerjaan) VALUES ('admin');
 INSERT INTO msKaryawan(nipKaryawan,namaLengkap,id_pekerjaan) VALUES ('ADMIN1', 'IVHAN',1);
 INSERT INTO msPengguna(id_karyawan,namaPengguna,sandiPengguna) VALUES (1,'ADMIN','ADMIN');

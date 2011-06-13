@@ -15,7 +15,38 @@ GO
 -- 2. nama object (
 ----------------------------------------------------------
 
---#######################################################################-- sp_coa 
+--#######################################################################-- spInsMsHistory
+
+IF Objectproperty(Object_Id('spInsMsHistory'), N'isprocedure') = 1
+DROP PROCEDURE spInsMsHistory
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spInsMsHistory (
+	/* 1*/ @tipeForm			VARCHAR(100),
+	/* 2*/ @tipeTindakan		VARCHAR(100),
+	/* 3*/ @KetTindakan		VARCHAR(1000),
+	/* 4*/ @in_idpengguna	INT
+)
+AS
+BEGIN
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @tipeForm,
+				/* 2*/ @tipeTindakan,
+				/* 3*/ @KetTindakan,
+				/* 4*/ @in_idpengguna	
+	);
+END
+
+--#######################################################################-- spCOA 
 
 IF Objectproperty(Object_Id('spMsCoa'), N'isprocedure') = 1
 DROP PROCEDURE spMsCoa
@@ -46,10 +77,9 @@ DECLARE
 BEGIN
 	SET @tipeForm = 'msCOA';
 	SET @KetTindakan =	'KODE COA : ' + @in_kodecoa + CHAR(10) +
-						'NAMA COA : ' + @in_namacoa + CHAR(10) +
-						'TIPE COA : ' + @in_tipecoa + CHAR(10);
-
-	SET @in_catatanBaru = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_idpengguna) + ' , tanggal : ' +
+								'NAMA COA : ' + @in_namacoa + CHAR(10) +
+								'TIPE COA : ' + @in_tipecoa + CHAR(10);
+	SET @in_new_note = 	'DIBUAT   : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
 		CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_catatan + CHAR(10);
 
 	IF @in_Tindakan='NEW'
@@ -132,17 +162,22 @@ BEGIN
 			SET @tipeTindakan = 'DELETE';
 		END
 --------------------------------------------------------- Delete COA
-	INSERT INTO mshistory (
-				/* 1*/ tipeform,
-				/* 2*/ tipeTindakan,
-				/* 3*/ deskripsiTindakan,
-				/* 4*/ dibuatOleh
-	) VALUES (
-				/* 1*/ @tipeForm,
-				/* 2*/ @tipeTindakan,
-				/* 3*/ @KetTindakan,
-				/* 4*/ @in_idpengguna	
-	);
+
+spInsMsHistory /* 1*/ @tipeForm,
+					/* 2*/ @tipeTindakan,
+					/* 3*/ @KetTindakan,
+					/* 4*/ @in_idpengguna;
+#	INSERT INTO mshistory (
+#				/* 1*/ tipeform,
+#				/* 2*/ tipeTindakan,
+#				/* 3*/ deskripsiTindakan,
+#				/* 4*/ dibuatOleh
+#	) VALUES (
+#				/* 1*/ @tipeForm,
+#				/* 2*/ @tipeTindakan,
+#				/* 3*/ @KetTindakan,
+#				/* 4*/ @in_idpengguna	
+#	);
 							  
 END
 GO
@@ -178,9 +213,8 @@ AS
 BEGIN
 	SET @form_type = 'DIET';
 	SET @action_desc =	'KODE DIET : ' + @in_kode_diet + CHAR(10) +
-						'NAMA DIET : ' + @in_nama_diet + CHAR(10);
-
-	SET @in_new_note = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , tanggal : ' +
+								'NAMA DIET : ' + @in_nama_diet + CHAR(10);
+	SET @in_new_note = 	'DIBUAT    : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
 	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
 	
 	IF @in_Tindakan='NEW'
@@ -292,8 +326,7 @@ AS
 BEGIN
 	SET @form_type = 'MsMakanan';
 	SET @action_desc =	'NAMA MAKANAN : ' + @in_nama_makanan + CHAR(10);
-
-	SET @in_new_note = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , tanggal : ' +
+	SET @in_new_note = 	'DIBUAT       : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
 	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
 	
 	IF @in_Tindakan='NEW'
@@ -400,9 +433,8 @@ AS
 		@hitung						INT;
 BEGIN
 	SET @form_type = 'MsAgama';
-	SET @action_desc =	'NAMA MAKANAN : ' + @in_nama_agama + CHAR(10);
-
-	SET @in_new_note = 'Dibuat : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , tanggal : ' +
+	SET @action_desc =	'NAMA AGAMA : ' + @in_nama_agama + CHAR(10);
+	SET @in_new_note = 	'DIBUAT     : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
 	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
 	
 	IF @in_Tindakan='NEW'
@@ -464,6 +496,114 @@ BEGIN
 			SET @action_type = 'DELETE';
 		END
 ------------------------------------------------------------------- Delete Agama
+	
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @form_type,
+				/* 2*/ @action_type,
+				/* 3*/ @action_desc,
+				/* 4*/ @in_user	
+	);
+							  
+END
+GO
+
+
+--############################################################################# spMsPendidikan
+
+IF Objectproperty(Object_Id('spMsPendidikan'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsPendidikan]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spMsPendidikan (
+	/* 1*/ @in_Tindakan				VARCHAR(4),
+	/* 2*/ @in_id		 			INT,
+	/* 3*/ @in_nama_pendidikan			VARCHAR(100),
+	/* 4*/ @in_note					VARCHAR(4000),
+	/* 5*/ @in_user					INT,
+	/* 6*/ @out_keterangan			VARCHAR(500) OUTPUT
+	)
+AS
+	DECLARE 	
+		@in_new_note				VARCHAR(5000),
+		@in_new_note_update		VARCHAR(5000),
+		@form_type 					VARCHAR(100),
+		@action_type				VARCHAR(100),
+		@action_desc				VARCHAR(1000),
+		@hitung						INT;
+BEGIN
+	SET @form_type = 'MsPendidikan';
+	SET @action_desc =	'NAMA PENDIDIKAN : ' + @in_nama_pendidikan + CHAR(10);
+	SET @in_new_note = 	'DIBUAT          : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
+	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
+	
+	IF @in_Tindakan='NEW'
+		BEGIN	
+			/* Cek data sudah Ada */
+			BEGIN
+				SET @hitung = (SELECT COUNT(NamaPendidikan) from MsPendidikan where Status = 1 and NamaPendidikan = @in_nama_Pendidikan group by namaPendidikan);
+				IF @hitung > 1
+					SET @out_keterangan = 'Kode Duplikasi'
+				ELSE				
+				BEGIN	
+					INSERT INTO msPendidikan (
+								/* 1*/ namaPendidikan,
+								/* 2*/ catatan,
+								/* 3*/ dibuatoleh
+					) VALUES ( 				
+								/* 1*/ @in_nama_Pendidikan,			  									  
+								/* 2*/ @in_new_note,					  
+								/* 3*/ @in_user
+					);												
+					SET @action_type = 'NEW';					
+				END
+			END
+		END
+------------------------------------------------------------------- New Pendidikan
+	ELSE IF @in_Tindakan='EDIT'
+		BEGIN	
+			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+										+dbo.fnAmbilCatatanPendidikan(@in_id);	
+			IF @in_note = ''
+				BEGIN
+					UPDATE msPendidikan SET
+								/* 1*/ namaPendidikan 			= @in_nama_Pendidikan,
+								/* 2*/ dieditoleh 			= @in_user,
+								/* 3*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msPendidikan SET
+								/* 1*/ namaPendidikan			= @in_nama_Pendidikan,
+								/* 2*/ catatan 				= @in_new_note_update,
+								/* 3*/ dieditoleh 			= @in_user,
+								/* 4*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @action_desc =	@action_desc + CHAR(10) +
+										'NOTE : ' + @in_new_note + CHAR(10);
+				END
+			SET @action_type = 'UPDATE';
+		END		
+------------------------------------------------------------------- Edit Pendidikan
+	ELSE IF @in_Tindakan='DEL'
+		BEGIN
+			UPDATE msPendidikan SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 		= @in_user,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+			SET @action_type = 'DELETE';
+		END
+------------------------------------------------------------------- Delete Pendidikan
 	
 	INSERT INTO mshistory (
 				/* 1*/ tipeform,
