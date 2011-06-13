@@ -233,7 +233,7 @@ CREATE TABLE msKaryawan (
 	telepon 				VARCHAR(30), 
 	handphone 			VARCHAR(30),
 	kota 					VARCHAR(30),
-	subDistrict 		VARCHAR(30),
+	kecamatan 			VARCHAR(30),
 	education 			VARCHAR(30),
 	employeeStatus 	VARCHAR(30),
 	--------------------------------
@@ -299,7 +299,7 @@ CREATE TABLE msTarifAmbulans (
 DROP TABLE msObatHarga;
 CREATE TABLE msObatHarga (
 	id							INT IDENTITY(1,1) NOT NULL,
-	id_obat 					INT NOT NULL, -- refer : id : ms_obat
+	id_obat 					INT NOT NULL, -- refer : id : msObat
 	kodePenerimaan 		VARCHAR(10),
 	tglPenerimaan 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 	jumlahPenerimaan		INT,
@@ -318,6 +318,144 @@ CREATE TABLE msObatHarga (
 	
 	PRIMARY KEY (id)	
 );
+
+DROP TABLE msSAK;
+CREATE TABLE msSAK(
+	id							INT IDENTITY(1,1) NOT NULL,
+	noSAK 					VARCHAR(20) NOT NULL,
+	keterangan				VARCHAR(500),
+	tujuan					VARCHAR(500),
+	perencanaan				VARCHAR(500),
+	implementasi			VARCHAR(500),
+	evaluasi					VARCHAR(500),
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)	
+);
+
+DROP TABLE msPerusahaan;
+CREATE TABLE msPerusahaan(
+	id							INT IDENTITY(1,1) NOT NULL,
+	namaPerusahaan 		VARCHAR(50) NOT NULL,
+	jenisPerusahaan		VARCHAR(500),
+	yangDihubungi			VARCHAR(500),
+	alamat					VARCHAR(500),
+	kota 						VARCHAR(50),
+	provinsi					VARCHAR(50),
+	negara					VARCHAR(50),
+	kodePos					INT,
+	telepon					INT,
+	fax						INT,
+	email						VARCHAR(50),
+	--------------------------------------------->> kerjasama
+	tglMulai					VARCHAR(500),
+	tglAkhir					VARCHAR(500),
+	jumlahPeserta			VARCHAR(500),
+	kapasitas				VARCHAR(500),
+	total						VARCHAR(500),
+	plafon 					VARCHAR(500),
+	pengantar				VARCHAR(500),
+	rujukan					VARCHAR(500),
+	noJanji					VARCHAR(500),
+	--------------------------------------------->> layanan
+	dokter					VARCHAR(500),
+	obat						VARCHAR(500),
+	biayaDokter				VARCHAR(500),
+	biayaAdmin				VARCHAR(500),
+	provider					VARCHAR(500),
+	jenisLayanan 			VARCHAR(500),
+	ijinRawatInap			INT, -- note : 1=ya, 0=tidak
+	--------------------------------------------->> jenisKerjaSama
+	rawatJalan				INT, -- note : 1=ya, 0=tidak 
+	rawatInap				INT, -- note : 1=ya, 0=tidak
+	penunjangMedis			INT, -- note : 1=ya, 0=tidak
+	apotik					INT, -- note : 1=ya, 0=tidak
+	ambulans					INT, -- note : 1=ya, 0=tidak
+	IHC 						INT, -- note : 1=ya, 0=tidak
+	MCU						INT, -- note : 1=ya, 0=tidak
+	--------------------------------
+	catatan 						TEXT DEFAULT '-',
+	status 						INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 					INT,
+	dieditOleh 					INT,
+	waktuBuat 					DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 					DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
+DROP TABLE msJenisPerusahaan;
+CREATE TABLE msJenisPerusahaan(
+	id							INT IDENTITY(1,1) NOT NULL,
+	jenisPerusahaan 		VARCHAR(50) NOT NULL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
+DROP TABLE msNegara;
+CREATE TABLE msNegara(
+	id							INT IDENTITY(1,1) NOT NULL,
+	namaNegara 				VARCHAR(50) NOT NULL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
+DROP TABLE msKecamatan;
+CREATE TABLE msKecamatan(
+	id							INT IDENTITY(1,1) NOT NULL,
+	namaKecamatan 			VARCHAR(50) NOT NULL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
+DROP TABLE msKota;
+CREATE TABLE msKota(
+	id							INT IDENTITY(1,1) NOT NULL,
+	namaKota 				VARCHAR(50) NOT NULL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
 
 
 INSERT INTO msPekerjaan(namaPekerjaan) VALUES ('admin');

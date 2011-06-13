@@ -25,7 +25,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-Create PROCEDURE spMsCoa (
+CREATE PROCEDURE spMsCoa (
 	/* 1*/ @in_Tindakan				VARCHAR(4),
 	/* 2*/ @in_id		 			INT,
 	/* 3*/ @in_kodecoa 				VARCHAR(20),
@@ -273,7 +273,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-Create PROCEDURE spMsMakanan (
+CREATE PROCEDURE spMsMakanan (
 	/* 1*/ @in_Tindakan				VARCHAR(4),
 	/* 2*/ @in_id		 			INT,
 	/* 3*/ @in_nama_makanan			VARCHAR(100),
