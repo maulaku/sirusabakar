@@ -456,7 +456,21 @@ CREATE TABLE msKota(
 	PRIMARY KEY (id)
 );
 
-
+DROP TABLE msAgama;
+CREATE TABLE msAgama (
+	id						INT IDENTITY(1,1) NOT NULL,
+	namaAgama 		VARCHAR(100) NOT NULL,
+	--------------------------------
+	catatan 				TEXT DEFAULT '-',
+	status 				INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 			INT,
+	dieditOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
 
 INSERT INTO msPekerjaan(namaPekerjaan) VALUES ('admin');
 INSERT INTO msKaryawan(nipKaryawan,namaLengkap,id_pekerjaan) VALUES ('ADMIN1', 'IVHAN',1);

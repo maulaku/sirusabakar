@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MAgama.Designer.vb">
+      <DependentUpon>MAgama.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MAgama.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MGiziMakanan.Designer.vb">
       <DependentUpon>MGiziMakanan.vb</DependentUpon>
     </Compile>
@@ -203,6 +209,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAgama.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MAgama.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MGiziMakanan.resx">
       <SubType>Designer</SubType>

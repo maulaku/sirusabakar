@@ -64,4 +64,14 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub RegistrasiPasienToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrasiPasienToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub AgamaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgamaToolStripMenuItem.Click
+        Dim a As New MAgama
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class
