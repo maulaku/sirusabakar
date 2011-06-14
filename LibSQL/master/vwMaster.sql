@@ -99,3 +99,20 @@ from msPropinsi with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsKabupaten'))
+DROP VIEW vwMsKabupaten
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsKabupaten AS
+select top (10) id,namaKabupaten,catatan 
+from msKabupaten with (NOLOCK)
+where status = 1
+order by id
+GO

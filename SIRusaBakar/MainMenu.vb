@@ -108,4 +108,10 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub KabupatenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KabupatenToolStripMenuItem.Click
+        Dim a As New MKabupaten
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class

@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MKabupaten.Designer.vb">
+      <DependentUpon>MKabupaten.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MKabupaten.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MPropinsi.Designer.vb">
       <DependentUpon>MPropinsi.vb</DependentUpon>
     </Compile>
@@ -227,6 +233,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MKabupaten.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MKabupaten.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MPropinsi.resx">
       <SubType>Designer</SubType>
