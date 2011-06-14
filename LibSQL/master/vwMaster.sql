@@ -150,3 +150,20 @@ from msKecamatan with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsKelurahan'))
+DROP VIEW vwMsKelurahan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsKelurahan AS
+select top (10) id,namaKelurahan,catatan 
+from msKelurahan with (NOLOCK)
+where status = 1
+order by id
+GO

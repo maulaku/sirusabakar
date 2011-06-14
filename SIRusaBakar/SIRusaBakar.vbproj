@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MMrKelurahan.Designer.vb">
+      <DependentUpon>MMrKelurahan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrKelurahan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrKecamatan.Designer.vb">
       <DependentUpon>MMrKecamatan.vb</DependentUpon>
     </Compile>
@@ -249,6 +255,10 @@
     <EmbeddedResource Include="MMrKecamatan.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MMrKecamatan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrKelurahan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MMrKelurahan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MMrPekerjaan.resx">
       <SubType>Designer</SubType>

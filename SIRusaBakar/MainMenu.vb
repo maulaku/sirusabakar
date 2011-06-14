@@ -126,4 +126,10 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub KelurahanToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KelurahanToolStripMenuItem.Click
+        Dim a As New MMrKelurahan
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class
