@@ -22,7 +22,18 @@ Partial Class MainMenu
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
+        Me.SystemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.SQLQueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.MedicalRecordToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.AgamaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PendidikanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PekerjaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PropinsiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.KabupatenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.KecamatanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.KelurahanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.HubunganKelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AccountingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.COAToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.GiziToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -40,38 +51,47 @@ Partial Class MainMenu
         Me.PerusahaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MakananToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MedicalRecordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.RegistrasiPasienToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PendaftaranPasienBaruToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.RegistrasiPasienToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.LaboratoriumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.DiagnosaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PemeriksaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PoliklinikToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.QueueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PemeriksaanToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.WindowsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TitleHorizontalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ArrangeIconsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.MedicalRecordToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.AgamaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PendidikanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PekerjaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PropinsiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.KabupatenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.KecamatanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.KelurahanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.HubunganKelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.MedicalRecordToolStripMenuItem, Me.LaboratoriumToolStripMenuItem, Me.PoliklinikToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.MasterToolStripMenuItem, Me.MedicalRecordToolStripMenuItem, Me.LaboratoriumToolStripMenuItem, Me.PoliklinikToolStripMenuItem, Me.WindowsToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(837, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
+        '
+        'SystemToolStripMenuItem
+        '
+        Me.SystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLQueryToolStripMenuItem})
+        Me.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem"
+        Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.SystemToolStripMenuItem.Text = "System"
+        '
+        'SQLQueryToolStripMenuItem
+        '
+        Me.SQLQueryToolStripMenuItem.Name = "SQLQueryToolStripMenuItem"
+        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SQLQueryToolStripMenuItem.Text = "SQL Query"
         '
         'MasterToolStripMenuItem
         '
@@ -79,6 +99,61 @@ Partial Class MainMenu
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
+        '
+        'MedicalRecordToolStripMenuItem1
+        '
+        Me.MedicalRecordToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgamaToolStripMenuItem, Me.PendidikanToolStripMenuItem, Me.PekerjaanToolStripMenuItem, Me.PropinsiToolStripMenuItem, Me.KabupatenToolStripMenuItem, Me.KecamatanToolStripMenuItem, Me.KelurahanToolStripMenuItem, Me.HubunganKelToolStripMenuItem})
+        Me.MedicalRecordToolStripMenuItem1.Name = "MedicalRecordToolStripMenuItem1"
+        Me.MedicalRecordToolStripMenuItem1.Size = New System.Drawing.Size(216, 22)
+        Me.MedicalRecordToolStripMenuItem1.Text = "Medical Record"
+        '
+        'AgamaToolStripMenuItem
+        '
+        Me.AgamaToolStripMenuItem.Name = "AgamaToolStripMenuItem"
+        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.AgamaToolStripMenuItem.Text = "Agama"
+        '
+        'PendidikanToolStripMenuItem
+        '
+        Me.PendidikanToolStripMenuItem.Name = "PendidikanToolStripMenuItem"
+        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PendidikanToolStripMenuItem.Text = "Pendidikan"
+        '
+        'PekerjaanToolStripMenuItem
+        '
+        Me.PekerjaanToolStripMenuItem.Name = "PekerjaanToolStripMenuItem"
+        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PekerjaanToolStripMenuItem.Text = "Pekerjaan"
+        '
+        'PropinsiToolStripMenuItem
+        '
+        Me.PropinsiToolStripMenuItem.Name = "PropinsiToolStripMenuItem"
+        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PropinsiToolStripMenuItem.Text = "Propinsi"
+        '
+        'KabupatenToolStripMenuItem
+        '
+        Me.KabupatenToolStripMenuItem.Name = "KabupatenToolStripMenuItem"
+        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KabupatenToolStripMenuItem.Text = "Kabupaten"
+        '
+        'KecamatanToolStripMenuItem
+        '
+        Me.KecamatanToolStripMenuItem.Name = "KecamatanToolStripMenuItem"
+        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KecamatanToolStripMenuItem.Text = "Kecamatan"
+        '
+        'KelurahanToolStripMenuItem
+        '
+        Me.KelurahanToolStripMenuItem.Name = "KelurahanToolStripMenuItem"
+        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KelurahanToolStripMenuItem.Text = "Kelurahan"
+        '
+        'HubunganKelToolStripMenuItem
+        '
+        Me.HubunganKelToolStripMenuItem.Name = "HubunganKelToolStripMenuItem"
+        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.HubunganKelToolStripMenuItem.Text = "Hubungan Kel"
         '
         'AccountingToolStripMenuItem
         '
@@ -185,17 +260,17 @@ Partial Class MainMenu
         Me.MedicalRecordToolStripMenuItem.Size = New System.Drawing.Size(101, 20)
         Me.MedicalRecordToolStripMenuItem.Text = "Medical Record"
         '
-        'RegistrasiPasienToolStripMenuItem
-        '
-        Me.RegistrasiPasienToolStripMenuItem.Name = "RegistrasiPasienToolStripMenuItem"
-        Me.RegistrasiPasienToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
-        Me.RegistrasiPasienToolStripMenuItem.Text = "Registrasi Pasien"
-        '
         'PendaftaranPasienBaruToolStripMenuItem
         '
         Me.PendaftaranPasienBaruToolStripMenuItem.Name = "PendaftaranPasienBaruToolStripMenuItem"
         Me.PendaftaranPasienBaruToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.PendaftaranPasienBaruToolStripMenuItem.Text = "Pendaftaran Pasien Baru"
+        '
+        'RegistrasiPasienToolStripMenuItem
+        '
+        Me.RegistrasiPasienToolStripMenuItem.Name = "RegistrasiPasienToolStripMenuItem"
+        Me.RegistrasiPasienToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.RegistrasiPasienToolStripMenuItem.Text = "Registrasi Pasien"
         '
         'LaboratoriumToolStripMenuItem
         '
@@ -235,6 +310,37 @@ Partial Class MainMenu
         Me.PemeriksaanToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
         Me.PemeriksaanToolStripMenuItem1.Text = "Pemeriksaan"
         '
+        'WindowsToolStripMenuItem
+        '
+        Me.WindowsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TitleToolStripMenuItem, Me.TitleHorizontalToolStripMenuItem, Me.ArrangeIconsToolStripMenuItem})
+        Me.WindowsToolStripMenuItem.Name = "WindowsToolStripMenuItem"
+        Me.WindowsToolStripMenuItem.Size = New System.Drawing.Size(68, 20)
+        Me.WindowsToolStripMenuItem.Text = "&Windows"
+        '
+        'CascadeToolStripMenuItem
+        '
+        Me.CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
+        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CascadeToolStripMenuItem.Text = "&Cascade"
+        '
+        'TitleToolStripMenuItem
+        '
+        Me.TitleToolStripMenuItem.Name = "TitleToolStripMenuItem"
+        Me.TitleToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.TitleToolStripMenuItem.Text = "Title &Vertical"
+        '
+        'TitleHorizontalToolStripMenuItem
+        '
+        Me.TitleHorizontalToolStripMenuItem.Name = "TitleHorizontalToolStripMenuItem"
+        Me.TitleHorizontalToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.TitleHorizontalToolStripMenuItem.Text = "Title &Horizontal"
+        '
+        'ArrangeIconsToolStripMenuItem
+        '
+        Me.ArrangeIconsToolStripMenuItem.Name = "ArrangeIconsToolStripMenuItem"
+        Me.ArrangeIconsToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.ArrangeIconsToolStripMenuItem.Text = "&Arrange Icons"
+        '
         'StatusStrip
         '
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
@@ -249,61 +355,6 @@ Partial Class MainMenu
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
         Me.ToolStripStatusLabel.Text = "Status"
-        '
-        'MedicalRecordToolStripMenuItem1
-        '
-        Me.MedicalRecordToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgamaToolStripMenuItem, Me.PendidikanToolStripMenuItem, Me.PekerjaanToolStripMenuItem, Me.PropinsiToolStripMenuItem, Me.KabupatenToolStripMenuItem, Me.KecamatanToolStripMenuItem, Me.KelurahanToolStripMenuItem, Me.HubunganKelToolStripMenuItem})
-        Me.MedicalRecordToolStripMenuItem1.Name = "MedicalRecordToolStripMenuItem1"
-        Me.MedicalRecordToolStripMenuItem1.Size = New System.Drawing.Size(216, 22)
-        Me.MedicalRecordToolStripMenuItem1.Text = "Medical Record"
-        '
-        'AgamaToolStripMenuItem
-        '
-        Me.AgamaToolStripMenuItem.Name = "AgamaToolStripMenuItem"
-        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AgamaToolStripMenuItem.Text = "Agama"
-        '
-        'PendidikanToolStripMenuItem
-        '
-        Me.PendidikanToolStripMenuItem.Name = "PendidikanToolStripMenuItem"
-        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PendidikanToolStripMenuItem.Text = "Pendidikan"
-        '
-        'PekerjaanToolStripMenuItem
-        '
-        Me.PekerjaanToolStripMenuItem.Name = "PekerjaanToolStripMenuItem"
-        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PekerjaanToolStripMenuItem.Text = "Pekerjaan"
-        '
-        'PropinsiToolStripMenuItem
-        '
-        Me.PropinsiToolStripMenuItem.Name = "PropinsiToolStripMenuItem"
-        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PropinsiToolStripMenuItem.Text = "Propinsi"
-        '
-        'KabupatenToolStripMenuItem
-        '
-        Me.KabupatenToolStripMenuItem.Name = "KabupatenToolStripMenuItem"
-        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.KabupatenToolStripMenuItem.Text = "Kabupaten"
-        '
-        'KecamatanToolStripMenuItem
-        '
-        Me.KecamatanToolStripMenuItem.Name = "KecamatanToolStripMenuItem"
-        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.KecamatanToolStripMenuItem.Text = "Kecamatan"
-        '
-        'KelurahanToolStripMenuItem
-        '
-        Me.KelurahanToolStripMenuItem.Name = "KelurahanToolStripMenuItem"
-        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.KelurahanToolStripMenuItem.Text = "Kelurahan"
-        '
-        'HubunganKelToolStripMenuItem
-        '
-        Me.HubunganKelToolStripMenuItem.Name = "HubunganKelToolStripMenuItem"
-        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.HubunganKelToolStripMenuItem.Text = "Hubungan Kel"
         '
         'MainMenu
         '
@@ -364,5 +415,12 @@ Partial Class MainMenu
     Friend WithEvents KecamatanToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents KelurahanToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HubunganKelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SystemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SQLQueryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WindowsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CascadeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TitleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TitleHorizontalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ArrangeIconsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
