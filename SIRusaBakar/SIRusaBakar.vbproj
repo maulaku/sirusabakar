@@ -56,16 +56,22 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MKabupaten.Designer.vb">
-      <DependentUpon>MKabupaten.vb</DependentUpon>
+    <Compile Include="MMrPekerjaan.Designer.vb">
+      <DependentUpon>MMrPekerjaan.vb</DependentUpon>
     </Compile>
-    <Compile Include="MKabupaten.vb">
+    <Compile Include="MMrPekerjaan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MPropinsi.Designer.vb">
-      <DependentUpon>MPropinsi.vb</DependentUpon>
+    <Compile Include="MMrKabupaten.Designer.vb">
+      <DependentUpon>MMrKabupaten.vb</DependentUpon>
     </Compile>
-    <Compile Include="MPropinsi.vb">
+    <Compile Include="MMrKabupaten.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MMrPropinsi.Designer.vb">
+      <DependentUpon>MMrPropinsi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrPropinsi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TSQL.Designer.vb">
@@ -74,16 +80,16 @@
     <Compile Include="TSQL.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MPendidikan.Designer.vb">
-      <DependentUpon>MPendidikan.vb</DependentUpon>
+    <Compile Include="MMrPendidikan.Designer.vb">
+      <DependentUpon>MMrPendidikan.vb</DependentUpon>
     </Compile>
-    <Compile Include="MPendidikan.vb">
+    <Compile Include="MMrPendidikan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MAgama.Designer.vb">
-      <DependentUpon>MAgama.vb</DependentUpon>
+    <Compile Include="MMrAgama.Designer.vb">
+      <DependentUpon>MMrAgama.vb</DependentUpon>
     </Compile>
-    <Compile Include="MAgama.vb">
+    <Compile Include="MMrAgama.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MGiziMakanan.Designer.vb">
@@ -234,25 +240,29 @@
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MKabupaten.resx">
+    <EmbeddedResource Include="MMrPekerjaan.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>MKabupaten.vb</DependentUpon>
+      <DependentUpon>MMrPekerjaan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MPropinsi.resx">
+    <EmbeddedResource Include="MMrKabupaten.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>MPropinsi.vb</DependentUpon>
+      <DependentUpon>MMrKabupaten.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrPropinsi.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MMrPropinsi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TSQL.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TSQL.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MPendidikan.resx">
+    <EmbeddedResource Include="MMrPendidikan.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>MPendidikan.vb</DependentUpon>
+      <DependentUpon>MMrPendidikan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MAgama.resx">
+    <EmbeddedResource Include="MMrAgama.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>MAgama.vb</DependentUpon>
+      <DependentUpon>MMrAgama.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MGiziMakanan.resx">
       <SubType>Designer</SubType>

@@ -116,3 +116,20 @@ from msKabupaten with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsPekerjaan'))
+DROP VIEW vwMsPekerjaan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsPekerjaan AS
+select top (10) id,namaPekerjaan,catatan 
+from msPekerjaan with (NOLOCK)
+where status = 1
+order by id
+GO

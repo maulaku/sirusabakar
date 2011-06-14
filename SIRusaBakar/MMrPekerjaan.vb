@@ -1,4 +1,4 @@
-Public Class MPropinsi
+Public Class MMrPekerjaan
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String
@@ -23,7 +23,7 @@ Public Class MPropinsi
                     btnCancel.PerformClick()
                 Else
                     Dim tny As Integer
-                    tny = MessageBox.Show("Mau Keluar dari Master Propinsi ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    tny = MessageBox.Show("Mau Keluar dari Master Pekerjaan ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
                     Else
@@ -59,13 +59,13 @@ Public Class MPropinsi
         btnRefresh.Enabled = True
     End Sub
     Sub aktif()
-        txtPropinsi.Enabled = True
+        txtPekerjaan.Enabled = True
         txtCatatan.Enabled = True
 
         DataGridView1.Enabled = False
     End Sub
     Sub nonAktif()
-        txtPropinsi.Enabled = False
+        txtPekerjaan.Enabled = False
         txtCatatan.Enabled = False
 
         DataGridView1.Enabled = True
@@ -78,13 +78,13 @@ Public Class MPropinsi
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
-            MsgBox("Data Propinsi : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            MsgBox("Data Pekerjaan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
             txtCatatan.Text = ""
             idForm = DataGridView1.Item(0, row).Value
-            txtPropinsi.Text = DataGridView1.Item(1, row).Value
+            txtPekerjaan.Text = DataGridView1.Item(1, row).Value
             txtCatatanSebelumnya.Text = (DataGridView1.Item(2, row).Value).Replace(ControlChars.Lf, vbCrLf)
         End If
         formatGrid()
@@ -93,20 +93,20 @@ Public Class MPropinsi
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
-                Case "namaPropinsi"
-                    dc.HeaderText = "Nama Propinsi"
+                Case "namaPekerjaan"
+                    dc.HeaderText = "Nama Pekerjaan"
                     dc.Width = 100
             End Select
         Next
     End Sub
     Sub kosong()
-        txtPropinsi.Text = ""
+        txtPekerjaan.Text = ""
     End Sub
-    Private Sub MPropinsi_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MPekerjaan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             tombolHidup()
             nonAktif()
-            TampilDataGrid("select * from vwMsPropinsi")
+            TampilDataGrid("select * from vwMsPekerjaan")
             tampilData(0)
 
             If cmbSearch.SelectionLength <> 0 Then
@@ -121,34 +121,34 @@ Public Class MPropinsi
         tombolMati()
         kosong()
         aktif()
-        txtPropinsi.Focus()
+        txtPekerjaan.Focus()
         txtCatatanSebelumnya.Text = ""
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
-        If txtPropinsi.Text = "" Then
+        If txtPekerjaan.Text = "" Then
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtPropinsi.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtPekerjaan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                TampilDataGrid("select * from vwmsPropinsi")
+                TampilDataGrid("select * from vwmsPekerjaan")
                 tampilData(0)
             End If
         End If
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
-        If txtPropinsi.Text = "" Then
+        If txtPekerjaan.Text = "" Then
             MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
         Else
             statusForm = "EDIT"
             tombolMati()
             aktif()
-            txtPropinsi.Focus()
+            txtPekerjaan.Focus()
         End If
     End Sub
 
@@ -156,11 +156,11 @@ Public Class MPropinsi
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
-        TampilDataGrid("select * from vwMsPropinsi")
+        TampilDataGrid("select * from vwMsPekerjaan")
         tampilData(0)
         tombolHidup()
         nonAktif()
@@ -191,13 +191,13 @@ Public Class MPropinsi
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "namaPropinsi"
+            dataCari = "namaPekerjaan"
         End If
 
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
-            TampilDataGrid("SELECT * FROM vwmsPropinsi WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
+            TampilDataGrid("SELECT * FROM vwmsPekerjaan WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
 
             If DataGridView1.RowCount = 0 Then
                 MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -215,7 +215,7 @@ Public Class MPropinsi
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        TampilDataGrid("select * from vwmsPropinsi")
+        TampilDataGrid("select * from vwmsPekerjaan")
         tampilData(0)
         txtSearch.Text = ""
         txtSearch.Focus()
@@ -272,10 +272,10 @@ Public Class MPropinsi
 
     Private Sub kirimData()
         Try
-            PSQL = "EXEC spMsPropinsi" & _
+            PSQL = "EXEC spMsPekerjaan" & _
                     " '" & statusForm & "'," & _
                     "  " & idForm & "," & _
-                    " '" & txtPropinsi.Text & "'," & _
+                    " '" & txtPekerjaan.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
                     " '" & keterangan & "'"

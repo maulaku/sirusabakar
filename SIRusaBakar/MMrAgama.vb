@@ -1,4 +1,4 @@
-Public Class MAgama
+Public Class MMrAgama
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String

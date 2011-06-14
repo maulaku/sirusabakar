@@ -86,13 +86,13 @@ Public Class MainMenu
     End Sub
 
     Private Sub AgamaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgamaToolStripMenuItem.Click
-        Dim a As New MAgama
+        Dim a As New MMrAgama
         a.Show()
         a.MdiParent = Me
     End Sub
 
     Private Sub PendidikanToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PendidikanToolStripMenuItem.Click
-        Dim a As New MPendidikan
+        Dim a As New MMrPendidikan
         a.Show()
         a.MdiParent = Me
     End Sub
@@ -104,13 +104,19 @@ Public Class MainMenu
     End Sub
 
     Private Sub PropinsiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PropinsiToolStripMenuItem.Click
-        Dim a As New MPropinsi
+        Dim a As New MMrPropinsi
         a.Show()
         a.MdiParent = Me
     End Sub
 
     Private Sub KabupatenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KabupatenToolStripMenuItem.Click
-        Dim a As New MKabupaten
+        Dim a As New MMrKabupaten
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub PekerjaanToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PekerjaanToolStripMenuItem.Click
+        Dim a As New MMrPekerjaan
         a.Show()
         a.MdiParent = Me
     End Sub

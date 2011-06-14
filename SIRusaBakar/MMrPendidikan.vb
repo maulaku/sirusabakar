@@ -1,4 +1,4 @@
-Public Class MPendidikan
+Public Class MMrPendidikan
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String
