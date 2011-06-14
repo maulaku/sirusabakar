@@ -53,3 +53,5 @@ D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRu
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MGiziMakanan.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MAgama.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPendidikan.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MPropinsi.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.TSQL.resources

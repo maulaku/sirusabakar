@@ -1,6 +1,22 @@
 
 Public Class MainMenu
 
+    Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
+        Me.LayoutMdi(MdiLayout.ArrangeIcons)
+    End Sub
+
+    Private Sub TitleHorizontalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleHorizontalToolStripMenuItem.Click
+        Me.LayoutMdi(MdiLayout.TileHorizontal)
+    End Sub
+
+    Private Sub TitleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleToolStripMenuItem.Click
+        Me.LayoutMdi(MdiLayout.TileVertical)
+    End Sub
+
+    Private Sub CascadeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CascadeToolStripMenuItem.Click
+        Me.LayoutMdi(MdiLayout.Cascade)
+    End Sub
+
     Private Sub LogistikAlkesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogistikAlkesToolStripMenuItem.Click
         Dim a As New MLogAlkes
         a.Show()
@@ -81,24 +97,14 @@ Public Class MainMenu
         a.MdiParent = Me
     End Sub
 
-    Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.ArrangeIcons)
-    End Sub
-
-    Private Sub TitleHorizontalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleHorizontalToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.TileHorizontal)
-    End Sub
-
-    Private Sub TitleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.TileVertical)
-    End Sub
-
-    Private Sub CascadeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CascadeToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.Cascade)
-    End Sub
-
     Private Sub SQLQueryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SQLQueryToolStripMenuItem.Click
         Dim a As New TSQL
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub PropinsiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PropinsiToolStripMenuItem.Click
+        Dim a As New MPropinsi
         a.Show()
         a.MdiParent = Me
     End Sub

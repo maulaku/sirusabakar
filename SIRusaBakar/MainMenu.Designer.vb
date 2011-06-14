@@ -90,7 +90,7 @@ Partial Class MainMenu
         'SQLQueryToolStripMenuItem
         '
         Me.SQLQueryToolStripMenuItem.Name = "SQLQueryToolStripMenuItem"
-        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.SQLQueryToolStripMenuItem.Text = "SQL Query"
         '
         'MasterToolStripMenuItem
@@ -110,49 +110,49 @@ Partial Class MainMenu
         'AgamaToolStripMenuItem
         '
         Me.AgamaToolStripMenuItem.Name = "AgamaToolStripMenuItem"
-        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AgamaToolStripMenuItem.Text = "Agama"
         '
         'PendidikanToolStripMenuItem
         '
         Me.PendidikanToolStripMenuItem.Name = "PendidikanToolStripMenuItem"
-        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PendidikanToolStripMenuItem.Text = "Pendidikan"
         '
         'PekerjaanToolStripMenuItem
         '
         Me.PekerjaanToolStripMenuItem.Name = "PekerjaanToolStripMenuItem"
-        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PekerjaanToolStripMenuItem.Text = "Pekerjaan"
         '
         'PropinsiToolStripMenuItem
         '
         Me.PropinsiToolStripMenuItem.Name = "PropinsiToolStripMenuItem"
-        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PropinsiToolStripMenuItem.Text = "Propinsi"
         '
         'KabupatenToolStripMenuItem
         '
         Me.KabupatenToolStripMenuItem.Name = "KabupatenToolStripMenuItem"
-        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.KabupatenToolStripMenuItem.Text = "Kabupaten"
         '
         'KecamatanToolStripMenuItem
         '
         Me.KecamatanToolStripMenuItem.Name = "KecamatanToolStripMenuItem"
-        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.KecamatanToolStripMenuItem.Text = "Kecamatan"
         '
         'KelurahanToolStripMenuItem
         '
         Me.KelurahanToolStripMenuItem.Name = "KelurahanToolStripMenuItem"
-        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.KelurahanToolStripMenuItem.Text = "Kelurahan"
         '
         'HubunganKelToolStripMenuItem
         '
         Me.HubunganKelToolStripMenuItem.Name = "HubunganKelToolStripMenuItem"
-        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.HubunganKelToolStripMenuItem.Text = "Hubungan Kel"
         '
         'AccountingToolStripMenuItem

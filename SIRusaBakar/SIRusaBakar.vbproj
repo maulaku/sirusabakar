@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MPropinsi.Designer.vb">
+      <DependentUpon>MPropinsi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MPropinsi.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TSQL.Designer.vb">
       <DependentUpon>TSQL.vb</DependentUpon>
     </Compile>
@@ -221,6 +227,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPropinsi.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MPropinsi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TSQL.resx">
       <SubType>Designer</SubType>
