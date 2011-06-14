@@ -334,3 +334,26 @@ BEGIN
 	RETURN (SELECT  catatan	FROM msPekerjaan WHERE id = @in_id)
 END;
 GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanKecamatan') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanKecamatan
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanKecamatan
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT  catatan	FROM msKecamatan WHERE id = @in_id)
+END;
+GO

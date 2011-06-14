@@ -57,3 +57,4 @@ D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRu
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MMrPropinsi.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MMrPendidikan.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MMrAgama.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\SIRusaBakar\SIRusaBakar\obj\Debug\SIRusaBakar.MMrKecamatan.resources

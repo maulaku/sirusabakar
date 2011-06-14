@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MMrKecamatan.Designer.vb">
+      <DependentUpon>MMrKecamatan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrKecamatan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrPekerjaan.Designer.vb">
       <DependentUpon>MMrPekerjaan.vb</DependentUpon>
     </Compile>
@@ -239,6 +245,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrKecamatan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MMrKecamatan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MMrPekerjaan.resx">
       <SubType>Designer</SubType>
