@@ -167,3 +167,20 @@ from msKelurahan with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsHubKel'))
+DROP VIEW vwMsHubKel
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsHubKel AS
+select top (10) id,namaHubKel,catatan 
+from msHubKel with (NOLOCK)
+where status = 1
+order by id
+GO

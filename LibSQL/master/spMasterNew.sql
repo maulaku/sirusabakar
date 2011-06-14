@@ -1154,3 +1154,110 @@ BEGIN
 							  
 END
 GO
+
+--############################################################################# spMsHubKel
+
+IF Objectproperty(Object_Id('spMsHubKel'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsHubKel]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spMsHubKel (
+	/* 1*/ @in_Tindakan				VARCHAR(4),
+	/* 2*/ @in_id		 			INT,
+	/* 3*/ @in_nama_HubKel			VARCHAR(100),
+	/* 4*/ @in_note					VARCHAR(4000),
+	/* 5*/ @in_user					INT,
+	/* 6*/ @out_keterangan			VARCHAR(500) OUTPUT
+	)
+AS
+	DECLARE 	
+		@in_new_note				VARCHAR(5000),
+		@in_new_note_update		VARCHAR(5000),
+		@form_type 					VARCHAR(100),
+		@action_type				VARCHAR(100),
+		@action_desc				VARCHAR(1000),
+		@hitung						INT;
+BEGIN
+	SET @form_type = 'MsHubKel';
+	SET @action_desc =	'NAMA HubKel : ' + @in_nama_HubKel + CHAR(10);
+	SET @in_new_note = 	'DIBUAT          : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
+	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
+	
+	IF @in_Tindakan='NEW'
+		BEGIN	
+			/* Cek data sudah Ada */
+			BEGIN
+				SET @hitung = (SELECT COUNT(NamaHubKel) from MsHubKel where Status = 1 and NamaHubKel = @in_nama_HubKel group by namaHubKel);
+				IF @hitung > 1
+					SET @out_keterangan = 'Kode Duplikasi'
+				ELSE				
+				BEGIN	
+					INSERT INTO msHubKel (
+								/* 1*/ namaHubKel,
+								/* 2*/ catatan,
+								/* 3*/ dibuatoleh
+					) VALUES ( 				
+								/* 1*/ @in_nama_HubKel,			  									  
+								/* 2*/ @in_new_note,					  
+								/* 3*/ @in_user
+					);												
+					SET @action_type = 'NEW';					
+				END
+			END
+		END
+------------------------------------------------------------------- New HubKel
+	ELSE IF @in_Tindakan='EDIT'
+		BEGIN	
+			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+										+dbo.fnAmbilCatatanHubKel(@in_id);	
+			IF @in_note = ''
+				BEGIN
+					UPDATE msHubKel SET
+								/* 1*/ namaHubKel 			= @in_nama_HubKel,
+								/* 2*/ dieditoleh 			= @in_user,
+								/* 3*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msHubKel SET
+								/* 1*/ namaHubKel			= @in_nama_HubKel,
+								/* 2*/ catatan 				= @in_new_note_update,
+								/* 3*/ dieditoleh 			= @in_user,
+								/* 4*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @action_desc =	@action_desc + CHAR(10) +
+										'NOTE : ' + @in_new_note + CHAR(10);
+				END
+			SET @action_type = 'UPDATE';
+		END		
+------------------------------------------------------------------- Edit HubKel
+	ELSE IF @in_Tindakan='DEL'
+		BEGIN
+			UPDATE msHubKel SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 		= @in_user,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+			SET @action_type = 'DELETE';
+		END
+------------------------------------------------------------------- Delete HubKel
+	
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @form_type,
+				/* 2*/ @action_type,
+				/* 3*/ @action_desc,
+				/* 4*/ @in_user	
+	);
+							  
+END
+GO

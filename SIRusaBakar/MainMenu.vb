@@ -132,4 +132,10 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub HubunganKelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HubunganKelToolStripMenuItem.Click
+        Dim a As New MMrHubKel
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class
