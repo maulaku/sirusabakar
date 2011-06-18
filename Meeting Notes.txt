@@ -1,0 +1,24 @@
+-Untuk daftar pasien baru, validasi Jenis
+ Balita 0 - 5 thn
+ Anak 5 - 12 Thn
+ Dewasa 12 - 50 thn
+ Lansia 50 > thn
+
+-Short cut untuk perpindahan antar tab di pendaftaran MR
+
+-Golongan Darah di ganti menjadi combobox
+
+-Search Kategori Pasien baru
+ No MR
+ Nama
+ Alamat
+ Tgl Lahir
+
+-Filter data baru berdasarkan nama, tgl lahir, alamat (filter datagrid berdasarkan 3 field tadi)
+
+-setelah pendaftaran pasien baru langsung membuka form register layanan.
+
+-tambah Status MR: aktif, inaktif, nonaktif
+
+-data pasien status = nikah, single, dll
+
