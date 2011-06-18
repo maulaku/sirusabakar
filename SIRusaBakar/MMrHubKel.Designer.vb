@@ -53,205 +53,148 @@ Partial Class MMrHubKel
         '
         'toolStrip
         '
+        Me.toolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
-        Me.toolStrip.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.toolStrip, "toolStrip")
         Me.toolStrip.Name = "toolStrip"
-        Me.toolStrip.Size = New System.Drawing.Size(556, 25)
-        Me.toolStrip.TabIndex = 53
-        Me.toolStrip.Text = "ToolStrip1"
         '
         'btnNew
         '
         Me.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnNew.Image = CType(resources.GetObject("btnNew.Image"), System.Drawing.Image)
-        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnNew, "btnNew")
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(23, 22)
-        Me.btnNew.Text = "New"
         '
         'btnEdit
         '
         Me.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnEdit.Image = CType(resources.GetObject("btnEdit.Image"), System.Drawing.Image)
-        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnEdit, "btnEdit")
         Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(23, 22)
-        Me.btnEdit.Text = "Edit"
         '
         'btnSave
         '
         Me.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnSave, "btnSave")
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(23, 22)
-        Me.btnSave.Text = "Save"
         '
         'btnDelete
         '
         Me.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnDelete.Image = CType(resources.GetObject("btnDelete.Image"), System.Drawing.Image)
-        Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnDelete, "btnDelete")
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(23, 22)
-        Me.btnDelete.Text = "Delete"
         '
         'btnRefresh
         '
         Me.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
-        Me.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnRefresh, "btnRefresh")
         Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(23, 22)
-        Me.btnRefresh.Text = "Refresh"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
         '
         'btnFirst
         '
         Me.btnFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnFirst.Image = CType(resources.GetObject("btnFirst.Image"), System.Drawing.Image)
-        Me.btnFirst.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnFirst, "btnFirst")
         Me.btnFirst.Name = "btnFirst"
-        Me.btnFirst.Size = New System.Drawing.Size(23, 22)
-        Me.btnFirst.Text = "First"
         '
         'btnPrev
         '
         Me.btnPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnPrev.Image = CType(resources.GetObject("btnPrev.Image"), System.Drawing.Image)
-        Me.btnPrev.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnPrev, "btnPrev")
         Me.btnPrev.Name = "btnPrev"
-        Me.btnPrev.Size = New System.Drawing.Size(23, 22)
-        Me.btnPrev.Text = "Prev"
         '
         'btnNext
         '
         Me.btnNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnNext.Image = CType(resources.GetObject("btnNext.Image"), System.Drawing.Image)
-        Me.btnNext.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnNext, "btnNext")
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(23, 22)
-        Me.btnNext.Text = "Next"
         '
         'btnLast
         '
         Me.btnLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnLast.Image = CType(resources.GetObject("btnLast.Image"), System.Drawing.Image)
-        Me.btnLast.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnLast, "btnLast")
         Me.btnLast.Name = "btnLast"
-        Me.btnLast.Size = New System.Drawing.Size(23, 22)
-        Me.btnLast.Text = "Last"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
         '
         'cmbSearch
         '
-        Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kode Diet", "Nama Diet"})
+        Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {resources.GetString("cmbSearch.AutoCompleteCustomSource"), resources.GetString("cmbSearch.AutoCompleteCustomSource1")})
+        Me.cmbSearch.Items.AddRange(New Object() {resources.GetString("cmbSearch.Items")})
         Me.cmbSearch.Name = "cmbSearch"
-        Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
+        resources.ApplyResources(Me.cmbSearch, "cmbSearch")
         '
         'txtSearch
         '
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(80, 25)
+        resources.ApplyResources(Me.txtSearch, "txtSearch")
         '
         'btnSearch
         '
         Me.btnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnSearch, "btnSearch")
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(23, 22)
-        Me.btnSearch.Text = "Find"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         '
         'btnCancel
         '
         Me.btnCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(23, 22)
-        Me.btnCancel.Text = "Close"
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 49)
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(102, 13)
-        Me.Label2.TabIndex = 96
-        Me.Label2.Text = "Hubungan Keluarga"
         '
         'txtCatatanSebelumnya
         '
-        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(289, 149)
+        resources.ApplyResources(Me.txtCatatanSebelumnya, "txtCatatanSebelumnya")
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
-        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
-        Me.txtCatatanSebelumnya.TabIndex = 95
-        Me.txtCatatanSebelumnya.Text = ""
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(286, 133)
+        resources.ApplyResources(Me.Label5, "Label5")
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(105, 13)
-        Me.Label5.TabIndex = 94
-        Me.Label5.Text = "Catatan Sebelumnya"
         '
         'txtCatatan
         '
-        Me.txtCatatan.Location = New System.Drawing.Point(289, 46)
-        Me.txtCatatan.Multiline = True
+        resources.ApplyResources(Me.txtCatatan, "txtCatatan")
         Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(253, 77)
-        Me.txtCatatan.TabIndex = 93
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(289, 30)
+        resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
-        Me.Label4.TabIndex = 92
-        Me.Label4.Text = "Catatan"
         '
         'txtHubKel
         '
-        Me.txtHubKel.Location = New System.Drawing.Point(120, 46)
+        resources.ApplyResources(Me.txtHubKel, "txtHubKel")
         Me.txtHubKel.Name = "txtHubKel"
-        Me.txtHubKel.Size = New System.Drawing.Size(163, 20)
-        Me.txtHubKel.TabIndex = 91
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 79)
+        resources.ApplyResources(Me.DataGridView1, "DataGridView1")
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(271, 183)
-        Me.DataGridView1.TabIndex = 90
         '
         'MMrHubKel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 275)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
@@ -260,8 +203,9 @@ Partial Class MMrHubKel
         Me.Controls.Add(Me.txtHubKel)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.toolStrip)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "MMrHubKel"
-        Me.Text = "Master Hubungan Keluarga"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

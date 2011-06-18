@@ -43,19 +43,20 @@ Public Class LayMRDaftarPasien
     Private Sub generateNoMR()
         Dim lastKode As String
         Dim formatKode As String
-        formatKode = Format(Now(), "MMddyy")
+        formatKode = Format(Now(), "yyMMdd")
         Try
             Call bukaServer()
-            PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%'"
-            'cmd = New SqlClient.SqlCommand(PSQL, con)
+            PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%' ORDER BY noMR DESC"
+            cmd = New Odbc.OdbcCommand(PSQL, con)
             lastKode = cmd.ExecuteScalar
 
             If lastKode = "" Then
-                txtNoMR.Text = formatKode + "00001"
+                txtNoMR.Text = formatKode & "00001"
+                con.Close()
                 Exit Sub
             End If
 
-            Dim id As Integer = Val(Strings.Mid(lastKode, 3, 5))
+            Dim id As Integer = Val(Strings.Mid(lastKode, 7, 5))
             Select Case id
                 Case 1 To 8 : txtNoMR.Text = formatKode & "0000" & id + 1
                 Case 9 To 98 : txtNoMR.Text = formatKode & "000" & id + 1
@@ -117,7 +118,7 @@ Public Class LayMRDaftarPasien
         cmbPendidikan.Enabled = True
         cmbPekerjaan.Enabled = True
         txtAlamat.Enabled = True
-        txtProvinsi.Enabled = True
+        txtPropinsi.Enabled = True
         txtKota.Enabled = True
         txtKodePos.Enabled = True
         txtTelepon.Enabled = True
@@ -166,7 +167,7 @@ Public Class LayMRDaftarPasien
         cmbPendidikan.Enabled = False
         cmbPekerjaan.Enabled = False
         txtAlamat.Enabled = False
-        txtProvinsi.Enabled = False
+        txtPropinsi.Enabled = False
         txtKota.Enabled = False
         txtKodePos.Enabled = False
         txtTelepon.Enabled = False
@@ -195,20 +196,20 @@ Public Class LayMRDaftarPasien
         Call bukaserver()
         PSQL = ""
         PSQL = "SELECT " & _
-                    "/*0*/id,/*1*/noMR,/*2*/title,/*3*/patientName,/*4*/panggilan," & _
+                    "/*0*/id,/*1*/noMR,/*2*/titel,/*3*/namaPasien,/*4*/panggilan," & _
                     "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
                     "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
-                    "/*15*/pekerjaan,/*16*/alamat,/*17*/provinsi,/*18*/kota,/*19*/kodePos," & _
+                    "/*15*/pekerjaan,/*16*/alamat,/*17*/propinsi,/*18*/kota,/*19*/kodePos," & _
                     "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
                     "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
                     "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
-                    "/*35*/handphoneP,/*36*/note" & _
+                    "/*35*/handphoneP,/*36*/catatan" & _
                " FROM trLayMRDaftar" & _
                " WHERE status=1" & _
                " ORDER BY id"
 
         dttable.Clear()
-        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
+        dtadapter = New Odbc.OdbcDataAdapter(PSQL, con)
         dtadapter.Fill(dttable)
 
 
@@ -252,7 +253,7 @@ Public Class LayMRDaftarPasien
             txtPanggilan.Text = DataGridView1.Item(4, i).Value
             If DataGridView1.Item(5, i).Value = "Pria" Then
                 rbPria.Checked = True
-            Else
+            ElseIf DataGridView1.Item(5, i).Value = "Wanita" Then
                 rbWanita.Checked = True
             End If
             txtTempatLahir.Text = DataGridView1.Item(6, i).Value
@@ -267,14 +268,14 @@ Public Class LayMRDaftarPasien
                 rbB.Checked = True
             ElseIf DataGridView1.Item(12, i).Value = "AB" Then
                 rbAB.Checked = True
-            Else
+            ElseIf DataGridView1.Item(12, i).Value = "O" Then
                 rbO.Checked = True
             End If
             cmbStatus.Text = DataGridView1.Item(13, i).Value
             cmbPendidikan.Text = DataGridView1.Item(14, i).Value
             cmbPekerjaan.Text = DataGridView1.Item(15, i).Value
             txtAlamat.Text = DataGridView1.Item(16, i).Value
-            txtProvinsi.Text = DataGridView1.Item(17, i).Value
+            txtPropinsi.Text = DataGridView1.Item(17, i).Value
             txtKota.Text = DataGridView1.Item(18, i).Value
             txtKodePos.Text = DataGridView1.Item(19, i).Value
             txtTelepon.Text = DataGridView1.Item(20, i).Value
@@ -293,7 +294,6 @@ Public Class LayMRDaftarPasien
             cmbHubungan.Text = DataGridView1.Item(31, i).Value
             txtHubungan.Text = DataGridView1.Item(32, i).Value
             txtAlamatPenanggung.Text = DataGridView1.Item(33, i).Value
-
             txtTeleponPenanggung.Text = DataGridView1.Item(34, i).Value
             txtHPPenanggung.Text = DataGridView1.Item(35, i).Value
             txtCatatan.Text = DataGridView1.Item(36, i).Value
@@ -307,7 +307,7 @@ Public Class LayMRDaftarPasien
                 Case "noMR"
                     dc.HeaderText = "No. MR"
                     dc.Width = 100
-                Case "patientName"
+                Case "namaPasien"
                     dc.HeaderText = "Nama Pasien"
                     dc.Width = 100
                 Case "panggilan"
@@ -320,26 +320,46 @@ Public Class LayMRDaftarPasien
         Next
     End Sub
     Sub kosong()
-        'txtKodeTarif.Text = ""
-        'txtDaerah.Text = ""
-        'txtTujuan.Text = ""
-        'txtTarif.Text = ""
-        'txtPM.Text = ""
-        'txtParaMedis.Text = ""
-        'txtParaMedisPP.Text = ""
-        'txtOksigen.Text = ""
-        'txtMonitor.Text = ""
-        'txtCatatan.Text = ""
+        txtNamaPasien.Text = ""
+        txtPanggilan.Text = ""
+        txtTempatLahir.Text = ""
+        txtUmur.Text = ""
+        txtSukuBangsa.Text = ""
+        txtWargaNegara.Text = ""
+
+        txtAlamat.Text = ""
+        txtPropinsi.Text = ""
+        txtKota.Text = ""
+        txtKodePos.Text = ""
+        txtTelepon.Text = ""
+        txtHP.Text = ""
+        txtKabupaten.Text = ""
+        txtKecamatan.Text = ""
+        txtKelurahan.Text = ""
+        txtIstri.Text = ""
+        txtSuami.Text = ""
+        txtAyah.Text = ""
+        txtIbu.Text = ""
+
+        txtNamaPenanggung.Text = ""
+        txtHubungan.Text = ""
+        txtAlamatPenanggung.Text = ""
+        txtTeleponPenanggung.Text = ""
+        txtHPPenanggung.Text = ""
     End Sub
     Private Sub RPasien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            'tombolHidup()
-            'nonAktif()
+            tombolHidup()
+            nonAktif()
             munculData()
             tampilData()
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+
+            cmbSearch.SelectedIndex = 0
+            cmbTitle.SelectedIndex = 0
+
+            cariHubKel()
+            cariAgama()
+            cariPendidikan()
 
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -348,7 +368,7 @@ Public Class LayMRDaftarPasien
         Me.txtSearch.TextBox.Select()
     End Sub
 
-    Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
+    Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         statusForm = "new"
         generateNoMR()
         tombolMati()
@@ -357,19 +377,16 @@ Public Class LayMRDaftarPasien
         txtNamaPasien.Focus()
     End Sub
 
-    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim tanya As Integer
         tanya = MessageBox.Show("Apakah kamu akan menghapus No. MR : " + txtNoMR.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If tanya = vbYes Then
             Call bukaServer()
             Try
-                'PSQL = "EXEC spDeleteTarifAmbulance " & _
-                '        idForm & ",'" & txtKodeTarif.Text & "','" & txtDaerah.Text & "','" & _
-                '        txtTujuan.Text & "','" & txtTarif.Text & "','" & txtPM.Text & _
-                '        "','" & txtParaMedis.Text & "','" & txtParaMedisPP.Text & _
-                '        "','" & txtOksigen.Text & "','" & txtMonitor.Text & "','" & txtCatatan.Text & "'," & idUser
+                PSQL = "EXEC spDeleteMRDaftar " & _
+                        idForm & ",'" & txtNoMR.Text & "','" & txtNamaPasien.Text & "','" & idUser & "'"
 
-                'cmd = New SqlClient.SqlCommand(PSQL, con)
+                cmd = New Odbc.OdbcCommand(PSQL, con)
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("Sukses Delete Data dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -385,7 +402,7 @@ Public Class LayMRDaftarPasien
         cmd.Dispose()
     End Sub
 
-    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         statusForm = "edit"
         tombolMati()
         aktif()
@@ -417,7 +434,10 @@ Public Class LayMRDaftarPasien
             Else
                 statusPenanggung = 0
             End If
-            statusForm = "new"
+
+            If txtNamaPasien.Text = "" Then
+                MsgBox("Data belum Lengkap", MsgBoxStyle.Information, "Save Data Gagal")
+            End If
             Select Case statusForm
                 Case "new"
                     PSQL = "EXEC spInsertMRDaftar" & _
@@ -437,7 +457,7 @@ Public Class LayMRDaftarPasien
                             " '" & cmbPendidikan.Text & "'," & _
                             " '" & cmbPekerjaan.Text & "'," & _
                             " '" & txtAlamat.Text & "'," & _
-                            " '" & txtProvinsi.Text & "'," & _
+                            " '" & txtPropinsi.Text & "'," & _
                             " '" & txtKota.Text & "'," & _
                             " '" & txtKodePos.Text & "'," & _
                             " '" & txtTelepon.Text & "'," & _
@@ -458,24 +478,50 @@ Public Class LayMRDaftarPasien
                             " '" & txtHPPenanggung.Text & "'," & _
                             " '" & txtCatatan.Text & "'," & idUser
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
+                    cmd = New Odbc.OdbcCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Input Data BARU MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "edit"
-                    'PSQL = "EXEC spUpdateTarifAmbulance" & _
-                    '        "  " & idForm & "," & _
-                    '        " '" & txtKodeTarif.Text & "'," & _
-                    '        " '" & txtDaerah.Text & "'," & _
-                    '        " '" & txtTujuan.Text & "'," & _
-                    '        " " & CDec(txtTarif.Text) & "," & _
-                    '        " " & CDec(txtPM.Text) & "," & _
-                    '        " " & CDec(txtParaMedis.Text) & "," & _
-                    '        " " & CDec(txtParaMedisPP.Text) & "," & _
-                    '        " " & CDec(txtOksigen.Text) & "," & _
-                    '        " " & CDec(txtMonitor.Text) & "," & _
-                    '        " '" & txtCatatan.Text & "'," & idUser
+                    PSQL = "EXEC spUpdateMRDaftar" & _
+                            " '" & idForm & "'," & _
+                            " '" & txtNoMR.Text & "'," & _
+                            " '" & cmbTitle.Text & "'," & _
+                            " '" & txtNamaPasien.Text & "'," & _
+                            " '" & txtPanggilan.Text & "'," & _
+                            " '" & sex & "'," & _
+                            " '" & txtTempatLahir.Text & "'," & _
+                            " '" & cmbTglLahir.Value & "'," & _
+                            " '" & txtUmur.Text & "'," & _
+                            " '" & cmbAgama.Text & "'," & _
+                            " '" & txtSukuBangsa.Text & "'," & _
+                            " '" & txtWargaNegara.Text & "'," & _
+                            " '" & golDarah & "'," & _
+                            " '" & cmbStatus.Text & "'," & _
+                            " '" & cmbPendidikan.Text & "'," & _
+                            " '" & cmbPekerjaan.Text & "'," & _
+                            " '" & txtAlamat.Text & "'," & _
+                            " '" & txtPropinsi.Text & "'," & _
+                            " '" & txtKota.Text & "'," & _
+                            " '" & txtKodePos.Text & "'," & _
+                            " '" & txtTelepon.Text & "'," & _
+                            " '" & txtHP.Text & "'," & _
+                            " '" & txtKabupaten.Text & "'," & _
+                            " '" & txtKecamatan.Text & "'," & _
+                            " '" & txtKelurahan.Text & "'," & _
+                            " '" & txtIstri.Text & "'," & _
+                            " '" & txtSuami.Text & "'," & _
+                            " '" & txtAyah.Text & "'," & _
+                            " '" & txtIbu.Text & "'," & _
+                            " '" & statusPenanggung & "'," & _
+                            " '" & txtNamaPenanggung.Text & "'," & _
+                            " '" & cmbHubungan.Text & "'," & _
+                            " '" & txtHubungan.Text & "'," & _
+                            " '" & txtAlamatPenanggung.Text & "'," & _
+                            " '" & txtTeleponPenanggung.Text & "'," & _
+                            " '" & txtHPPenanggung.Text & "'," & _
+                            " '" & txtCatatan.Text & "'," & idUser
 
-                    'cmd = New SqlClient.SqlCommand(PSQL, con)
+                    cmd = New Odbc.OdbcCommand(PSQL, con)
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Sukses Edit Data LAMA MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Select
@@ -483,12 +529,192 @@ Public Class LayMRDaftarPasien
             MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        'munculData()
-        'tampilData()
-        'tombolHidup()
-        'nonAktif()
-        'txtSearch.Focus()
         matiServer()
+        munculData()
+        tampilData()
+        tombolHidup()
+        nonAktif()
+        txtSearch.Focus()
         statusForm = ""
+        status = 0
+    End Sub
+    Private Sub btnEdit_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+        statusForm = "edit"
+        tombolMati()
+        aktif()
+        txtNamaPasien.Focus()
+    End Sub
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Select Case statusForm
+            Case "new"
+                tombolHidup()
+                tampilData()
+                nonAktif()
+                statusForm = ""
+            Case "edit"
+                tombolHidup()
+                tampilData()
+                nonAktif()
+                statusForm = ""
+        End Select
+        txtSearch.Focus()
+    End Sub
+
+    Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        status = 1
+        tampilData()
+        status = 0
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        If cmbSearch.SelectedIndex = 0 Then
+            dataCari = "noMR"
+        ElseIf cmbSearch.SelectedIndex = 1 Then
+            dataCari = "namaPasien"
+        End If
+
+        Try
+            If txtSearch.Text = "" Then
+                MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+                Call bukaServer()
+                PSQL = "SELECT " & _
+                            "/*0*/id,/*1*/noMR,/*2*/titel,/*3*/namaPasien,/*4*/panggilan," & _
+                            "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
+                            "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
+                            "/*15*/pekerjaan,/*16*/alamat,/*17*/propinsi,/*18*/kota,/*19*/kodePos," & _
+                            "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
+                            "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
+                            "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
+                            "/*35*/handphoneP,/*36*/catatan" & _
+                    " FROM trLayMRDaftar" & _
+                        " WHERE status = 1" & _
+                        " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
+                    " ORDER BY id"
+
+
+                dttable.Clear()
+                dtadapter = New Odbc.OdbcDataAdapter(PSQL, con)
+                dtadapter.Fill(dttable)
+
+                DataGridView1.DataSource = dttable
+
+                If dttable.Rows.Count = 0 Then
+                    MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    btnRefresh.PerformClick()
+                Else
+                    tampilData()
+                    dttable.Dispose()
+                    dtadapter.Dispose()
+                    dtadapter = Nothing
+                    con.Close()
+                End If
+            End If
+        Catch salah As Exception
+            MsgBox(salah.Message)
+        End Try
+    End Sub
+
+    Private Sub btnNew_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
+        statusForm = "new"
+        generateNoMR()
+        tombolMati()
+        kosong()
+        aktif()
+        txtNamaPasien.Focus()
+    End Sub
+    Private Sub cariHubKel()
+        Try
+            Call bukaServer()
+            Dim da As New SqlClient.SqlDataAdapter
+
+            PSQL = "select namaHubKel from msHubKel WHERE status = 1 order by namaHubKel"
+            cmd = New Odbc.OdbcCommand(PSQL, con)
+            dtreader = cmd.ExecuteReader()
+
+            If dtreader.HasRows Then
+                While dtreader.Read
+                    Me.cmbHubungan.Items.Add(dtreader("namaHubKel"))
+                End While
+            End If
+
+            cmd.Dispose()
+            dtreader.Close()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Peringatan")
+        End Try
+        cmbHubungan.SelectedIndex = 0
+    End Sub
+    Private Sub cariAgama()
+        Try
+            Call bukaServer()
+            Dim da As New SqlClient.SqlDataAdapter
+
+            PSQL = "select namaAgama from msAgama WHERE status = 1 order by namaAgama"
+            cmd = New Odbc.OdbcCommand(PSQL, con)
+            dtreader = cmd.ExecuteReader()
+
+            If dtreader.HasRows Then
+                While dtreader.Read
+                    Me.cmbAgama.Items.Add(dtreader("namaAgama"))
+                End While
+            End If
+
+            cmd.Dispose()
+            dtreader.Close()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Peringatan")
+        End Try
+        cmbAgama.SelectedIndex = 0
+    End Sub
+    Private Sub cariPendidikan()
+        Try
+            Call bukaServer()
+            Dim da As New SqlClient.SqlDataAdapter
+
+            PSQL = "select namaPendidikan from msPendidikan WHERE status = 1 order by namaPendidikan"
+            cmd = New Odbc.OdbcCommand(PSQL, con)
+            dtreader = cmd.ExecuteReader()
+
+            If dtreader.HasRows Then
+                While dtreader.Read
+                    Me.cmbPendidikan.Items.Add(dtreader("namaPendidikan"))
+                End While
+            End If
+
+            cmd.Dispose()
+            dtreader.Close()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Peringatan")
+        End Try
+        cmbPendidikan.SelectedIndex = 0
+    End Sub
+    Private Sub chbSendiri_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbSendiri.CheckedChanged
+        If chbSendiri.Checked = True Then
+            txtNamaPenanggung.Enabled = False
+            txtHPPenanggung.Enabled = False
+            txtTeleponPenanggung.Enabled = False
+            txtAlamatPenanggung.Enabled = False
+            cmbHubungan.Enabled = False
+            txtHubungan.Enabled = False
+
+            txtNamaPenanggung.Text = ""
+            txtHPPenanggung.Text = ""
+            txtTeleponPenanggung.Text = ""
+            txtAlamatPenanggung.Text = ""
+            txtHubungan.Text = ""
+        End If
+    End Sub
+    Private Sub txtSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If e.KeyChar = ChrW(13) Then
+            btnSearch.PerformClick()
+        End If
     End Sub
 End Class

@@ -53,11 +53,12 @@ Partial Class MMrPropinsi
         '
         'toolStrip
         '
+        Me.toolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
-        Me.toolStrip.Size = New System.Drawing.Size(503, 25)
-        Me.toolStrip.TabIndex = 48
+        Me.toolStrip.Size = New System.Drawing.Size(536, 25)
+        Me.toolStrip.TabIndex = 51
         Me.toolStrip.Text = "ToolStrip1"
         '
         'btnNew
@@ -154,7 +155,7 @@ Partial Class MMrPropinsi
         'cmbSearch
         '
         Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kode Diet", "Nama Diet"})
+        Me.cmbSearch.Items.AddRange(New Object() {"Propinsi"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -189,69 +190,73 @@ Partial Class MMrPropinsi
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 50)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(9, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 61
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 82
         Me.Label2.Text = "Propinsi"
         '
         'txtCatatanSebelumnya
         '
-        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(241, 150)
+        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(268, 136)
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
-        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
-        Me.txtCatatanSebelumnya.TabIndex = 60
+        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 131)
+        Me.txtCatatanSebelumnya.TabIndex = 81
         Me.txtCatatanSebelumnya.Text = ""
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(238, 134)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(265, 120)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(105, 13)
-        Me.Label5.TabIndex = 59
-        Me.Label5.Text = "Catatan Sebelumnya"
+        Me.Label5.Size = New System.Drawing.Size(131, 13)
+        Me.Label5.TabIndex = 80
+        Me.Label5.Text = "Catatan Sebelumnya :"
         '
         'txtCatatan
         '
-        Me.txtCatatan.Location = New System.Drawing.Point(241, 47)
+        Me.txtCatatan.Location = New System.Drawing.Point(268, 51)
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(253, 77)
-        Me.txtCatatan.TabIndex = 58
+        Me.txtCatatan.Size = New System.Drawing.Size(253, 55)
+        Me.txtCatatan.TabIndex = 79
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(241, 31)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(265, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
-        Me.Label4.TabIndex = 57
-        Me.Label4.Text = "Catatan"
+        Me.Label4.Size = New System.Drawing.Size(59, 13)
+        Me.Label4.TabIndex = 78
+        Me.Label4.Text = "Catatan :"
         '
         'txtPropinsi
         '
-        Me.txtPropinsi.Location = New System.Drawing.Point(72, 47)
+        Me.txtPropinsi.Location = New System.Drawing.Point(85, 45)
         Me.txtPropinsi.Name = "txtPropinsi"
-        Me.txtPropinsi.Size = New System.Drawing.Size(163, 20)
-        Me.txtPropinsi.TabIndex = 56
+        Me.txtPropinsi.Size = New System.Drawing.Size(157, 20)
+        Me.txtPropinsi.TabIndex = 77
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 80)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 78)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(223, 183)
-        Me.DataGridView1.TabIndex = 55
+        Me.DataGridView1.Size = New System.Drawing.Size(230, 189)
+        Me.DataGridView1.TabIndex = 76
         '
-        'MPropinsi
+        'MMrPropinsi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(503, 270)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(536, 286)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
@@ -260,8 +265,12 @@ Partial Class MMrPropinsi
         Me.Controls.Add(Me.txtPropinsi)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.toolStrip)
-        Me.Name = "MPropinsi"
-        Me.Text = "Master Propinsi"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "MMrPropinsi"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Data Propinsi"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -15,67 +15,107 @@ GO
 -- 2. LayMRDaftar : nama table
 ----------------------------------------------------------------------------------------------------------
 
+DROP TABLE trHistory;
+CREATE TABLE trHistory (
+	id 					INT IDENTITY(1,1) NOT NULL,
+	tipeForm 			VARCHAR(100),
+	tipeTindakan 		VARCHAR(100),
+	deskripsiTindakan VARCHAR(1000),
+	dibuatOleh 			INT,
+	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+	PRIMARY KEY (id)
+);
 
 DROP TABLE trLayMRDaftar;
 CREATE TABLE trLayMRDaftar (
-	id								INT IDENTITY(1,1) NOT NULL,
-	noMR							VARCHAR(20),
-	title 						VARCHAR(8),
-	patientName 			VARCHAR(100),
-	panggilan		 			VARCHAR(100),
-	sex		 						VARCHAR(10),
-	tempatLahir				VARCHAR(100),
-	tglLahir					DATETIME,
-	umur							INT,		
-	agama							VARCHAR(100),
-	sukuBangsa				VARCHAR(100),
-	wargaNegara				VARCHAR(100),
-	golDarah					VARCHAR(8),
-	statusMR					VARCHAR(50),
-	pendidikan				VARCHAR(20),
-	pekerjaan					VARCHAR(100),	
-	alamat						VARCHAR(1000),
-	provinsi					VARCHAR(100),
-	kota              VARCHAR(100),
-	kodePos						VARCHAR(100),
-	telepon						VARCHAR(100),
-	handphone					VARCHAR(100),
-	kabupaten					VARCHAR(100),
-	kecamatan					VARCHAR(100),
-	kelurahan					VARCHAR(100),
-	namaIstri					VARCHAR(100),
-	namaSuami					VARCHAR(100),
-	namaAyah					VARCHAR(100),
-	namaIbu						VARCHAR(100),
-	statusPenanggung	INT,
-	namaP							VARCHAR(100),
-	hubunganP					VARCHAR(100),
-	hubunganPLain			VARCHAR(100),
-	alamatP						VARCHAR(1000),
-	teleponP					VARCHAR(100),
-	handphoneP				VARCHAR(100),
+	id										INT IDENTITY(1,1) NOT NULL
+	, noMR								VARCHAR(20)
+	, titel 								VARCHAR(8)
+	, namaPasien 						VARCHAR(100)
+	, panggilan		 					VARCHAR(100)
+	, sex		 							VARCHAR(10)
+	, tempatLahir						VARCHAR(100)
+	, tglLahir							DATETIME
+	, umur								INT	
+	, agama								VARCHAR(100)
+	, sukuBangsa						VARCHAR(100)
+	, wargaNegara						VARCHAR(100)
+	, golDarah							VARCHAR(8)
+	, statusMR							VARCHAR(50)
+	, pendidikan						VARCHAR(20)
+	, pekerjaan							VARCHAR(100)	
+	, alamat								VARCHAR(1000)
+	, propinsi							VARCHAR(100)
+	, kota              				VARCHAR(100)
+	, kodePos							VARCHAR(100)
+	, telepon							VARCHAR(100)
+	, handphone							VARCHAR(100)
+	, kabupaten							VARCHAR(100)
+	, kecamatan							VARCHAR(100)
+	, kelurahan							VARCHAR(100)
+	, namaIstri							VARCHAR(100)
+	, namaSuami							VARCHAR(100)
+	, namaAyah							VARCHAR(100)
+	, namaIbu							VARCHAR(100)
+	, statusPenanggung				INT
+	, namaP								VARCHAR(100)
+	, hubunganP							VARCHAR(100)
+	, hubunganPLain					VARCHAR(100)
+	, alamatP							VARCHAR(1000)
+	, teleponP							VARCHAR(100)
+	, handphoneP						VARCHAR(100)
 	--------------------------------
-	note 							TEXT DEFAULT '-',
-	status 						INT DEFAULT 1,
+	, catatan 							TEXT DEFAULT '-'
+	, status 							INT DEFAULT 1
 	--------------------------------
-	createBy 				INT,
-	updateBy 				INT,
-	createTime 			DATETIME DEFAULT CURRENT_TIMESTAMP,
-	updateTime 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	, dibuatOleh 						INT
+	, dieditOleh 						INT
+	, waktuBuat 						DATETIME DEFAULT CURRENT_TIMESTAMP
+	, waktuEdit 						DATETIME DEFAULT CURRENT_TIMESTAMP
 	
-	PRIMARY KEY (id)	
+	, PRIMARY KEY (id)	
 );
+
+DROP TABLE trLayMRRegis;
+CREATE TABLE trLayMRRegis (
+	id								INT IDENTITY(1,1) NOT NULL
+	, idLayMRDaftar			INT NOT NULL
+	, noMR						VARCHAR(20) NOT NULL
+	, tglRegis					DATETIME
+	, noRegis					VARCHAR(10)
+	, asalPasien				VARCHAR(10)
+	, tujuanBerobat			VARCHAR(100)
+	, namaPerujuk				VARCHAR(100)
+	, namaDokter				VARCHAR(100)
+	, caraPembayaran			VARCHAR(100)
+	, namaAsuransi				VARCHAR(100)
+	, namaPerusahaan			VARCHAR(100)
+	, noKartu					VARCHAR(100)
+	, noPolis					VARCHAR(100)
+	--------------------------------
+	, catatan 					TEXT DEFAULT '-'
+	, status 					INT DEFAULT 1
+	--------------------------------
+	, dibuatOleh 				INT
+	, dieditOleh 				INT
+	, waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP
+	, waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP
+	
+	, PRIMARY KEY (id)  
+);
+
 
 DROP TABLE msHistoryLayanan;
 CREATE TABLE msHistoryLayanan (
-	id 							INT IDENTITY(1,1) NOT NULL,
-	formType 			VARCHAR(100),
-	actionType 		VARCHAR(100),
-	actionDesc 		VARCHAR(1000),
-	createBy 			INT,
-	createTime 		DATETIME DEFAULT CURRENT_TIMESTAMP,
+	id 							INT IDENTITY(1,1) NOT NULL
+	, formType 					VARCHAR(100) 
+	, actionType 				VARCHAR(100)
+	, actionDesc 				VARCHAR(1000)
+	, createBy 					INT
+	, createTime 				DATETIME DEFAULT CURRENT_TIMESTAMP
 
-	PRIMARY KEY (id)
+	, PRIMARY KEY (id)
 );
 
 DROP TABLE tr_log_client_permintaan_hdr;

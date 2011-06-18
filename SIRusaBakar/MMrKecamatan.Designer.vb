@@ -53,10 +53,11 @@ Partial Class MMrKecamatan
         '
         'toolStrip
         '
+        Me.toolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
-        Me.toolStrip.Size = New System.Drawing.Size(505, 25)
+        Me.toolStrip.Size = New System.Drawing.Size(536, 25)
         Me.toolStrip.TabIndex = 51
         Me.toolStrip.Text = "ToolStrip1"
         '
@@ -154,7 +155,7 @@ Partial Class MMrKecamatan
         'cmbSearch
         '
         Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kode Diet", "Nama Diet"})
+        Me.cmbSearch.Items.AddRange(New Object() {"Kecamatan"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -189,51 +190,54 @@ Partial Class MMrKecamatan
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 48)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(9, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 13)
+        Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 82
         Me.Label2.Text = "Kecamatan"
         '
         'txtCatatanSebelumnya
         '
-        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(241, 148)
+        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(268, 136)
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
-        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
+        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 131)
         Me.txtCatatanSebelumnya.TabIndex = 81
         Me.txtCatatanSebelumnya.Text = ""
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(238, 132)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(265, 120)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(105, 13)
+        Me.Label5.Size = New System.Drawing.Size(131, 13)
         Me.Label5.TabIndex = 80
-        Me.Label5.Text = "Catatan Sebelumnya"
+        Me.Label5.Text = "Catatan Sebelumnya :"
         '
         'txtCatatan
         '
-        Me.txtCatatan.Location = New System.Drawing.Point(241, 45)
+        Me.txtCatatan.Location = New System.Drawing.Point(268, 51)
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(253, 77)
+        Me.txtCatatan.Size = New System.Drawing.Size(253, 55)
         Me.txtCatatan.TabIndex = 79
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(241, 29)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(265, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
+        Me.Label4.Size = New System.Drawing.Size(59, 13)
         Me.Label4.TabIndex = 78
-        Me.Label4.Text = "Catatan"
+        Me.Label4.Text = "Catatan :"
         '
         'txtKecamatan
         '
-        Me.txtKecamatan.Location = New System.Drawing.Point(72, 45)
+        Me.txtKecamatan.Location = New System.Drawing.Point(85, 45)
         Me.txtKecamatan.Name = "txtKecamatan"
-        Me.txtKecamatan.Size = New System.Drawing.Size(163, 20)
+        Me.txtKecamatan.Size = New System.Drawing.Size(157, 20)
         Me.txtKecamatan.TabIndex = 77
         '
         'DataGridView1
@@ -244,14 +248,15 @@ Partial Class MMrKecamatan
         Me.DataGridView1.Location = New System.Drawing.Point(12, 78)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(223, 183)
+        Me.DataGridView1.Size = New System.Drawing.Size(230, 189)
         Me.DataGridView1.TabIndex = 76
         '
         'MMrKecamatan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(505, 272)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(536, 286)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
@@ -260,8 +265,12 @@ Partial Class MMrKecamatan
         Me.Controls.Add(Me.txtKecamatan)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.toolStrip)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "MMrKecamatan"
-        Me.Text = "Master Kecamatan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Data Kecamatan"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

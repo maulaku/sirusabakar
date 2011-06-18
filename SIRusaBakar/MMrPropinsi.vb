@@ -26,7 +26,7 @@ Public Class MMrPropinsi
                     tny = MessageBox.Show("Mau Keluar dari Master Propinsi ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
-                    Else
+                    ElseIf tny = vbNo Then
                         Return MyBase.ProcessCmdKey(msg, keyData)
                     End If
                 End If
@@ -79,6 +79,7 @@ Public Class MMrPropinsi
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data Propinsi : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            txtPropinsi.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -95,7 +96,7 @@ Public Class MMrPropinsi
             Select Case dc.Name
                 Case "namaPropinsi"
                     dc.HeaderText = "Nama Propinsi"
-                    dc.Width = 100
+                    dc.Width = 170
             End Select
         Next
     End Sub
@@ -104,14 +105,16 @@ Public Class MMrPropinsi
     End Sub
     Private Sub MPropinsi_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
             tombolHidup()
             nonAktif()
             TampilDataGrid("select * from vwMsPropinsi")
             tampilData(0)
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            cmbSearch.SelectedIndex = 0
+
+            Me.txtSearch.TextBox.Select()
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,11 +132,11 @@ Public Class MMrPropinsi
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtPropinsi.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Nama Propinsi : " + txtPropinsi.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Propinsi : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmsPropinsi")
                 tampilData(0)
@@ -153,6 +156,11 @@ Public Class MMrPropinsi
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If txtPropinsi.Text = "" Then
+            MsgBox("Data Propinsi Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        End If
+
         kirimData()
         Select Case statusForm
             Case "NEW"
@@ -172,16 +180,16 @@ Public Class MMrPropinsi
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+                txtSearch.Focus()
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                txtSearch.Focus()
         End Select
     End Sub
 
@@ -278,6 +286,7 @@ Public Class MMrPropinsi
                     " '" & txtPropinsi.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
                     " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception

@@ -26,7 +26,7 @@ Public Class MMrPendidikan
                     tny = MessageBox.Show("Mau Keluar dari Master Pendidikan ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
-                    Else
+                    ElseIf tny = vbNo Then
                         Return MyBase.ProcessCmdKey(msg, keyData)
                     End If
                 End If
@@ -79,6 +79,7 @@ Public Class MMrPendidikan
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data Pendidikan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            txtPendidikan.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -95,7 +96,7 @@ Public Class MMrPendidikan
             Select Case dc.Name
                 Case "namaPendidikan"
                     dc.HeaderText = "Nama Pendidikan"
-                    dc.Width = 100
+                    dc.Width = 170
             End Select
         Next
     End Sub
@@ -104,14 +105,16 @@ Public Class MMrPendidikan
     End Sub
     Private Sub MPendidikan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
             tombolHidup()
             nonAktif()
             TampilDataGrid("select * from vwMsPendidikan")
             tampilData(0)
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            cmbSearch.SelectedIndex = 0
+
+            Me.txtSearch.TextBox.Select()
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,14 +132,17 @@ Public Class MMrPendidikan
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtPendidikan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Pendidikan : " + txtPendidikan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmsPendidikan")
                 tampilData(0)
+
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
             End If
         End If
     End Sub
@@ -153,17 +159,23 @@ Public Class MMrPendidikan
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If txtPendidikan.Text = "" Then
+            MsgBox("Data Pendidikan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        End If
+
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
         TampilDataGrid("select * from vwMsPendidikan")
         tampilData(0)
         tombolHidup()
         nonAktif()
+        txtSearch.Text = ""
         txtSearch.Focus()
         statusForm = ""
     End Sub
@@ -172,16 +184,18 @@ Public Class MMrPendidikan
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
         End Select
     End Sub
 
@@ -278,6 +292,7 @@ Public Class MMrPendidikan
                     " '" & txtPendidikan.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
                     " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception

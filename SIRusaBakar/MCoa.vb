@@ -19,7 +19,7 @@ Public Class MCoa
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Up) Or msg.WParam.ToInt32 = Convert.ToInt32(Keys.Down) Then
                 DataGridView1.Focus()
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Escape) Then
-                If statusForm = "new" Or statusForm = "edit" Then
+                If statusForm = "NEW" Or statusForm = "EDIT" Then
                     btnCancel.PerformClick()
                 Else
                     Dim tny As Integer
@@ -40,7 +40,7 @@ Public Class MCoa
         End Try
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
-    Sub tombolMati()
+    Private Sub tombolMati()
         btnNew.Enabled = False
         btnSave.Enabled = True
         btnDelete.Enabled = False
@@ -48,7 +48,7 @@ Public Class MCoa
         btnSearch.Enabled = False
         btnRefresh.Enabled = False
     End Sub
-    Sub tombolHidup()
+    Private Sub tombolHidup()
         btnNew.Enabled = True
         btnSave.Enabled = False
         btnDelete.Enabled = True
@@ -56,27 +56,27 @@ Public Class MCoa
         btnSearch.Enabled = True
         btnRefresh.Enabled = True
     End Sub
-    Sub aktif()
+    Private Sub aktif()
         txtKodeCOA.Enabled = True
         txtNamaCOA.Enabled = True
         txtTipeCoa.Enabled = True
         txtCatatan.Enabled = True
         DataGridView1.Enabled = False
     End Sub
-    Sub nonAktif()
+    Private Sub nonAktif()
         txtKodeCOA.Enabled = False
         txtNamaCOA.Enabled = False
         txtTipeCoa.Enabled = False
         txtCatatan.Enabled = False
         DataGridView1.Enabled = True
     End Sub
-    Sub TampilDataGrid(ByVal sql As String)
+    Private Sub TampilDataGrid(ByVal sql As String)
         DataGridView1.DataSource = getTabel(sql)
         DataGridView1.Columns("id").Visible = False
         DataGridView1.Columns("catatan").Visible = False
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
     End Sub
-    Sub tampilData(ByVal row As Integer)
+    Private Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data COA : Tidak Ada", MsgBoxStyle.Information, "Data COA")
             btnSearch.Enabled = False
@@ -91,7 +91,7 @@ Public Class MCoa
         End If
         formatGrid()
     End Sub
-    Sub formatGrid()
+    Private Sub formatGrid()
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
@@ -107,10 +107,25 @@ Public Class MCoa
             End Select
         Next
     End Sub
-    Sub kosong()
+    Private Sub kosong()
         txtKodeCOA.Text = ""
         txtNamaCOA.Text = ""
         txtTipeCoa.Text = ""
+    End Sub
+    Private Sub kirimData()
+        Try
+            PSQL = "EXEC spMsCoa" & _
+                    " '" & statusForm & "'," & _
+                    "  " & idForm & "," & _
+                    " '" & txtKodeCOA.Text & "'," & _
+                    " '" & txtNamaCOA.Text & "'," & _
+                    " '" & txtTipeCoa.Text & "'," & _
+                    " '" & txtCatatan.Text & "'," & _
+                    "  " & idUser & " "
+            execCmd(PSQL)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub MCoa_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -118,10 +133,7 @@ Public Class MCoa
             nonAktif()
             TampilDataGrid("select * from vwMsCoa")
             tampilData(0)
-
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            cmbSearch.SelectedIndex = 0
 
             Me.txtSearch.TextBox.Select()
         Catch ex As Exception
@@ -164,12 +176,14 @@ Public Class MCoa
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         kirimData()
+
         Select Case statusForm
             Case "NEW"
                 MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
                 MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
+
         TampilDataGrid("select * from vwMsCoa")
         tampilData(0)
         tombolHidup()
@@ -189,8 +203,8 @@ Public Class MCoa
                 tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                'Case Else
+                '    Me.Close()
         End Select
     End Sub
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
@@ -276,22 +290,5 @@ Public Class MCoa
             DataGridView1.CurrentCell = DataGridView1.Item(1, i - 1)
             tampilData(DataGridView1.CurrentRow.Index)
         End If
-    End Sub
-
-    Private Sub kirimData()
-        Try
-            PSQL = "EXEC spMsCoa" & _
-                    " '" & statusForm & "'," & _
-                    "  " & idForm & "," & _
-                    " '" & txtKodeCOA.Text & "'," & _
-                    " '" & txtNamaCOA.Text & "'," & _
-                    " '" & txtTipeCoa.Text & "'," & _
-                    " '" & txtCatatan.Text & "'," & _
-                    "  " & idUser & "," & _
-                    " '" & keterangan & "'"
-            execCmd(PSQL)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
     End Sub
 End Class

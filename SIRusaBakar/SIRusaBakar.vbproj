@@ -56,22 +56,28 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MMrPendidikan.Designer.vb">
+      <DependentUpon>MMrPendidikan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrPendidikan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrHubKel.Designer.vb">
       <DependentUpon>MMrHubKel.vb</DependentUpon>
     </Compile>
     <Compile Include="MMrHubKel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MMrKelurahan.Designer.vb">
-      <DependentUpon>MMrKelurahan.vb</DependentUpon>
+    <Compile Include="MMrInstalasi.Designer.vb">
+      <DependentUpon>MMrInstalasi.vb</DependentUpon>
     </Compile>
-    <Compile Include="MMrKelurahan.vb">
+    <Compile Include="MMrInstalasi.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MMrKecamatan.Designer.vb">
-      <DependentUpon>MMrKecamatan.vb</DependentUpon>
+    <Compile Include="MMrCaraPembayaran.Designer.vb">
+      <DependentUpon>MMrCaraPembayaran.vb</DependentUpon>
     </Compile>
-    <Compile Include="MMrKecamatan.vb">
+    <Compile Include="MMrCaraPembayaran.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MMrPekerjaan.Designer.vb">
@@ -86,28 +92,40 @@
     <Compile Include="MMrKabupaten.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MMrAgama.Designer.vb">
+      <DependentUpon>MMrAgama.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrAgama.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrPropinsi.Designer.vb">
       <DependentUpon>MMrPropinsi.vb</DependentUpon>
     </Compile>
     <Compile Include="MMrPropinsi.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MMrKota.Designer.vb">
+      <DependentUpon>MMrKota.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrKota.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MMrKelurahan.Designer.vb">
+      <DependentUpon>MMrKelurahan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrKelurahan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MMrKecamatan.Designer.vb">
+      <DependentUpon>MMrKecamatan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MMrKecamatan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TSQL.Designer.vb">
       <DependentUpon>TSQL.vb</DependentUpon>
     </Compile>
     <Compile Include="TSQL.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MMrPendidikan.Designer.vb">
-      <DependentUpon>MMrPendidikan.vb</DependentUpon>
-    </Compile>
-    <Compile Include="MMrPendidikan.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MMrAgama.Designer.vb">
-      <DependentUpon>MMrAgama.vb</DependentUpon>
-    </Compile>
-    <Compile Include="MMrAgama.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MGiziMakanan.Designer.vb">
@@ -258,9 +276,45 @@
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MMrHubKel.resx">
+    <EmbeddedResource Include="MMrPendidikan.resx">
+      <DependentUpon>MMrPendidikan.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrHubKel.af-ZA.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MMrHubKel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrHubKel.resx">
+      <DependentUpon>MMrHubKel.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrInstalasi.resx">
+      <DependentUpon>MMrInstalasi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrCaraPembayaran.resx">
+      <DependentUpon>MMrCaraPembayaran.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrPekerjaan.resx">
+      <DependentUpon>MMrPekerjaan.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrKabupaten.resx">
+      <DependentUpon>MMrKabupaten.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrAgama.resx">
+      <DependentUpon>MMrAgama.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrPropinsi.resx">
+      <DependentUpon>MMrPropinsi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMrKota.resx">
+      <DependentUpon>MMrKota.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MMrKecamatan.resx">
       <SubType>Designer</SubType>
@@ -270,29 +324,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>MMrKelurahan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MMrPekerjaan.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MMrPekerjaan.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MMrKabupaten.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MMrKabupaten.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MMrPropinsi.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MMrPropinsi.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TSQL.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TSQL.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MMrPendidikan.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MMrPendidikan.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MMrAgama.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MMrAgama.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MGiziMakanan.resx">
       <SubType>Designer</SubType>

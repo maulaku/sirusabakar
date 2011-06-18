@@ -78,7 +78,8 @@ Public Class MMrKelurahan
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
-            MsgBox("Data Kelurahan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            MsgBox("Data Kelurahan : Tidak Ada", MsgBoxStyle.Information, "Data Kelurahan")
+            txtKelurahan.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -95,7 +96,7 @@ Public Class MMrKelurahan
             Select Case dc.Name
                 Case "namaKelurahan"
                     dc.HeaderText = "Nama Kelurahan"
-                    dc.Width = 100
+                    dc.Width = 170
             End Select
         Next
     End Sub
@@ -109,9 +110,9 @@ Public Class MMrKelurahan
             TampilDataGrid("select * from vwMsKelurahan")
             tampilData(0)
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            Me.txtSearch.TextBox.Select()
+            cmbSearch.SelectedIndex = 0
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,11 +130,11 @@ Public Class MMrKelurahan
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKelurahan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Kelurahan : " + txtKelurahan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmsKelurahan")
                 tampilData(0)
@@ -156,9 +157,9 @@ Public Class MMrKelurahan
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
         TampilDataGrid("select * from vwMsKelurahan")
         tampilData(0)
@@ -172,16 +173,14 @@ Public Class MMrKelurahan
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
         End Select
     End Sub
 
@@ -210,7 +209,7 @@ Public Class MMrKelurahan
     Private Sub cmbSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbSearch.KeyPress
         e.Handled = True
     End Sub
-    Private Sub txtCatatanSebelumnya_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCatatanSebelumnya.KeyPress
+    Private Sub txtCatatanSebelumnya_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         e.Handled = True
     End Sub
 
@@ -278,6 +277,7 @@ Public Class MMrKelurahan
                     " '" & txtKelurahan.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
                     " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception

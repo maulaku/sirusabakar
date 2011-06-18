@@ -1,6 +1,21 @@
 
 Public Class MainMenu
+    'Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+    '    Try
 
+    '        If msg.WParam.ToInt32 = Convert.ToInt32(Keys.Escape) Then
+    '            'Dim tny As Integer
+    '            'tny = MessageBox.Show("Mau Keluar dari Main Menu ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+    '            'If tny = vbYes Then
+    '            Me.Dispose()
+    '        Else
+    '            Return MyBase.ProcessCmdKey(msg, keyData)
+    '        End If
+    '    Catch ex As Exception
+    '        Return False
+    '    End Try
+    '    Return MyBase.ProcessCmdKey(msg, keyData)
+    'End Function
     Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
         Me.LayoutMdi(MdiLayout.ArrangeIcons)
     End Sub
@@ -54,7 +69,9 @@ Public Class MainMenu
     End Sub
 
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Dim a As New LayMRDaftarPasien
+        a.Show()
+        a.MdiParent = Me
     End Sub
 
     Private Sub COAToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem1.Click
@@ -135,6 +152,24 @@ Public Class MainMenu
 
     Private Sub HubunganKelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HubunganKelToolStripMenuItem.Click
         Dim a As New MMrHubKel
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub CaraPembayaranToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CaraPembayaranToolStripMenuItem.Click
+        Dim a As New MMrCaraPembayaran
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub InstalasiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InstalasiToolStripMenuItem.Click
+        Dim a As New MMrInstalasi
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub KotaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KotaToolStripMenuItem.Click
+        Dim a As New MMrKota
         a.Show()
         a.MdiParent = Me
     End Sub

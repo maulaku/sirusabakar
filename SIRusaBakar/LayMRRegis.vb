@@ -2,6 +2,7 @@ Public Class LayMRRegis
     Dim dttable As New DataTable
     Dim status As Integer = 0
     Dim dataCari As String
+    Dim idLayMrDaftar As Integer
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Try
             If msg.WParam.ToInt32 = Convert.ToInt32(Keys.F2) Then
@@ -40,129 +41,297 @@ Public Class LayMRRegis
         End Try
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
-    Sub tombolMati()
+    Private Sub tombolMati()
         btnNew.Enabled = False
         btnSave.Enabled = True
         btnDelete.Enabled = False
         btnEdit.Enabled = False
-
         btnSearch.Enabled = False
         btnRefresh.Enabled = False
     End Sub
-    Sub tombolHidup()
+    Private Sub tombolHidup()
         btnNew.Enabled = True
         btnSave.Enabled = False
         btnDelete.Enabled = True
         btnEdit.Enabled = True
-
         btnSearch.Enabled = True
         btnRefresh.Enabled = True
     End Sub
-    Sub aktif()
-        'txtKodeATK.Enabled = True
-        'txtNamaATK.Enabled = True
-        'txtSatuan.Enabled = True
-        'txtMinimum.Enabled = True
-        'txtCatatan.Enabled = True
-        'cmbGroupATK.Enabled = True
-        'cmbJenisATK.Enabled = True
+    Private Sub aktif()
+        txtNoRegis.Enabled = False
+        txtNoMR.Enabled = True
+        txtNamaPasien.Enabled = True
+        cmbAsalPasien.Enabled = True
 
-        'DataGridView1.Enabled = False
+        cmbTujuanBerobat.Enabled = True
+        txtNamaPerujuk.Enabled = True
+        txtNamaDokter.Enabled = True
+        cmbCaraPembayaran.Enabled = True
+        txtNamaAsuransi.Enabled = True
+        txtNamaPerusahaan.Enabled = True
+
+        txtNoKartu.Enabled = True
+        txtNoPolis.Enabled = True
+        DataGridView1.Enabled = False
     End Sub
-    Sub nonAktif()
-        'txtKodeATK.Enabled = False
-        'txtNamaATK.Enabled = False
-        'txtSatuan.Enabled = False
-        'txtMinimum.Enabled = False
-        'txtCatatan.Enabled = False
-        'cmbGroupATK.Enabled = False
-        'cmbJenisATK.Enabled = False
+    Private Sub nonAktif()
+        txtNoRegis.Enabled = True
+        txtNoMR.Enabled = False
+        txtNamaPasien.Enabled = False
+        cmbAsalPasien.Enabled = False
 
-        'DataGridView1.Enabled = True
+        cmbTujuanBerobat.Enabled = False
+        txtNamaPerujuk.Enabled = False
+        txtNamaDokter.Enabled = False
+        cmbCaraPembayaran.Enabled = False
+        txtNamaAsuransi.Enabled = False
+        txtNamaPerusahaan.Enabled = False
+
+        txtNoKartu.Enabled = False
+        txtNoPolis.Enabled = False
+        DataGridView1.Enabled = True
     End Sub
-    Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT id,kode_inv_atk,nama_inv_atk,jenis_inv_atk,group_inv_atk,satuan,minimum,note" & _
-               " FROM ms_inv_atk" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
+    Private Sub tampilDataGrid(ByVal sql As String)
+        DataGridView1.DataSource = getTabel(sql)
+        For i As Integer = 0 To 14
+            DataGridView1.Columns(i).Visible = False
+        Next
 
-        dttable.Clear()
-        'dtadapter = New SqlClient.SqlDataAdapter(PSQL, koneksi)
-        dtadapter.Fill(dttable)
-
-
-        'DataGridView1.DataSource = dttable
-
-        'DataGridView1.Columns(0).Visible = False
-        'DataGridView1.Columns(7).Visible = False
-        'DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
-
-        dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
+        DataGridView1.Columns(3).Visible = True 'Tanggal Regis
+        DataGridView1.Columns(4).Visible = True 'No. Regis
+        DataGridView1.Columns(15).Visible = True 'Nama Pasien
+        DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
     End Sub
-    Sub tampilData()
-        If dttable.Rows.Count = 0 Then
-            MsgBox("Data ATK : Tidak Ada", MsgBoxStyle.Information, "Data ATK")
-
+    Private Sub tampilData(ByVal row As Integer)
+        If DataGridView1.RowCount = 0 Then
+            MsgBox("Data COA : Tidak Ada", MsgBoxStyle.Information, "Data COA")
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
-            'txtCatatan.Text = ""
-            'Dim i As Integer
-            'If status = 0 Then
-            '    i = 0
-            'Else
-            '    i = DataGridView1.CurrentRow.Index
-            'End If
+            idForm = DataGridView1.Item(0, row).Value
+            idLayMRDaftar = DataGridView1.Item(1, row).Value
+            txtNoMR.Text = DataGridView1.Item(2, row).Value
+            txtNamaPasien.Text = DataGridView1.Item(15, row).Value
+            cmbTglRegis.Text = DataGridView1.Item(3, row).Value
+            txtNoRegis.Text = DataGridView1.Item(4, row).Value
+            cmbAsalPasien.Text = DataGridView1.Item(5, row).Value
 
-            'idForm = DataGridView1.Item(0, i).Value
-            'txtKodeATK.Text = DataGridView1.Item(1, i).Value
-            'txtNamaATK.Text = DataGridView1.Item(2, i).Value
-            'cmbJenisATK.Text = DataGridView1.Item(3, i).Value
-            'cmbGroupATK.Text = DataGridView1.Item(4, i).Value
-            'txtSatuan.Text = DataGridView1.Item(5, i).Value
-            'txtMinimum.Text = DataGridView1.Item(6, i).Value
-            'txtCatatanSebelumnya.Text = (DataGridView1.Item(7, i).Value).Replace(ControlChars.Lf, vbCrLf)
+            cmbTujuanBerobat.Text = DataGridView1.Item(6, row).Value
+            txtNamaPerujuk.Text = DataGridView1.Item(7, row).Value
+            txtNamaDokter.Text = DataGridView1.Item(8, row).Value
+            cmbCaraPembayaran.Text = DataGridView1.Item(9, row).Value
+            txtNamaAsuransi.Text = DataGridView1.Item(10, row).Value
+            txtNamaPerusahaan.Text = DataGridView1.Item(11, row).Value
 
+            txtNoKartu.Text = DataGridView1.Item(12, row).Value
+            txtNoPolis.Text = DataGridView1.Item(13, row).Value
+            txtCatatan.Text = DataGridView1.Item(14, row).Value
+            txtCatatanSebelumnya.Text = (DataGridView1.Item(4, row).Value).Replace(ControlChars.Lf, vbCrLf)
         End If
         formatGrid()
     End Sub
-    Sub formatGrid()
-        'Dim dc As DataGridViewColumn
-        'For Each dc In DataGridView1.Columns
-        '    Select Case dc.Name
-        '        Case "kode_inv_atk"
-        '            dc.HeaderText = "Kode ATK"
-        '            dc.Width = 100
-        '        Case "nama_inv_atk"
-        '            dc.HeaderText = "Nama ATK"
-        '            dc.Width = 100
-        '        Case "group_inv_atk"
-        '            dc.HeaderText = "Group ATK"
-        '            dc.Width = 100
-        '        Case "jenis_inv_atk"
-        '            dc.HeaderText = "Jenis ATK"
-        '            dc.Width = 100
-        '        Case "satuan"
-        '            dc.HeaderText = "Satuan"
-        '            dc.Width = 100
-        '        Case "minimum"
-        '            dc.HeaderText = "Minimum"
-        '            dc.Width = 100
-        '    End Select
-        'Next
+    Private Sub formatGrid()
+        Dim dc As DataGridViewColumn
+        For Each dc In DataGridView1.Columns
+            Select Case dc.Name
+                Case "kodeCoa"
+                    dc.HeaderText = "Kode COA"
+                    dc.Width = 100
+                Case "namaCoa"
+                    dc.HeaderText = "Nama COA"
+                    dc.Width = 100
+                Case "tipeCoa"
+                    dc.HeaderText = "Tipe COA"
+                    dc.Width = 100
+            End Select
+        Next
     End Sub
-    Sub kosong()
-        'txtKodeATK.Text = ""
-        'txtNamaATK.Text = ""
-        'txtSatuan.Text = ""
-        'txtMinimum.Text = ""
+    Private Sub kosong()
+        txtNoMR.Text = ""
+        txtNamaPasien.Text = ""
+        txtNamaPerujuk.Text = ""
+        txtNamaDokter.Text = ""
+        txtNamaAsuransi.Text = ""
+        txtNamaPerusahaan.Text = ""
+        txtNoKartu.Text = ""
+        txtNoPolis.Text = ""
+        txtCatatan.Text = ""
     End Sub
     Private Sub LayMRRegis_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
+            tombolHidup()
+            nonAktif()
+            TampilDataGrid("select * from vwTrLayMRRegis")
+            tampilData(0)
+            cmbSearch.SelectedIndex = 0
 
+            Me.txtSearch.TextBox.Select()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
+        statusForm = "NEW"
+        tombolMati()
+        kosong()
+        aktif()
+        txtNoMR.Focus()
+        txtCatatanSebelumnya.Text = ""
+    End Sub
+
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        If txtNoRegis.Text = "" Then
+            MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
+        Else
+            Dim tanya As Integer
+            tanya = MessageBox.Show("Apakah kamu akan menghapus No. Registrasi : " + txtNoRegis.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If tanya = vbYes Then
+                statusForm = "DEL"
+
+                MessageBox.Show("Sukses Delete Data dengan No. Registrasi : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                TampilDataGrid("select * from vwTrLayMRRegis")
+                tampilData(0)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+        If txtNoRegis.Text = "" Then
+            MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
+        Else
+            statusForm = "EDIT"
+            tombolMati()
+            aktif()
+            txtNoRegis.Focus()
+        End If
+    End Sub
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+
+
+        Select Case statusForm
+            Case "NEW"
+                MessageBox.Show("Sukses Input Data BARU Regis Pasien dengan No. Regis : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Case "EDIT"
+                MessageBox.Show("Sukses Edit Data LAMA Regis Pasien dengan No. Regis : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Select
+
+        TampilDataGrid("SELECT * FROM vwTrLayMRRegis")
+        tampilData(0)
+        tombolHidup()
+        nonAktif()
+        txtSearch.Focus()
+        statusForm = ""
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Select Case statusForm
+            Case "NEW"
+                tombolHidup()
+                tampilData(DataGridView1.CurrentRow.Index)
+                nonAktif()
+                statusForm = ""
+            Case "EDIT"
+                tombolHidup()
+                tampilData(DataGridView1.CurrentRow.Index)
+                nonAktif()
+                statusForm = ""
+        End Select
+    End Sub
+
+    Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        If cmbSearch.SelectedIndex = 0 Then
+            dataCari = "kodeCoa"
+        ElseIf cmbSearch.SelectedIndex = 1 Then
+            dataCari = "namaCoa"
+        Else
+            dataCari = "tipeCoa"
+        End If
+
+        If txtSearch.Text = "" Then
+            MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            TampilDataGrid("SELECT * FROM vwTrLayMRRegis WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
+
+            If DataGridView1.RowCount = 0 Then
+                MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                btnRefresh.PerformClick()
+            Else
+                tampilData(0)
+            End If
+        End If
+    End Sub
+
+    Private Sub cmbSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbSearch.Click
+
+    End Sub
+
+    Private Sub cmbSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbSearch.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub txtCatatanSebelumnya_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCatatanSebelumnya.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
+        TampilDataGrid("select * from vwTrLayMRRegis")
+        tampilData(0)
+        txtSearch.Text = ""
+        txtSearch.Focus()
+    End Sub
+    Private Sub txtSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If e.KeyChar = ChrW(13) Then
+            btnSearch.PerformClick()
+        End If
+    End Sub
+    Private Sub DataGridView1_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyUp
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub DataGridView1_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        btnEdit.PerformClick()
+    End Sub
+
+    Private Sub btnFirst_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFirst.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, 0)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLast.Click
+        DataGridView1.CurrentCell = DataGridView1.Item(1, DataGridView1.RowCount - 1)
+        tampilData(DataGridView1.CurrentRow.Index)
+    End Sub
+
+    Private Sub btnPrev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrev.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = 1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i - 1 >= 0 Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i - 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
+    End Sub
+
+    Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
+        Dim i As Integer
+        If DataGridView1.CurrentRow Is Nothing Then
+            i = -1
+        Else
+            i = DataGridView1.CurrentRow.Index
+        End If
+        If i + 1 < DataGridView1.RowCount Then
+            DataGridView1.CurrentCell = DataGridView1.Item(1, i + 1)
+            tampilData(DataGridView1.CurrentRow.Index)
+        End If
     End Sub
 End Class

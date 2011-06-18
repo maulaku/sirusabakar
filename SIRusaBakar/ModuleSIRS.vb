@@ -10,8 +10,8 @@ Module ModuleSIRS
     Public posisiForm, statusForm As String
     Sub bukaServer()
         Try
-            con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
-            'con.ConnectionString = "DSN=RSBK"
+            'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
+            con.ConnectionString = "DSN=RSBK"
             con.Open()
             idUser = 1
         Catch salah As Exception
@@ -42,6 +42,7 @@ Module ModuleSIRS
             cmd.Connection = con
             cmd.CommandText = sql
             cmd.ExecuteNonQuery()
+            'dtadapter.SelectCommand.Parameters("@outVar").Direction = ParameterDirection.Output
             Call matiServer()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "SQL Command Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -20,37 +20,37 @@ Partial Class LayMRRegis
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LayMRRegis))
-        Me.TextBox7 = New System.Windows.Forms.TextBox
+        Me.txtNamaAsuransi = New System.Windows.Forms.TextBox
         Me.Label19 = New System.Windows.Forms.Label
         Me.Label18 = New System.Windows.Forms.Label
         Me.Label17 = New System.Windows.Forms.Label
-        Me.ComboBox11 = New System.Windows.Forms.ComboBox
+        Me.cmbTujuanBerobat = New System.Windows.Forms.ComboBox
         Me.Label15 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.txtNamaPerusahaan = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.ComboBox10 = New System.Windows.Forms.ComboBox
-        Me.ComboBox9 = New System.Windows.Forms.ComboBox
-        Me.TextBox4 = New System.Windows.Forms.TextBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.cmbCaraPembayaran = New System.Windows.Forms.ComboBox
+        Me.cmbAsalPasien = New System.Windows.Forms.ComboBox
+        Me.txtNamaPerujuk = New System.Windows.Forms.TextBox
+        Me.txtNoMR = New System.Windows.Forms.TextBox
         Me.Label13 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
         Me.Label7 = New System.Windows.Forms.Label
         Me.Button1 = New System.Windows.Forms.Button
-        Me.TextBox5 = New System.Windows.Forms.TextBox
+        Me.txtNamaDokter = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.Tgl_Regist = New System.Windows.Forms.DateTimePicker
-        Me.No_Regist = New System.Windows.Forms.TextBox
+        Me.txtNamaPasien = New System.Windows.Forms.TextBox
+        Me.cmbTglRegis = New System.Windows.Forms.DateTimePicker
+        Me.txtNoRegis = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.TextBox10 = New System.Windows.Forms.TextBox
+        Me.txtNoPolis = New System.Windows.Forms.TextBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.TextBox8 = New System.Windows.Forms.TextBox
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox
+        Me.txtNoKartu = New System.Windows.Forms.TextBox
+        Me.cmbStatus = New System.Windows.Forms.ComboBox
         Me.Label23 = New System.Windows.Forms.Label
-        Me.TextBox9 = New System.Windows.Forms.TextBox
+        Me.txtPetugas = New System.Windows.Forms.TextBox
         Me.Label16 = New System.Windows.Forms.Label
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.btnNew = New System.Windows.Forms.ToolStripButton
@@ -59,10 +59,10 @@ Partial Class LayMRRegis
         Me.btnDelete = New System.Windows.Forms.ToolStripButton
         Me.btnRefresh = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton
+        Me.btnFirst = New System.Windows.Forms.ToolStripButton
+        Me.btnPrev = New System.Windows.Forms.ToolStripButton
+        Me.btnNext = New System.Windows.Forms.ToolStripButton
+        Me.btnLast = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
         Me.cmbSearch = New System.Windows.Forms.ToolStripComboBox
         Me.txtSearch = New System.Windows.Forms.ToolStripTextBox
@@ -70,17 +70,21 @@ Partial Class LayMRRegis
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
         Me.btnCancel = New System.Windows.Forms.ToolStripButton
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.txtCatatanSebelumnya = New System.Windows.Forms.RichTextBox
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.txtCatatan = New System.Windows.Forms.TextBox
+        Me.Label6 = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox7
+        'txtNamaAsuransi
         '
-        Me.TextBox7.Location = New System.Drawing.Point(124, 185)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(168, 20)
-        Me.TextBox7.TabIndex = 15
+        Me.txtNamaAsuransi.Location = New System.Drawing.Point(124, 185)
+        Me.txtNamaAsuransi.Name = "txtNamaAsuransi"
+        Me.txtNamaAsuransi.Size = New System.Drawing.Size(168, 20)
+        Me.txtNamaAsuransi.TabIndex = 15
         '
         'Label19
         '
@@ -109,14 +113,14 @@ Partial Class LayMRRegis
         Me.Label17.TabIndex = 12
         Me.Label17.Text = "No Polis"
         '
-        'ComboBox11
+        'cmbTujuanBerobat
         '
-        Me.ComboBox11.FormattingEnabled = True
-        Me.ComboBox11.Items.AddRange(New Object() {"Poliklinik", "Fisioterapi", "Laboratorium", "Rontgen", "Hemodialisa", "UGD"})
-        Me.ComboBox11.Location = New System.Drawing.Point(363, 88)
-        Me.ComboBox11.Name = "ComboBox11"
-        Me.ComboBox11.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox11.TabIndex = 11
+        Me.cmbTujuanBerobat.FormattingEnabled = True
+        Me.cmbTujuanBerobat.Items.AddRange(New Object() {"Poliklinik", "Fisioterapi", "Laboratorium", "Rontgen", "Hemodialisa", "UGD"})
+        Me.cmbTujuanBerobat.Location = New System.Drawing.Point(363, 88)
+        Me.cmbTujuanBerobat.Name = "cmbTujuanBerobat"
+        Me.cmbTujuanBerobat.Size = New System.Drawing.Size(100, 21)
+        Me.cmbTujuanBerobat.TabIndex = 11
         '
         'Label15
         '
@@ -127,12 +131,12 @@ Partial Class LayMRRegis
         Me.Label15.TabIndex = 10
         Me.Label15.Text = "Tujuan Berobat"
         '
-        'TextBox6
+        'txtNamaPerusahaan
         '
-        Me.TextBox6.Location = New System.Drawing.Point(124, 211)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(168, 20)
-        Me.TextBox6.TabIndex = 9
+        Me.txtNamaPerusahaan.Location = New System.Drawing.Point(124, 211)
+        Me.txtNamaPerusahaan.Name = "txtNamaPerusahaan"
+        Me.txtNamaPerusahaan.Size = New System.Drawing.Size(168, 20)
+        Me.txtNamaPerusahaan.TabIndex = 9
         '
         'Label14
         '
@@ -143,37 +147,37 @@ Partial Class LayMRRegis
         Me.Label14.TabIndex = 8
         Me.Label14.Text = "Nama Perusahaan"
         '
-        'ComboBox10
+        'cmbCaraPembayaran
         '
-        Me.ComboBox10.FormattingEnabled = True
-        Me.ComboBox10.Items.AddRange(New Object() {"Biasa", "Asuransi", "Perusahaan"})
-        Me.ComboBox10.Location = New System.Drawing.Point(124, 158)
-        Me.ComboBox10.Name = "ComboBox10"
-        Me.ComboBox10.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox10.TabIndex = 7
+        Me.cmbCaraPembayaran.FormattingEnabled = True
+        Me.cmbCaraPembayaran.Items.AddRange(New Object() {"Biasa", "Asuransi", "Perusahaan"})
+        Me.cmbCaraPembayaran.Location = New System.Drawing.Point(124, 158)
+        Me.cmbCaraPembayaran.Name = "cmbCaraPembayaran"
+        Me.cmbCaraPembayaran.Size = New System.Drawing.Size(100, 21)
+        Me.cmbCaraPembayaran.TabIndex = 7
         '
-        'ComboBox9
+        'cmbAsalPasien
         '
-        Me.ComboBox9.FormattingEnabled = True
-        Me.ComboBox9.Items.AddRange(New Object() {"Umum", "Rujukan"})
-        Me.ComboBox9.Location = New System.Drawing.Point(124, 88)
-        Me.ComboBox9.Name = "ComboBox9"
-        Me.ComboBox9.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox9.TabIndex = 6
+        Me.cmbAsalPasien.FormattingEnabled = True
+        Me.cmbAsalPasien.Items.AddRange(New Object() {"Umum", "Rujukan"})
+        Me.cmbAsalPasien.Location = New System.Drawing.Point(124, 88)
+        Me.cmbAsalPasien.Name = "cmbAsalPasien"
+        Me.cmbAsalPasien.Size = New System.Drawing.Size(100, 21)
+        Me.cmbAsalPasien.TabIndex = 6
         '
-        'TextBox4
+        'txtNamaPerujuk
         '
-        Me.TextBox4.Location = New System.Drawing.Point(124, 115)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(128, 20)
-        Me.TextBox4.TabIndex = 5
+        Me.txtNamaPerujuk.Location = New System.Drawing.Point(124, 115)
+        Me.txtNamaPerujuk.Name = "txtNamaPerujuk"
+        Me.txtNamaPerujuk.Size = New System.Drawing.Size(128, 20)
+        Me.txtNamaPerujuk.TabIndex = 5
         '
-        'TextBox3
+        'txtNoMR
         '
-        Me.TextBox3.Location = New System.Drawing.Point(124, 19)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox3.TabIndex = 4
+        Me.txtNoMR.Location = New System.Drawing.Point(124, 19)
+        Me.txtNoMR.Name = "txtNoMR"
+        Me.txtNoMR.Size = New System.Drawing.Size(100, 20)
+        Me.txtNoMR.TabIndex = 4
         '
         'Label13
         '
@@ -220,12 +224,12 @@ Partial Class LayMRRegis
         Me.Button1.Text = "View MR"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'TextBox5
+        'txtNamaDokter
         '
-        Me.TextBox5.Location = New System.Drawing.Point(363, 115)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox5.TabIndex = 21
+        Me.txtNamaDokter.Location = New System.Drawing.Point(363, 115)
+        Me.txtNamaDokter.Name = "txtNamaDokter"
+        Me.txtNamaDokter.Size = New System.Drawing.Size(100, 20)
+        Me.txtNamaDokter.TabIndex = 21
         '
         'Label4
         '
@@ -236,42 +240,47 @@ Partial Class LayMRRegis
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Nama Dokter"
         '
-        'TextBox2
+        'txtNamaPasien
         '
-        Me.TextBox2.Location = New System.Drawing.Point(124, 45)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(204, 20)
-        Me.TextBox2.TabIndex = 19
+        Me.txtNamaPasien.Location = New System.Drawing.Point(124, 45)
+        Me.txtNamaPasien.Name = "txtNamaPasien"
+        Me.txtNamaPasien.Size = New System.Drawing.Size(204, 20)
+        Me.txtNamaPasien.TabIndex = 19
         '
-        'Tgl_Regist
+        'cmbTglRegis
         '
-        Me.Tgl_Regist.Location = New System.Drawing.Point(106, 71)
-        Me.Tgl_Regist.Name = "Tgl_Regist"
-        Me.Tgl_Regist.Size = New System.Drawing.Size(189, 20)
-        Me.Tgl_Regist.TabIndex = 31
+        Me.cmbTglRegis.Location = New System.Drawing.Point(112, 71)
+        Me.cmbTglRegis.Name = "cmbTglRegis"
+        Me.cmbTglRegis.Size = New System.Drawing.Size(183, 20)
+        Me.cmbTglRegis.TabIndex = 31
         '
-        'No_Regist
+        'txtNoRegis
         '
-        Me.No_Regist.Location = New System.Drawing.Point(106, 45)
-        Me.No_Regist.Name = "No_Regist"
-        Me.No_Regist.Size = New System.Drawing.Size(100, 20)
-        Me.No_Regist.TabIndex = 30
+        Me.txtNoRegis.Location = New System.Drawing.Point(112, 45)
+        Me.txtNoRegis.Name = "txtNoRegis"
+        Me.txtNoRegis.Size = New System.Drawing.Size(183, 20)
+        Me.txtNoRegis.TabIndex = 30
         '
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(21, 75)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(71, 13)
+        Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 29
         Me.Label2.Text = "Tgl Registrasi"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Red
         Me.Label1.Location = New System.Drawing.Point(21, 48)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 13)
+        Me.Label1.Size = New System.Drawing.Size(83, 13)
         Me.Label1.TabIndex = 28
         Me.Label1.Text = "No Registrasi"
         '
@@ -284,34 +293,35 @@ Partial Class LayMRRegis
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Nama Pasien"
         '
-        'TextBox10
+        'txtNoPolis
         '
-        Me.TextBox10.Location = New System.Drawing.Point(124, 263)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(118, 20)
-        Me.TextBox10.TabIndex = 17
+        Me.txtNoPolis.Location = New System.Drawing.Point(124, 263)
+        Me.txtNoPolis.Name = "txtNoPolis"
+        Me.txtNoPolis.Size = New System.Drawing.Size(118, 20)
+        Me.txtNoPolis.TabIndex = 17
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
+        Me.GroupBox1.Controls.Add(Me.txtNamaDokter)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.txtNamaPasien)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.TextBox10)
-        Me.GroupBox1.Controls.Add(Me.TextBox8)
-        Me.GroupBox1.Controls.Add(Me.TextBox7)
+        Me.GroupBox1.Controls.Add(Me.txtNoPolis)
+        Me.GroupBox1.Controls.Add(Me.txtNoKartu)
+        Me.GroupBox1.Controls.Add(Me.txtNamaAsuransi)
         Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.Label18)
         Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.ComboBox11)
+        Me.GroupBox1.Controls.Add(Me.cmbTujuanBerobat)
         Me.GroupBox1.Controls.Add(Me.Label15)
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
+        Me.GroupBox1.Controls.Add(Me.txtNamaPerusahaan)
         Me.GroupBox1.Controls.Add(Me.Label14)
-        Me.GroupBox1.Controls.Add(Me.ComboBox10)
-        Me.GroupBox1.Controls.Add(Me.ComboBox9)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.cmbCaraPembayaran)
+        Me.GroupBox1.Controls.Add(Me.cmbAsalPasien)
+        Me.GroupBox1.Controls.Add(Me.txtNamaPerujuk)
+        Me.GroupBox1.Controls.Add(Me.txtNoMR)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.Label8)
@@ -323,49 +333,53 @@ Partial Class LayMRRegis
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Registrasi"
         '
-        'TextBox8
+        'txtNoKartu
         '
-        Me.TextBox8.Location = New System.Drawing.Point(124, 237)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(168, 20)
-        Me.TextBox8.TabIndex = 16
+        Me.txtNoKartu.Location = New System.Drawing.Point(124, 237)
+        Me.txtNoKartu.Name = "txtNoKartu"
+        Me.txtNoKartu.Size = New System.Drawing.Size(168, 20)
+        Me.txtNoKartu.TabIndex = 16
         '
-        'ComboBox7
+        'cmbStatus
         '
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Location = New System.Drawing.Point(402, 45)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBox7.TabIndex = 35
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(402, 45)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(100, 21)
+        Me.cmbStatus.TabIndex = 35
         '
         'Label23
         '
         Me.Label23.AutoSize = True
+        Me.Label23.BackColor = System.Drawing.Color.Transparent
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.Location = New System.Drawing.Point(342, 48)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(37, 13)
+        Me.Label23.Size = New System.Drawing.Size(43, 13)
         Me.Label23.TabIndex = 34
         Me.Label23.Text = "Status"
         '
-        'TextBox9
+        'txtPetugas
         '
-        Me.TextBox9.Location = New System.Drawing.Point(402, 72)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox9.TabIndex = 33
+        Me.txtPetugas.Location = New System.Drawing.Point(402, 72)
+        Me.txtPetugas.Name = "txtPetugas"
+        Me.txtPetugas.Size = New System.Drawing.Size(100, 20)
+        Me.txtPetugas.TabIndex = 33
         '
         'Label16
         '
         Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.Transparent
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(342, 75)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(46, 13)
+        Me.Label16.Size = New System.Drawing.Size(53, 13)
         Me.Label16.TabIndex = 32
         Me.Label16.Text = "Petugas"
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripButton7, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(926, 25)
@@ -422,41 +436,41 @@ Partial Class LayMRRegis
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripButton4
+        'btnFirst
         '
-        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton4.Text = "First"
+        Me.btnFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnFirst.Image = CType(resources.GetObject("btnFirst.Image"), System.Drawing.Image)
+        Me.btnFirst.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnFirst.Name = "btnFirst"
+        Me.btnFirst.Size = New System.Drawing.Size(23, 22)
+        Me.btnFirst.Text = "First"
         '
-        'ToolStripButton5
+        'btnPrev
         '
-        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton5.Text = "Prev"
+        Me.btnPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnPrev.Image = CType(resources.GetObject("btnPrev.Image"), System.Drawing.Image)
+        Me.btnPrev.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPrev.Name = "btnPrev"
+        Me.btnPrev.Size = New System.Drawing.Size(23, 22)
+        Me.btnPrev.Text = "Prev"
         '
-        'ToolStripButton6
+        'btnNext
         '
-        Me.ToolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton6.Image = CType(resources.GetObject("ToolStripButton6.Image"), System.Drawing.Image)
-        Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton6.Text = "Next"
+        Me.btnNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnNext.Image = CType(resources.GetObject("btnNext.Image"), System.Drawing.Image)
+        Me.btnNext.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(23, 22)
+        Me.btnNext.Text = "Next"
         '
-        'ToolStripButton7
+        'btnLast
         '
-        Me.ToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton7.Image = CType(resources.GetObject("ToolStripButton7.Image"), System.Drawing.Image)
-        Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton7.Name = "ToolStripButton7"
-        Me.ToolStripButton7.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton7.Text = "Last"
+        Me.btnLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnLast.Image = CType(resources.GetObject("btnLast.Image"), System.Drawing.Image)
+        Me.btnLast.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnLast.Name = "btnLast"
+        Me.btnLast.Size = New System.Drawing.Size(23, 22)
+        Me.btnLast.Text = "Last"
         '
         'ToolStripSeparator2
         '
@@ -505,21 +519,62 @@ Partial Class LayMRRegis
         Me.DataGridView1.Size = New System.Drawing.Size(385, 351)
         Me.DataGridView1.TabIndex = 93
         '
+        'txtCatatanSebelumnya
+        '
+        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(529, 428)
+        Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
+        Me.txtCatatanSebelumnya.TabIndex = 101
+        Me.txtCatatanSebelumnya.Text = ""
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Location = New System.Drawing.Point(526, 412)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(105, 13)
+        Me.Label5.TabIndex = 100
+        Me.Label5.Text = "Catatan Sebelumnya"
+        '
+        'txtCatatan
+        '
+        Me.txtCatatan.Location = New System.Drawing.Point(258, 428)
+        Me.txtCatatan.Multiline = True
+        Me.txtCatatan.Name = "txtCatatan"
+        Me.txtCatatan.Size = New System.Drawing.Size(253, 113)
+        Me.txtCatatan.TabIndex = 99
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Location = New System.Drawing.Point(255, 412)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(44, 13)
+        Me.Label6.TabIndex = 98
+        Me.Label6.Text = "Catatan"
+        '
         'LayMRRegis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(926, 410)
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.ClientSize = New System.Drawing.Size(926, 553)
+        Me.Controls.Add(Me.txtCatatanSebelumnya)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtCatatan)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.Tgl_Regist)
-        Me.Controls.Add(Me.No_Regist)
+        Me.Controls.Add(Me.cmbTglRegis)
+        Me.Controls.Add(Me.txtNoRegis)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.ComboBox7)
+        Me.Controls.Add(Me.cmbStatus)
         Me.Controls.Add(Me.Label23)
-        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.txtPetugas)
         Me.Controls.Add(Me.Label16)
         Me.Name = "LayMRRegis"
         Me.Text = "Layanan Registrasi Pasien (Medical Record)"
@@ -532,37 +587,37 @@ Partial Class LayMRRegis
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNamaAsuransi As System.Windows.Forms.TextBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox11 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbTujuanBerobat As System.Windows.Forms.ComboBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNamaPerusahaan As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox10 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox9 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents cmbCaraPembayaran As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbAsalPasien As System.Windows.Forms.ComboBox
+    Friend WithEvents txtNamaPerujuk As System.Windows.Forms.TextBox
+    Friend WithEvents txtNoMR As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNamaDokter As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Tgl_Regist As System.Windows.Forms.DateTimePicker
-    Friend WithEvents No_Regist As System.Windows.Forms.TextBox
+    Friend WithEvents txtNamaPasien As System.Windows.Forms.TextBox
+    Friend WithEvents cmbTglRegis As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtNoRegis As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNoPolis As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox7 As System.Windows.Forms.ComboBox
+    Friend WithEvents txtNoKartu As System.Windows.Forms.TextBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
     Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents txtPetugas As System.Windows.Forms.TextBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
@@ -571,10 +626,10 @@ Partial Class LayMRRegis
     Friend WithEvents btnDelete As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnRefresh As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton7 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnFirst As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnPrev As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnNext As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnLast As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmbSearch As System.Windows.Forms.ToolStripComboBox
     Friend WithEvents txtSearch As System.Windows.Forms.ToolStripTextBox
@@ -582,4 +637,8 @@ Partial Class LayMRRegis
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnCancel As System.Windows.Forms.ToolStripButton
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents txtCatatanSebelumnya As System.Windows.Forms.RichTextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

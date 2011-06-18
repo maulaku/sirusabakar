@@ -200,8 +200,8 @@ GO
 
 --#######################################################################--
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanTarifAmbulance') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION fnAmbilCatatanTarifAmbulance
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanTarifAmbulans') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanTarifAmbulans
 GO
 ----------SCALAR VALUED FUNCTION----------
 SET ANSI_NULLS ON
@@ -209,14 +209,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION fnAmbilCatatanTarifAmbulance(
+CREATE FUNCTION fnAmbilCatatanTarifAmbulans(
 	@inId 	INT
 )
 
 RETURNS VARCHAR(200)
 
 BEGIN
-	RETURN (SELECT catatan FROM msTarifAmbulance WHERE id = @inId)
+	RETURN (SELECT catatan FROM msTarifAmbulans WHERE id = @inId)
 END;
 GO
 
@@ -401,5 +401,97 @@ RETURNS VARCHAR(200)
 
 BEGIN
 	RETURN (SELECT  catatan	FROM msHubKel WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanKota') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanKota
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanKota
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT  catatan	FROM msKota WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanJenisPerusahaan') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanJenisPerusahaan
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanJenisPerusahaan
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT catatan FROM msJenisPerusahaan WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanInstalasi') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanInstalasi
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanInstalasi
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT catatan FROM msInstalasi WHERE id = @in_id)
+END;
+GO
+
+--#######################################################################--
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanCaraPembayaran') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanCaraPembayaran
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanCaraPembayaran
+(
+	@in_id 						INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT catatan FROM msCaraPembayaran WHERE id = @in_id)
 END;
 GO

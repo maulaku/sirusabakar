@@ -85,6 +85,23 @@ GO
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsKota'))
+DROP VIEW vwMsKota
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsKota AS
+select top (10) id,namaKota,catatan 
+from msKota with (NOLOCK)
+where status = 1
+order by id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsPropinsi'))
 DROP VIEW vwMsPropinsi
 GO
@@ -181,6 +198,40 @@ GO
 CREATE VIEW vwMsHubKel AS
 select top (10) id,namaHubKel,catatan 
 from msHubKel with (NOLOCK)
+where status = 1
+order by id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsInstalasi'))
+DROP VIEW vwMsInstalasi
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsInstalasi AS
+select top (10) id,namaInstalasi,catatan 
+from msInstalasi with (NOLOCK)
+where status = 1
+order by id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsCaraPembayaran'))
+DROP VIEW vwMsCaraPembayaran
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsCaraPembayaran AS
+select top (10) id,namaCaraPembayaran,catatan 
+from msCaraPembayaran with (NOLOCK)
 where status = 1
 order by id
 GO

@@ -79,6 +79,7 @@ Public Class MMrKecamatan
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data Kecamatan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            txtKecamatan.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -95,7 +96,7 @@ Public Class MMrKecamatan
             Select Case dc.Name
                 Case "namaKecamatan"
                     dc.HeaderText = "Nama Kecamatan"
-                    dc.Width = 100
+                    dc.Width = 170
             End Select
         Next
     End Sub
@@ -104,14 +105,16 @@ Public Class MMrKecamatan
     End Sub
     Private Sub MKecamatan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
             tombolHidup()
             nonAktif()
             TampilDataGrid("select * from vwMsKecamatan")
             tampilData(0)
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            cmbSearch.SelectedIndex = 0
+
+            Me.txtSearch.TextBox.Select()
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,11 +132,11 @@ Public Class MMrKecamatan
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtKecamatan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Nama Kecamatan : " + txtKecamatan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Kecamatan : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmsKecamatan")
                 tampilData(0)
@@ -153,12 +156,17 @@ Public Class MMrKecamatan
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If txtKecamatan.Text = "" Then
+            MsgBox("Data Kecamatan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        End If
+
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Kecamatan dengan Nama Kecamatan: " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Kecamatan dengan Nama Kecamatan : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
         TampilDataGrid("select * from vwMsKecamatan")
         tampilData(0)
@@ -172,16 +180,16 @@ Public Class MMrKecamatan
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+                txtSearch.Focus()
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                txtSearch.Focus()
         End Select
     End Sub
 
@@ -278,10 +286,15 @@ Public Class MMrKecamatan
                     " '" & txtKecamatan.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
                     " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub txtSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch.Click
+
     End Sub
 End Class

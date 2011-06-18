@@ -23,10 +23,10 @@ Public Class MMrHubKel
                     btnCancel.PerformClick()
                 Else
                     Dim tny As Integer
-                    tny = MessageBox.Show("Mau Keluar dari Master HubKel ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    tny = MessageBox.Show("Mau Keluar dari Master Hubungan Keluarga ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
-                    Else
+                    ElseIf tny = vbNo Then
                         Return MyBase.ProcessCmdKey(msg, keyData)
                     End If
                 End If
@@ -79,6 +79,7 @@ Public Class MMrHubKel
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
             MsgBox("Data HubKel : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            txtHubKel.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -94,8 +95,8 @@ Public Class MMrHubKel
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
                 Case "namaHubKel"
-                    dc.HeaderText = "Nama HubKel"
-                    dc.Width = 100
+                    dc.HeaderText = "Hubungan Keluarga"
+                    dc.Width = 200
             End Select
         Next
     End Sub
@@ -104,14 +105,16 @@ Public Class MMrHubKel
     End Sub
     Private Sub MHubKel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
             tombolHidup()
             nonAktif()
             TampilDataGrid("select * from vwMsHubKel")
             tampilData(0)
 
-            If cmbSearch.SelectionLength <> 0 Then
-                cmbSearch.SelectedIndex = 0
-            End If
+            cmbSearch.SelectedIndex = 0
+
+            Me.txtSearch.TextBox.Select()
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,14 +132,17 @@ Public Class MMrHubKel
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Kode : " + txtHubKel.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Hubungan Keluarga : " + txtHubKel.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Kode Diet : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Hubungan Keluarga : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 TampilDataGrid("select * from vwmsHubKel")
                 tampilData(0)
+
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
             End If
         End If
     End Sub
@@ -153,17 +159,23 @@ Public Class MMrHubKel
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If txtHubKel.Text = "" Then
+            MsgBox("Data HubKel Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        End If
+
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU dengan Hubungan Keluarga : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA dengan Hubungan Keluarga : " & txtHubKel.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
         TampilDataGrid("select * from vwMsHubKel")
         tampilData(0)
         tombolHidup()
         nonAktif()
+        txtSearch.Text = ""
         txtSearch.Focus()
         statusForm = ""
     End Sub
@@ -172,16 +184,18 @@ Public Class MMrHubKel
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                txtSearch.Text = ""
+                Me.txtSearch.TextBox.Select()
         End Select
     End Sub
 
@@ -278,6 +292,7 @@ Public Class MMrHubKel
                     " '" & txtHubKel.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
                     " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception

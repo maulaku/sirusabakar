@@ -21,19 +21,23 @@ Partial Class MainMenu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainMenu))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
         Me.SystemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SQLQueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MedicalRecordToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.AgamaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.CaraPembayaranToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.HubunganKelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.InstalasiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PendidikanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PekerjaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PropinsiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.KabupatenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.KecamatanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.KelurahanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.HubunganKelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.KotaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AccountingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.COAToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.GiziToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -73,6 +77,7 @@ Partial Class MainMenu
         '
         'MenuStrip
         '
+        Me.MenuStrip.BackColor = System.Drawing.Color.White
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.MasterToolStripMenuItem, Me.MedicalRecordToolStripMenuItem, Me.LaboratoriumToolStripMenuItem, Me.PoliklinikToolStripMenuItem, Me.WindowsToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
@@ -84,261 +89,279 @@ Partial Class MainMenu
         '
         Me.SystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLQueryToolStripMenuItem})
         Me.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem"
-        Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
-        Me.SystemToolStripMenuItem.Text = "System"
+        Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
+        Me.SystemToolStripMenuItem.Text = "Sistem"
         '
         'SQLQueryToolStripMenuItem
         '
         Me.SQLQueryToolStripMenuItem.Name = "SQLQueryToolStripMenuItem"
-        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(137, 22)
         Me.SQLQueryToolStripMenuItem.Text = "SQL Query"
         '
         'MasterToolStripMenuItem
         '
         Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MedicalRecordToolStripMenuItem1, Me.AccountingToolStripMenuItem, Me.GiziToolStripMenuItem, Me.LogistikAlkesToolStripMenuItem, Me.LogistikInventoryDanATKToolStripMenuItem, Me.ObatToolStripMenuItem, Me.HargaObatToolStripMenuItem, Me.TarifAmbulanceToolStripMenuItem, Me.KelasToolStripMenuItem, Me.PerawatSAKToolStripMenuItem, Me.JenisPerusahaanToolStripMenuItem, Me.PerusahaanToolStripMenuItem, Me.MakananToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
-        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
+        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
         '
         'MedicalRecordToolStripMenuItem1
         '
-        Me.MedicalRecordToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgamaToolStripMenuItem, Me.PendidikanToolStripMenuItem, Me.PekerjaanToolStripMenuItem, Me.PropinsiToolStripMenuItem, Me.KabupatenToolStripMenuItem, Me.KecamatanToolStripMenuItem, Me.KelurahanToolStripMenuItem, Me.HubunganKelToolStripMenuItem})
+        Me.MedicalRecordToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgamaToolStripMenuItem, Me.CaraPembayaranToolStripMenuItem, Me.HubunganKelToolStripMenuItem, Me.InstalasiToolStripMenuItem, Me.PendidikanToolStripMenuItem, Me.PekerjaanToolStripMenuItem, Me.PropinsiToolStripMenuItem, Me.KabupatenToolStripMenuItem, Me.KecamatanToolStripMenuItem, Me.KelurahanToolStripMenuItem, Me.KotaToolStripMenuItem})
         Me.MedicalRecordToolStripMenuItem1.Name = "MedicalRecordToolStripMenuItem1"
-        Me.MedicalRecordToolStripMenuItem1.Size = New System.Drawing.Size(216, 22)
+        Me.MedicalRecordToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
         Me.MedicalRecordToolStripMenuItem1.Text = "Medical Record"
         '
         'AgamaToolStripMenuItem
         '
         Me.AgamaToolStripMenuItem.Name = "AgamaToolStripMenuItem"
-        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AgamaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.AgamaToolStripMenuItem.Text = "Agama"
+        '
+        'CaraPembayaranToolStripMenuItem
+        '
+        Me.CaraPembayaranToolStripMenuItem.Name = "CaraPembayaranToolStripMenuItem"
+        Me.CaraPembayaranToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.CaraPembayaranToolStripMenuItem.Text = "Cara Pembayaran"
+        '
+        'HubunganKelToolStripMenuItem
+        '
+        Me.HubunganKelToolStripMenuItem.Name = "HubunganKelToolStripMenuItem"
+        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.HubunganKelToolStripMenuItem.Text = "Hubungan Keluarga"
+        '
+        'InstalasiToolStripMenuItem
+        '
+        Me.InstalasiToolStripMenuItem.Name = "InstalasiToolStripMenuItem"
+        Me.InstalasiToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.InstalasiToolStripMenuItem.Text = "Instalasi"
         '
         'PendidikanToolStripMenuItem
         '
         Me.PendidikanToolStripMenuItem.Name = "PendidikanToolStripMenuItem"
-        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PendidikanToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.PendidikanToolStripMenuItem.Text = "Pendidikan"
         '
         'PekerjaanToolStripMenuItem
         '
         Me.PekerjaanToolStripMenuItem.Name = "PekerjaanToolStripMenuItem"
-        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PekerjaanToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.PekerjaanToolStripMenuItem.Text = "Pekerjaan"
         '
         'PropinsiToolStripMenuItem
         '
         Me.PropinsiToolStripMenuItem.Name = "PropinsiToolStripMenuItem"
-        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PropinsiToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.PropinsiToolStripMenuItem.Text = "Propinsi"
         '
         'KabupatenToolStripMenuItem
         '
         Me.KabupatenToolStripMenuItem.Name = "KabupatenToolStripMenuItem"
-        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.KabupatenToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.KabupatenToolStripMenuItem.Text = "Kabupaten"
         '
         'KecamatanToolStripMenuItem
         '
         Me.KecamatanToolStripMenuItem.Name = "KecamatanToolStripMenuItem"
-        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.KecamatanToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.KecamatanToolStripMenuItem.Text = "Kecamatan"
         '
         'KelurahanToolStripMenuItem
         '
         Me.KelurahanToolStripMenuItem.Name = "KelurahanToolStripMenuItem"
-        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.KelurahanToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.KelurahanToolStripMenuItem.Text = "Kelurahan"
         '
-        'HubunganKelToolStripMenuItem
+        'KotaToolStripMenuItem
         '
-        Me.HubunganKelToolStripMenuItem.Name = "HubunganKelToolStripMenuItem"
-        Me.HubunganKelToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.HubunganKelToolStripMenuItem.Text = "Hubungan Kel"
+        Me.KotaToolStripMenuItem.Name = "KotaToolStripMenuItem"
+        Me.KotaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.KotaToolStripMenuItem.Text = "Kota"
         '
         'AccountingToolStripMenuItem
         '
         Me.AccountingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.COAToolStripMenuItem1})
         Me.AccountingToolStripMenuItem.Name = "AccountingToolStripMenuItem"
-        Me.AccountingToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.AccountingToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.AccountingToolStripMenuItem.Text = "Accounting"
         '
         'COAToolStripMenuItem1
         '
         Me.COAToolStripMenuItem1.Name = "COAToolStripMenuItem1"
-        Me.COAToolStripMenuItem1.Size = New System.Drawing.Size(99, 22)
+        Me.COAToolStripMenuItem1.Size = New System.Drawing.Size(107, 22)
         Me.COAToolStripMenuItem1.Text = "COA"
         '
         'GiziToolStripMenuItem
         '
         Me.GiziToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DietToolStripMenuItem, Me.MakananToolStripMenuItem1, Me.MenuToolStripMenuItem})
         Me.GiziToolStripMenuItem.Name = "GiziToolStripMenuItem"
-        Me.GiziToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.GiziToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.GiziToolStripMenuItem.Text = "Gizi"
         '
         'DietToolStripMenuItem
         '
         Me.DietToolStripMenuItem.Name = "DietToolStripMenuItem"
-        Me.DietToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.DietToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.DietToolStripMenuItem.Text = "Diet"
         '
         'MakananToolStripMenuItem1
         '
         Me.MakananToolStripMenuItem1.Name = "MakananToolStripMenuItem1"
-        Me.MakananToolStripMenuItem1.Size = New System.Drawing.Size(123, 22)
+        Me.MakananToolStripMenuItem1.Size = New System.Drawing.Size(128, 22)
         Me.MakananToolStripMenuItem1.Text = "Makanan"
         '
         'MenuToolStripMenuItem
         '
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'LogistikAlkesToolStripMenuItem
         '
         Me.LogistikAlkesToolStripMenuItem.Name = "LogistikAlkesToolStripMenuItem"
-        Me.LogistikAlkesToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.LogistikAlkesToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.LogistikAlkesToolStripMenuItem.Text = "Logistik Alat Kesehatan"
         '
         'LogistikInventoryDanATKToolStripMenuItem
         '
         Me.LogistikInventoryDanATKToolStripMenuItem.Name = "LogistikInventoryDanATKToolStripMenuItem"
-        Me.LogistikInventoryDanATKToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.LogistikInventoryDanATKToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.LogistikInventoryDanATKToolStripMenuItem.Text = "Logistik Inventory dan ATK"
         '
         'ObatToolStripMenuItem
         '
         Me.ObatToolStripMenuItem.Name = "ObatToolStripMenuItem"
-        Me.ObatToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.ObatToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.ObatToolStripMenuItem.Text = "Obat"
         '
         'HargaObatToolStripMenuItem
         '
         Me.HargaObatToolStripMenuItem.Name = "HargaObatToolStripMenuItem"
-        Me.HargaObatToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.HargaObatToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.HargaObatToolStripMenuItem.Text = "Harga Obat"
         '
         'TarifAmbulanceToolStripMenuItem
         '
         Me.TarifAmbulanceToolStripMenuItem.Name = "TarifAmbulanceToolStripMenuItem"
-        Me.TarifAmbulanceToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.TarifAmbulanceToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.TarifAmbulanceToolStripMenuItem.Text = "Tarif Ambulance"
         '
         'KelasToolStripMenuItem
         '
         Me.KelasToolStripMenuItem.Name = "KelasToolStripMenuItem"
-        Me.KelasToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.KelasToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.KelasToolStripMenuItem.Text = "Kelas"
         '
         'PerawatSAKToolStripMenuItem
         '
         Me.PerawatSAKToolStripMenuItem.Name = "PerawatSAKToolStripMenuItem"
-        Me.PerawatSAKToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.PerawatSAKToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.PerawatSAKToolStripMenuItem.Text = "Perawat SAK"
         '
         'JenisPerusahaanToolStripMenuItem
         '
         Me.JenisPerusahaanToolStripMenuItem.Name = "JenisPerusahaanToolStripMenuItem"
-        Me.JenisPerusahaanToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.JenisPerusahaanToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.JenisPerusahaanToolStripMenuItem.Text = "Jenis Perusahaan"
         '
         'PerusahaanToolStripMenuItem
         '
         Me.PerusahaanToolStripMenuItem.Name = "PerusahaanToolStripMenuItem"
-        Me.PerusahaanToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.PerusahaanToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.PerusahaanToolStripMenuItem.Text = "Perusahaan"
         '
         'MakananToolStripMenuItem
         '
         Me.MakananToolStripMenuItem.Name = "MakananToolStripMenuItem"
-        Me.MakananToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.MakananToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.MakananToolStripMenuItem.Text = "Makanan"
         '
         'MedicalRecordToolStripMenuItem
         '
         Me.MedicalRecordToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PendaftaranPasienBaruToolStripMenuItem, Me.RegistrasiPasienToolStripMenuItem})
         Me.MedicalRecordToolStripMenuItem.Name = "MedicalRecordToolStripMenuItem"
-        Me.MedicalRecordToolStripMenuItem.Size = New System.Drawing.Size(101, 20)
+        Me.MedicalRecordToolStripMenuItem.Size = New System.Drawing.Size(91, 20)
         Me.MedicalRecordToolStripMenuItem.Text = "Medical Record"
         '
         'PendaftaranPasienBaruToolStripMenuItem
         '
         Me.PendaftaranPasienBaruToolStripMenuItem.Name = "PendaftaranPasienBaruToolStripMenuItem"
-        Me.PendaftaranPasienBaruToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.PendaftaranPasienBaruToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.PendaftaranPasienBaruToolStripMenuItem.Text = "Pendaftaran Pasien Baru"
         '
         'RegistrasiPasienToolStripMenuItem
         '
         Me.RegistrasiPasienToolStripMenuItem.Name = "RegistrasiPasienToolStripMenuItem"
-        Me.RegistrasiPasienToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.RegistrasiPasienToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.RegistrasiPasienToolStripMenuItem.Text = "Registrasi Pasien"
         '
         'LaboratoriumToolStripMenuItem
         '
         Me.LaboratoriumToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DiagnosaToolStripMenuItem, Me.PemeriksaanToolStripMenuItem})
         Me.LaboratoriumToolStripMenuItem.Name = "LaboratoriumToolStripMenuItem"
-        Me.LaboratoriumToolStripMenuItem.Size = New System.Drawing.Size(91, 20)
+        Me.LaboratoriumToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
         Me.LaboratoriumToolStripMenuItem.Text = "Laboratorium"
         '
         'DiagnosaToolStripMenuItem
         '
         Me.DiagnosaToolStripMenuItem.Name = "DiagnosaToolStripMenuItem"
-        Me.DiagnosaToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.DiagnosaToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.DiagnosaToolStripMenuItem.Text = "Diagnosa"
         '
         'PemeriksaanToolStripMenuItem
         '
         Me.PemeriksaanToolStripMenuItem.Name = "PemeriksaanToolStripMenuItem"
-        Me.PemeriksaanToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.PemeriksaanToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.PemeriksaanToolStripMenuItem.Text = "Pemeriksaan"
         '
         'PoliklinikToolStripMenuItem
         '
         Me.PoliklinikToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QueueToolStripMenuItem, Me.PemeriksaanToolStripMenuItem1})
         Me.PoliklinikToolStripMenuItem.Name = "PoliklinikToolStripMenuItem"
-        Me.PoliklinikToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
+        Me.PoliklinikToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.PoliklinikToolStripMenuItem.Text = "Poliklinik"
         '
         'QueueToolStripMenuItem
         '
         Me.QueueToolStripMenuItem.Name = "QueueToolStripMenuItem"
-        Me.QueueToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.QueueToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.QueueToolStripMenuItem.Text = "Queue"
         '
         'PemeriksaanToolStripMenuItem1
         '
         Me.PemeriksaanToolStripMenuItem1.Name = "PemeriksaanToolStripMenuItem1"
-        Me.PemeriksaanToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.PemeriksaanToolStripMenuItem1.Size = New System.Drawing.Size(145, 22)
         Me.PemeriksaanToolStripMenuItem1.Text = "Pemeriksaan"
         '
         'WindowsToolStripMenuItem
         '
         Me.WindowsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TitleToolStripMenuItem, Me.TitleHorizontalToolStripMenuItem, Me.ArrangeIconsToolStripMenuItem})
         Me.WindowsToolStripMenuItem.Name = "WindowsToolStripMenuItem"
-        Me.WindowsToolStripMenuItem.Size = New System.Drawing.Size(68, 20)
+        Me.WindowsToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
         Me.WindowsToolStripMenuItem.Text = "&Windows"
         '
         'CascadeToolStripMenuItem
         '
         Me.CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
-        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.CascadeToolStripMenuItem.Text = "&Cascade"
         '
         'TitleToolStripMenuItem
         '
         Me.TitleToolStripMenuItem.Name = "TitleToolStripMenuItem"
-        Me.TitleToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.TitleToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.TitleToolStripMenuItem.Text = "Title &Vertical"
         '
         'TitleHorizontalToolStripMenuItem
         '
         Me.TitleHorizontalToolStripMenuItem.Name = "TitleHorizontalToolStripMenuItem"
-        Me.TitleHorizontalToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.TitleHorizontalToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.TitleHorizontalToolStripMenuItem.Text = "Title &Horizontal"
         '
         'ArrangeIconsToolStripMenuItem
         '
         Me.ArrangeIconsToolStripMenuItem.Name = "ArrangeIconsToolStripMenuItem"
-        Me.ArrangeIconsToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.ArrangeIconsToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.ArrangeIconsToolStripMenuItem.Text = "&Arrange Icons"
         '
         'StatusStrip
@@ -353,13 +376,15 @@ Partial Class MainMenu
         'ToolStripStatusLabel
         '
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(38, 17)
         Me.ToolStripStatusLabel.Text = "Status"
         '
         'MainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(837, 507)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
@@ -422,5 +447,8 @@ Partial Class MainMenu
     Friend WithEvents TitleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TitleHorizontalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ArrangeIconsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents KotaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CaraPembayaranToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InstalasiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -23,13 +23,6 @@ Partial Class MMrAgama
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MMrAgama))
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txtCatatanSebelumnya = New System.Windows.Forms.RichTextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtCatatan = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtAgama = New System.Windows.Forms.TextBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.toolStrip = New System.Windows.Forms.ToolStrip
         Me.btnNew = New System.Windows.Forms.ToolStripButton
         Me.btnEdit = New System.Windows.Forms.ToolStripButton
@@ -47,78 +40,25 @@ Partial Class MMrAgama
         Me.btnSearch = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
         Me.btnCancel = New System.Windows.Forms.ToolStripButton
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.txtCatatanSebelumnya = New System.Windows.Forms.RichTextBox
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.txtCatatan = New System.Windows.Forms.TextBox
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.txtAgama = New System.Windows.Forms.TextBox
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.toolStrip.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 44)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 13)
-        Me.Label2.TabIndex = 54
-        Me.Label2.Text = "Agama"
-        '
-        'txtCatatanSebelumnya
-        '
-        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(240, 144)
-        Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
-        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
-        Me.txtCatatanSebelumnya.TabIndex = 53
-        Me.txtCatatanSebelumnya.Text = ""
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(237, 128)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(105, 13)
-        Me.Label5.TabIndex = 52
-        Me.Label5.Text = "Catatan Sebelumnya"
-        '
-        'txtCatatan
-        '
-        Me.txtCatatan.Location = New System.Drawing.Point(240, 41)
-        Me.txtCatatan.Multiline = True
-        Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(253, 77)
-        Me.txtCatatan.TabIndex = 51
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(240, 25)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
-        Me.Label4.TabIndex = 50
-        Me.Label4.Text = "Catatan"
-        '
-        'txtAgama
-        '
-        Me.txtAgama.Location = New System.Drawing.Point(71, 41)
-        Me.txtAgama.Name = "txtAgama"
-        Me.txtAgama.Size = New System.Drawing.Size(163, 20)
-        Me.txtAgama.TabIndex = 49
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(11, 74)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(223, 183)
-        Me.DataGridView1.TabIndex = 48
         '
         'toolStrip
         '
+        Me.toolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
-        Me.toolStrip.Size = New System.Drawing.Size(505, 25)
-        Me.toolStrip.TabIndex = 47
+        Me.toolStrip.Size = New System.Drawing.Size(536, 25)
+        Me.toolStrip.TabIndex = 51
         Me.toolStrip.Text = "ToolStrip1"
         '
         'btnNew
@@ -215,7 +155,7 @@ Partial Class MMrAgama
         'cmbSearch
         '
         Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kode Diet", "Nama Diet"})
+        Me.cmbSearch.Items.AddRange(New Object() {"Agama"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -247,11 +187,76 @@ Partial Class MMrAgama
         Me.btnCancel.Size = New System.Drawing.Size(23, 22)
         Me.btnCancel.Text = "Close"
         '
-        'MAgama
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(9, 48)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(45, 13)
+        Me.Label2.TabIndex = 82
+        Me.Label2.Text = "Agama"
+        '
+        'txtCatatanSebelumnya
+        '
+        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(268, 136)
+        Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 131)
+        Me.txtCatatanSebelumnya.TabIndex = 81
+        Me.txtCatatanSebelumnya.Text = ""
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(265, 120)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(131, 13)
+        Me.Label5.TabIndex = 80
+        Me.Label5.Text = "Catatan Sebelumnya :"
+        '
+        'txtCatatan
+        '
+        Me.txtCatatan.Location = New System.Drawing.Point(268, 51)
+        Me.txtCatatan.Multiline = True
+        Me.txtCatatan.Name = "txtCatatan"
+        Me.txtCatatan.Size = New System.Drawing.Size(253, 55)
+        Me.txtCatatan.TabIndex = 79
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(265, 35)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(59, 13)
+        Me.Label4.TabIndex = 78
+        Me.Label4.Text = "Catatan :"
+        '
+        'txtAgama
+        '
+        Me.txtAgama.Location = New System.Drawing.Point(85, 45)
+        Me.txtAgama.Name = "txtAgama"
+        Me.txtAgama.Size = New System.Drawing.Size(157, 20)
+        Me.txtAgama.TabIndex = 77
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 78)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(230, 189)
+        Me.DataGridView1.TabIndex = 76
+        '
+        'MMrAgama
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(505, 268)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(536, 286)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
@@ -260,22 +265,19 @@ Partial Class MMrAgama
         Me.Controls.Add(Me.txtAgama)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.toolStrip)
-        Me.Name = "MAgama"
-        Me.Text = "Master Agama"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "MMrAgama"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Data Agama"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtCatatanSebelumnya As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtAgama As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents toolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnEdit As System.Windows.Forms.ToolStripButton
@@ -293,4 +295,11 @@ Partial Class MMrAgama
     Friend WithEvents btnSearch As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnCancel As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtCatatanSebelumnya As System.Windows.Forms.RichTextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtAgama As System.Windows.Forms.TextBox
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
 End Class

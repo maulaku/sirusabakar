@@ -102,3 +102,43 @@ FROM         dbo.trLayMRDaftar
 WHERE     (status = 1)
 ORDER BY id;
 
+-------------------------------------------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayMRRegis]'))
+DROP VIEW [dbo].[vwLayMRRegis]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwLayMRRegis
+AS
+SELECT  	
+	TOP(30) PERCENT
+	id
+	, idLayMRDaftar			
+	, noMR						
+	, tglRegis					
+	, noRegis					
+	, asalPasien				
+	, tujuanBerobat			
+	, namaPerujuk				
+	, namaDokter				
+	, caraPembayaran			
+	, namaAsuransi				
+	, namaPerusahaan			
+	, noKartu					
+	, noPolis					
+	, catatan
+FROM 
+	trLayMRRegis
+WHERE					
+	status = 1
+ORDER BY
+	id DESC
+GO
+	
+-------------------------------------------------------	
+
+
+
