@@ -15,7 +15,15 @@ GO
 -- 2. LayMRDaftar : nama table
 ----------------------------------------------------------------------------------------------------------
 
-DROP TABLE trHistory;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trHistory') AND type in (N'U'))
+DROP TABLE trHistory
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE trHistory (
 	id 					INT IDENTITY(1,1) NOT NULL,
 	tipeForm 			VARCHAR(100),
@@ -27,7 +35,15 @@ CREATE TABLE trHistory (
 	PRIMARY KEY (id)
 );
 
-DROP TABLE trLayMRDaftar;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trLayMRDaftar') AND type in (N'U'))
+DROP TABLE trLayMRDaftar
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE trLayMRDaftar (
 	id										INT IDENTITY(1,1) NOT NULL
 	, noMR								VARCHAR(20)
@@ -77,7 +93,15 @@ CREATE TABLE trLayMRDaftar (
 	, PRIMARY KEY (id)	
 );
 
-DROP TABLE trLayMRRegis;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trLayMRRegis') AND type in (N'U'))
+DROP TABLE trLayMRRegis
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE trLayMRRegis (
 	id								INT IDENTITY(1,1) NOT NULL
 	, idLayMRDaftar			INT NOT NULL
@@ -106,7 +130,15 @@ CREATE TABLE trLayMRRegis (
 );
 
 
-DROP TABLE msHistoryLayanan;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msHistoryLayanan') AND type in (N'U'))
+DROP TABLE msHistoryLayanan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msHistoryLayanan (
 	id 							INT IDENTITY(1,1) NOT NULL
 	, formType 					VARCHAR(100) 
@@ -118,7 +150,15 @@ CREATE TABLE msHistoryLayanan (
 	, PRIMARY KEY (id)
 );
 
-DROP TABLE tr_log_client_permintaan_hdr;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tr_log_client_permintaan_hdr') AND type in (N'U'))
+DROP TABLE tr_log_client_permintaan_hdr
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE tr_log_client_permintaan_hdr(
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[no_permintaan] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -135,7 +175,15 @@ CREATE TABLE tr_log_client_permintaan_hdr(
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY];
 
-DROP TABLE tr_log_client_permintaan_det;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tr_log_client_permintaan_det') AND type in (N'U'))
+DROP TABLE tr_log_client_permintaan_det
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE tr_log_client_permintaan_det(
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[permintaanid] [int] NOT NULL,
