@@ -41,35 +41,15 @@ Public Class LayMRDaftarPasien
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
     Private Sub generateNoMR()
-        Dim lastKode As String
-        Dim formatKode As String
-        formatKode = Format(Now(), "yyMMdd")
+        Dim lastKode As Integer = 0
+
         Try
             Call bukaServer()
-            PSQL = "SELECT TOP 1 noMR from trLayMRDaftar WHERE noMR LIKE '%" & formatKode & "%' ORDER BY noMR DESC"
+            PSQL = "SELECT TOP 1 noMR from trLayMRDaftar ORDER BY noMR DESC"
             cmd = New Odbc.OdbcCommand(PSQL, con)
-            lastKode = cmd.ExecuteScalar
+            lastKode = Val(cmd.ExecuteScalar)
 
-            If lastKode = "" Then
-                txtNoMR.Text = formatKode & "00001"
-                con.Close()
-                Exit Sub
-            End If
-
-            Dim id As Integer = Val(Strings.Mid(lastKode, 7, 5))
-            Select Case id
-                Case 1 To 8 : txtNoMR.Text = formatKode & "0000" & id + 1
-                Case 9 To 98 : txtNoMR.Text = formatKode & "000" & id + 1
-                Case 99 To 998 : txtNoMR.Text = formatKode & "00" & id + 1
-                Case 999 To 9998 : txtNoMR.Text = formatKode & "0" & id + 1
-                Case 9999 To 99997 : txtNoMR.Text = formatKode & id + 1
-
-                Case Is = 99998 : MsgBox("No. MR Terakhir", MsgBoxStyle.Critical, "Warning")
-                    txtNoMR.Text = formatKode & id + 1
-                Case Is = 99999 : MsgBox("No. MR sudah Habis", MsgBoxStyle.Critical, "Warning")
-                    txtNoMR.Text = "HABIS"
-                    Me.Dispose()
-            End Select
+            txtNoMR.Text = Strings.Left("00000" & lastKode + 1, 6)
             con.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -192,28 +172,50 @@ Public Class LayMRDaftarPasien
 
         DataGridView1.Enabled = True
     End Sub
+    Private Sub LoadCb()
+        Dim tTitle As New DataTable
+        Dim tAgama As New DataTable
+        Dim tPendidikan As New DataTable
+        Dim tPekerjaan As New DataTable
+        Dim tHubungan As New DataTable
+
+        'load cmbtitle
+        cmbTitle.Items.Clear()
+        tTitle = getTabel("select ID,NamaTitle from vwMsTitle")
+        cmbTitle.DataSource = tTitle
+        cmbTitle.DisplayMember = "NamaTitle"
+        cmbTitle.ValueMember = "ID"
+
+        'load cmbAgama
+        cmbAgama.Items.Clear()
+        tAgama = getTabel("select ID,NamaAgama from vwMsAgama")
+        cmbAgama.DataSource = tAgama
+        cmbAgama.DisplayMember = "NamaAgama"
+        cmbAgama.ValueMember = "ID"
+
+        'load cmbPendidikan
+        cmbPendidikan.Items.Clear()
+        tPendidikan = getTabel("select ID,NamaPendidikan from vwMsPendidikan")
+        cmbPendidikan.DataSource = tPendidikan
+        cmbPendidikan.DisplayMember = "NamaPendidikan"
+        cmbPendidikan.ValueMember = "ID"
+
+        'load cmbPekerjaan
+        cmbPekerjaan.Items.Clear()
+        tPekerjaan = getTabel("select ID,NamaPekerjaan from vwMsPekerjaan")
+        cmbPekerjaan.DataSource = tPekerjaan
+        cmbPekerjaan.DisplayMember = "NamaPekerjaan"
+        cmbPekerjaan.ValueMember = "ID"
+
+        'load cmbHubungan
+        cmbHubungan.Items.Clear()
+        tHubungan = getTabel("select ID,NamaHubKel from vwMsHubKel")
+        cmbHubungan.DataSource = tHubungan
+        cmbHubungan.DisplayMember = "NamaHubKel"
+        cmbHubungan.ValueMember = "ID"
+    End Sub
     Sub munculData()
-        Call bukaserver()
-        PSQL = ""
-        PSQL = "SELECT " & _
-                    "/*0*/id,/*1*/noMR,/*2*/titel,/*3*/namaPasien,/*4*/panggilan," & _
-                    "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
-                    "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
-                    "/*15*/pekerjaan,/*16*/alamat,/*17*/propinsi,/*18*/kota,/*19*/kodePos," & _
-                    "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
-                    "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
-                    "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
-                    "/*35*/handphoneP,/*36*/catatan" & _
-               " FROM trLayMRDaftar" & _
-               " WHERE status=1" & _
-               " ORDER BY id"
-
-        dttable.Clear()
-        dtadapter = New Odbc.OdbcDataAdapter(PSQL, con)
-        dtadapter.Fill(dttable)
-
-
-        DataGridView1.DataSource = dttable
+        DataGridView1.DataSource = getTabel("select * from vwLayMrRegPasien")
 
         For i As Integer = 0 To 36
             DataGridView1.Columns(i).Visible = False
@@ -226,10 +228,6 @@ Public Class LayMRDaftarPasien
 
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
-        dttable.Dispose()
-        dtadapter.Dispose()
-        dtadapter = Nothing
-        con.Close()
     End Sub
     Sub tampilData()
         If dttable.Rows.Count = 0 Then
@@ -349,17 +347,18 @@ Public Class LayMRDaftarPasien
     End Sub
     Private Sub RPasien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            LoadCb()
             tombolHidup()
             nonAktif()
             munculData()
             tampilData()
 
             cmbSearch.SelectedIndex = 0
-            cmbTitle.SelectedIndex = 0
+            'cmbTitle.SelectedIndex = 0
 
-            cariHubKel()
-            cariAgama()
-            cariPendidikan()
+            'cariHubKel()
+            'cariAgama()
+            'cariPendidikan()
 
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -566,32 +565,29 @@ Public Class LayMRDaftarPasien
         status = 0
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "noMR"
-        ElseIf cmbSearch.SelectedIndex = 1 Then
-            dataCari = "namaPasien"
-        End If
+        Select Case cmbSearch.SelectedIndex
+            Case 0
+                dataCari = "noMR"
+            Case 1
+                dataCari = "namepasien"
+            Case 2
+                dataCari = "alamat"
+            Case 3
+                dataCari = "tgllahir"
+        End Select
+        'If cmbSearch.SelectedIndex = 0 Then
+        '    dataCari = "noMR"
+        'ElseIf cmbSearch.SelectedIndex = 1 Then
+        '    dataCari = "namaPasien"
+        'End If
 
         Try
             If txtSearch.Text = "" Then
                 MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
                 Call bukaServer()
-                PSQL = "SELECT " & _
-                            "/*0*/id,/*1*/noMR,/*2*/titel,/*3*/namaPasien,/*4*/panggilan," & _
-                            "/*5*/sex,/*6*/tempatLahir,/*7*/tglLahir,/*8*/umur,/*9*/agama," & _
-                            "/*10*/sukuBangsa,/*11*/wargaNegara,/*12*/golDarah,/*13*/statusMR,/*14*/pendidikan," & _
-                            "/*15*/pekerjaan,/*16*/alamat,/*17*/propinsi,/*18*/kota,/*19*/kodePos," & _
-                            "/*20*/telepon,/*21*/handphone,/*22*/kabupaten,/*23*/kecamatan,/*24*/kelurahan," & _
-                            "/*25*/namaIstri,/*26*/namaSuami,/*27*/namaAyah,/*28*/namaIbu,/*29*/statusPenanggung," & _
-                            "/*30*/namaP,/*31*/hubunganP,/*32*/hubunganPLain,/*33*/alamatP,/*34*/teleponP," & _
-                            "/*35*/handphoneP,/*36*/catatan" & _
-                    " FROM trLayMRDaftar" & _
+                PSQL = "select * from vw"
                         " WHERE status = 1" & _
                         " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
                     " ORDER BY id"

@@ -168,7 +168,9 @@ Partial Class LayMRDaftarPasien
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.CustomFormat = "dd MMM yyyy"
+        Me.DateTimePicker1.Enabled = False
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker1.Location = New System.Drawing.Point(147, 63)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(154, 20)
@@ -276,7 +278,7 @@ Partial Class LayMRDaftarPasien
         '
         'cmbSearch
         '
-        Me.cmbSearch.Items.AddRange(New Object() {"No. MR", "Nama Pasien"})
+        Me.cmbSearch.Items.AddRange(New Object() {"No. MR", "Nama Pasien", "Alamat", "Tgl Lahir"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(150, 25)
         '
@@ -522,7 +524,8 @@ Partial Class LayMRDaftarPasien
         '
         'cmbTglLahir
         '
-        Me.cmbTglLahir.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.cmbTglLahir.CustomFormat = "dd MMM yyyy"
+        Me.cmbTglLahir.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.cmbTglLahir.Location = New System.Drawing.Point(407, 102)
         Me.cmbTglLahir.Name = "cmbTglLahir"
         Me.cmbTglLahir.Size = New System.Drawing.Size(200, 20)
