@@ -15,7 +15,15 @@ GO
 -- 2. Coa : nama table
 ----------------------------------------------------------------------------------------------------------
 
-DROP TABLE msCoa
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'mscoa') AND type in (N'U'))
+DROP TABLE mscoa
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msCoa (
 	id								INT IDENTITY(1,1) NOT NULL
 	, kodeCoa 					VARCHAR(20) NOT NULL 
@@ -33,7 +41,15 @@ CREATE TABLE msCoa (
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msDiet') AND type in (N'U'))
 DROP TABLE msDiet
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msDiet (
 	id								INT IDENTITY(1,1) NOT NULL
 	, kodeDiet 					VARCHAR(20) NOT NULL
@@ -50,7 +66,15 @@ CREATE TABLE msDiet (
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msMenuMakanan') AND type in (N'U'))
 DROP TABLE msMenuMakanan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msMenuMakanan (
 	id									INT IDENTITY(1,1) NOT NULL
 	, kodeMenuMakanan 			VARCHAR(20) NOT NULL
@@ -69,7 +93,15 @@ CREATE TABLE msMenuMakanan (
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msMenuMakananDet') AND type in (N'U'))
 DROP TABLE msMenuMakananDet
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msMenuMakananDet (
 	id						INT IDENTITY(1,1) NOT NULL,
 	id_menuMakanan 	INT NOT NULL, -- refer : id -- table : msMenuMakanan
@@ -84,7 +116,15 @@ CREATE TABLE msMenuMakananDet (
 	PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msMakanan') AND type in (N'U'))
 DROP TABLE msMakanan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msMakanan (
 	id						INT IDENTITY(1,1) NOT NULL,
 	namaMakanan 		VARCHAR(100) NOT NULL,
@@ -100,7 +140,15 @@ CREATE TABLE msMakanan (
 	PRIMARY KEY (id)
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msObat') AND type in (N'U'))
 DROP TABLE msObat
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msObat (
 	id						INT IDENTITY(1,1) NOT NULL,
 	kodeObat				VARCHAR(20) NOT NULL,
@@ -123,7 +171,15 @@ CREATE TABLE msObat (
 	PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKelas') AND type in (N'U'))
 DROP TABLE msKelas
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKelas (
 	id						INT IDENTITY(1,1) NOT NULL,
 	kodeKelas 			VARCHAR(20) NOT NULL,
@@ -140,7 +196,15 @@ CREATE TABLE msKelas (
 	PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msAlkes') AND type in (N'U'))
 DROP TABLE msAlkes
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msAlkes (
 	id						INT IDENTITY(1,1) NOT NULL,
 	kodeAlkes 			VARCHAR(20) NOT NULL,
@@ -161,8 +225,15 @@ CREATE TABLE msAlkes (
 	PRIMARY KEY (id)	
 );
 
-
-DROP TABLE msInvAtk;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msInvAtk') AND type in (N'U'))
+DROP TABLE msInvAtk
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msInvAtk (
 	id								INT IDENTITY(1,1) NOT NULL
 	, kodeInvAtk 				VARCHAR(20) NOT NULL
@@ -183,7 +254,15 @@ CREATE TABLE msInvAtk (
 	, PRIMARY KEY (id)	
 );
 
-DROP TABLE msHistory;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msHistory') AND type in (N'U'))
+DROP TABLE msHistory
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msHistory (
 	id 							INT IDENTITY(1,1) NOT NULL
 	, tipeForm 					VARCHAR(100)
@@ -196,7 +275,15 @@ CREATE TABLE msHistory (
 );
 
 
-DROP TABLE msPengguna;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msPengguna') AND type in (N'U'))
+DROP TABLE msPengguna
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msPengguna (
 	id							INT IDENTITY(1,1) NOT NULL
 	, id_karyawan 			INT NOT NULL -- refer --> id : msKaryawan
@@ -215,7 +302,15 @@ CREATE TABLE msPengguna (
 );
 
 
-DROP TABLE msKaryawan;
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKaryawan') AND type in (N'U'))
+DROP TABLE msKaryawan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKaryawan (
 	id								INT IDENTITY(1,1) NOT NULL
 	, nipKaryawan 				VARCHAR(20) NOT NULL --> NIP = No Induk Pegawai
@@ -251,7 +346,15 @@ CREATE TABLE msKaryawan (
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msTarifAmbulans') AND type in (N'U'))
 DROP TABLE msTarifAmbulans
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msTarifAmbulans (
 	id								INT IDENTITY(1,1) NOT NULL
 	, kodeTarifAmbulans 		VARCHAR(100) NOT NULL
@@ -276,7 +379,15 @@ CREATE TABLE msTarifAmbulans (
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msObatHarga') AND type in (N'U'))
 DROP TABLE msObatHarga
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msObatHarga (
 	id								INT IDENTITY(1,1) NOT NULL
 	, id_obat 					INT NOT NULL -- refer : id : msObat
@@ -299,7 +410,15 @@ CREATE TABLE msObatHarga (
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msSAK') AND type in (N'U'))
 DROP TABLE msSAK
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msSAK(
 	id								INT IDENTITY(1,1) NOT NULL
 	, noSAK 						VARCHAR(20) NOT NULL
@@ -321,7 +440,15 @@ CREATE TABLE msSAK(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msPerusahaan') AND type in (N'U'))
 DROP TABLE msPerusahaan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msPerusahaan(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaPerusahaan 			VARCHAR(50) NOT NULL
@@ -374,7 +501,15 @@ CREATE TABLE msPerusahaan(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msJenisPerusahaan') AND type in (N'U'))
 DROP TABLE msJenisPerusahaan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msJenisPerusahaan(
 	id							INT IDENTITY(1,1) NOT NULL
 	, jenisPerusahaan 		VARCHAR(50) NOT NULL
@@ -391,7 +526,15 @@ CREATE TABLE msJenisPerusahaan(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msNegara') AND type in (N'U'))
 DROP TABLE msNegara
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msNegara(
 	id							INT IDENTITY(1,1) NOT NULL
 	, namaNegara 				VARCHAR(50) NOT NULL
@@ -407,7 +550,15 @@ CREATE TABLE msNegara(
 	, PRIMARY KEY (id)
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKota') AND type in (N'U'))
 DROP TABLE msKota
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKota(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaKota 					VARCHAR(50) NOT NULL
@@ -424,7 +575,15 @@ CREATE TABLE msKota(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msAgama') AND type in (N'U'))
 DROP TABLE msAgama
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msAgama (
 	id							INT IDENTITY(1,1) NOT NULL
 	, namaAgama 			VARCHAR(100) NOT NULL
@@ -441,7 +600,15 @@ CREATE TABLE msAgama (
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msPendidikan') AND type in (N'U'))
 DROP TABLE msPendidikan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msPendidikan(
 	id							INT IDENTITY(1,1) NOT NULL
 	, namaPendidikan		VARCHAR(100) NOT NULL
@@ -458,7 +625,15 @@ CREATE TABLE msPendidikan(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msPropinsi') AND type in (N'U'))
 DROP TABLE msPropinsi
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msPropinsi(
 	id							INT IDENTITY(1,1) NOT NULL
 	, namaPropinsi			VARCHAR(100) NOT NULL
@@ -474,7 +649,15 @@ CREATE TABLE msPropinsi(
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKabupaten') AND type in (N'U'))
 DROP TABLE msKabupaten
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKabupaten(
 	id							INT IDENTITY(1,1) NOT NULL
 	, namaKabupaten		VARCHAR(100) NOT NULL
@@ -490,7 +673,15 @@ CREATE TABLE msKabupaten(
 	, PRIMARY KEY (id)	
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msPekerjaan') AND type in (N'U'))
 DROP TABLE msPekerjaan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msPekerjaan(
 	id						INT IDENTITY(1,1) NOT NULL
 	, namaPekerjaan 		VARCHAR(100) NOT NULL
@@ -507,7 +698,15 @@ CREATE TABLE msPekerjaan(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKecamatan') AND type in (N'U'))
 DROP TABLE msKecamatan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKecamatan(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaKecamatan 			VARCHAR(50) NOT NULL
@@ -524,7 +723,15 @@ CREATE TABLE msKecamatan(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msKelurahan') AND type in (N'U'))
 DROP TABLE msKelurahan
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msKelurahan(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaKelurahan 			VARCHAR(50) NOT NULL
@@ -540,7 +747,15 @@ CREATE TABLE msKelurahan(
 	, PRIMARY KEY (id)
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msInstalasi') AND type in (N'U'))
 DROP TABLE msInstalasi
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msInstalasi(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaInstalasi 			VARCHAR(50) NOT NULL
@@ -556,7 +771,15 @@ CREATE TABLE msInstalasi(
 	, PRIMARY KEY (id)
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msCaraPembayaran') AND type in (N'U'))
 DROP TABLE msCaraPembayaran
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msCaraPembayaran(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaCaraPembayaran 	VARCHAR(50) NOT NULL
@@ -573,7 +796,15 @@ CREATE TABLE msCaraPembayaran(
 );
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msHubKel') AND type in (N'U'))
 DROP TABLE msHubKel
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE msHubKel(
 	id								INT IDENTITY(1,1) NOT NULL
 	, namaHubKel 				VARCHAR(50) NOT NULL
