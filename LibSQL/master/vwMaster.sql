@@ -235,3 +235,20 @@ from msCaraPembayaran with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsTitle'))
+DROP VIEW vwMsTitle
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsTitle AS
+select top (10) id,namaTitle,catatan 
+from msTitle with (NOLOCK)
+where status = 1
+order by id
+GO

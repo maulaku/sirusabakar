@@ -820,6 +820,30 @@ CREATE TABLE msHubKel(
 	PRIMARY KEY (id)
 );
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msTitle') AND type in (N'U'))
+DROP TABLE msTitle
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE msTitle(
+	id							INT IDENTITY(1,1) NOT NULL,
+	namaTitle	 			VARCHAR(50) NOT NULL,
+	--------------------------------
+	catatan 					TEXT DEFAULT '-',
+	status 					INT DEFAULT 1,
+	--------------------------------
+	dibuatOleh 				INT,
+	dieditOleh 				INT,
+	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	
+	PRIMARY KEY (id)
+);
+
 INSERT INTO msPekerjaan(namaPekerjaan) VALUES ('admin');
 INSERT INTO msKaryawan(nipKaryawan,namaLengkap,id_pekerjaan) VALUES ('ADMIN1', 'IVHAN',1);
 INSERT INTO msPengguna(id_karyawan,namaPengguna,sandiPengguna) VALUES (1,'ADMIN','ADMIN');
