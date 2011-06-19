@@ -158,7 +158,6 @@ SELECT
 			/*5*/mr.sex,
 			/*6*/mr.tempatLahir,
 			/*7*/mr.tglLahir,
-			/*8*/mr.umur,
 			/*9*/mr.agamaID,
 			/*10*/A.NamaAgama,
 			/*11*/mr.sukuBangsa,
