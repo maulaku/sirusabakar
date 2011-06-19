@@ -98,7 +98,7 @@ SELECT   TOP (100) PERCENT id,
 			teleponP, 
 			handphoneP, 
 			note
-FROM         dbo.trLayMRDaftar
+FROM         dbo.trLayMRDaftar with (NOLOCK)
 WHERE     (status = 1)
 ORDER BY id;
 
@@ -131,7 +131,7 @@ SELECT
 	, noPolis					
 	, catatan
 FROM 
-	trLayMRRegis
+	trLayMRRegis with (NOLOCK)
 WHERE					
 	status = 1
 ORDER BY
@@ -139,6 +139,72 @@ ORDER BY
 GO
 	
 -------------------------------------------------------	
-
-
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayMrRegPasien]'))
+DROP VIEW [dbo].[vwLayMrRegPasien]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwLayMrRegPasien
+AS
+SELECT 	TOP (20)
+			/*0*/mr.id,
+			/*1*/mr.noMR,
+			/*2*/mr.titleID,
+			/*2*/T.namaTitle,
+			/*3*/mr.NamePasien,
+			/*4*/mr.panggilan,
+			/*5*/mr.sex,
+			/*6*/mr.tempatLahir,
+			/*7*/mr.tglLahir,
+			/*8*/mr.umur,
+			/*9*/mr.agamaID,
+			/*10*/A.NamaAgama,
+			/*11*/mr.sukuBangsa,
+			/*12*/mr.wargaNegara,
+			/*13*/mr.golDarah,
+			/*14*/mr.statusMR,
+			/*15*/mr.pendidikanID,
+			/*16*/P.NamaPendidikan,
+			/*17*/mr.pekerjaanID,
+			/*18*/K.NamaPekerjaan,
+			/*19*/mr.alamat,
+			/*20*/mr.propinsiID,
+			/*21*/R.NamaPropinsi,
+			/*22*/mr.kota,
+			/*23*/mr.kodePos,
+			/*24*/mr.telepon,
+			/*25*/mr.handphone,
+			/*26*/mr.kabupatenID,
+			/*27*/B.NamaKabupaten,
+			/*28*/mr.kecamatanID,
+			/*29*/C.NamaKecamatan,
+			/*30*/mr.kelurahanID,
+			/*31*/L.NamaKelurahan,
+			/*32*/mr.namaIstri,
+			/*33*/mr.namaSuami,
+			/*34*/mr.namaAyah,
+			/*35*/mr.namaIbu,
+			/*36*/mr.statusPenanggung,
+			/*37*/mr.namaPenanggung,
+			/*38*/mr.HubKelID,
+			/*39*/H.NamaHubKel,
+			/*40*/mr.HubKelLain,
+			/*41*/mr.alamatPenanggung,
+			/*42*/mr.teleponPenanggung,
+			/*43*/mr.handphonePenanggung,
+			/*44*/mr.note
+FROM trLayMRDaftar mr with (NOLOCK)
+inner join msTitle T with (NOLOCK) on mr.titleID=t.ID
+inner join msAgama A with (NOLOCK)on mr.agamaID=a.ID
+inner join msPendidikan P with (NOLOCK)on mr.pendidikanId=P.ID
+inner join msPekerjaan K with (NOLOCK)on mr.pekerjaanID=K.ID
+inner join msPropinsi R with (NOLOCK)on mr.propinsiID=R.ID
+inner join msKabupaten B with (NOLOCK)on mr.kabupatenID=B.ID
+inner join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
+inner join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
+inner join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
+WHERE mr.status=1
+ORDER BY mr.id
 

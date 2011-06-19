@@ -1,197 +1,211 @@
--- DATABASE PLANNING SIRS : LAYANAN --
-----------------------------------------------------------------------------------------------------------
--- Create by : Ivhan Famly Gunawan
--- Date : April 2011
+-- RANCANGAN View : LAYANAN --
+----------------------------------------------------------
+-- Create by : Findy Efendy
+-- Date : Juni 2011
 -- Database : SQL Server
 -- Penulisan : Campur
-----------------------------------------------------------------------------------------------------------
 USE [SIRS]
 GO
-----------------------------------------------------------------------------------------------------------
--- Composition Word for Table's Name 
-----------------------------------------------------------------------------------------------------------
--- Example : msLayMRDaftar
--- 1. ms : jenis table (master, transaksi)
--- 2. LayMRDaftar : nama table
-----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------
+-- komposisi penamaan View
+----------------------------------------------------------
+-- contoh : vwInsertMRDaftar
+-- 1. vw = View  
+-- 2. nama procedure (tindakan)
+-- 3. nama object
+----------------------------------------------------------
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trHistory') AND type in (N'U'))
-DROP TABLE trHistory
+----------------------------------------------------------
+-- Pengaturan dasar pembuatan View
+----------------------------------------------------------
+-- 1. Harus selalu menggunakan perintah "WITH (NOLOCK)" untuk meningkatkan performa database
+--    http://www.mollerus.net/tom/blog/2008/03/using_mssqls_nolock_for_faster_queries.html
+----------------------------------------------------------
+
+--################################################################################################
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLogClientPermintaan]'))
+DROP VIEW [dbo].[vwLogClientPermintaan]
 GO
+------------------------------------------
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
+CREATE VIEW vwLogClientPermintaan AS
+select	a.id,
+			a.no_permintaan, 
+			a.tgl_permintaan, 
+			a.id_bagian, 
+			a.status,
+			b.id as lineid, 
+			b.itemcat_id, 
+			b.itemkel_id, 
+			b.itemjenis_id, 
+			b.item_id, 
+			b.item_kode,
+			b.item_name, 
+			b.uom
+from tr_log_client_permintaan_hdr a with (nolock)
+	inner join tr_log_client_permintaan_det b with (NOLOCK)
+	on a.id=b.permintaanid;
 GO
-CREATE TABLE trHistory (
-	id 					INT IDENTITY(1,1) NOT NULL,
-	tipeForm 			VARCHAR(100),
-	tipeTindakan 		VARCHAR(100),
-	deskripsiTindakan VARCHAR(1000),
-	dibuatOleh 			INT,
-	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-	PRIMARY KEY (id)
-);
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trLayMRDaftar') AND type in (N'U'))
-DROP TABLE trLayMRDaftar
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE trLayMRDaftar (
-	id										INT IDENTITY(1,1) NOT NULL
-	, noMR								VARCHAR(20)
-	, titel 								VARCHAR(8)
-	, namaPasien 						VARCHAR(100)
-	, panggilan		 					VARCHAR(100)
-	, sex		 							VARCHAR(10)
-	, tempatLahir						VARCHAR(100)
-	, tglLahir							DATETIME
-	, umur								INT	
-	, agama								VARCHAR(100)
-	, sukuBangsa						VARCHAR(100)
-	, wargaNegara						VARCHAR(100)
-	, golDarah							VARCHAR(8)
-	, statusMR							VARCHAR(50)
-	, pendidikan						VARCHAR(20)
-	, pekerjaan							VARCHAR(100)	
-	, alamat								VARCHAR(1000)
-	, propinsi							VARCHAR(100)
-	, kota              				VARCHAR(100)
-	, kodePos							VARCHAR(100)
-	, telepon							VARCHAR(100)
-	, handphone							VARCHAR(100)
-	, kabupaten							VARCHAR(100)
-	, kecamatan							VARCHAR(100)
-	, kelurahan							VARCHAR(100)
-	, namaIstri							VARCHAR(100)
-	, namaSuami							VARCHAR(100)
-	, namaAyah							VARCHAR(100)
-	, namaIbu							VARCHAR(100)
-	, statusPenanggung				INT
-	, namaP								VARCHAR(100)
-	, hubunganP							VARCHAR(100)
-	, hubunganPLain					VARCHAR(100)
-	, alamatP							VARCHAR(1000)
-	, teleponP							VARCHAR(100)
-	, handphoneP						VARCHAR(100)
-	--------------------------------
-	, catatan 							TEXT DEFAULT '-'
-	, status 							INT DEFAULT 1
-	--------------------------------
-	, dibuatOleh 						INT
-	, dieditOleh 						INT
-	, waktuBuat 						DATETIME DEFAULT CURRENT_TIMESTAMP
-	, waktuEdit 						DATETIME DEFAULT CURRENT_TIMESTAMP
 	
-	, PRIMARY KEY (id)	
-);
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'trLayMRRegis') AND type in (N'U'))
-DROP TABLE trLayMRRegis
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayLabDiagnosa]'))
+DROP VIEW [dbo].[vwLayLabDiagnosa]
 GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
+CREATE VIEW vwLayLabDiagnosa
+AS
+SELECT   TOP (100) PERCENT id, 
+			noMR, 
+			titleID, 
+			namePasien, 
+			panggilan, 
+			sex, 
+			tempatLahir, 
+			tglLahir, 
+			umur, 
+			agamaID, 
+			sukuBangsa, 
+			wargaNegara, 
+			golDarah, 
+			statusMR, 
+			pendidikanID, 
+			pekerjaanID, 
+			alamat, 
+			propinsiID, 
+			kota, 
+			kodePos, 
+			telepon, 
+			handphone, 
+			kabupatenID, 
+			kecamatanID, 
+			kelurahanID,
+			namaIstri, 
+			namaSuami, 
+			namaAyah, 
+			namaIbu, 
+			statusPenanggung,
+			namaPenanggung, 
+			hubkelid, 
+			hubkelLain, 
+			alamatPenanggung, 
+			teleponPenanggung, 
+			handphonePenanggung, 
+			catatan
+FROM         dbo.trLayMRDaftar with (NOLOCK)
+WHERE     (status = 1)
+ORDER BY id;
+
 GO
-CREATE TABLE trLayMRRegis (
-	id								INT IDENTITY(1,1) NOT NULL
-	, idLayMRDaftar			INT NOT NULL
-	, noMR						VARCHAR(20) NOT NULL
-	, tglRegis					DATETIME
-	, noRegis					VARCHAR(10)
-	, asalPasien				VARCHAR(10)
-	, tujuanBerobat			VARCHAR(100)
-	, namaPerujuk				VARCHAR(100)
-	, namaDokter				VARCHAR(100)
-	, caraPembayaran			VARCHAR(100)
-	, namaAsuransi				VARCHAR(100)
-	, namaPerusahaan			VARCHAR(100)
-	, noKartu					VARCHAR(100)
-	, noPolis					VARCHAR(100)
-	--------------------------------
-	, catatan 					TEXT DEFAULT '-'
-	, status 					INT DEFAULT 1
-	--------------------------------
-	, dibuatOleh 				INT
-	, dieditOleh 				INT
-	, waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP
-	, waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP
+-------------------------------------------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayMRRegis]'))
+DROP VIEW [dbo].[vwLayMRRegis]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwLayMRRegis
+AS
+SELECT  	
+	TOP(30) PERCENT
+	id
+	, idLayMRDaftar			
+	, noMR						
+	, tglRegis					
+	, noRegis					
+	, asalPasien				
+	, tujuanBerobat			
+	, namaPerujuk				
+	, namaDokter				
+	, caraPembayaran			
+	, namaAsuransi				
+	, namaPerusahaan			
+	, noKartu					
+	, noPolis					
+	, catatan
+FROM 
+	trLayMRRegis with (NOLOCK)
+WHERE					
+	status = 1
+ORDER BY
+	id DESC
+GO
 	
-	, PRIMARY KEY (id)  
-);
-
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msHistoryLayanan') AND type in (N'U'))
-DROP TABLE msHistoryLayanan
+-------------------------------------------------------	
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayMrRegPasien]'))
+DROP VIEW [dbo].[vwLayMrRegPasien]
 GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE msHistoryLayanan (
-	id 							INT IDENTITY(1,1) NOT NULL
-	, formType 					VARCHAR(100) 
-	, actionType 				VARCHAR(100)
-	, actionDesc 				VARCHAR(1000)
-	, createBy 					INT
-	, createTime 				DATETIME DEFAULT CURRENT_TIMESTAMP
+CREATE VIEW vwLayMrRegPasien
+AS
+SELECT 	TOP (20)
+			/*0*/mr.id,
+			/*1*/mr.noMR,
+			/*2*/mr.titleID,
+			/*2*/T.namaTitle,
+			/*3*/mr.NamePasien,
+			/*4*/mr.panggilan,
+			/*5*/mr.sex,
+			/*6*/mr.tempatLahir,
+			/*7*/mr.tglLahir,
+			/*8*/mr.umur,
+			/*9*/mr.agamaID,
+			/*10*/A.NamaAgama,
+			/*11*/mr.sukuBangsa,
+			/*12*/mr.wargaNegara,
+			/*13*/mr.golDarah,
+			/*14*/mr.statusMR,
+			/*15*/mr.pendidikanID,
+			/*16*/P.NamaPendidikan,
+			/*17*/mr.pekerjaanID,
+			/*18*/K.NamaPekerjaan,
+			/*19*/mr.alamat,
+			/*20*/mr.propinsiID,
+			/*21*/R.NamaPropinsi,
+			/*22*/mr.kota,
+			/*23*/mr.kodePos,
+			/*24*/mr.telepon,
+			/*25*/mr.handphone,
+			/*26*/mr.kabupatenID,
+			/*27*/B.NamaKabupaten,
+			/*28*/mr.kecamatanID,
+			/*29*/C.NamaKecamatan,
+			/*30*/mr.kelurahanID,
+			/*31*/L.NamaKelurahan,
+			/*32*/mr.namaIstri,
+			/*33*/mr.namaSuami,
+			/*34*/mr.namaAyah,
+			/*35*/mr.namaIbu,
+			/*36*/mr.statusPenanggung,
+			/*37*/mr.namaPenanggung,
+			/*38*/mr.HubKelID,
+			/*39*/H.NamaHubKel,
+			/*40*/mr.HubKelLain,
+			/*41*/mr.alamatPenanggung,
+			/*42*/mr.teleponPenanggung,
+			/*43*/mr.handphonePenanggung,
+			/*44*/mr.catatan
+FROM trLayMRDaftar mr with (NOLOCK)
+inner join msTitle T with (NOLOCK) on mr.titleID=t.ID
+inner join msAgama A with (NOLOCK)on mr.agamaID=a.ID
+inner join msPendidikan P with (NOLOCK)on mr.pendidikanId=P.ID
+inner join msPekerjaan K with (NOLOCK)on mr.pekerjaanID=K.ID
+inner join msPropinsi R with (NOLOCK)on mr.propinsiID=R.ID
+inner join msKabupaten B with (NOLOCK)on mr.kabupatenID=B.ID
+inner join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
+inner join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
+inner join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
+WHERE mr.status=1
+ORDER BY mr.id
 
-	, PRIMARY KEY (id)
-);
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tr_log_client_permintaan_hdr') AND type in (N'U'))
-DROP TABLE tr_log_client_permintaan_hdr
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE tr_log_client_permintaan_hdr(
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[no_permintaan] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[tgl_permintaan] [datetime] NOT NULL,
-	[id_bagian] [int] NOT NULL,
-	[status] [int] NULL,
-	[createby] [int] NULL,
-	[updateby] [int] NULL,
-	[createtime] [datetime] NULL,
-	[updatetime] [datetime] NULL,
- CONSTRAINT [PK_tr_log_client_permintaaan_hdr] PRIMARY KEY CLUSTERED 
-(
-	[id] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY];
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tr_log_client_permintaan_det') AND type in (N'U'))
-DROP TABLE tr_log_client_permintaan_det
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE tr_log_client_permintaan_det(
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[permintaanid] [int] NOT NULL,
-	[itemcat_id] [int] NOT NULL,
-	[itemkel_id] [int] NOT NULL,
-	[itemjenis_id] [int] NOT NULL,
-	[item_id] [int] NOT NULL,
-	[item_kode] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[item_name] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[uom] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
-) ON [PRIMARY];
