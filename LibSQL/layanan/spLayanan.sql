@@ -27,43 +27,43 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE spInsertMRDaftar
-	/* 1*/ @in_noMR 								VARCHAR(16)	
-	/* 2*/ , @in_titel 							VARCHAR(8)
-	/* 3*/ , @in_namaPasien 					VARCHAR(100)
-	/* 4*/ , @in_panggilan		 				VARCHAR(100)
-	/* 5*/ , @in_jenisKelamin		 			VARCHAR(10)
-	/* 6*/ , @in_tempatLahir					VARCHAR(100)
-	/* 7*/ , @in_tglLahir						DATETIME
-	/* 8*/ , @in_umur								INT
-	/* 9*/ , @in_agama							VARCHAR(100)
-	/*10*/ , @in_sukuBangsa						VARCHAR(100)
-	/*11*/ , @in_wargaNegara					VARCHAR(100)
-	/*12*/ , @in_golDarah						VARCHAR(8)
-	/*13*/ , @in_statusMR						VARCHAR(50)
-	/*14*/ , @in_pendidikan						VARCHAR(20)
-	/*15*/ , @in_pekerjaan						VARCHAR(100)	
-	/*16*/ , @in_alamat							VARCHAR(1000)
-	/*17*/ , @in_provinsi						VARCHAR(100)
-	/*18*/ , @in_kota             			VARCHAR(100)
-	/*19*/ , @in_kodePos							VARCHAR(100)
-	/*20*/ , @in_telepon							VARCHAR(100)
-	/*21*/ , @in_handphone						VARCHAR(100)
-	/*22*/ , @in_kabupaten						VARCHAR(100)
-	/*23*/ , @in_kecamatan						VARCHAR(100)
-	/*24*/ , @in_kelurahan						VARCHAR(100)
-	/*25*/ , @in_namaIstri						VARCHAR(100)
-	/*26*/ , @in_namaSuami						VARCHAR(100)
-	/*27*/ , @in_namaAyah						VARCHAR(100)
-	/*28*/ , @in_namaIbu							VARCHAR(100)
-	/*29*/ , @in_statusPenanggung				INT
-	/*30*/ , @in_namaP							VARCHAR(100)
-	/*31*/ , @in_hubunganP						VARCHAR(100)
-	/*32*/ , @in_hubunganPLain					VARCHAR(100)
-	/*33*/ , @in_alamatP							VARCHAR(1000)
-	/*34*/ , @in_teleponP						VARCHAR(100)
-	/*35*/ , @in_handphoneP						VARCHAR(100)
-	/*36*/ , @in_catatan							VARCHAR(4000)
-	/*37*/ , @in_pengguna						INT
+	/* 1*/   @innoMR 								VARCHAR(16)	
+	/* 2*/ , @intitle 							VARCHAR(8)
+	/* 3*/ , @inpatientname					VARCHAR(100)
+	/* 4*/ , @inpanggilan		 				VARCHAR(100)
+	/* 5*/ , @insex		 			VARCHAR(10)
+	/* 6*/ , @intempatLahir					VARCHAR(100)
+	/* 7*/ , @intglLahir						DATETIME
+	/* 8*/ , @inumur								INT
+	/* 9*/ , @inagama							VARCHAR(100)
+	/*10*/ , @insukuBangsa						VARCHAR(100)
+	/*11*/ , @inwargaNegara					VARCHAR(100)
+	/*12*/ , @ingolDarah						VARCHAR(8)
+	/*13*/ , @instatusMR						VARCHAR(50)
+	/*14*/ , @inpendidikan						VARCHAR(20)
+	/*15*/ , @inpekerjaan						VARCHAR(100)	
+	/*16*/ , @inalamat							VARCHAR(1000)
+	/*17*/ , @inprovinsi						VARCHAR(100)
+	/*18*/ , @inkota             			VARCHAR(100)
+	/*19*/ , @inkodePos							VARCHAR(100)
+	/*20*/ , @intelepon							VARCHAR(100)
+	/*21*/ , @inhandphone						VARCHAR(100)
+	/*22*/ , @inkabupaten						VARCHAR(100)
+	/*23*/ , @inkecamatan						VARCHAR(100)
+	/*24*/ , @inkelurahan						VARCHAR(100)
+	/*25*/ , @innamaIstri						VARCHAR(100)
+	/*26*/ , @innamaSuami						VARCHAR(100)
+	/*27*/ , @innamaAyah						VARCHAR(100)
+	/*28*/ , @innamaIbu							VARCHAR(100)
+	/*29*/ , @instatusPenanggung				INT
+	/*30*/ , @innamaP							VARCHAR(100)
+	/*31*/ , @inhubunganP						VARCHAR(100)
+	/*32*/ , @inhubunganPLain					VARCHAR(100)
+	/*33*/ , @inalamatP							VARCHAR(1000)
+	/*34*/ , @inteleponP						VARCHAR(100)
+	/*35*/ , @inhandphoneP						VARCHAR(100)
+	/*36*/ , @innote						VARCHAR(4000)
+	/*37*/ , @inuser						INT
 AS      	                        
 	DECLARE 	
 		@formType 									VARCHAR(100)
@@ -74,43 +74,43 @@ BEGIN
 	
 	INSERT INTO trLayMRDaftar (
 				/* 1*/ noMR,
-				/* 2*/ title,
-				/* 3*/ patientName,
+				/* 2*/ titleID,
+				/* 3*/ namepasien,
 				/* 4*/ panggilan,
 				/* 5*/ sex,		 					
 				/* 6*/ tempatLahir,			
 				/* 7*/ tglLahir,			
 				/* 8*/ umur,						
-				/* 9*/ agama,						
+				/* 9*/ agamaID,						
 				/*10*/ sukuBangsa,			
 				/*11*/ wargaNegara,			
 				/*12*/ golDarah,				
 				/*13*/ statusMR,					
-				/*14*/ pendidikan,			
-				/*15*/ pekerjaan,				
+				/*14*/ pendidikanID,			
+				/*15*/ pekerjaanID,				
 				/*16*/ alamat,					
-				/*17*/ provinsi,				
+				/*17*/ propinsiID,				
 				/*18*/ kota,           
 				/*19*/ kodePos,					
 				/*20*/ telepon,					
 				/*21*/ handphone,				
-				/*22*/ kabupaten,				
-				/*23*/ kecamatan,				
-				/*24*/ kelurahan,				
+				/*22*/ kabupatenID,				
+				/*23*/ kecamatanID,				
+				/*24*/ kelurahanID,				
 				/*25*/ namaIstri,				
 				/*26*/ namaSuami,				
 				/*27*/ namaAyah,				
 				/*28*/ namaIbu,					
 				/*29*/ statusPenanggung,
-				/*30*/ namaP,						
-				/*31*/ hubunganP,				
-				/*32*/ hubunganPLain,		
-				/*33*/ alamatP,					
-				/*34*/ teleponP,				
-				/*35*/ handphoneP,
-				/*36*/ note,							
-				/*37*/ createBy,
-				/*38*/ updateBy
+				/*30*/ namaPenanggung,						
+				/*31*/ hubkelID,				
+				/*32*/ hubkelLain,		
+				/*33*/ alamatPenanggung,					
+				/*34*/ teleponPenanggung,				
+				/*35*/ handphonePenanggung,
+				/*36*/ catatan,							
+				/*37*/ dibuatoleh,
+				/*38*/ dieditoleh
 	) VALUES (
 				/* 1*/ @inNoMR, 						
 				/* 2*/ @inTitle, 						
@@ -235,43 +235,43 @@ AS
 BEGIN
 	UPDATE trLayMRDaftar SET
 		/* 1*/ noMR							= @inNoMR, 						   
-		/* 2*/ title						= @inTitle, 						   
-		/* 3*/ patientName		      = @inPatientName, 			   
+		/* 2*/ titleID						= @inTitle, 						   
+		/* 3*/ Namepasien		      = @inPatientName, 			   
 		/* 4*/ panggilan			      = @inPanggilan,		 		   
 		/* 5*/ sex						   = @inSex,		 					   
 		/* 6*/ tempatLahir			   = @inTempatLahir,			   
 		/* 7*/ tglLahir				   = @inTglLahir,					   
 		/* 8*/ umur							= @inUmur,							   
-		/* 9*/ agama						= @inAgama,						   
+		/* 9*/ agamaID						= @inAgama,						   
 		/*10*/ sukuBangsa				   = @inSukuBangsa,				   
 		/*11*/ wargaNegara			   = @inWargaNegara,			   
 		/*12*/ golDarah					= @inGolDarah,					   
 		/*13*/ statusMR					= @inStatusMR,						 
-		/*14*/ pendidikan				   = @inPendidikan,				   
-		/*15*/ pekerjaan				   = @inPekerjaan,				   
+		/*14*/ pendidikanID				   = @inPendidikan,				   
+		/*15*/ pekerjaanID				   = @inPekerjaan,				   
 		/*16*/ alamat						= @inAlamat,						   
-		/*17*/ provinsi					= @inProvinsi,					   
+		/*17*/ propinsiID					= @inProvinsi,					   
 		/*18*/ kota							= @inKota,                
 		/*19*/ kodePos					   = @inKodePos,					   
 		/*20*/ telepon					   = @inTelepon,					   
 		/*21*/ handphone				   = @inHandphone,				   
-		/*22*/ kabupaten				   = @inKabupaten,				   
-		/*23*/ kecamatan			      = @inKecamatan,				   
-		/*24*/ kelurahan				   = @inKelurahan,				   
+		/*22*/ kabupatenID				   = @inKabupaten,				   
+		/*23*/ kecamatanID			      = @inKecamatan,				   
+		/*24*/ kelurahanID				   = @inKelurahan,				   
 		/*25*/ namaIstri					= @inNamaIstri,				   
 		/*26*/ namaSuami			      = @inNamaSuami,				   
 		/*27*/ namaAyah					= @inNamaAyah,				     
 		/*28*/ namaIbu					   = @inNamaIbu,					   
 		/*29*/ statusPenanggung		   = @inStatusPenanggung,	   
-		/*30*/ namaP						= @inNamaP,						   
-		/*31*/ hubunganP					= @inHubunganP,				   
-		/*32*/ hubunganPLain			   = @inHubunganPLain,		   
-		/*33*/ alamatP						= @inAlamatP,					   
-		/*34*/ teleponP					= @inTeleponP,					   
-		/*35*/ handphoneP					= @inHandphoneP,				   
-		/*36*/ note							= @inNote,							   
-		/*37*/ updateTime					= CURRENT_TIMESTAMP,               
-		/*38*/ updateBy              	= @inUser							   
+		/*30*/ namaPenanggung						= @inNamaP,						   
+		/*31*/ hubkelID					= @inHubunganP,				   
+		/*32*/ hubkelLain			   = @inHubunganPLain,		   
+		/*33*/ alamatPenanggung						= @inAlamatP,					   
+		/*34*/ teleponPenanggung					= @inTeleponP,					   
+		/*35*/ handphonePenanggung					= @inHandphoneP,				   
+		/*36*/ catatan							= @inNote,							   
+		/*37*/ waktuedit					= CURRENT_TIMESTAMP,               
+		/*38*/ dieditoleh              	= @inUser							   
 	WHERE id = @inIdMrLayDaftar;
 	
 	---------------------------------------------------
@@ -324,8 +324,8 @@ BEGIN
 
 	UPDATE trLayMRDaftar SET
 				/* 1*/ status 			= 0,
-				/* 2*/ updateBy 		= @inUser,
-				/* 3*/ updateTime 	= CURRENT_TIMESTAMP
+				/* 2*/ dieditoleh 		= @inUser,
+				/* 3*/ waktuedit 	= CURRENT_TIMESTAMP
 	WHERE id = @inIdMrLayDaftar;
 					
 	---------------------------------------------------
@@ -519,8 +519,8 @@ BEGIN
 	
 	IF @in_catatan = ''
 		BEGIN		
-			UPDATE trLayMRDaftar SET
-				/* 1*/ idLayMRDaftar    			= @in_idLayMRDaftar 		
+			UPDATE trLayMRRegis SET
+				/* 1*/   idLayMRDaftar    			= @in_idLayMRDaftar 		
 				/* 2*/ , noMR           			= @in_noMR 					
 				/* 3*/ , tglRegis       			= @in_tglRegis 			
 				/* 4*/ , noRegis        			= @in_noRegis 				
@@ -539,7 +539,7 @@ BEGIN
 		END
 	ELSE
 		BEGIN		
-			UPDATE trLayMRDaftar SET
+			UPDATE trLayMRRegis SET
 				/* 1*/ idLayMRDaftar    			= @in_idLayMRDaftar 		
 				/* 2*/ , noMR           			= @in_noMR 					
 				/* 3*/ , tglRegis       			= @in_tglRegis 			
