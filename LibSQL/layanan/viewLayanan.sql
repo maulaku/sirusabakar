@@ -148,7 +148,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW vwLayMrRegPasien
 AS
-SELECT 	TOP (20)
+SELECT 	
 			/*0*/mr.id,
 			/*1*/mr.noMR,
 			/*2*/mr.titleID,
@@ -206,5 +206,4 @@ inner join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
 inner join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
 inner join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
 WHERE mr.status=1
-ORDER BY mr.id
 
