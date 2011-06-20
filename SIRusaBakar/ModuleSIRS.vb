@@ -10,8 +10,8 @@ Module ModuleSIRS
     Public posisiForm, statusForm As String
     Sub bukaServer()
         Try
-            'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
-            con.ConnectionString = "DSN=RSBK"
+            con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
+            'con.ConnectionString = "DSN=RSBK"
             con.Open()
             idUser = 1
         Catch salah As Exception
@@ -61,5 +61,10 @@ Module ModuleSIRS
             MessageBox.Show(salah.Message, "Tabel Tidak Bisa Dibuat !", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End
         End Try
+    End Function
+    Public Function hitUmur(ByVal lahir As Date) As String
+        hitUmur = Str((DateDiff(DateInterval.Year, Now(), lahir)) * -1) & " Tahun "
+        hitUmur = hitUmur & Str((DateDiff(DateInterval.Month, Now(), lahir)) * -1) & " Bulan "
+        hitUmur = hitUmur & Str((DateDiff(DateInterval.DayOfYear, Now(), lahir)) * -1) & " Hari"
     End Function
 End Module

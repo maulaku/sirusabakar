@@ -256,7 +256,7 @@ Public Class LayMRDaftarPasien
             End If
             txtTempatLahir.Text = DataGridView1.Item(6, i).Value
             cmbTglLahir.Value = DataGridView1.Item(7, i).Value
-            txtUmur.Text = DataGridView1.Item(8, i).Value
+            txtUmur.Text = hitUmur(cmbTglLahir.Value)
             cmbAgama.Text = DataGridView1.Item(9, i).Value
             txtSukuBangsa.Text = DataGridView1.Item(10, i).Value
             txtWargaNegara.Text = DataGridView1.Item(11, i).Value
