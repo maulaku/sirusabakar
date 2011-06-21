@@ -56,6 +56,12 @@
       <DependentUpon>BrowseMaster.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CariData.Designer.vb">
+      <DependentUpon>CariData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CariData.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrPendidikan.Designer.vb">
       <DependentUpon>MMrPendidikan.vb</DependentUpon>
     </Compile>
@@ -281,6 +287,10 @@
     <EmbeddedResource Include="BrowseMaster.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BrowseMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CariData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CariData.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MMrPendidikan.resx">
       <DependentUpon>MMrPendidikan.vb</DependentUpon>
