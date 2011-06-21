@@ -173,4 +173,16 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
+
+    Private Sub JenisPerusahaanToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JenisPerusahaanToolStripMenuItem.Click
+        Dim a As New MPerush
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub TitleToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleToolStripMenuItem1.Click
+        Dim a As New MMrTitle
+        a.Show()
+        a.MdiParent = Me
+    End Sub
 End Class
