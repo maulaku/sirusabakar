@@ -21,7 +21,7 @@ Public Class CariData
         load_grid()
     End Sub
     Private Sub pilih()
-        a = DataGridView1.Item(1, DataGridView1.CurrentRow.Index).Value
+        a = DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value
         Me.Close()
     End Sub
 
@@ -34,6 +34,7 @@ Public Class CariData
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        a = "0"
         Me.Close()
     End Sub
 End Class

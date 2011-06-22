@@ -41,8 +41,8 @@ Partial Class LayMRDaftarPasien
         Me.btnSearch = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
         Me.btnCancel = New System.Windows.Forms.ToolStripButton
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.TabData = New System.Windows.Forms.TabControl
+        Me.TabPribadi = New System.Windows.Forms.TabPage
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.rbA = New System.Windows.Forms.RadioButton
         Me.rbB = New System.Windows.Forms.RadioButton
@@ -77,13 +77,18 @@ Partial Class LayMRDaftarPasien
         Me.Label6 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.Button5 = New System.Windows.Forms.Button
-        Me.Button3 = New System.Windows.Forms.Button
+        Me.TabAlamat = New System.Windows.Forms.TabPage
+        Me.IDKel = New System.Windows.Forms.Label
+        Me.IDKec = New System.Windows.Forms.Label
+        Me.IDKab = New System.Windows.Forms.Label
+        Me.IDKota = New System.Windows.Forms.Label
+        Me.IDProp = New System.Windows.Forms.Label
+        Me.BtnKab = New System.Windows.Forms.Button
+        Me.BtnKota = New System.Windows.Forms.Button
         Me.txtPropinsi = New System.Windows.Forms.TextBox
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button4 = New System.Windows.Forms.Button
+        Me.BtnProp = New System.Windows.Forms.Button
+        Me.BtnKel = New System.Windows.Forms.Button
+        Me.BtnKec = New System.Windows.Forms.Button
         Me.txtKabupaten = New System.Windows.Forms.TextBox
         Me.Label43 = New System.Windows.Forms.Label
         Me.txtKecamatan = New System.Windows.Forms.TextBox
@@ -101,7 +106,7 @@ Partial Class LayMRDaftarPasien
         Me.Label10 = New System.Windows.Forms.Label
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
-        Me.TabPage3 = New System.Windows.Forms.TabPage
+        Me.TabKeluarga = New System.Windows.Forms.TabPage
         Me.txtIbu = New System.Windows.Forms.TextBox
         Me.txtAyah = New System.Windows.Forms.TextBox
         Me.txtSuami = New System.Windows.Forms.TextBox
@@ -110,7 +115,7 @@ Partial Class LayMRDaftarPasien
         Me.Label22 = New System.Windows.Forms.Label
         Me.Label21 = New System.Windows.Forms.Label
         Me.Label20 = New System.Windows.Forms.Label
-        Me.TabPage4 = New System.Windows.Forms.TabPage
+        Me.TabPenanggung = New System.Windows.Forms.TabPage
         Me.txtHPPenanggung = New System.Windows.Forms.TextBox
         Me.txtTeleponPenanggung = New System.Windows.Forms.TextBox
         Me.txtAlamatPenanggung = New System.Windows.Forms.RichTextBox
@@ -125,19 +130,14 @@ Partial Class LayMRDaftarPasien
         Me.Label26 = New System.Windows.Forms.Label
         Me.Label25 = New System.Windows.Forms.Label
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.IDProp = New System.Windows.Forms.Label
-        Me.IDKota = New System.Windows.Forms.Label
-        Me.IDKab = New System.Windows.Forms.Label
-        Me.IDKec = New System.Windows.Forms.Label
-        Me.IDKel = New System.Windows.Forms.Label
         Me.ToolStrip1.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.TabData.SuspendLayout()
+        Me.TabPribadi.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
+        Me.TabAlamat.SuspendLayout()
+        Me.TabKeluarga.SuspendLayout()
+        Me.TabPenanggung.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -315,57 +315,59 @@ Partial Class LayMRDaftarPasien
         Me.btnCancel.Size = New System.Drawing.Size(23, 22)
         Me.btnCancel.Text = "Close"
         '
-        'TabControl1
+        'TabData
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(19, 92)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(628, 354)
-        Me.TabControl1.TabIndex = 50
+        Me.TabData.Controls.Add(Me.TabPribadi)
+        Me.TabData.Controls.Add(Me.TabAlamat)
+        Me.TabData.Controls.Add(Me.TabKeluarga)
+        Me.TabData.Controls.Add(Me.TabPenanggung)
+        Me.TabData.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabData.Location = New System.Drawing.Point(19, 92)
+        Me.TabData.Name = "TabData"
+        Me.TabData.SelectedIndex = 0
+        Me.TabData.Size = New System.Drawing.Size(628, 354)
+        Me.TabData.TabIndex = 50
         '
-        'TabPage1
+        'TabPribadi
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage1.Controls.Add(Me.GroupBox2)
-        Me.TabPage1.Controls.Add(Me.GroupBox1)
-        Me.TabPage1.Controls.Add(Me.cmbStatus)
-        Me.TabPage1.Controls.Add(Me.Label38)
-        Me.TabPage1.Controls.Add(Me.txtCatatan)
-        Me.TabPage1.Controls.Add(Me.cmbPekerjaan)
-        Me.TabPage1.Controls.Add(Me.cmbPendidikan)
-        Me.TabPage1.Controls.Add(Me.txtWargaNegara)
-        Me.TabPage1.Controls.Add(Me.txtSukuBangsa)
-        Me.TabPage1.Controls.Add(Me.cmbAgama)
-        Me.TabPage1.Controls.Add(Me.txtUmur)
-        Me.TabPage1.Controls.Add(Me.cmbTglLahir)
-        Me.TabPage1.Controls.Add(Me.txtTempatLahir)
-        Me.TabPage1.Controls.Add(Me.txtPanggilan)
-        Me.TabPage1.Controls.Add(Me.txtNamaPasien)
-        Me.TabPage1.Controls.Add(Me.cmbTitle)
-        Me.TabPage1.Controls.Add(Me.Label37)
-        Me.TabPage1.Controls.Add(Me.Label24)
-        Me.TabPage1.Controls.Add(Me.Label19)
-        Me.TabPage1.Controls.Add(Me.Label18)
-        Me.TabPage1.Controls.Add(Me.Label17)
-        Me.TabPage1.Controls.Add(Me.Label15)
-        Me.TabPage1.Controls.Add(Me.Label14)
-        Me.TabPage1.Controls.Add(Me.Label12)
-        Me.TabPage1.Controls.Add(Me.Label7)
-        Me.TabPage1.Controls.Add(Me.Label6)
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.Label5)
-        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(620, 328)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Data Pribadi"
+        Me.TabPribadi.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabPribadi.Controls.Add(Me.GroupBox2)
+        Me.TabPribadi.Controls.Add(Me.GroupBox1)
+        Me.TabPribadi.Controls.Add(Me.cmbStatus)
+        Me.TabPribadi.Controls.Add(Me.Label38)
+        Me.TabPribadi.Controls.Add(Me.txtCatatan)
+        Me.TabPribadi.Controls.Add(Me.cmbPekerjaan)
+        Me.TabPribadi.Controls.Add(Me.cmbPendidikan)
+        Me.TabPribadi.Controls.Add(Me.txtWargaNegara)
+        Me.TabPribadi.Controls.Add(Me.txtSukuBangsa)
+        Me.TabPribadi.Controls.Add(Me.cmbAgama)
+        Me.TabPribadi.Controls.Add(Me.txtUmur)
+        Me.TabPribadi.Controls.Add(Me.cmbTglLahir)
+        Me.TabPribadi.Controls.Add(Me.txtTempatLahir)
+        Me.TabPribadi.Controls.Add(Me.txtPanggilan)
+        Me.TabPribadi.Controls.Add(Me.txtNamaPasien)
+        Me.TabPribadi.Controls.Add(Me.cmbTitle)
+        Me.TabPribadi.Controls.Add(Me.Label37)
+        Me.TabPribadi.Controls.Add(Me.Label24)
+        Me.TabPribadi.Controls.Add(Me.Label19)
+        Me.TabPribadi.Controls.Add(Me.Label18)
+        Me.TabPribadi.Controls.Add(Me.Label17)
+        Me.TabPribadi.Controls.Add(Me.Label15)
+        Me.TabPribadi.Controls.Add(Me.Label14)
+        Me.TabPribadi.Controls.Add(Me.Label12)
+        Me.TabPribadi.Controls.Add(Me.Label7)
+        Me.TabPribadi.Controls.Add(Me.Label6)
+        Me.TabPribadi.Controls.Add(Me.Label3)
+        Me.TabPribadi.Controls.Add(Me.Label5)
+        Me.TabPribadi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPribadi.Location = New System.Drawing.Point(4, 22)
+        Me.TabPribadi.Name = "TabPribadi"
+        Me.TabPribadi.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPribadi.Size = New System.Drawing.Size(620, 328)
+        Me.TabPribadi.TabIndex = 0
+        Me.TabPribadi.Text = "Data Pribadi"
+        Me.TabPribadi.ToolTipText = "Alt + P"
+        Me.TabPribadi.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -376,7 +378,7 @@ Partial Class LayMRDaftarPasien
         Me.GroupBox2.Location = New System.Drawing.Point(15, 143)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(183, 47)
-        Me.GroupBox2.TabIndex = 51
+        Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Golongan Darah"
         '
@@ -386,7 +388,7 @@ Partial Class LayMRDaftarPasien
         Me.rbA.Location = New System.Drawing.Point(15, 19)
         Me.rbA.Name = "rbA"
         Me.rbA.Size = New System.Drawing.Size(32, 17)
-        Me.rbA.TabIndex = 51
+        Me.rbA.TabIndex = 0
         Me.rbA.TabStop = True
         Me.rbA.Text = "A"
         Me.rbA.UseVisualStyleBackColor = True
@@ -397,7 +399,7 @@ Partial Class LayMRDaftarPasien
         Me.rbB.Location = New System.Drawing.Point(53, 19)
         Me.rbB.Name = "rbB"
         Me.rbB.Size = New System.Drawing.Size(32, 17)
-        Me.rbB.TabIndex = 53
+        Me.rbB.TabIndex = 1
         Me.rbB.TabStop = True
         Me.rbB.Text = "B"
         Me.rbB.UseVisualStyleBackColor = True
@@ -408,7 +410,7 @@ Partial Class LayMRDaftarPasien
         Me.rbAB.Location = New System.Drawing.Point(91, 19)
         Me.rbAB.Name = "rbAB"
         Me.rbAB.Size = New System.Drawing.Size(39, 17)
-        Me.rbAB.TabIndex = 54
+        Me.rbAB.TabIndex = 2
         Me.rbAB.TabStop = True
         Me.rbAB.Text = "AB"
         Me.rbAB.UseVisualStyleBackColor = True
@@ -419,7 +421,7 @@ Partial Class LayMRDaftarPasien
         Me.rbO.Location = New System.Drawing.Point(136, 19)
         Me.rbO.Name = "rbO"
         Me.rbO.Size = New System.Drawing.Size(33, 17)
-        Me.rbO.TabIndex = 55
+        Me.rbO.TabIndex = 3
         Me.rbO.TabStop = True
         Me.rbO.Text = "O"
         Me.rbO.UseVisualStyleBackColor = True
@@ -431,7 +433,7 @@ Partial Class LayMRDaftarPasien
         Me.GroupBox1.Location = New System.Drawing.Point(407, 40)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(145, 47)
-        Me.GroupBox1.TabIndex = 57
+        Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Jenis Kelamin"
         '
@@ -441,7 +443,7 @@ Partial Class LayMRDaftarPasien
         Me.rbPria.Location = New System.Drawing.Point(23, 19)
         Me.rbPria.Name = "rbPria"
         Me.rbPria.Size = New System.Drawing.Size(43, 17)
-        Me.rbPria.TabIndex = 41
+        Me.rbPria.TabIndex = 4
         Me.rbPria.TabStop = True
         Me.rbPria.Text = "Pria"
         Me.rbPria.UseVisualStyleBackColor = True
@@ -452,7 +454,7 @@ Partial Class LayMRDaftarPasien
         Me.rbWanita.Location = New System.Drawing.Point(72, 19)
         Me.rbWanita.Name = "rbWanita"
         Me.rbWanita.Size = New System.Drawing.Size(59, 17)
-        Me.rbWanita.TabIndex = 42
+        Me.rbWanita.TabIndex = 5
         Me.rbWanita.TabStop = True
         Me.rbWanita.Text = "Wanita"
         Me.rbWanita.UseVisualStyleBackColor = True
@@ -463,7 +465,7 @@ Partial Class LayMRDaftarPasien
         Me.cmbStatus.Location = New System.Drawing.Point(407, 181)
         Me.cmbStatus.Name = "cmbStatus"
         Me.cmbStatus.Size = New System.Drawing.Size(200, 21)
-        Me.cmbStatus.TabIndex = 56
+        Me.cmbStatus.TabIndex = 11
         '
         'Label38
         '
@@ -479,7 +481,7 @@ Partial Class LayMRDaftarPasien
         Me.txtCatatan.Location = New System.Drawing.Point(116, 235)
         Me.txtCatatan.Name = "txtCatatan"
         Me.txtCatatan.Size = New System.Drawing.Size(491, 73)
-        Me.txtCatatan.TabIndex = 50
+        Me.txtCatatan.TabIndex = 14
         Me.txtCatatan.Text = ""
         '
         'cmbPekerjaan
@@ -488,7 +490,7 @@ Partial Class LayMRDaftarPasien
         Me.cmbPekerjaan.Location = New System.Drawing.Point(407, 208)
         Me.cmbPekerjaan.Name = "cmbPekerjaan"
         Me.cmbPekerjaan.Size = New System.Drawing.Size(200, 21)
-        Me.cmbPekerjaan.TabIndex = 48
+        Me.cmbPekerjaan.TabIndex = 13
         '
         'cmbPendidikan
         '
@@ -496,21 +498,21 @@ Partial Class LayMRDaftarPasien
         Me.cmbPendidikan.Location = New System.Drawing.Point(116, 203)
         Me.cmbPendidikan.Name = "cmbPendidikan"
         Me.cmbPendidikan.Size = New System.Drawing.Size(194, 21)
-        Me.cmbPendidikan.TabIndex = 47
+        Me.cmbPendidikan.TabIndex = 12
         '
         'txtWargaNegara
         '
         Me.txtWargaNegara.Location = New System.Drawing.Point(407, 155)
         Me.txtWargaNegara.Name = "txtWargaNegara"
         Me.txtWargaNegara.Size = New System.Drawing.Size(200, 20)
-        Me.txtWargaNegara.TabIndex = 46
+        Me.txtWargaNegara.TabIndex = 10
         '
         'txtSukuBangsa
         '
         Me.txtSukuBangsa.Location = New System.Drawing.Point(116, 115)
         Me.txtSukuBangsa.Name = "txtSukuBangsa"
         Me.txtSukuBangsa.Size = New System.Drawing.Size(194, 20)
-        Me.txtSukuBangsa.TabIndex = 45
+        Me.txtSukuBangsa.TabIndex = 6
         '
         'cmbAgama
         '
@@ -518,14 +520,14 @@ Partial Class LayMRDaftarPasien
         Me.cmbAgama.Location = New System.Drawing.Point(407, 129)
         Me.cmbAgama.Name = "cmbAgama"
         Me.cmbAgama.Size = New System.Drawing.Size(200, 21)
-        Me.cmbAgama.TabIndex = 44
+        Me.cmbAgama.TabIndex = 8
         '
         'txtUmur
         '
         Me.txtUmur.Location = New System.Drawing.Point(116, 89)
         Me.txtUmur.Name = "txtUmur"
         Me.txtUmur.Size = New System.Drawing.Size(194, 20)
-        Me.txtUmur.TabIndex = 43
+        Me.txtUmur.TabIndex = 5
         '
         'cmbTglLahir
         '
@@ -534,21 +536,21 @@ Partial Class LayMRDaftarPasien
         Me.cmbTglLahir.Location = New System.Drawing.Point(407, 102)
         Me.cmbTglLahir.Name = "cmbTglLahir"
         Me.cmbTglLahir.Size = New System.Drawing.Size(200, 20)
-        Me.cmbTglLahir.TabIndex = 40
+        Me.cmbTglLahir.TabIndex = 7
         '
         'txtTempatLahir
         '
         Me.txtTempatLahir.Location = New System.Drawing.Point(116, 63)
         Me.txtTempatLahir.Name = "txtTempatLahir"
         Me.txtTempatLahir.Size = New System.Drawing.Size(194, 20)
-        Me.txtTempatLahir.TabIndex = 39
+        Me.txtTempatLahir.TabIndex = 3
         '
         'txtPanggilan
         '
         Me.txtPanggilan.Location = New System.Drawing.Point(116, 37)
         Me.txtPanggilan.Name = "txtPanggilan"
         Me.txtPanggilan.Size = New System.Drawing.Size(194, 20)
-        Me.txtPanggilan.TabIndex = 38
+        Me.txtPanggilan.TabIndex = 2
         '
         'txtNamaPasien
         '
@@ -556,7 +558,7 @@ Partial Class LayMRDaftarPasien
         Me.txtNamaPasien.Location = New System.Drawing.Point(407, 10)
         Me.txtNamaPasien.Name = "txtNamaPasien"
         Me.txtNamaPasien.Size = New System.Drawing.Size(200, 20)
-        Me.txtNamaPasien.TabIndex = 37
+        Me.txtNamaPasien.TabIndex = 1
         '
         'cmbTitle
         '
@@ -565,7 +567,7 @@ Partial Class LayMRDaftarPasien
         Me.cmbTitle.Location = New System.Drawing.Point(116, 10)
         Me.cmbTitle.Name = "cmbTitle"
         Me.cmbTitle.Size = New System.Drawing.Size(194, 21)
-        Me.cmbTitle.TabIndex = 36
+        Me.cmbTitle.TabIndex = 0
         '
         'Label37
         '
@@ -675,101 +677,155 @@ Partial Class LayMRDaftarPasien
         Me.Label5.TabIndex = 19
         Me.Label5.Text = "Tgl Lahir"
         '
-        'TabPage2
+        'TabAlamat
         '
-        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage2.Controls.Add(Me.IDKel)
-        Me.TabPage2.Controls.Add(Me.IDKec)
-        Me.TabPage2.Controls.Add(Me.IDKab)
-        Me.TabPage2.Controls.Add(Me.IDKota)
-        Me.TabPage2.Controls.Add(Me.IDProp)
-        Me.TabPage2.Controls.Add(Me.Button5)
-        Me.TabPage2.Controls.Add(Me.Button3)
-        Me.TabPage2.Controls.Add(Me.txtPropinsi)
-        Me.TabPage2.Controls.Add(Me.Button2)
-        Me.TabPage2.Controls.Add(Me.Button1)
-        Me.TabPage2.Controls.Add(Me.Button4)
-        Me.TabPage2.Controls.Add(Me.txtKabupaten)
-        Me.TabPage2.Controls.Add(Me.Label43)
-        Me.TabPage2.Controls.Add(Me.txtKecamatan)
-        Me.TabPage2.Controls.Add(Me.txtKelurahan)
-        Me.TabPage2.Controls.Add(Me.Label42)
-        Me.TabPage2.Controls.Add(Me.Label41)
-        Me.TabPage2.Controls.Add(Me.txtHP)
-        Me.TabPage2.Controls.Add(Me.txtTelepon)
-        Me.TabPage2.Controls.Add(Me.txtKodePos)
-        Me.TabPage2.Controls.Add(Me.txtKota)
-        Me.TabPage2.Controls.Add(Me.txtAlamat)
-        Me.TabPage2.Controls.Add(Me.Label16)
-        Me.TabPage2.Controls.Add(Me.Label13)
-        Me.TabPage2.Controls.Add(Me.Label11)
-        Me.TabPage2.Controls.Add(Me.Label10)
-        Me.TabPage2.Controls.Add(Me.Label9)
-        Me.TabPage2.Controls.Add(Me.Label8)
-        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(620, 328)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Alamat"
+        Me.TabAlamat.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabAlamat.Controls.Add(Me.IDKel)
+        Me.TabAlamat.Controls.Add(Me.IDKec)
+        Me.TabAlamat.Controls.Add(Me.IDKab)
+        Me.TabAlamat.Controls.Add(Me.IDKota)
+        Me.TabAlamat.Controls.Add(Me.IDProp)
+        Me.TabAlamat.Controls.Add(Me.BtnKab)
+        Me.TabAlamat.Controls.Add(Me.BtnKota)
+        Me.TabAlamat.Controls.Add(Me.txtPropinsi)
+        Me.TabAlamat.Controls.Add(Me.BtnProp)
+        Me.TabAlamat.Controls.Add(Me.BtnKel)
+        Me.TabAlamat.Controls.Add(Me.BtnKec)
+        Me.TabAlamat.Controls.Add(Me.txtKabupaten)
+        Me.TabAlamat.Controls.Add(Me.Label43)
+        Me.TabAlamat.Controls.Add(Me.txtKecamatan)
+        Me.TabAlamat.Controls.Add(Me.txtKelurahan)
+        Me.TabAlamat.Controls.Add(Me.Label42)
+        Me.TabAlamat.Controls.Add(Me.Label41)
+        Me.TabAlamat.Controls.Add(Me.txtHP)
+        Me.TabAlamat.Controls.Add(Me.txtTelepon)
+        Me.TabAlamat.Controls.Add(Me.txtKodePos)
+        Me.TabAlamat.Controls.Add(Me.txtKota)
+        Me.TabAlamat.Controls.Add(Me.txtAlamat)
+        Me.TabAlamat.Controls.Add(Me.Label16)
+        Me.TabAlamat.Controls.Add(Me.Label13)
+        Me.TabAlamat.Controls.Add(Me.Label11)
+        Me.TabAlamat.Controls.Add(Me.Label10)
+        Me.TabAlamat.Controls.Add(Me.Label9)
+        Me.TabAlamat.Controls.Add(Me.Label8)
+        Me.TabAlamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabAlamat.Location = New System.Drawing.Point(4, 22)
+        Me.TabAlamat.Name = "TabAlamat"
+        Me.TabAlamat.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabAlamat.Size = New System.Drawing.Size(620, 328)
+        Me.TabAlamat.TabIndex = 1
+        Me.TabAlamat.Text = "Alamat"
+        Me.TabAlamat.ToolTipText = "Alt + A"
+        Me.TabAlamat.UseVisualStyleBackColor = True
         '
-        'Button5
+        'IDKel
         '
-        Me.Button5.Location = New System.Drawing.Point(294, 153)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(24, 20)
-        Me.Button5.TabIndex = 56
-        Me.Button5.Text = "..."
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.IDKel.AutoSize = True
+        Me.IDKel.Location = New System.Drawing.Point(278, 245)
+        Me.IDKel.Name = "IDKel"
+        Me.IDKel.Size = New System.Drawing.Size(13, 13)
+        Me.IDKel.TabIndex = 61
+        Me.IDKel.Text = "0"
+        Me.IDKel.Visible = False
         '
-        'Button3
+        'IDKec
         '
-        Me.Button3.Location = New System.Drawing.Point(294, 127)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(24, 20)
-        Me.Button3.TabIndex = 55
-        Me.Button3.Text = "..."
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.IDKec.AutoSize = True
+        Me.IDKec.Location = New System.Drawing.Point(219, 245)
+        Me.IDKec.Name = "IDKec"
+        Me.IDKec.Size = New System.Drawing.Size(13, 13)
+        Me.IDKec.TabIndex = 60
+        Me.IDKec.Text = "0"
+        Me.IDKec.Visible = False
+        '
+        'IDKab
+        '
+        Me.IDKab.AutoSize = True
+        Me.IDKab.Location = New System.Drawing.Point(155, 245)
+        Me.IDKab.Name = "IDKab"
+        Me.IDKab.Size = New System.Drawing.Size(13, 13)
+        Me.IDKab.TabIndex = 59
+        Me.IDKab.Text = "0"
+        Me.IDKab.Visible = False
+        '
+        'IDKota
+        '
+        Me.IDKota.AutoSize = True
+        Me.IDKota.Location = New System.Drawing.Point(84, 245)
+        Me.IDKota.Name = "IDKota"
+        Me.IDKota.Size = New System.Drawing.Size(13, 13)
+        Me.IDKota.TabIndex = 58
+        Me.IDKota.Text = "0"
+        Me.IDKota.Visible = False
+        '
+        'IDProp
+        '
+        Me.IDProp.AutoSize = True
+        Me.IDProp.Location = New System.Drawing.Point(23, 245)
+        Me.IDProp.Name = "IDProp"
+        Me.IDProp.Size = New System.Drawing.Size(13, 13)
+        Me.IDProp.TabIndex = 57
+        Me.IDProp.Text = "0"
+        Me.IDProp.Visible = False
+        '
+        'BtnKab
+        '
+        Me.BtnKab.Location = New System.Drawing.Point(294, 153)
+        Me.BtnKab.Name = "BtnKab"
+        Me.BtnKab.Size = New System.Drawing.Size(24, 20)
+        Me.BtnKab.TabIndex = 18
+        Me.BtnKab.Text = "..."
+        Me.BtnKab.UseVisualStyleBackColor = True
+        '
+        'BtnKota
+        '
+        Me.BtnKota.Location = New System.Drawing.Point(294, 127)
+        Me.BtnKota.Name = "BtnKota"
+        Me.BtnKota.Size = New System.Drawing.Size(24, 20)
+        Me.BtnKota.TabIndex = 17
+        Me.BtnKota.Text = "..."
+        Me.BtnKota.UseVisualStyleBackColor = True
         '
         'txtPropinsi
         '
         Me.txtPropinsi.Location = New System.Drawing.Point(87, 101)
         Me.txtPropinsi.Name = "txtPropinsi"
+        Me.txtPropinsi.ReadOnly = True
         Me.txtPropinsi.Size = New System.Drawing.Size(201, 20)
         Me.txtPropinsi.TabIndex = 54
         '
-        'Button2
+        'BtnProp
         '
-        Me.Button2.Location = New System.Drawing.Point(294, 101)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(24, 20)
-        Me.Button2.TabIndex = 53
-        Me.Button2.Text = "..."
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BtnProp.Location = New System.Drawing.Point(294, 101)
+        Me.BtnProp.Name = "BtnProp"
+        Me.BtnProp.Size = New System.Drawing.Size(24, 20)
+        Me.BtnProp.TabIndex = 16
+        Me.BtnProp.Text = "..."
+        Me.BtnProp.UseVisualStyleBackColor = True
         '
-        'Button1
+        'BtnKel
         '
-        Me.Button1.Location = New System.Drawing.Point(294, 204)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(24, 20)
-        Me.Button1.TabIndex = 52
-        Me.Button1.Text = "..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnKel.Location = New System.Drawing.Point(294, 204)
+        Me.BtnKel.Name = "BtnKel"
+        Me.BtnKel.Size = New System.Drawing.Size(24, 20)
+        Me.BtnKel.TabIndex = 20
+        Me.BtnKel.Text = "..."
+        Me.BtnKel.UseVisualStyleBackColor = True
         '
-        'Button4
+        'BtnKec
         '
-        Me.Button4.Location = New System.Drawing.Point(294, 178)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(24, 20)
-        Me.Button4.TabIndex = 50
-        Me.Button4.Text = "..."
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.BtnKec.Location = New System.Drawing.Point(294, 178)
+        Me.BtnKec.Name = "BtnKec"
+        Me.BtnKec.Size = New System.Drawing.Size(24, 20)
+        Me.BtnKec.TabIndex = 19
+        Me.BtnKec.Text = "..."
+        Me.BtnKec.UseVisualStyleBackColor = True
         '
         'txtKabupaten
         '
         Me.txtKabupaten.Location = New System.Drawing.Point(87, 153)
         Me.txtKabupaten.Name = "txtKabupaten"
+        Me.txtKabupaten.ReadOnly = True
         Me.txtKabupaten.Size = New System.Drawing.Size(201, 20)
         Me.txtKabupaten.TabIndex = 48
         '
@@ -786,6 +842,7 @@ Partial Class LayMRDaftarPasien
         '
         Me.txtKecamatan.Location = New System.Drawing.Point(87, 179)
         Me.txtKecamatan.Name = "txtKecamatan"
+        Me.txtKecamatan.ReadOnly = True
         Me.txtKecamatan.Size = New System.Drawing.Size(201, 20)
         Me.txtKecamatan.TabIndex = 46
         '
@@ -793,6 +850,7 @@ Partial Class LayMRDaftarPasien
         '
         Me.txtKelurahan.Location = New System.Drawing.Point(87, 205)
         Me.txtKelurahan.Name = "txtKelurahan"
+        Me.txtKelurahan.ReadOnly = True
         Me.txtKelurahan.Size = New System.Drawing.Size(201, 20)
         Me.txtKelurahan.TabIndex = 45
         '
@@ -820,7 +878,7 @@ Partial Class LayMRDaftarPasien
         Me.txtHP.Location = New System.Drawing.Point(430, 153)
         Me.txtHP.Name = "txtHP"
         Me.txtHP.Size = New System.Drawing.Size(172, 20)
-        Me.txtHP.TabIndex = 42
+        Me.txtHP.TabIndex = 23
         '
         'txtTelepon
         '
@@ -828,19 +886,21 @@ Partial Class LayMRDaftarPasien
         Me.txtTelepon.Location = New System.Drawing.Point(430, 127)
         Me.txtTelepon.Name = "txtTelepon"
         Me.txtTelepon.Size = New System.Drawing.Size(172, 20)
-        Me.txtTelepon.TabIndex = 41
+        Me.txtTelepon.TabIndex = 22
         '
         'txtKodePos
         '
         Me.txtKodePos.Location = New System.Drawing.Point(430, 101)
+        Me.txtKodePos.MaxLength = 5
         Me.txtKodePos.Name = "txtKodePos"
         Me.txtKodePos.Size = New System.Drawing.Size(172, 20)
-        Me.txtKodePos.TabIndex = 40
+        Me.txtKodePos.TabIndex = 21
         '
         'txtKota
         '
         Me.txtKota.Location = New System.Drawing.Point(87, 127)
         Me.txtKota.Name = "txtKota"
+        Me.txtKota.ReadOnly = True
         Me.txtKota.Size = New System.Drawing.Size(201, 20)
         Me.txtKota.TabIndex = 39
         '
@@ -850,7 +910,7 @@ Partial Class LayMRDaftarPasien
         Me.txtAlamat.Location = New System.Drawing.Point(87, 12)
         Me.txtAlamat.Name = "txtAlamat"
         Me.txtAlamat.Size = New System.Drawing.Size(515, 83)
-        Me.txtAlamat.TabIndex = 37
+        Me.txtAlamat.TabIndex = 15
         Me.txtAlamat.Text = ""
         '
         'Label16
@@ -907,51 +967,53 @@ Partial Class LayMRDaftarPasien
         Me.Label8.TabIndex = 31
         Me.Label8.Text = "Kota"
         '
-        'TabPage3
+        'TabKeluarga
         '
-        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage3.Controls.Add(Me.txtIbu)
-        Me.TabPage3.Controls.Add(Me.txtAyah)
-        Me.TabPage3.Controls.Add(Me.txtSuami)
-        Me.TabPage3.Controls.Add(Me.txtIstri)
-        Me.TabPage3.Controls.Add(Me.Label23)
-        Me.TabPage3.Controls.Add(Me.Label22)
-        Me.TabPage3.Controls.Add(Me.Label21)
-        Me.TabPage3.Controls.Add(Me.Label20)
-        Me.TabPage3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(620, 328)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Data Keluarga"
+        Me.TabKeluarga.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabKeluarga.Controls.Add(Me.txtIbu)
+        Me.TabKeluarga.Controls.Add(Me.txtAyah)
+        Me.TabKeluarga.Controls.Add(Me.txtSuami)
+        Me.TabKeluarga.Controls.Add(Me.txtIstri)
+        Me.TabKeluarga.Controls.Add(Me.Label23)
+        Me.TabKeluarga.Controls.Add(Me.Label22)
+        Me.TabKeluarga.Controls.Add(Me.Label21)
+        Me.TabKeluarga.Controls.Add(Me.Label20)
+        Me.TabKeluarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabKeluarga.Location = New System.Drawing.Point(4, 22)
+        Me.TabKeluarga.Name = "TabKeluarga"
+        Me.TabKeluarga.Size = New System.Drawing.Size(620, 328)
+        Me.TabKeluarga.TabIndex = 2
+        Me.TabKeluarga.Text = "Data Keluarga"
+        Me.TabKeluarga.ToolTipText = "Alt + K"
+        Me.TabKeluarga.UseVisualStyleBackColor = True
         '
         'txtIbu
         '
         Me.txtIbu.Location = New System.Drawing.Point(103, 94)
         Me.txtIbu.Name = "txtIbu"
         Me.txtIbu.Size = New System.Drawing.Size(222, 20)
-        Me.txtIbu.TabIndex = 7
+        Me.txtIbu.TabIndex = 28
         '
         'txtAyah
         '
         Me.txtAyah.Location = New System.Drawing.Point(103, 68)
         Me.txtAyah.Name = "txtAyah"
         Me.txtAyah.Size = New System.Drawing.Size(222, 20)
-        Me.txtAyah.TabIndex = 6
+        Me.txtAyah.TabIndex = 27
         '
         'txtSuami
         '
         Me.txtSuami.Location = New System.Drawing.Point(103, 16)
         Me.txtSuami.Name = "txtSuami"
         Me.txtSuami.Size = New System.Drawing.Size(222, 20)
-        Me.txtSuami.TabIndex = 5
+        Me.txtSuami.TabIndex = 25
         '
         'txtIstri
         '
         Me.txtIstri.Location = New System.Drawing.Point(103, 42)
         Me.txtIstri.Name = "txtIstri"
         Me.txtIstri.Size = New System.Drawing.Size(222, 20)
-        Me.txtIstri.TabIndex = 4
+        Me.txtIstri.TabIndex = 26
         '
         'Label23
         '
@@ -989,28 +1051,30 @@ Partial Class LayMRDaftarPasien
         Me.Label20.TabIndex = 0
         Me.Label20.Text = "Nama Suami"
         '
-        'TabPage4
+        'TabPenanggung
         '
-        Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage4.Controls.Add(Me.txtHPPenanggung)
-        Me.TabPage4.Controls.Add(Me.txtTeleponPenanggung)
-        Me.TabPage4.Controls.Add(Me.txtAlamatPenanggung)
-        Me.TabPage4.Controls.Add(Me.txtHubungan)
-        Me.TabPage4.Controls.Add(Me.cmbHubungan)
-        Me.TabPage4.Controls.Add(Me.txtNamaPenanggung)
-        Me.TabPage4.Controls.Add(Me.chbSendiri)
-        Me.TabPage4.Controls.Add(Me.Label30)
-        Me.TabPage4.Controls.Add(Me.Label29)
-        Me.TabPage4.Controls.Add(Me.Label28)
-        Me.TabPage4.Controls.Add(Me.Label27)
-        Me.TabPage4.Controls.Add(Me.Label26)
-        Me.TabPage4.Controls.Add(Me.Label25)
-        Me.TabPage4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(620, 328)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "Penanggung"
+        Me.TabPenanggung.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabPenanggung.Controls.Add(Me.txtHPPenanggung)
+        Me.TabPenanggung.Controls.Add(Me.txtTeleponPenanggung)
+        Me.TabPenanggung.Controls.Add(Me.txtAlamatPenanggung)
+        Me.TabPenanggung.Controls.Add(Me.txtHubungan)
+        Me.TabPenanggung.Controls.Add(Me.cmbHubungan)
+        Me.TabPenanggung.Controls.Add(Me.txtNamaPenanggung)
+        Me.TabPenanggung.Controls.Add(Me.chbSendiri)
+        Me.TabPenanggung.Controls.Add(Me.Label30)
+        Me.TabPenanggung.Controls.Add(Me.Label29)
+        Me.TabPenanggung.Controls.Add(Me.Label28)
+        Me.TabPenanggung.Controls.Add(Me.Label27)
+        Me.TabPenanggung.Controls.Add(Me.Label26)
+        Me.TabPenanggung.Controls.Add(Me.Label25)
+        Me.TabPenanggung.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPenanggung.Location = New System.Drawing.Point(4, 22)
+        Me.TabPenanggung.Name = "TabPenanggung"
+        Me.TabPenanggung.Size = New System.Drawing.Size(620, 328)
+        Me.TabPenanggung.TabIndex = 3
+        Me.TabPenanggung.Text = "Penanggung"
+        Me.TabPenanggung.ToolTipText = "Alt + T"
+        Me.TabPenanggung.UseVisualStyleBackColor = True
         '
         'txtHPPenanggung
         '
@@ -1018,7 +1082,7 @@ Partial Class LayMRDaftarPasien
         Me.txtHPPenanggung.Location = New System.Drawing.Point(124, 220)
         Me.txtHPPenanggung.Name = "txtHPPenanggung"
         Me.txtHPPenanggung.Size = New System.Drawing.Size(221, 20)
-        Me.txtHPPenanggung.TabIndex = 12
+        Me.txtHPPenanggung.TabIndex = 35
         '
         'txtTeleponPenanggung
         '
@@ -1026,14 +1090,14 @@ Partial Class LayMRDaftarPasien
         Me.txtTeleponPenanggung.Location = New System.Drawing.Point(124, 194)
         Me.txtTeleponPenanggung.Name = "txtTeleponPenanggung"
         Me.txtTeleponPenanggung.Size = New System.Drawing.Size(221, 20)
-        Me.txtTeleponPenanggung.TabIndex = 11
+        Me.txtTeleponPenanggung.TabIndex = 34
         '
         'txtAlamatPenanggung
         '
         Me.txtAlamatPenanggung.Location = New System.Drawing.Point(124, 92)
         Me.txtAlamatPenanggung.Name = "txtAlamatPenanggung"
         Me.txtAlamatPenanggung.Size = New System.Drawing.Size(478, 96)
-        Me.txtAlamatPenanggung.TabIndex = 10
+        Me.txtAlamatPenanggung.TabIndex = 33
         Me.txtAlamatPenanggung.Text = ""
         '
         'txtHubungan
@@ -1041,7 +1105,7 @@ Partial Class LayMRDaftarPasien
         Me.txtHubungan.Location = New System.Drawing.Point(351, 66)
         Me.txtHubungan.Name = "txtHubungan"
         Me.txtHubungan.Size = New System.Drawing.Size(251, 20)
-        Me.txtHubungan.TabIndex = 9
+        Me.txtHubungan.TabIndex = 32
         '
         'cmbHubungan
         '
@@ -1049,7 +1113,7 @@ Partial Class LayMRDaftarPasien
         Me.cmbHubungan.Location = New System.Drawing.Point(124, 65)
         Me.cmbHubungan.Name = "cmbHubungan"
         Me.cmbHubungan.Size = New System.Drawing.Size(221, 21)
-        Me.cmbHubungan.TabIndex = 8
+        Me.cmbHubungan.TabIndex = 31
         '
         'txtNamaPenanggung
         '
@@ -1057,7 +1121,7 @@ Partial Class LayMRDaftarPasien
         Me.txtNamaPenanggung.Location = New System.Drawing.Point(124, 39)
         Me.txtNamaPenanggung.Name = "txtNamaPenanggung"
         Me.txtNamaPenanggung.Size = New System.Drawing.Size(221, 20)
-        Me.txtNamaPenanggung.TabIndex = 7
+        Me.txtNamaPenanggung.TabIndex = 30
         '
         'chbSendiri
         '
@@ -1065,7 +1129,7 @@ Partial Class LayMRDaftarPasien
         Me.chbSendiri.Location = New System.Drawing.Point(124, 16)
         Me.chbSendiri.Name = "chbSendiri"
         Me.chbSendiri.Size = New System.Drawing.Size(85, 17)
-        Me.chbSendiri.TabIndex = 6
+        Me.chbSendiri.TabIndex = 29
         Me.chbSendiri.Text = "Saya Sendiri"
         Me.chbSendiri.UseVisualStyleBackColor = True
         '
@@ -1134,56 +1198,6 @@ Partial Class LayMRDaftarPasien
         Me.DataGridView1.Size = New System.Drawing.Size(624, 164)
         Me.DataGridView1.TabIndex = 51
         '
-        'IDProp
-        '
-        Me.IDProp.AutoSize = True
-        Me.IDProp.Location = New System.Drawing.Point(23, 245)
-        Me.IDProp.Name = "IDProp"
-        Me.IDProp.Size = New System.Drawing.Size(40, 13)
-        Me.IDProp.TabIndex = 57
-        Me.IDProp.Text = "IDProp"
-        Me.IDProp.Visible = False
-        '
-        'IDKota
-        '
-        Me.IDKota.AutoSize = True
-        Me.IDKota.Location = New System.Drawing.Point(84, 245)
-        Me.IDKota.Name = "IDKota"
-        Me.IDKota.Size = New System.Drawing.Size(40, 13)
-        Me.IDKota.TabIndex = 58
-        Me.IDKota.Text = "IDKota"
-        Me.IDKota.Visible = False
-        '
-        'IDKab
-        '
-        Me.IDKab.AutoSize = True
-        Me.IDKab.Location = New System.Drawing.Point(155, 245)
-        Me.IDKab.Name = "IDKab"
-        Me.IDKab.Size = New System.Drawing.Size(37, 13)
-        Me.IDKab.TabIndex = 59
-        Me.IDKab.Text = "IDKab"
-        Me.IDKab.Visible = False
-        '
-        'IDKec
-        '
-        Me.IDKec.AutoSize = True
-        Me.IDKec.Location = New System.Drawing.Point(219, 245)
-        Me.IDKec.Name = "IDKec"
-        Me.IDKec.Size = New System.Drawing.Size(37, 13)
-        Me.IDKec.TabIndex = 60
-        Me.IDKec.Text = "IDKec"
-        Me.IDKec.Visible = False
-        '
-        'IDKel
-        '
-        Me.IDKel.AutoSize = True
-        Me.IDKel.Location = New System.Drawing.Point(278, 245)
-        Me.IDKel.Name = "IDKel"
-        Me.IDKel.Size = New System.Drawing.Size(33, 13)
-        Me.IDKel.TabIndex = 61
-        Me.IDKel.Text = "IDKel"
-        Me.IDKel.Visible = False
-        '
         'LayMRDaftarPasien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1191,30 +1205,31 @@ Partial Class LayMRDaftarPasien
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(666, 641)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.TabData)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.txtNoMR)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.DoubleBuffered = True
+        Me.KeyPreview = True
         Me.Name = "LayMRDaftarPasien"
         Me.Text = "Layanan Pendaftaran Pasien Baru (Medical Record)"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.TabData.ResumeLayout(False)
+        Me.TabPribadi.ResumeLayout(False)
+        Me.TabPribadi.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabPage4.PerformLayout()
+        Me.TabAlamat.ResumeLayout(False)
+        Me.TabAlamat.PerformLayout()
+        Me.TabKeluarga.ResumeLayout(False)
+        Me.TabKeluarga.PerformLayout()
+        Me.TabPenanggung.ResumeLayout(False)
+        Me.TabPenanggung.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1241,8 +1256,8 @@ Partial Class LayMRDaftarPasien
     Friend WithEvents btnSearch As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnCancel As System.Windows.Forms.ToolStripButton
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabData As System.Windows.Forms.TabControl
+    Friend WithEvents TabPribadi As System.Windows.Forms.TabPage
     Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
     Friend WithEvents Label38 As System.Windows.Forms.Label
     Friend WithEvents txtCatatan As System.Windows.Forms.RichTextBox
@@ -1269,8 +1284,8 @@ Partial Class LayMRDaftarPasien
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents TabAlamat As System.Windows.Forms.TabPage
+    Friend WithEvents BtnKec As System.Windows.Forms.Button
     Friend WithEvents txtKabupaten As System.Windows.Forms.TextBox
     Friend WithEvents Label43 As System.Windows.Forms.Label
     Friend WithEvents txtKecamatan As System.Windows.Forms.TextBox
@@ -1288,7 +1303,7 @@ Partial Class LayMRDaftarPasien
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
+    Friend WithEvents TabKeluarga As System.Windows.Forms.TabPage
     Friend WithEvents txtIbu As System.Windows.Forms.TextBox
     Friend WithEvents txtAyah As System.Windows.Forms.TextBox
     Friend WithEvents txtSuami As System.Windows.Forms.TextBox
@@ -1297,7 +1312,7 @@ Partial Class LayMRDaftarPasien
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPenanggung As System.Windows.Forms.TabPage
     Friend WithEvents txtHPPenanggung As System.Windows.Forms.TextBox
     Friend WithEvents txtTeleponPenanggung As System.Windows.Forms.TextBox
     Friend WithEvents txtAlamatPenanggung As System.Windows.Forms.RichTextBox
@@ -1313,10 +1328,10 @@ Partial Class LayMRDaftarPasien
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents txtPropinsi As System.Windows.Forms.TextBox
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents BtnProp As System.Windows.Forms.Button
+    Friend WithEvents BtnKel As System.Windows.Forms.Button
+    Friend WithEvents BtnKota As System.Windows.Forms.Button
+    Friend WithEvents BtnKab As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Protected Friend WithEvents rbPria As System.Windows.Forms.RadioButton
     Protected Friend WithEvents rbWanita As System.Windows.Forms.RadioButton

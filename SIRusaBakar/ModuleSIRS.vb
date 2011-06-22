@@ -28,7 +28,7 @@ Module ModuleSIRS
             cmd.Connection = con
             cmd.CommandType = CommandType.Text
             cmd.CommandText = sql
-            Return cmd.ExecuteScalar
+            getNumber = cmd.ExecuteScalar
             cmd.Dispose()
             Call matiServer()
         Catch salah As Exception

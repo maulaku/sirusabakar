@@ -102,14 +102,14 @@ Public Class LayMRDaftarPasien
         cmbPendidikan.Enabled = True
         cmbPekerjaan.Enabled = True
         txtAlamat.Enabled = True
-        txtPropinsi.Enabled = True
-        txtKota.Enabled = True
+        'txtPropinsi.Enabled = True
+        'txtKota.Enabled = True
         txtKodePos.Enabled = True
         txtTelepon.Enabled = True
         txtHP.Enabled = True
-        txtKabupaten.Enabled = True
-        txtKecamatan.Enabled = True
-        txtKelurahan.Enabled = True
+        'txtKabupaten.Enabled = True
+        'txtKecamatan.Enabled = True
+        'txtKelurahan.Enabled = True
         txtIstri.Enabled = True
         txtSuami.Enabled = True
         txtAyah.Enabled = True
@@ -151,14 +151,14 @@ Public Class LayMRDaftarPasien
         cmbPendidikan.Enabled = False
         cmbPekerjaan.Enabled = False
         txtAlamat.Enabled = False
-        txtPropinsi.Enabled = False
-        txtKota.Enabled = False
+        'txtPropinsi.Enabled = False
+        'txtKota.Enabled = False
         txtKodePos.Enabled = False
         txtTelepon.Enabled = False
         txtHP.Enabled = False
-        txtKabupaten.Enabled = False
-        txtKecamatan.Enabled = False
-        txtKelurahan.Enabled = False
+        'txtKabupaten.Enabled = False
+        'txtKecamatan.Enabled = False
+        'txtKelurahan.Enabled = False
         txtIstri.Enabled = False
         txtSuami.Enabled = False
         txtAyah.Enabled = False
@@ -441,7 +441,6 @@ Public Class LayMRDaftarPasien
                             " '" & sex & "'," & _
                             " '" & txtTempatLahir.Text & "'," & _
                             " '" & cmbTglLahir.Value & "'," & _
-                            " '" & txtUmur.Text & "'," & _
                             "  " & cmbAgama.SelectedValue & "," & _
                             " '" & txtSukuBangsa.Text & "'," & _
                             " '" & txtWargaNegara.Text & "'," & _
@@ -450,14 +449,14 @@ Public Class LayMRDaftarPasien
                             "  " & cmbPendidikan.SelectedValue & "," & _
                             "  " & cmbPekerjaan.SelectedValue & "," & _
                             " '" & txtAlamat.Text & "'," & _
-                            " '" & txtPropinsi.Text & "'," & _
-                            " '" & txtKota.Text & "'," & _
+                            " '" & IDProp.Text & "'," & _
+                            " '" & IDKota.Text & "'," & _
                             " '" & txtKodePos.Text & "'," & _
                             " '" & txtTelepon.Text & "'," & _
                             " '" & txtHP.Text & "'," & _
-                            " '" & txtKabupaten.Text & "'," & _
-                            " '" & txtKecamatan.Text & "'," & _
-                            " '" & txtKelurahan.Text & "'," & _
+                            " '" & IDKab.Text & "'," & _
+                            " '" & IDKec.Text & "'," & _
+                            " '" & IDKel.Text & "'," & _
                             " '" & txtIstri.Text & "'," & _
                             " '" & txtSuami.Text & "'," & _
                             " '" & txtAyah.Text & "'," & _
@@ -484,7 +483,6 @@ Public Class LayMRDaftarPasien
                             " '" & sex & "'," & _
                             " '" & txtTempatLahir.Text & "'," & _
                             " '" & cmbTglLahir.Value & "'," & _
-                            " '" & txtUmur.Text & "'," & _
                             "  " & cmbAgama.SelectedValue & "," & _
                             " '" & txtSukuBangsa.Text & "'," & _
                             " '" & txtWargaNegara.Text & "'," & _
@@ -493,14 +491,14 @@ Public Class LayMRDaftarPasien
                             "  " & cmbPendidikan.SelectedValue & "," & _
                             "  " & cmbPekerjaan.SelectedValue & "," & _
                             " '" & txtAlamat.Text & "'," & _
-                            " '" & txtPropinsi.Text & "'," & _
-                            " '" & txtKota.Text & "'," & _
+                            " '" & IDProp.Text & "'," & _
+                            " '" & IDKota.Text & "'," & _
                             " '" & txtKodePos.Text & "'," & _
                             " '" & txtTelepon.Text & "'," & _
                             " '" & txtHP.Text & "'," & _
-                            " '" & txtKabupaten.Text & "'," & _
-                            " '" & txtKecamatan.Text & "'," & _
-                            " '" & txtKelurahan.Text & "'," & _
+                            " '" & IDKab.Text & "'," & _
+                            " '" & IDKec.Text & "'," & _
+                            " '" & IDKel.Text & "'," & _
                             " '" & txtIstri.Text & "'," & _
                             " '" & txtSuami.Text & "'," & _
                             " '" & txtAyah.Text & "'," & _
@@ -697,6 +695,20 @@ Public Class LayMRDaftarPasien
             txtTeleponPenanggung.Text = ""
             txtAlamatPenanggung.Text = ""
             txtHubungan.Text = ""
+        Else
+            statusPenanggung = 0
+            txtNamaPenanggung.Enabled = True
+            txtHPPenanggung.Enabled = True
+            txtTeleponPenanggung.Enabled = True
+            txtAlamatPenanggung.Enabled = True
+            cmbHubungan.Enabled = True
+            txtHubungan.Enabled = True
+
+            txtNamaPenanggung.Text = ""
+            txtHPPenanggung.Text = ""
+            txtTeleponPenanggung.Text = ""
+            txtAlamatPenanggung.Text = ""
+            txtHubungan.Text = ""
         End If
     End Sub
     Private Sub txtSearch_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
@@ -741,8 +753,66 @@ Public Class LayMRDaftarPasien
         End If
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnKota.Click
         Dim frm2 As New CariData
-        IDProp.Text = frm2.getselection("select ID,namapropinsi as 'Nama Propinsi' from msPropinsi", "Pilih Propinsi")
+        IDKota.Text = frm2.getselection("select ID,namakota as 'Nama Kota' from msKota where status=1", "Pilih Kota")
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnKab.Click
+        Dim frm2 As New CariData
+        IDKab.Text = frm2.getselection("select ID,namakabupaten as 'Nama Kabupaten' from msKabupaten where status=1", "Pilih Kabupaten")
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnKec.Click
+        Dim frm2 As New CariData
+        IDKec.Text = frm2.getselection("select ID,namakecamatan as 'Nama Kecamatan' from msKecamatan where status=1", "Pilih Kecamatan")
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnKel.Click
+        Dim frm2 As New CariData
+        IDKel.Text = frm2.getselection("select ID,namakelurahan as 'Nama Kelurahan' from msKelurahan where status=1", "Pilih Kelurahan")
+    End Sub
+
+    Private Sub IDProp_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDProp.TextChanged
+        txtPropinsi.Text = getNumber("select namapropinsi from mspropinsi where status=1 and id=" & IDProp.Text)
+    End Sub
+
+    Private Sub IDKota_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKota.TextChanged
+        txtKota.Text = getNumber("select namakota from mskota where status=1 and id=" & IDKota.Text)
+    End Sub
+
+    Private Sub IDKab_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKab.TextChanged
+        txtKabupaten.Text = getNumber("select namakabupaten from mskabupaten where status=1 and id=" & IDKab.Text)
+    End Sub
+
+    Private Sub IDKec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKec.TextChanged
+        txtKecamatan.Text = getNumber("select namakecamatan from mskecamatan where status=1 and id=" & IDKec.Text)
+    End Sub
+
+    Private Sub IDKel_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKel.TextChanged
+        txtKelurahan.Text = getNumber("select namakelurahan from mskelurahan where status=1 and id=" & IDKel.Text)
+    End Sub
+
+    Private Sub txtKodePos_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtKodePos.Validated
+        If IsNumeric(txtKodePos.Text) Then
+            MsgBox(txtKodePos.Text)
+        End If
+    End Sub
+
+    Private Sub BtnProp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProp.Click
+        Dim frm2 As New CariData
+        IDProp.Text = frm2.getselection("select ID,namapropinsi as 'Nama Propinsi' from msPropinsi where status=1", "Pilih Propinsi")
+    End Sub
+
+    Private Sub LayMRDaftarPasien_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If (e.KeyCode = Keys.P AndAlso e.Modifiers = Keys.Alt) Then
+            cmbTitle.Focus()
+        ElseIf (e.KeyCode = Keys.A AndAlso e.Modifiers = Keys.Alt) Then
+            txtAlamat.Focus()
+        ElseIf (e.KeyCode = Keys.K AndAlso e.Modifiers = Keys.Alt) Then
+            txtSuami.Focus()
+        ElseIf (e.KeyCode = Keys.T AndAlso e.Modifiers = Keys.Alt) Then
+            chbSendiri.Focus()
+        End If
     End Sub
 End Class

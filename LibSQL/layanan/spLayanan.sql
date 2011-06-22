@@ -34,7 +34,7 @@ CREATE PROCEDURE spInsertMRDaftar
 	/* 5*/ , @insex		 			VARCHAR(10)
 	/* 6*/ , @intempatLahir					VARCHAR(100)
 	/* 7*/ , @intglLahir						DATETIME
-	/* 8*/ , @inumur								INT
+	/* 8 , @inumur								INT*/
 	/* 9*/ , @inagama							VARCHAR(100)
 	/*10*/ , @insukuBangsa						VARCHAR(100)
 	/*11*/ , @inwargaNegara					VARCHAR(100)
@@ -80,7 +80,7 @@ BEGIN
 				/* 5*/ sex,		 					
 				/* 6*/ tempatLahir,			
 				/* 7*/ tglLahir,			
-				/* 8*/ umur,						
+				/* 8 umur,		*/				
 				/* 9*/ agamaID,						
 				/*10*/ sukuBangsa,			
 				/*11*/ wargaNegara,			
@@ -119,7 +119,7 @@ BEGIN
 				/* 5*/ @inSex,		 					
 				/* 6*/ @inTempatLahir,			
 				/* 7*/ @inTglLahir,					
-				/* 8*/ @inUmur,							
+				/* 8 @inUmur,		*/					
 				/* 9*/ @inAgama,						
 				/*10*/ @inSukuBangsa,				
 				/*11*/ @inWargaNegara,			
@@ -195,7 +195,7 @@ CREATE PROCEDURE spUpdateMRDaftar
 	/* 6*/	@inSex		 						VARCHAR(10),
 	/* 7*/	@inTempatLahir						VARCHAR(100),
 	/* 8*/	@inTglLahir							DATETIME,
-	/* 9*/	@inUmur								INT,		
+	/* 9	@inUmur								INT,		*/
 	/*10*/	@inAgama								VARCHAR(100),
 	/*11*/	@inSukuBangsa						VARCHAR(100),
 	/*12*/	@inWargaNegara						VARCHAR(100),
@@ -241,7 +241,7 @@ BEGIN
 		/* 5*/ sex						   = @inSex,		 					   
 		/* 6*/ tempatLahir			   = @inTempatLahir,			   
 		/* 7*/ tglLahir				   = @inTglLahir,					   
-		/* 8*/ umur							= @inUmur,							   
+		/* 8 umur							= @inUmur,			*/				   
 		/* 9*/ agamaID						= @inAgama,						   
 		/*10*/ sukuBangsa				   = @inSukuBangsa,				   
 		/*11*/ wargaNegara			   = @inWargaNegara,			   
