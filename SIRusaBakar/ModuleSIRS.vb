@@ -10,8 +10,8 @@ Module ModuleSIRS
     Public posisiForm, statusForm As String
     Sub bukaServer()
         Try
-            con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
-            'con.ConnectionString = "DSN=RSBK"
+            'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
+            con.ConnectionString = "DSN=RSBK"
             con.Open()
             idUser = 1
         Catch salah As Exception
@@ -22,6 +22,20 @@ Module ModuleSIRS
     Sub matiServer()
         con.Close()
     End Sub
+    Public Function getNumRow(ByVal sql As String) As Integer
+        Try
+            Call bukaServer()
+            cmd.Connection = con
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = Sql
+            getNumRow = cmd.ExecuteScalar
+            cmd.Dispose()
+            Call matiServer()
+        Catch salah As Exception
+            MessageBox.Show(salah.Message, "SQL Command Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End
+        End Try
+    End Function
     Public Function getNumber(ByVal sql As String) As String
         Try
             Call bukaServer()

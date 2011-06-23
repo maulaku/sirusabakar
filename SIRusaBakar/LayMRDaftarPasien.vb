@@ -1,7 +1,8 @@
 Public Class LayMRDaftarPasien
-    Dim dttable As New DataTable
     Dim status As Integer = 0
     Dim dataCari As String
+    Dim list As Integer = 0
+    Dim max As Integer
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Try
             If msg.WParam.ToInt32 = Convert.ToInt32(Keys.F2) Then
@@ -219,22 +220,28 @@ Public Class LayMRDaftarPasien
         cmbHubungan.ValueMember = "ID"
     End Sub
     Sub munculData()
-        DataGridView1.DataSource = getTabel("select * from vwLayMrRegPasien")
+        If list = 0 Then
+            DataGridView1.DataSource = getTabel("select Top 20 * from vwLayMrRegPasien order by ID asc")
+        ElseIf list = -1 Then
+            DataGridView1.DataSource = getTabel("select Top 20 * from vwLayMrRegPasien order by ID desc")
+        Else
+            DataGridView1.DataSource = getTabel("select Top 20 * from vwLayMrRegPasien where ID not in (select top " & list & " ID from vwLayMrRegPasien order by ID) order by ID asc")
+        End If
 
-        For i As Integer = 0 To 36
+        For i As Integer = 0 To DataGridView1.ColumnCount - 1
             DataGridView1.Columns(i).Visible = False
         Next
 
-        DataGridView1.Columns(1).Visible = True 'No. MR
-        DataGridView1.Columns(3).Visible = True 'Nama Pasien
-        DataGridView1.Columns(4).Visible = True 'Nama Panggilan
-        DataGridView1.Columns(5).Visible = True 'Jenis Kelamin
+        DataGridView1.Columns("nomr").Visible = True 'No. MR
+        DataGridView1.Columns("namepasien").Visible = True 'Nama Pasien
+        DataGridView1.Columns("panggilan").Visible = True 'Nama Panggilan
+        DataGridView1.Columns("sex").Visible = True 'Jenis Kelamin
 
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
 
     End Sub
     Sub tampilData()
-        If dttable.Rows.Count = 0 Then
+        If DataGridView1.RowCount = 0 Then
             MsgBox("Data MR Pasien : Tidak Ada", MsgBoxStyle.Information, "Data Medical Record")
 
             btnSearch.Enabled = False
@@ -309,15 +316,15 @@ Public Class LayMRDaftarPasien
                 Case "noMR"
                     dc.HeaderText = "No. MR"
                     dc.Width = 100
-                Case "namaPasien"
+                Case "namepasien"
                     dc.HeaderText = "Nama Pasien"
-                    dc.Width = 100
+                    dc.Width = 150
                 Case "panggilan"
                     dc.HeaderText = "Nama Panggilan"
-                    dc.Width = 100
+                    dc.Width = 150
                 Case "sex"
                     dc.HeaderText = "Jenis Kelamin"
-                    dc.Width = 100
+                    dc.Width = 150
             End Select
         Next
     End Sub
@@ -529,7 +536,7 @@ Public Class LayMRDaftarPasien
         statusForm = ""
         status = 0
     End Sub
- 
+
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         'Select Case statusForm
         '    Case "new"
@@ -580,22 +587,13 @@ Public Class LayMRDaftarPasien
                         " AND " & dataCari & " = '" & txtSearch.Text & "'" & _
                     " ORDER BY id"
 
+                DataGridView1.DataSource = getTabel(PSQL)
 
-                dttable.Clear()
-                dtadapter = New Odbc.OdbcDataAdapter(PSQL, con)
-                dtadapter.Fill(dttable)
-
-                DataGridView1.DataSource = dttable
-
-                If dttable.Rows.Count = 0 Then
+                If DataGridView1.RowCount = 0 Then
                     MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     btnRefresh.PerformClick()
                 Else
                     tampilData()
-                    dttable.Dispose()
-                    dtadapter.Dispose()
-                    dtadapter = Nothing
-                    con.Close()
                 End If
             End If
         Catch salah As Exception
@@ -814,5 +812,34 @@ Public Class LayMRDaftarPasien
         ElseIf (e.KeyCode = Keys.T AndAlso e.Modifiers = Keys.Alt) Then
             chbSendiri.Focus()
         End If
+    End Sub
+
+    Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
+        list = 0
+        munculData()
+    End Sub
+
+    Private Sub ToolStripButton7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton7.Click
+        list = -1
+        munculData()
+    End Sub
+
+    Private Sub ToolStripButton6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton6.Click
+        max = getNumRow("select * from vwLayMrRegPasien")
+        If list + 20 < max Then
+            list += 20
+        Else
+            list = -1
+        End If
+        munculData()
+    End Sub
+
+    Private Sub ToolStripButton5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton5.Click
+        If list - 20 > 0 Then
+            list -= 20
+        Else
+            list = 0
+        End If
+        munculData()
     End Sub
 End Class
