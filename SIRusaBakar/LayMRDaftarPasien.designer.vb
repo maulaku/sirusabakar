@@ -78,11 +78,6 @@ Partial Class LayMRDaftarPasien
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.TabAlamat = New System.Windows.Forms.TabPage
-        Me.IDKel = New System.Windows.Forms.Label
-        Me.IDKec = New System.Windows.Forms.Label
-        Me.IDKab = New System.Windows.Forms.Label
-        Me.IDKota = New System.Windows.Forms.Label
-        Me.IDProp = New System.Windows.Forms.Label
         Me.BtnKab = New System.Windows.Forms.Button
         Me.BtnKota = New System.Windows.Forms.Button
         Me.txtPropinsi = New System.Windows.Forms.TextBox
@@ -130,6 +125,11 @@ Partial Class LayMRDaftarPasien
         Me.Label26 = New System.Windows.Forms.Label
         Me.Label25 = New System.Windows.Forms.Label
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.IDProp = New System.Windows.Forms.TextBox
+        Me.IDKota = New System.Windows.Forms.TextBox
+        Me.IDKel = New System.Windows.Forms.TextBox
+        Me.IDKab = New System.Windows.Forms.TextBox
+        Me.IDKec = New System.Windows.Forms.TextBox
         Me.ToolStrip1.SuspendLayout()
         Me.TabData.SuspendLayout()
         Me.TabPribadi.SuspendLayout()
@@ -371,6 +371,7 @@ Partial Class LayMRDaftarPasien
         '
         'GroupBox2
         '
+        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox2.Controls.Add(Me.rbA)
         Me.GroupBox2.Controls.Add(Me.rbB)
         Me.GroupBox2.Controls.Add(Me.rbAB)
@@ -428,6 +429,7 @@ Partial Class LayMRDaftarPasien
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.rbPria)
         Me.GroupBox1.Controls.Add(Me.rbWanita)
         Me.GroupBox1.Location = New System.Drawing.Point(407, 40)
@@ -470,6 +472,7 @@ Partial Class LayMRDaftarPasien
         'Label38
         '
         Me.Label38.AutoSize = True
+        Me.Label38.BackColor = System.Drawing.Color.Transparent
         Me.Label38.Location = New System.Drawing.Point(324, 183)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(37, 13)
@@ -572,6 +575,7 @@ Partial Class LayMRDaftarPasien
         'Label37
         '
         Me.Label37.AutoSize = True
+        Me.Label37.BackColor = System.Drawing.Color.Transparent
         Me.Label37.Location = New System.Drawing.Point(13, 118)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(71, 13)
@@ -581,6 +585,7 @@ Partial Class LayMRDaftarPasien
         'Label24
         '
         Me.Label24.AutoSize = True
+        Me.Label24.BackColor = System.Drawing.Color.Transparent
         Me.Label24.Location = New System.Drawing.Point(13, 206)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(60, 13)
@@ -590,6 +595,7 @@ Partial Class LayMRDaftarPasien
         'Label19
         '
         Me.Label19.AutoSize = True
+        Me.Label19.BackColor = System.Drawing.Color.Transparent
         Me.Label19.Location = New System.Drawing.Point(13, 238)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(44, 13)
@@ -599,6 +605,7 @@ Partial Class LayMRDaftarPasien
         'Label18
         '
         Me.Label18.AutoSize = True
+        Me.Label18.BackColor = System.Drawing.Color.Transparent
         Me.Label18.Location = New System.Drawing.Point(324, 158)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(77, 13)
@@ -608,6 +615,7 @@ Partial Class LayMRDaftarPasien
         'Label17
         '
         Me.Label17.AutoSize = True
+        Me.Label17.BackColor = System.Drawing.Color.Transparent
         Me.Label17.Location = New System.Drawing.Point(324, 211)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(55, 13)
@@ -617,6 +625,7 @@ Partial Class LayMRDaftarPasien
         'Label15
         '
         Me.Label15.AutoSize = True
+        Me.Label15.BackColor = System.Drawing.Color.Transparent
         Me.Label15.Location = New System.Drawing.Point(12, 40)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(85, 13)
@@ -626,6 +635,7 @@ Partial Class LayMRDaftarPasien
         'Label14
         '
         Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.Location = New System.Drawing.Point(13, 13)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(27, 13)
@@ -635,6 +645,7 @@ Partial Class LayMRDaftarPasien
         'Label12
         '
         Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.Location = New System.Drawing.Point(12, 66)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(69, 13)
@@ -644,6 +655,7 @@ Partial Class LayMRDaftarPasien
         'Label7
         '
         Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Location = New System.Drawing.Point(324, 132)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(40, 13)
@@ -653,6 +665,7 @@ Partial Class LayMRDaftarPasien
         'Label6
         '
         Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Location = New System.Drawing.Point(13, 92)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(32, 13)
@@ -662,6 +675,7 @@ Partial Class LayMRDaftarPasien
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Location = New System.Drawing.Point(324, 13)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(70, 13)
@@ -671,6 +685,7 @@ Partial Class LayMRDaftarPasien
         'Label5
         '
         Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Location = New System.Drawing.Point(324, 106)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(48, 13)
@@ -680,9 +695,9 @@ Partial Class LayMRDaftarPasien
         'TabAlamat
         '
         Me.TabAlamat.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabAlamat.Controls.Add(Me.IDKel)
         Me.TabAlamat.Controls.Add(Me.IDKec)
         Me.TabAlamat.Controls.Add(Me.IDKab)
+        Me.TabAlamat.Controls.Add(Me.IDKel)
         Me.TabAlamat.Controls.Add(Me.IDKota)
         Me.TabAlamat.Controls.Add(Me.IDProp)
         Me.TabAlamat.Controls.Add(Me.BtnKab)
@@ -717,56 +732,6 @@ Partial Class LayMRDaftarPasien
         Me.TabAlamat.Text = "Alamat"
         Me.TabAlamat.ToolTipText = "Alt + A"
         Me.TabAlamat.UseVisualStyleBackColor = True
-        '
-        'IDKel
-        '
-        Me.IDKel.AutoSize = True
-        Me.IDKel.Location = New System.Drawing.Point(278, 245)
-        Me.IDKel.Name = "IDKel"
-        Me.IDKel.Size = New System.Drawing.Size(13, 13)
-        Me.IDKel.TabIndex = 61
-        Me.IDKel.Text = "0"
-        Me.IDKel.Visible = False
-        '
-        'IDKec
-        '
-        Me.IDKec.AutoSize = True
-        Me.IDKec.Location = New System.Drawing.Point(219, 245)
-        Me.IDKec.Name = "IDKec"
-        Me.IDKec.Size = New System.Drawing.Size(13, 13)
-        Me.IDKec.TabIndex = 60
-        Me.IDKec.Text = "0"
-        Me.IDKec.Visible = False
-        '
-        'IDKab
-        '
-        Me.IDKab.AutoSize = True
-        Me.IDKab.Location = New System.Drawing.Point(155, 245)
-        Me.IDKab.Name = "IDKab"
-        Me.IDKab.Size = New System.Drawing.Size(13, 13)
-        Me.IDKab.TabIndex = 59
-        Me.IDKab.Text = "0"
-        Me.IDKab.Visible = False
-        '
-        'IDKota
-        '
-        Me.IDKota.AutoSize = True
-        Me.IDKota.Location = New System.Drawing.Point(84, 245)
-        Me.IDKota.Name = "IDKota"
-        Me.IDKota.Size = New System.Drawing.Size(13, 13)
-        Me.IDKota.TabIndex = 58
-        Me.IDKota.Text = "0"
-        Me.IDKota.Visible = False
-        '
-        'IDProp
-        '
-        Me.IDProp.AutoSize = True
-        Me.IDProp.Location = New System.Drawing.Point(23, 245)
-        Me.IDProp.Name = "IDProp"
-        Me.IDProp.Size = New System.Drawing.Size(13, 13)
-        Me.IDProp.TabIndex = 57
-        Me.IDProp.Text = "0"
-        Me.IDProp.Visible = False
         '
         'BtnKab
         '
@@ -1018,6 +983,7 @@ Partial Class LayMRDaftarPasien
         'Label23
         '
         Me.Label23.AutoSize = True
+        Me.Label23.BackColor = System.Drawing.Color.Transparent
         Me.Label23.Location = New System.Drawing.Point(17, 97)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(53, 13)
@@ -1027,6 +993,7 @@ Partial Class LayMRDaftarPasien
         'Label22
         '
         Me.Label22.AutoSize = True
+        Me.Label22.BackColor = System.Drawing.Color.Transparent
         Me.Label22.Location = New System.Drawing.Point(17, 71)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(62, 13)
@@ -1036,6 +1003,7 @@ Partial Class LayMRDaftarPasien
         'Label21
         '
         Me.Label21.AutoSize = True
+        Me.Label21.BackColor = System.Drawing.Color.Transparent
         Me.Label21.Location = New System.Drawing.Point(17, 45)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(54, 13)
@@ -1045,6 +1013,7 @@ Partial Class LayMRDaftarPasien
         'Label20
         '
         Me.Label20.AutoSize = True
+        Me.Label20.BackColor = System.Drawing.Color.Transparent
         Me.Label20.Location = New System.Drawing.Point(17, 19)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(67, 13)
@@ -1126,16 +1095,18 @@ Partial Class LayMRDaftarPasien
         'chbSendiri
         '
         Me.chbSendiri.AutoSize = True
+        Me.chbSendiri.BackColor = System.Drawing.Color.Transparent
         Me.chbSendiri.Location = New System.Drawing.Point(124, 16)
         Me.chbSendiri.Name = "chbSendiri"
         Me.chbSendiri.Size = New System.Drawing.Size(85, 17)
         Me.chbSendiri.TabIndex = 29
         Me.chbSendiri.Text = "Saya Sendiri"
-        Me.chbSendiri.UseVisualStyleBackColor = True
+        Me.chbSendiri.UseVisualStyleBackColor = False
         '
         'Label30
         '
         Me.Label30.AutoSize = True
+        Me.Label30.BackColor = System.Drawing.Color.Transparent
         Me.Label30.Location = New System.Drawing.Point(14, 223)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(63, 13)
@@ -1145,6 +1116,7 @@ Partial Class LayMRDaftarPasien
         'Label29
         '
         Me.Label29.AutoSize = True
+        Me.Label29.BackColor = System.Drawing.Color.Transparent
         Me.Label29.Location = New System.Drawing.Point(14, 197)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(46, 13)
@@ -1154,6 +1126,7 @@ Partial Class LayMRDaftarPasien
         'Label28
         '
         Me.Label28.AutoSize = True
+        Me.Label28.BackColor = System.Drawing.Color.Transparent
         Me.Label28.Location = New System.Drawing.Point(14, 93)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(39, 13)
@@ -1163,6 +1136,7 @@ Partial Class LayMRDaftarPasien
         'Label27
         '
         Me.Label27.AutoSize = True
+        Me.Label27.BackColor = System.Drawing.Color.Transparent
         Me.Label27.Location = New System.Drawing.Point(14, 68)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(57, 13)
@@ -1172,6 +1146,7 @@ Partial Class LayMRDaftarPasien
         'Label26
         '
         Me.Label26.AutoSize = True
+        Me.Label26.BackColor = System.Drawing.Color.Transparent
         Me.Label26.Location = New System.Drawing.Point(14, 42)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(99, 13)
@@ -1181,6 +1156,7 @@ Partial Class LayMRDaftarPasien
         'Label25
         '
         Me.Label25.AutoSize = True
+        Me.Label25.BackColor = System.Drawing.Color.Transparent
         Me.Label25.Location = New System.Drawing.Point(14, 17)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(94, 13)
@@ -1197,6 +1173,41 @@ Partial Class LayMRDaftarPasien
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(624, 164)
         Me.DataGridView1.TabIndex = 51
+        '
+        'IDProp
+        '
+        Me.IDProp.Location = New System.Drawing.Point(21, 245)
+        Me.IDProp.Name = "IDProp"
+        Me.IDProp.Size = New System.Drawing.Size(17, 20)
+        Me.IDProp.TabIndex = 62
+        '
+        'IDKota
+        '
+        Me.IDKota.Location = New System.Drawing.Point(44, 245)
+        Me.IDKota.Name = "IDKota"
+        Me.IDKota.Size = New System.Drawing.Size(17, 20)
+        Me.IDKota.TabIndex = 63
+        '
+        'IDKel
+        '
+        Me.IDKel.Location = New System.Drawing.Point(113, 245)
+        Me.IDKel.Name = "IDKel"
+        Me.IDKel.Size = New System.Drawing.Size(17, 20)
+        Me.IDKel.TabIndex = 64
+        '
+        'IDKab
+        '
+        Me.IDKab.Location = New System.Drawing.Point(67, 245)
+        Me.IDKab.Name = "IDKab"
+        Me.IDKab.Size = New System.Drawing.Size(17, 20)
+        Me.IDKab.TabIndex = 65
+        '
+        'IDKec
+        '
+        Me.IDKec.Location = New System.Drawing.Point(90, 245)
+        Me.IDKec.Name = "IDKec"
+        Me.IDKec.Size = New System.Drawing.Size(17, 20)
+        Me.IDKec.TabIndex = 66
         '
         'LayMRDaftarPasien
         '
@@ -1340,9 +1351,9 @@ Partial Class LayMRDaftarPasien
     Protected Friend WithEvents rbB As System.Windows.Forms.RadioButton
     Protected Friend WithEvents rbAB As System.Windows.Forms.RadioButton
     Protected Friend WithEvents rbO As System.Windows.Forms.RadioButton
-    Friend WithEvents IDKel As System.Windows.Forms.Label
-    Friend WithEvents IDKec As System.Windows.Forms.Label
-    Friend WithEvents IDKab As System.Windows.Forms.Label
-    Friend WithEvents IDKota As System.Windows.Forms.Label
-    Friend WithEvents IDProp As System.Windows.Forms.Label
+    Friend WithEvents IDProp As System.Windows.Forms.TextBox
+    Friend WithEvents IDKota As System.Windows.Forms.TextBox
+    Friend WithEvents IDKec As System.Windows.Forms.TextBox
+    Friend WithEvents IDKab As System.Windows.Forms.TextBox
+    Friend WithEvents IDKel As System.Windows.Forms.TextBox
 End Class

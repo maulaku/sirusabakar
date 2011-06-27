@@ -153,7 +153,7 @@ Partial Class LayMRRegis
         Me.cmbCaraPembayaran.Items.AddRange(New Object() {"Biasa", "Asuransi", "Perusahaan"})
         Me.cmbCaraPembayaran.Location = New System.Drawing.Point(124, 158)
         Me.cmbCaraPembayaran.Name = "cmbCaraPembayaran"
-        Me.cmbCaraPembayaran.Size = New System.Drawing.Size(100, 21)
+        Me.cmbCaraPembayaran.Size = New System.Drawing.Size(168, 21)
         Me.cmbCaraPembayaran.TabIndex = 7
         '
         'cmbAsalPasien
@@ -162,7 +162,7 @@ Partial Class LayMRRegis
         Me.cmbAsalPasien.Items.AddRange(New Object() {"Umum", "Rujukan"})
         Me.cmbAsalPasien.Location = New System.Drawing.Point(124, 88)
         Me.cmbAsalPasien.Name = "cmbAsalPasien"
-        Me.cmbAsalPasien.Size = New System.Drawing.Size(100, 21)
+        Me.cmbAsalPasien.Size = New System.Drawing.Size(128, 21)
         Me.cmbAsalPasien.TabIndex = 6
         '
         'txtNamaPerujuk
@@ -297,7 +297,7 @@ Partial Class LayMRRegis
         '
         Me.txtNoPolis.Location = New System.Drawing.Point(124, 263)
         Me.txtNoPolis.Name = "txtNoPolis"
-        Me.txtNoPolis.Size = New System.Drawing.Size(118, 20)
+        Me.txtNoPolis.Size = New System.Drawing.Size(168, 20)
         Me.txtNoPolis.TabIndex = 17
         '
         'GroupBox1

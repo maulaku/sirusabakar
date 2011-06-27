@@ -186,9 +186,9 @@ Public Class LayMRDaftarPasien
 
         'load cmbtitle
         cmbTitle.Items.Clear()
-        tTitle = getTabel("select ID,NamaTitle from vwMsTitle")
+        tTitle = getTabel("select ID,NamaTitel from vwMsTitel")
         cmbTitle.DataSource = tTitle
-        cmbTitle.DisplayMember = "NamaTitle"
+        cmbTitle.DisplayMember = "NamaTitel"
         cmbTitle.ValueMember = "ID"
 
         'load cmbAgama
@@ -207,7 +207,7 @@ Public Class LayMRDaftarPasien
 
         'load cmbPekerjaan
         cmbPekerjaan.Items.Clear()
-        tPekerjaan = getTabel("select ID,NamaPekerjaan from vwMsPekerjaan")
+        tPekerjaan = getTabel("select ID,NamaPekerjaan from vwMsPekerjaan WHERE ID <> 1")
         cmbPekerjaan.DataSource = tPekerjaan
         cmbPekerjaan.DisplayMember = "NamaPekerjaan"
         cmbPekerjaan.ValueMember = "ID"
@@ -233,7 +233,7 @@ Public Class LayMRDaftarPasien
         Next
 
         DataGridView1.Columns("nomr").Visible = True 'No. MR
-        DataGridView1.Columns("namepasien").Visible = True 'Nama Pasien
+        DataGridView1.Columns("namapasien").Visible = True 'Nama Pasien
         DataGridView1.Columns("panggilan").Visible = True 'Nama Panggilan
         DataGridView1.Columns("sex").Visible = True 'Jenis Kelamin
 
@@ -255,40 +255,41 @@ Public Class LayMRDaftarPasien
                 i = DataGridView1.CurrentRow.Index
             End If
 
-            idForm = DataGridView1.Item(0, i).Value
-            txtNoMR.Text = DataGridView1.Item(1, i).Value
-            cmbTitle.Text = DataGridView1.Item(2, i).Value
-            txtNamaPasien.Text = DataGridView1.Item(3, i).Value
-            txtPanggilan.Text = DataGridView1.Item(4, i).Value
-            If DataGridView1.Item(5, i).Value = "Pria" Then
+            idForm = DataGridView1.Item("id", i).Value
+            txtNoMR.Text = DataGridView1.Item("nomr", i).Value
+            cmbTitle.SelectedValue = DataGridView1.Item("titelID", i).Value
+            txtNamaPasien.Text = DataGridView1.Item("namaPasien", i).Value
+            txtPanggilan.Text = DataGridView1.Item("panggilan", i).Value
+            If DataGridView1.Item("sex", i).Value = "Pria" Then
                 rbPria.Checked = True
-            ElseIf DataGridView1.Item(5, i).Value = "Wanita" Then
+            ElseIf DataGridView1.Item("sex", i).Value = "Wanita" Then
                 rbWanita.Checked = True
             End If
-            txtTempatLahir.Text = DataGridView1.Item(6, i).Value
-            cmbTglLahir.Value = DataGridView1.Item(7, i).Value
-            txtUmur.Text = hitUmur(cmbTglLahir.Value)
-            cmbAgama.Text = DataGridView1.Item(9, i).Value
-            txtSukuBangsa.Text = DataGridView1.Item(10, i).Value
-            txtWargaNegara.Text = DataGridView1.Item(11, i).Value
-            If DataGridView1.Item(12, i).Value = "A" Then
+            txtTempatLahir.Text = DataGridView1.Item("tempatLahir", i).Value
+            cmbTglLahir.Value = DataGridView1.Item("tglLahir", i).Value
+            'txtUmur.Text = hitUmur(cmbTglLahir.Value)
+            cmbAgama.Text = DataGridView1.Item("agamaID", i).Value
+            txtSukuBangsa.Text = DataGridView1.Item("sukuBangsa", i).Value
+            txtWargaNegara.Text = DataGridView1.Item("wargaNegara", i).Value
+            If DataGridView1.Item("golDarah", i).Value = "A" Then
                 rbA.Checked = True
-            ElseIf DataGridView1.Item(12, i).Value = "B" Then
+            ElseIf DataGridView1.Item("golDarah", i).Value = "B" Then
                 rbB.Checked = True
-            ElseIf DataGridView1.Item(12, i).Value = "AB" Then
+            ElseIf DataGridView1.Item("golDarah", i).Value = "AB" Then
                 rbAB.Checked = True
-            ElseIf DataGridView1.Item(12, i).Value = "O" Then
+            ElseIf DataGridView1.Item("golDarah", i).Value = "O" Then
                 rbO.Checked = True
             End If
-            cmbStatus.Text = DataGridView1.Item(13, i).Value
-            cmbPendidikan.Text = DataGridView1.Item(14, i).Value
-            cmbPekerjaan.Text = DataGridView1.Item(15, i).Value
-            txtAlamat.Text = DataGridView1.Item(16, i).Value
-            txtPropinsi.Text = DataGridView1.Item(17, i).Value
+            cmbStatus.Text = DataGridView1.Item("statusMR", i).Value
+            cmbPendidikan.SelectedValue = DataGridView1.Item("pendidikanID", i).Value
+            cmbPekerjaan.SelectedValue = DataGridView1.Item("pekerjaanID", i).Value
+            txtAlamat.Text = DataGridView1.Item("alamat", i).Value
+            'txtPropinsi.Text = DataGridView1.Item("namaPropinsi", i).Value
+            IDProp.Text = DataGridView1.Item("PropinsiID", i).Value
             txtKota.Text = DataGridView1.Item(18, i).Value
             txtKodePos.Text = DataGridView1.Item(19, i).Value
             txtTelepon.Text = DataGridView1.Item(20, i).Value
-            txtHP.Text = DataGridView1.Item(21, i).Value
+            txtHP.Text = ceknull(DataGridView1.Item(21, i).Value)
             txtKabupaten.Text = DataGridView1.Item(22, i).Value
             txtKecamatan.Text = DataGridView1.Item(23, i).Value
             txtKelurahan.Text = DataGridView1.Item(24, i).Value
@@ -316,7 +317,7 @@ Public Class LayMRDaftarPasien
                 Case "noMR"
                     dc.HeaderText = "No. MR"
                     dc.Width = 100
-                Case "namepasien"
+                Case "namaPasien"
                     dc.HeaderText = "Nama Pasien"
                     dc.Width = 150
                 Case "panggilan"
@@ -565,7 +566,7 @@ Public Class LayMRDaftarPasien
             Case 0
                 dataCari = "noMR"
             Case 1
-                dataCari = "namepasien"
+                dataCari = "namaPasien"
             Case 2
                 dataCari = "alamat"
             Case 3
@@ -771,23 +772,23 @@ Public Class LayMRDaftarPasien
         IDKel.Text = frm2.getselection("select ID,namakelurahan as 'Nama Kelurahan' from msKelurahan where status=1", "Pilih Kelurahan")
     End Sub
 
-    Private Sub IDProp_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDProp.TextChanged
+    Private Sub IDProp_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtPropinsi.Text = getNumber("select namapropinsi from mspropinsi where status=1 and id=" & IDProp.Text)
     End Sub
 
-    Private Sub IDKota_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKota.TextChanged
+    Private Sub IDKota_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtKota.Text = getNumber("select namakota from mskota where status=1 and id=" & IDKota.Text)
     End Sub
 
-    Private Sub IDKab_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKab.TextChanged
+    Private Sub IDKab_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtKabupaten.Text = getNumber("select namakabupaten from mskabupaten where status=1 and id=" & IDKab.Text)
     End Sub
 
-    Private Sub IDKec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKec.TextChanged
+    Private Sub IDKec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtKecamatan.Text = getNumber("select namakecamatan from mskecamatan where status=1 and id=" & IDKec.Text)
     End Sub
 
-    Private Sub IDKel_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKel.TextChanged
+    Private Sub IDKel_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtKelurahan.Text = getNumber("select namakelurahan from mskelurahan where status=1 and id=" & IDKel.Text)
     End Sub
 
@@ -803,15 +804,20 @@ Public Class LayMRDaftarPasien
     End Sub
 
     Private Sub LayMRDaftarPasien_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        If (e.KeyCode = Keys.P AndAlso e.Modifiers = Keys.Alt) Then
-            cmbTitle.Focus()
-        ElseIf (e.KeyCode = Keys.A AndAlso e.Modifiers = Keys.Alt) Then
-            txtAlamat.Focus()
-        ElseIf (e.KeyCode = Keys.K AndAlso e.Modifiers = Keys.Alt) Then
-            txtSuami.Focus()
-        ElseIf (e.KeyCode = Keys.T AndAlso e.Modifiers = Keys.Alt) Then
-            chbSendiri.Focus()
+        Dim x As Integer
+        x = TabData.SelectedIndex
+        If e.KeyCode = Keys.Right Then
+            If x + 1 < TabData.TabCount - 1 Then
+                x += 1
+            End If
         End If
+        If e.KeyCode = Keys.Left Then
+            If x - 1 > 0 Then
+                x = x - 1
+            End If
+        End If
+        TabData.SelectTab(x)
+        'MsgBox(TabData.SelectedIndex)
     End Sub
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
@@ -841,5 +847,9 @@ Public Class LayMRDaftarPasien
             list = 0
         End If
         munculData()
+    End Sub
+
+    Private Sub TabAlamat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabAlamat.Click
+
     End Sub
 End Class

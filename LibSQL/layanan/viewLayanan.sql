@@ -151,9 +151,9 @@ AS
 SELECT 	
 			/*0*/mr.id,
 			/*1*/mr.noMR,
-			/*2*/mr.titleID,
-			/*2*/T.namaTitle,
-			/*3*/mr.NamePasien,
+			/*2*/mr.titelID,
+			/*2*/T.namaTitel,
+			/*3*/mr.namaPasien,
 			/*4*/mr.panggilan,
 			/*5*/mr.sex,
 			/*6*/mr.tempatLahir,
@@ -193,16 +193,16 @@ SELECT
 			/*41*/mr.alamatPenanggung,
 			/*42*/mr.teleponPenanggung,
 			/*43*/mr.handphonePenanggung,
-			/*44*/mr.note
+			/*44*/mr.catatan
 FROM trLayMRDaftar mr with (NOLOCK)
-inner join msTitle T with (NOLOCK) on mr.titleID=t.ID
-inner join msAgama A with (NOLOCK)on mr.agamaID=a.ID
-inner join msPendidikan P with (NOLOCK)on mr.pendidikanId=P.ID
-inner join msPekerjaan K with (NOLOCK)on mr.pekerjaanID=K.ID
-inner join msPropinsi R with (NOLOCK)on mr.propinsiID=R.ID
-inner join msKabupaten B with (NOLOCK)on mr.kabupatenID=B.ID
-inner join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
-inner join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
-inner join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
+left outer join msTitel T with (NOLOCK) on mr.titelID=t.ID
+left outer join msAgama A with (NOLOCK)on mr.agamaID=a.ID
+left outer join msPendidikan P with (NOLOCK)on mr.pendidikanId=P.ID
+left outer join msPekerjaan K with (NOLOCK)on mr.pekerjaanID=K.ID
+left outer join msPropinsi R with (NOLOCK)on mr.propinsiID=R.ID
+left outer join msKabupaten B with (NOLOCK)on mr.kabupatenID=B.ID
+left outer join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
+left outer join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
+left outer join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
 WHERE mr.status=1
 

@@ -105,7 +105,6 @@ Public Class MMrPropinsi
     End Sub
     Private Sub MPropinsi_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-
             tombolHidup()
             nonAktif()
             TampilDataGrid("select * from vwMsPropinsi")

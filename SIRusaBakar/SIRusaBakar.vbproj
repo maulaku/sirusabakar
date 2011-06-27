@@ -62,6 +62,12 @@
     <Compile Include="CariData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MJenisPerusahaan.Designer.vb">
+      <DependentUpon>MJenisPerusahaan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MJenisPerusahaan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MMrPendidikan.Designer.vb">
       <DependentUpon>MMrPendidikan.vb</DependentUpon>
     </Compile>
@@ -249,12 +255,6 @@
     <Compile Include="MPerush.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MPerushJenis.designer.vb">
-      <DependentUpon>MPerushJenis.vb</DependentUpon>
-    </Compile>
-    <Compile Include="MPerushJenis.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MTarifAmbulance.designer.vb">
       <DependentUpon>MTarifAmbulance.vb</DependentUpon>
     </Compile>
@@ -291,6 +291,10 @@
     <EmbeddedResource Include="CariData.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CariData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MJenisPerusahaan.resx">
+      <DependentUpon>MJenisPerusahaan.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MMrPendidikan.resx">
       <DependentUpon>MMrPendidikan.vb</DependentUpon>
@@ -418,10 +422,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MPerush.resx">
       <DependentUpon>MPerush.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MPerushJenis.resx">
-      <DependentUpon>MPerushJenis.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MTarifAmbulance.resx">

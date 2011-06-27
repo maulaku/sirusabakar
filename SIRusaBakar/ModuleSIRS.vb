@@ -81,4 +81,12 @@ Module ModuleSIRS
         hitUmur = hitUmur & Str((DateDiff(DateInterval.Month, Now(), lahir)) * -1) & " Bulan "
         hitUmur = hitUmur & Str((DateDiff(DateInterval.DayOfYear, Now(), lahir)) * -1) & " Hari"
     End Function
+
+    Public Function ceknull(ByVal cek) As String
+        If IsDBNull(cek) Then
+            ceknull = ""
+        Else
+            ceknull = cek
+        End If
+    End Function
 End Module

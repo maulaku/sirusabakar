@@ -28,7 +28,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE spInsertMRDaftar
 	/* 1*/   @innoMR 								VARCHAR(16)	
-	/* 2*/ , @intitle 							VARCHAR(8)
+	/* 2*/ , @intitel 							VARCHAR(8)
 	/* 3*/ , @inpatientname					VARCHAR(100)
 	/* 4*/ , @inpanggilan		 				VARCHAR(100)
 	/* 5*/ , @insex		 			VARCHAR(10)
@@ -74,7 +74,7 @@ BEGIN
 	
 	INSERT INTO trLayMRDaftar (
 				/* 1*/ noMR,
-				/* 2*/ titleID,
+				/* 2*/ titelID,
 				/* 3*/ namepasien,
 				/* 4*/ panggilan,
 				/* 5*/ sex,		 					
@@ -113,7 +113,7 @@ BEGIN
 				/*38*/ dieditoleh
 	) VALUES (
 				/* 1*/ @inNoMR, 						
-				/* 2*/ @inTitle, 						
+				/* 2*/ @inTitel, 						
 				/* 3*/ @inPatientName, 			
 				/* 4*/ @inPanggilan,		 		
 				/* 5*/ @inSex,		 					
@@ -189,7 +189,7 @@ GO
 CREATE PROCEDURE spUpdateMRDaftar
 	/* 1*/	@inIdMrLayDaftar					INT,
 	/* 2*/	@inNoMR 								VARCHAR(8),	
-	/* 3*/	@inTitle 							VARCHAR(8),
+	/* 3*/	@inTitel 							VARCHAR(8),
 	/* 4*/	@inPatientName 					VARCHAR(100),
 	/* 5*/	@inPanggilan		 				VARCHAR(100),
 	/* 6*/	@inSex		 						VARCHAR(10),
@@ -235,7 +235,7 @@ AS
 BEGIN
 	UPDATE trLayMRDaftar SET
 		/* 1*/ noMR							= @inNoMR, 						   
-		/* 2*/ titleID						= @inTitle, 						   
+		/* 2*/ titelID						= @inTitel, 						   
 		/* 3*/ Namepasien		      = @inPatientName, 			   
 		/* 4*/ panggilan			      = @inPanggilan,		 		   
 		/* 5*/ sex						   = @inSex,		 					   
@@ -313,7 +313,7 @@ GO
 CREATE PROCEDURE spDeleteMRDaftar 
 	/* 1*/	@inIdMrLayDaftar				INT,
 	/* 2*/	@inNoMR 							VARCHAR(12),	
-	/* 3*/	@inPatientName 				VARCHAR(100),
+	/* 3*/	@inNamaPasien 					VARCHAR(100),
 	/* 4*/ 	@inUser							INT
 AS
 	DECLARE 	
@@ -333,7 +333,7 @@ BEGIN
 	SET @formType = 'MR PENDAFTARAN';
 	SET @actionType = 'DELETE';
 	SET @actionDesc =		'NO MR : ' + @inNoMR + CHAR(10) +
-								'NAMA : ' + @inPatientName + CHAR(10);
+								'NAMA : ' + @inNamaPasien + CHAR(10);
 	
 	---------------------------------------------------
 	

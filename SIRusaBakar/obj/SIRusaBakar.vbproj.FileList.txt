@@ -4,6 +4,8 @@ bin\Debug\SIRusaBakar.xml
 bin\Debug\af-ZA\SIRusaBakar.resources.dll
 obj\Debug\ResolveAssemblyReference.cache
 obj\Debug\SIRusaBakar.BrowseMaster.resources
+obj\Debug\SIRusaBakar.CariData.resources
+obj\Debug\SIRusaBakar.MJenispPerusahaan.resources
 obj\Debug\SIRusaBakar.MMrPendidikan.resources
 obj\Debug\SIRusaBakar.MMrHubKel.resources
 obj\Debug\SIRusaBakar.MMrInstalasi.resources
@@ -15,6 +17,7 @@ obj\Debug\SIRusaBakar.MMrPropinsi.resources
 obj\Debug\SIRusaBakar.MMrKota.resources
 obj\Debug\SIRusaBakar.MMrKecamatan.resources
 obj\Debug\SIRusaBakar.MMrKelurahan.resources
+obj\Debug\SIRusaBakar.MMrTitle.resources
 obj\Debug\SIRusaBakar.TSQL.resources
 obj\Debug\SIRusaBakar.MGiziMakanan.resources
 obj\Debug\SIRusaBakar.LayLabPemeriksaan.resources
@@ -34,7 +37,6 @@ obj\Debug\SIRusaBakar.MObat.resources
 obj\Debug\SIRusaBakar.MObatHarga.resources
 obj\Debug\SIRusaBakar.MPerawatSAK.resources
 obj\Debug\SIRusaBakar.MPerush.resources
-obj\Debug\SIRusaBakar.MPerushJenis.resources
 obj\Debug\SIRusaBakar.MTarifAmbulance.resources
 obj\Debug\SIRusaBakar.Resources.resources
 obj\Debug\SIRusaBakar.LayMRDaftarPasien.resources

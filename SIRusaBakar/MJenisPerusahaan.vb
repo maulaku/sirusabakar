@@ -1,4 +1,4 @@
-Public Class MMrTitle
+Public Class MJenispPerusahaan
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String
@@ -23,7 +23,7 @@ Public Class MMrTitle
                     btnCancel.PerformClick()
                 Else
                     Dim tny As Integer
-                    tny = MessageBox.Show("Mau Keluar dari Master Titel ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    tny = MessageBox.Show("Mau Keluar dari Master Jenis Perusahaan ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
                     Else
@@ -59,13 +59,13 @@ Public Class MMrTitle
         btnRefresh.Enabled = True
     End Sub
     Sub aktif()
-        txtTitle.Enabled = True
+        txtJenisPerusahaan.Enabled = True
         txtCatatan.Enabled = True
 
         DataGridView1.Enabled = False
     End Sub
     Sub nonAktif()
-        txtTitle.Enabled = False
+        txtJenisPerusahaan.Enabled = False
         txtCatatan.Enabled = False
 
         DataGridView1.Enabled = True
@@ -78,13 +78,14 @@ Public Class MMrTitle
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
-            MsgBox("Data Titel : Tidak Ada", MsgBoxStyle.Information, "Data Titel")
+            MsgBox("Data Jenis Perusahaan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
+            txtJenisPerusahaan.Text = ""
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
             txtCatatan.Text = ""
             idForm = DataGridView1.Item(0, row).Value
-            txtTitle.Text = DataGridView1.Item(1, row).Value
+            txtJenisPerusahaan.Text = DataGridView1.Item(1, row).Value
             txtCatatanSebelumnya.Text = (DataGridView1.Item(2, row).Value).Replace(ControlChars.Lf, vbCrLf)
         End If
         formatGrid()
@@ -93,23 +94,27 @@ Public Class MMrTitle
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
-                Case "namaTitel"
-                    dc.HeaderText = "Nama Titel"
-                    dc.Width = 100
+                Case "namaJenis Perusahaan"
+                    dc.HeaderText = "Nama Jenis Perusahaan"
+                    dc.Width = 170
             End Select
         Next
     End Sub
     Sub kosong()
-        txtTitle.Text = ""
+        txtJenisPerusahaan.Text = ""
     End Sub
-    Private Sub MTitle_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MJenisPerusahaan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+
             tombolHidup()
             nonAktif()
-            TampilDataGrid("select * from vwMsTitel")
+            TampilDataGrid("select * from vwMsJenisPerusahaan")
             tampilData(0)
 
             cmbSearch.SelectedIndex = 0
+
+            Me.txtSearch.TextBox.Select()
+
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -119,46 +124,51 @@ Public Class MMrTitle
         tombolMati()
         kosong()
         aktif()
-        txtTitle.Focus()
+        txtJenisPerusahaan.Focus()
         txtCatatanSebelumnya.Text = ""
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
-        If txtTitle.Text = "" Then
+        If txtJenisPerusahaan.Text = "" Then
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Titel : " + txtTitle.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Nama Jenis Perusahaan : " + txtJenisPerusahaan.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Titel : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Nama Jenis Perusahaan : " & txtJenisPerusahaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                TampilDataGrid("select * from vwmsTitel")
+                TampilDataGrid("select * from vwmsJenisPerusahaan")
                 tampilData(0)
             End If
         End If
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
-        If txtTitle.Text = "" Then
+        If txtJenisPerusahaan.Text = "" Then
             MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
         Else
             statusForm = "EDIT"
             tombolMati()
             aktif()
-            txtTitle.Focus()
+            txtJenisPerusahaan.Focus()
         End If
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If txtJenisPerusahaan.Text = "" Then
+            MsgBox("Data Jenis Perusahaan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        End If
+
         kirimData()
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Titel dengan Titel : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtJenisPerusahaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Titel dengan Kode Titel : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtJenisPerusahaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
-        TampilDataGrid("select * from vwMsTitel")
+        TampilDataGrid("select * from vwMsJenisPerusahaan")
         tampilData(0)
         tombolHidup()
         nonAktif()
@@ -170,16 +180,16 @@ Public Class MMrTitle
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case "EDIt"
+                txtSearch.Focus()
+            Case "EDIT"
                 tombolHidup()
-                tampilData(0)
+                tampilData(DataGridView1.CurrentRow.Index)
                 nonAktif()
                 statusForm = ""
-            Case Else
-                Me.Close()
+                txtSearch.Focus()
         End Select
     End Sub
 
@@ -189,13 +199,13 @@ Public Class MMrTitle
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "namaTitle"
+            dataCari = "namaJenisPerusahaan"
         End If
 
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
-            TampilDataGrid("SELECT * FROM vwmsTitel WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
+            TampilDataGrid("SELECT * FROM vwmsJenisPerusahaan WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
 
             If DataGridView1.RowCount = 0 Then
                 MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -213,7 +223,7 @@ Public Class MMrTitle
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        TampilDataGrid("select * from vwmsTitel")
+        TampilDataGrid("select * from vwmsJenisPerusahaan")
         tampilData(0)
         txtSearch.Text = ""
         txtSearch.Focus()
@@ -270,10 +280,10 @@ Public Class MMrTitle
 
     Private Sub kirimData()
         Try
-            PSQL = "EXEC spMsTitel" & _
+            PSQL = "EXEC spMsJenisPerusahaan" & _
                     " '" & statusForm & "'," & _
                     "  " & idForm & "," & _
-                    " '" & txtTitle.Text & "'," & _
+                    " '" & txtJenisPerusahaan.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
                     "  " & idUser & "," & _
                     " '" & keterangan & "'," & _

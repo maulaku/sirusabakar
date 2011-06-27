@@ -238,17 +238,34 @@ GO
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsTitle'))
-DROP VIEW vwMsTitle
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsTitel'))
+DROP VIEW vwMsTitel
 GO
 ------------------------------------------
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE VIEW vwMsTitle AS
-select top (10) id,namaTitle,catatan 
-from msTitle with (NOLOCK)
+CREATE VIEW vwMsTitel AS
+SELECT top (10) id,namaTitel,catatan 
+FROM msTitel with (NOLOCK)
+WHERE status = 1
+ORDER BY id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsJenisPerusahaan'))
+DROP VIEW vwMsJenisPerusahaan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsJenisPerusahaan AS
+select top (10) id,namaJenisPerusahaan,catatan 
+from msJenisPerusahaan with (NOLOCK)
 where status = 1
 order by id
 GO

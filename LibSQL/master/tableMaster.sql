@@ -512,7 +512,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE msJenisPerusahaan(
 	id							INT IDENTITY(1,1) NOT NULL
-	, jenisPerusahaan 		VARCHAR(50) NOT NULL
+	, namaJenisPerusahaan 		VARCHAR(50) NOT NULL
 	--------------------------------
 	, catatan 					TEXT DEFAULT '-'
 	, status 					INT DEFAULT 1
@@ -820,8 +820,8 @@ CREATE TABLE msHubKel(
 	PRIMARY KEY (id)
 );
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msTitle') AND type in (N'U'))
-DROP TABLE msTitle
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'msTitel') AND type in (N'U'))
+DROP TABLE msTitel
 GO
 SET ANSI_NULLS ON
 GO
@@ -829,17 +829,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE msTitle(
-	id							INT IDENTITY(1,1) NOT NULL,
-	namaTitle	 			VARCHAR(50) NOT NULL,
+CREATE TABLE msTitel(
+	id							INT IDENTITY(1,1) NOT NULL
+	, namaTitel	 			VARCHAR(50) NOT NULL
 	--------------------------------
-	catatan 					TEXT DEFAULT '-',
-	status 					INT DEFAULT 1,
+	, catatan 					TEXT DEFAULT '-'
+	, status 					INT DEFAULT 1
 	--------------------------------
-	dibuatOleh 				INT,
-	dieditOleh 				INT,
-	waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP,
-	waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP,
+	, dibuatOleh 				INT
+	, dieditOleh 				INT
+	, waktuBuat 				DATETIME DEFAULT CURRENT_TIMESTAMP
+	, waktuEdit 				DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 	PRIMARY KEY (id)
 );

@@ -47,8 +47,8 @@ GO
 CREATE TABLE trLayMRDaftar (
 	id								INT IDENTITY(1,1) NOT NULL,
 	noMR							VARCHAR(20),
-	titleID 						INT,
-	NamePasien	 				VARCHAR(200),
+	titelID 						INT,
+	NamaPasien	 				VARCHAR(200),
 	panggilan		 			VARCHAR(100),
 	sex		 					CHAR(1),
 	tempatLahir					VARCHAR(100),

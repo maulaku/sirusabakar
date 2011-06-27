@@ -155,7 +155,7 @@ Partial Class MMrKota
         'cmbSearch
         '
         Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kecamatan"})
+        Me.cmbSearch.Items.AddRange(New Object() {"Kota"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -193,9 +193,9 @@ Partial Class MMrKota
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(9, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(70, 13)
+        Me.Label2.Size = New System.Drawing.Size(33, 13)
         Me.Label2.TabIndex = 82
-        Me.Label2.Text = "Kecamatan"
+        Me.Label2.Text = "Kota"
         '
         'txtCatatanSebelumnya
         '
@@ -235,9 +235,9 @@ Partial Class MMrKota
         '
         'txtKota
         '
-        Me.txtKota.Location = New System.Drawing.Point(85, 45)
+        Me.txtKota.Location = New System.Drawing.Point(48, 45)
         Me.txtKota.Name = "txtKota"
-        Me.txtKota.Size = New System.Drawing.Size(157, 20)
+        Me.txtKota.Size = New System.Drawing.Size(194, 20)
         Me.txtKota.TabIndex = 77
         '
         'DataGridView1
@@ -251,7 +251,7 @@ Partial Class MMrKota
         Me.DataGridView1.Size = New System.Drawing.Size(230, 189)
         Me.DataGridView1.TabIndex = 76
         '
-        'Data
+        'MMrKota
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -268,7 +268,7 @@ Partial Class MMrKota
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Data"
+        Me.Name = "MMrKota"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Kota"
         Me.toolStrip.ResumeLayout(False)
