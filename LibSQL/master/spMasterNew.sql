@@ -45,11 +45,12 @@ BEGIN
 				/* 4*/ @in_idpengguna	
 	);
 END
+GO
 
 --#######################################################################-- spCOA 
 
 IF Objectproperty(Object_Id('spMsCoa'), N'isprocedure') = 1
-DROP PROCEDURE spMsCoa
+DROP PROCEDURE [Dbo].[spMsCoa]
 GO
 ------------------------------------------
 SET ANSI_NULLS ON
@@ -79,7 +80,7 @@ BEGIN
 	SET @KetTindakan =	'KODE COA : ' + @in_kodecoa + CHAR(10) +
 								'NAMA COA : ' + @in_namacoa + CHAR(10) +
 								'TIPE COA : ' + @in_tipecoa + CHAR(10);
-	SET @in_new_note = 	'DIBUAT   : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
+	SET @in_catatanTerbaru = 	'DIBUAT   : ' +  dbo.fnAmbilNamaLengkap(@in_idpengguna) + ' , TANGGAL : ' +
 		CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_catatan + CHAR(10);
 
 	IF @in_Tindakan='NEW'
@@ -163,22 +164,17 @@ BEGIN
 		END
 --------------------------------------------------------- Delete COA
 
-spInsMsHistory /* 1*/ @tipeForm,
-					/* 2*/ @tipeTindakan,
-					/* 3*/ @KetTindakan,
-					/* 4*/ @in_idpengguna;
-#	INSERT INTO mshistory (
-#				/* 1*/ tipeform,
-#				/* 2*/ tipeTindakan,
-#				/* 3*/ deskripsiTindakan,
-#				/* 4*/ dibuatOleh
-#	) VALUES (
-#				/* 1*/ @tipeForm,
-#				/* 2*/ @tipeTindakan,
-#				/* 3*/ @KetTindakan,
-#				/* 4*/ @in_idpengguna	
-#	);
-							  
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @tipeForm,
+				/* 2*/ @tipeTindakan,
+				/* 3*/ @KetTindakan,
+				/* 4*/ @in_idpengguna	
+	);						  
 END
 GO
 
