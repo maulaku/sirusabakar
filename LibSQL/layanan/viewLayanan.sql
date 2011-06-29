@@ -48,9 +48,8 @@ select	a.id,
 			b.uom
 from tr_log_client_permintaan_hdr a with (nolock)
 	inner join tr_log_client_permintaan_det b with (NOLOCK)
-	on a.id=b.permintaanid
-	ORDER BY id;
-	
+	on a.id=b.permintaanid;
+GO
 	
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayLabDiagnosa]'))
 DROP VIEW [dbo].[vwLayLabDiagnosa]
@@ -63,45 +62,44 @@ CREATE VIEW vwLayLabDiagnosa
 AS
 SELECT   TOP (100) PERCENT id, 
 			noMR, 
-			title, 
-			patientName, 
+			titelID, 
+			namaPasien, 
 			panggilan, 
 			sex, 
 			tempatLahir, 
 			tglLahir, 
-			umur, 
-			agama, 
+			agamaID, 
 			sukuBangsa, 
 			wargaNegara, 
 			golDarah, 
 			statusMR, 
-			pendidikan, 
-			pekerjaan, 
+			pendidikanID, 
+			pekerjaanID, 
 			alamat, 
-			provinsi, 
+			propinsiID, 
 			kota, 
 			kodePos, 
 			telepon, 
 			handphone, 
-			kabupaten, 
-			kecamatan, 
-			kelurahan,
+			kabupatenID, 
+			kecamatanID, 
+			kelurahanID,
 			namaIstri, 
 			namaSuami, 
 			namaAyah, 
 			namaIbu, 
 			statusPenanggung,
-			namaP, 
-			hubunganP, 
-			hubunganPLain, 
-			alamatP, 
-			teleponP, 
-			handphoneP, 
-			note
+			namaPenanggung, 
+			hubkelID, 
+			hubkelLain, 
+			alamatPenanggung, 
+			teleponPenanggung, 
+			handphonePenanggung, 
+			catatan
 FROM         dbo.trLayMRDaftar with (NOLOCK)
 WHERE     (status = 1)
 ORDER BY id;
-
+GO
 -------------------------------------------------------
 
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwLayMRRegis]'))
@@ -205,4 +203,4 @@ left outer join msKecamatan C with (NOLOCK)on mr.kecamatanID=C.ID
 left outer join msKelurahan L with (NOLOCK)on mr.kelurahanID=L.ID
 left outer join msHubKel H with (NOLOCK)on mr.HubKelID=H.ID
 WHERE mr.status=1
-
+GO

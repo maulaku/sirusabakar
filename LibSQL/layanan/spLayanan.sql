@@ -75,7 +75,7 @@ BEGIN
 	INSERT INTO trLayMRDaftar (
 				/* 1*/ noMR,
 				/* 2*/ titelID,
-				/* 3*/ namepasien,
+				/* 3*/ namapasien,
 				/* 4*/ panggilan,
 				/* 5*/ sex,		 					
 				/* 6*/ tempatLahir,			
@@ -236,7 +236,7 @@ BEGIN
 	UPDATE trLayMRDaftar SET
 		/* 1*/ noMR							= @inNoMR, 						   
 		/* 2*/ titelID						= @inTitel, 						   
-		/* 3*/ Namepasien		      = @inPatientName, 			   
+		/* 3*/ Namapasien		      = @inPatientName, 			   
 		/* 4*/ panggilan			      = @inPanggilan,		 		   
 		/* 5*/ sex						   = @inSex,		 					   
 		/* 6*/ tempatLahir			   = @inTempatLahir,			   
