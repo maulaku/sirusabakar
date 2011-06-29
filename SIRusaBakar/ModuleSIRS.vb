@@ -1,6 +1,7 @@
 Module ModuleSIRS
     Public koneksi As String
     Public PSQL As String
+    Public odbc As String
 
     Public con As New Odbc.OdbcConnection
     Public cmd As New Odbc.OdbcCommand
@@ -11,7 +12,8 @@ Module ModuleSIRS
     Sub bukaServer()
         Try
             'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
-            con.ConnectionString = "DSN=RSBK"
+            'con.ConnectionString = "DSN=RSBK;"
+            con.ConnectionString = "DSN=" & odbc & ";UID=sa;PWD=pingpong;"
             con.Open()
             idUser = 1
         Catch salah As Exception

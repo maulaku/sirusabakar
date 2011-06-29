@@ -62,6 +62,12 @@
     <Compile Include="CariData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Login.Designer.vb">
+      <DependentUpon>Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MJenisPerusahaan.Designer.vb">
       <DependentUpon>MJenisPerusahaan.vb</DependentUpon>
     </Compile>
@@ -291,6 +297,10 @@
     <EmbeddedResource Include="CariData.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CariData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MJenisPerusahaan.resx">
       <DependentUpon>MJenisPerusahaan.vb</DependentUpon>

@@ -97,7 +97,6 @@ D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRus
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MObatHarga.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MPerawatSAK.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MPerush.resources
-D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MPerushJenis.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MTarifAmbulance.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.Resources.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.LayMRDaftarPasien.resources
@@ -108,3 +107,5 @@ D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRus
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.pdb
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MMrTitle.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.CariData.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MJenispPerusahaan.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.Login.resources

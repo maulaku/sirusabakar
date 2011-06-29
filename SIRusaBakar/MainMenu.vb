@@ -69,9 +69,11 @@ Public Class MainMenu
     End Sub
 
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim a As New LayMRDaftarPasien
-        a.Show()
-        a.MdiParent = Me
+        Dim a As New Login
+        If StUser.Text = "UserName" Then
+            Me.Enabled = False
+            StUser.Text = a.get_login
+        End If
     End Sub
 
     Private Sub COAToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem1.Click
@@ -184,5 +186,18 @@ Public Class MainMenu
         Dim a As New MMrTitle
         a.Show()
         a.MdiParent = Me
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        End
+    End Sub
+
+    Private Sub ChangeUserToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangeUserToolStripMenuItem.Click
+        Dim a As New Login
+        StUser.Text = "UserName"
+        If StUser.Text = "UserName" Then
+            Me.Enabled = False
+            StUser.Text = a.get_login
+        End If
     End Sub
 End Class

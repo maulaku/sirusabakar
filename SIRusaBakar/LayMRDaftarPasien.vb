@@ -232,8 +232,8 @@ Public Class LayMRDaftarPasien
             DataGridView1.Columns(i).Visible = False
         Next
 
-        DataGridView1.Columns("nomr").Visible = True 'No. MR
-        DataGridView1.Columns("namapasien").Visible = True 'Nama Pasien
+        DataGridView1.Columns("noMR").Visible = True 'No. MR
+        DataGridView1.Columns("NamaPasien").Visible = True 'Nama Pasien
         DataGridView1.Columns("panggilan").Visible = True 'Nama Panggilan
         DataGridView1.Columns("sex").Visible = True 'Jenis Kelamin
 

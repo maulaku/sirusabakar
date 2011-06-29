@@ -25,6 +25,9 @@ Partial Class MainMenu
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
         Me.SystemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SQLQueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.ChangeUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MedicalRecordToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.AgamaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -38,6 +41,7 @@ Partial Class MainMenu
         Me.KecamatanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.KelurahanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.KotaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TitleToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.AccountingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.COAToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.GiziToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -71,7 +75,8 @@ Partial Class MainMenu
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TitleToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.StUser = New System.Windows.Forms.ToolStripStatusLabel
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -88,7 +93,7 @@ Partial Class MainMenu
         '
         'SystemToolStripMenuItem
         '
-        Me.SystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLQueryToolStripMenuItem})
+        Me.SystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLQueryToolStripMenuItem, Me.ToolStripSeparator1, Me.ChangeUserToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem"
         Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.SystemToolStripMenuItem.Text = "Sistem"
@@ -96,8 +101,25 @@ Partial Class MainMenu
         'SQLQueryToolStripMenuItem
         '
         Me.SQLQueryToolStripMenuItem.Name = "SQLQueryToolStripMenuItem"
-        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SQLQueryToolStripMenuItem.Text = "SQL Query"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        '
+        'ChangeUserToolStripMenuItem
+        '
+        Me.ChangeUserToolStripMenuItem.Name = "ChangeUserToolStripMenuItem"
+        Me.ChangeUserToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ChangeUserToolStripMenuItem.Text = "Change User"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'MasterToolStripMenuItem
         '
@@ -178,6 +200,12 @@ Partial Class MainMenu
         Me.KotaToolStripMenuItem.Name = "KotaToolStripMenuItem"
         Me.KotaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.KotaToolStripMenuItem.Text = "Kota"
+        '
+        'TitleToolStripMenuItem1
+        '
+        Me.TitleToolStripMenuItem1.Name = "TitleToolStripMenuItem1"
+        Me.TitleToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.TitleToolStripMenuItem1.Text = "Title"
         '
         'AccountingToolStripMenuItem
         '
@@ -367,7 +395,7 @@ Partial Class MainMenu
         '
         'StatusStrip
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.ToolStripStatusLabel1, Me.StUser})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 485)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Size = New System.Drawing.Size(837, 22)
@@ -377,14 +405,19 @@ Partial Class MainMenu
         'ToolStripStatusLabel
         '
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
-        Me.ToolStripStatusLabel.Text = "Status"
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(42, 17)
+        Me.ToolStripStatusLabel.Text = "Status "
         '
-        'TitleToolStripMenuItem1
+        'ToolStripStatusLabel1
         '
-        Me.TitleToolStripMenuItem1.Name = "TitleToolStripMenuItem1"
-        Me.TitleToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.TitleToolStripMenuItem1.Text = "Title"
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
+        '
+        'StUser
+        '
+        Me.StUser.Name = "StUser"
+        Me.StUser.Size = New System.Drawing.Size(62, 17)
+        Me.StUser.Text = "UserName"
         '
         'MainMenu
         '
@@ -458,5 +491,10 @@ Partial Class MainMenu
     Friend WithEvents CaraPembayaranToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InstalasiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TitleToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ChangeUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents StUser As System.Windows.Forms.ToolStripStatusLabel
 
 End Class
