@@ -74,9 +74,9 @@ Partial Class MainMenu
         Me.ArrangeIconsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
         Me.StUser = New System.Windows.Forms.ToolStripStatusLabel
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -96,37 +96,37 @@ Partial Class MainMenu
         Me.SystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLQueryToolStripMenuItem, Me.ToolStripSeparator1, Me.ChangeUserToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem"
         Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
-        Me.SystemToolStripMenuItem.Text = "Sistem"
+        Me.SystemToolStripMenuItem.Text = "&Sistem"
         '
         'SQLQueryToolStripMenuItem
         '
         Me.SQLQueryToolStripMenuItem.Name = "SQLQueryToolStripMenuItem"
-        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SQLQueryToolStripMenuItem.Text = "SQL Query"
+        Me.SQLQueryToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.SQLQueryToolStripMenuItem.Text = "SQL &Query"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
         '
         'ChangeUserToolStripMenuItem
         '
         Me.ChangeUserToolStripMenuItem.Name = "ChangeUserToolStripMenuItem"
-        Me.ChangeUserToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ChangeUserToolStripMenuItem.Text = "Change User"
+        Me.ChangeUserToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.ChangeUserToolStripMenuItem.Text = "Change &User"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'MasterToolStripMenuItem
         '
         Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MedicalRecordToolStripMenuItem1, Me.AccountingToolStripMenuItem, Me.GiziToolStripMenuItem, Me.LogistikAlkesToolStripMenuItem, Me.LogistikInventoryDanATKToolStripMenuItem, Me.ObatToolStripMenuItem, Me.HargaObatToolStripMenuItem, Me.TarifAmbulanceToolStripMenuItem, Me.KelasToolStripMenuItem, Me.PerawatSAKToolStripMenuItem, Me.JenisPerusahaanToolStripMenuItem, Me.PerusahaanToolStripMenuItem, Me.MakananToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
-        Me.MasterToolStripMenuItem.Text = "Master"
+        Me.MasterToolStripMenuItem.Text = "&Master"
         '
         'MedicalRecordToolStripMenuItem1
         '
@@ -310,7 +310,7 @@ Partial Class MainMenu
         Me.MedicalRecordToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PendaftaranPasienBaruToolStripMenuItem, Me.RegistrasiPasienToolStripMenuItem})
         Me.MedicalRecordToolStripMenuItem.Name = "MedicalRecordToolStripMenuItem"
         Me.MedicalRecordToolStripMenuItem.Size = New System.Drawing.Size(101, 20)
-        Me.MedicalRecordToolStripMenuItem.Text = "Medical Record"
+        Me.MedicalRecordToolStripMenuItem.Text = "Medical &Record"
         '
         'PendaftaranPasienBaruToolStripMenuItem
         '
@@ -322,45 +322,45 @@ Partial Class MainMenu
         '
         Me.RegistrasiPasienToolStripMenuItem.Name = "RegistrasiPasienToolStripMenuItem"
         Me.RegistrasiPasienToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
-        Me.RegistrasiPasienToolStripMenuItem.Text = "Registrasi Pasien"
+        Me.RegistrasiPasienToolStripMenuItem.Text = "Registrasi"
         '
         'LaboratoriumToolStripMenuItem
         '
         Me.LaboratoriumToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DiagnosaToolStripMenuItem, Me.PemeriksaanToolStripMenuItem})
         Me.LaboratoriumToolStripMenuItem.Name = "LaboratoriumToolStripMenuItem"
         Me.LaboratoriumToolStripMenuItem.Size = New System.Drawing.Size(91, 20)
-        Me.LaboratoriumToolStripMenuItem.Text = "Laboratorium"
+        Me.LaboratoriumToolStripMenuItem.Text = "&Laboratorium"
         '
         'DiagnosaToolStripMenuItem
         '
         Me.DiagnosaToolStripMenuItem.Name = "DiagnosaToolStripMenuItem"
-        Me.DiagnosaToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.DiagnosaToolStripMenuItem.Text = "Diagnosa"
+        Me.DiagnosaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DiagnosaToolStripMenuItem.Text = "&Diagnosa"
         '
         'PemeriksaanToolStripMenuItem
         '
         Me.PemeriksaanToolStripMenuItem.Name = "PemeriksaanToolStripMenuItem"
-        Me.PemeriksaanToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.PemeriksaanToolStripMenuItem.Text = "Pemeriksaan"
+        Me.PemeriksaanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PemeriksaanToolStripMenuItem.Text = "&Pemeriksaan"
         '
         'PoliklinikToolStripMenuItem
         '
         Me.PoliklinikToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QueueToolStripMenuItem, Me.PemeriksaanToolStripMenuItem1})
         Me.PoliklinikToolStripMenuItem.Name = "PoliklinikToolStripMenuItem"
         Me.PoliklinikToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
-        Me.PoliklinikToolStripMenuItem.Text = "Poliklinik"
+        Me.PoliklinikToolStripMenuItem.Text = "&Poliklinik"
         '
         'QueueToolStripMenuItem
         '
         Me.QueueToolStripMenuItem.Name = "QueueToolStripMenuItem"
-        Me.QueueToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.QueueToolStripMenuItem.Text = "Queue"
+        Me.QueueToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QueueToolStripMenuItem.Text = "&Queue"
         '
         'PemeriksaanToolStripMenuItem1
         '
         Me.PemeriksaanToolStripMenuItem1.Name = "PemeriksaanToolStripMenuItem1"
-        Me.PemeriksaanToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
-        Me.PemeriksaanToolStripMenuItem1.Text = "Pemeriksaan"
+        Me.PemeriksaanToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.PemeriksaanToolStripMenuItem1.Text = "Peme&riksaan"
         '
         'WindowsToolStripMenuItem
         '

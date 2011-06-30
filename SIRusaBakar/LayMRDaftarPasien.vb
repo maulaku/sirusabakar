@@ -359,6 +359,7 @@ Public Class LayMRDaftarPasien
     End Sub
     Private Sub RPasien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            odbc = "RSBK"
             LoadCb()
             tombolHidup()
             nonAktif()
@@ -772,24 +773,34 @@ Public Class LayMRDaftarPasien
         IDKel.Text = frm2.getselection("select ID,namakelurahan as 'Nama Kelurahan' from msKelurahan where status=1", "Pilih Kelurahan")
     End Sub
 
-    Private Sub IDProp_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        txtPropinsi.Text = getNumber("select namapropinsi from mspropinsi where status=1 and id=" & IDProp.Text)
+    Private Sub IDProp_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDProp.TextChanged
+        If IDProp.Text <> "" Then
+            txtPropinsi.Text = getNumber("select namapropinsi from  msPropinsi where status=1 and id=" & IDProp.Text)
+        End If
     End Sub
 
-    Private Sub IDKota_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        txtKota.Text = getNumber("select namakota from mskota where status=1 and id=" & IDKota.Text)
+    Private Sub IDKota_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKota.TextChanged
+        If IDKota.Text <> "" Then
+            txtKota.Text = getNumber("select namakota from mskota where status=1 and id=" & IDKota.Text)
+        End If
     End Sub
 
-    Private Sub IDKab_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        txtKabupaten.Text = getNumber("select namakabupaten from mskabupaten where status=1 and id=" & IDKab.Text)
+    Private Sub IDKab_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKab.TextChanged
+        If IDKab.Text <> "" Then
+            txtKabupaten.Text = getNumber("select namakabupaten from mskabupaten where status=1 and id=" & IDKab.Text)
+        End If
     End Sub
 
-    Private Sub IDKec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        txtKecamatan.Text = getNumber("select namakecamatan from mskecamatan where status=1 and id=" & IDKec.Text)
+    Private Sub IDKec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKec.TextChanged
+        If IDKec.Text <> "" Then
+            txtKecamatan.Text = getNumber("select namakecamatan from mskecamatan where status=1 and id=" & IDKec.Text)
+        End If
     End Sub
 
-    Private Sub IDKel_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        txtKelurahan.Text = getNumber("select namakelurahan from mskelurahan where status=1 and id=" & IDKel.Text)
+    Private Sub IDKel_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IDKel.TextChanged
+        If IDKel.Text <> "" Then
+            txtKelurahan.Text = getNumber("select namakelurahan from mskelurahan where status=1 and id=" & IDKel.Text)
+        End If
     End Sub
 
     Private Sub txtKodePos_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtKodePos.Validated
@@ -800,7 +811,7 @@ Public Class LayMRDaftarPasien
 
     Private Sub BtnProp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProp.Click
         Dim frm2 As New CariData
-        IDProp.Text = frm2.getselection("select ID,namapropinsi as 'Nama Propinsi' from msPropinsi where status=1", "Pilih Propinsi")
+        IDProp.Text = frm2.GetSelection("select ID,namapropinsi as 'Nama Propinsi' from msPropinsi where status=1", "Pilih Propinsi")
     End Sub
 
     Private Sub LayMRDaftarPasien_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
@@ -849,7 +860,37 @@ Public Class LayMRDaftarPasien
         munculData()
     End Sub
 
-    Private Sub TabAlamat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabAlamat.Click
+    Private Sub cmbTglLahir_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbTglLahir.ValueChanged
+        txtUmur.Text = hitUmur(cmbTglLahir.Value)
+    End Sub
 
+    Private Sub txtKodePos_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtKodePos.KeyPress
+        If Char.IsNumber(e.KeyChar) Or e.KeyChar = ChrW(Keys.Back) Then
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub txtTelepon_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelepon.KeyPress
+        If Char.IsNumber(e.KeyChar) Or e.KeyChar = ChrW(Keys.Back) Then
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub txtHP_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHP.KeyPress
+        If Char.IsNumber(e.KeyChar) Or e.KeyChar = ChrW(Keys.Back) Then
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub txtTeleponPenanggung_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTeleponPenanggung.KeyPress
+        If Char.IsNumber(e.KeyChar) Or e.KeyChar = ChrW(Keys.Back) Then
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub txtHPPenanggung_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHPPenanggung.KeyPress
+        If Char.IsNumber(e.KeyChar) Or e.KeyChar = ChrW(Keys.Back) Then
+            e.Handled = False
+        End If
     End Sub
 End Class

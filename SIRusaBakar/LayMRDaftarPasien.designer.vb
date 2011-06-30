@@ -78,6 +78,11 @@ Partial Class LayMRDaftarPasien
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.TabAlamat = New System.Windows.Forms.TabPage
+        Me.IDKel = New System.Windows.Forms.Label
+        Me.IDKec = New System.Windows.Forms.Label
+        Me.IDKab = New System.Windows.Forms.Label
+        Me.IDKota = New System.Windows.Forms.Label
+        Me.IDProp = New System.Windows.Forms.Label
         Me.BtnKab = New System.Windows.Forms.Button
         Me.BtnKota = New System.Windows.Forms.Button
         Me.txtPropinsi = New System.Windows.Forms.TextBox
@@ -125,11 +130,6 @@ Partial Class LayMRDaftarPasien
         Me.Label26 = New System.Windows.Forms.Label
         Me.Label25 = New System.Windows.Forms.Label
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.IDProp = New System.Windows.Forms.TextBox
-        Me.IDKota = New System.Windows.Forms.TextBox
-        Me.IDKel = New System.Windows.Forms.TextBox
-        Me.IDKab = New System.Windows.Forms.TextBox
-        Me.IDKec = New System.Windows.Forms.TextBox
         Me.ToolStrip1.SuspendLayout()
         Me.TabData.SuspendLayout()
         Me.TabPribadi.SuspendLayout()
@@ -529,6 +529,7 @@ Partial Class LayMRDaftarPasien
         '
         Me.txtUmur.Location = New System.Drawing.Point(116, 89)
         Me.txtUmur.Name = "txtUmur"
+        Me.txtUmur.ReadOnly = True
         Me.txtUmur.Size = New System.Drawing.Size(194, 20)
         Me.txtUmur.TabIndex = 5
         '
@@ -695,9 +696,9 @@ Partial Class LayMRDaftarPasien
         'TabAlamat
         '
         Me.TabAlamat.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabAlamat.Controls.Add(Me.IDKel)
         Me.TabAlamat.Controls.Add(Me.IDKec)
         Me.TabAlamat.Controls.Add(Me.IDKab)
-        Me.TabAlamat.Controls.Add(Me.IDKel)
         Me.TabAlamat.Controls.Add(Me.IDKota)
         Me.TabAlamat.Controls.Add(Me.IDProp)
         Me.TabAlamat.Controls.Add(Me.BtnKab)
@@ -732,6 +733,46 @@ Partial Class LayMRDaftarPasien
         Me.TabAlamat.Text = "Alamat"
         Me.TabAlamat.ToolTipText = "Alt + A"
         Me.TabAlamat.UseVisualStyleBackColor = True
+        '
+        'IDKel
+        '
+        Me.IDKel.AutoSize = True
+        Me.IDKel.Location = New System.Drawing.Point(273, 254)
+        Me.IDKel.Name = "IDKel"
+        Me.IDKel.Size = New System.Drawing.Size(0, 13)
+        Me.IDKel.TabIndex = 59
+        '
+        'IDKec
+        '
+        Me.IDKec.AutoSize = True
+        Me.IDKec.Location = New System.Drawing.Point(212, 254)
+        Me.IDKec.Name = "IDKec"
+        Me.IDKec.Size = New System.Drawing.Size(0, 13)
+        Me.IDKec.TabIndex = 58
+        '
+        'IDKab
+        '
+        Me.IDKab.AutoSize = True
+        Me.IDKab.Location = New System.Drawing.Point(146, 254)
+        Me.IDKab.Name = "IDKab"
+        Me.IDKab.Size = New System.Drawing.Size(0, 13)
+        Me.IDKab.TabIndex = 57
+        '
+        'IDKota
+        '
+        Me.IDKota.AutoSize = True
+        Me.IDKota.Location = New System.Drawing.Point(84, 254)
+        Me.IDKota.Name = "IDKota"
+        Me.IDKota.Size = New System.Drawing.Size(0, 13)
+        Me.IDKota.TabIndex = 56
+        '
+        'IDProp
+        '
+        Me.IDProp.AutoSize = True
+        Me.IDProp.Location = New System.Drawing.Point(23, 254)
+        Me.IDProp.Name = "IDProp"
+        Me.IDProp.Size = New System.Drawing.Size(0, 13)
+        Me.IDProp.TabIndex = 55
         '
         'BtnKab
         '
@@ -1174,41 +1215,6 @@ Partial Class LayMRDaftarPasien
         Me.DataGridView1.Size = New System.Drawing.Size(624, 164)
         Me.DataGridView1.TabIndex = 51
         '
-        'IDProp
-        '
-        Me.IDProp.Location = New System.Drawing.Point(21, 245)
-        Me.IDProp.Name = "IDProp"
-        Me.IDProp.Size = New System.Drawing.Size(17, 20)
-        Me.IDProp.TabIndex = 62
-        '
-        'IDKota
-        '
-        Me.IDKota.Location = New System.Drawing.Point(44, 245)
-        Me.IDKota.Name = "IDKota"
-        Me.IDKota.Size = New System.Drawing.Size(17, 20)
-        Me.IDKota.TabIndex = 63
-        '
-        'IDKel
-        '
-        Me.IDKel.Location = New System.Drawing.Point(113, 245)
-        Me.IDKel.Name = "IDKel"
-        Me.IDKel.Size = New System.Drawing.Size(17, 20)
-        Me.IDKel.TabIndex = 64
-        '
-        'IDKab
-        '
-        Me.IDKab.Location = New System.Drawing.Point(67, 245)
-        Me.IDKab.Name = "IDKab"
-        Me.IDKab.Size = New System.Drawing.Size(17, 20)
-        Me.IDKab.TabIndex = 65
-        '
-        'IDKec
-        '
-        Me.IDKec.Location = New System.Drawing.Point(90, 245)
-        Me.IDKec.Name = "IDKec"
-        Me.IDKec.Size = New System.Drawing.Size(17, 20)
-        Me.IDKec.TabIndex = 66
-        '
         'LayMRDaftarPasien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1351,9 +1357,9 @@ Partial Class LayMRDaftarPasien
     Protected Friend WithEvents rbB As System.Windows.Forms.RadioButton
     Protected Friend WithEvents rbAB As System.Windows.Forms.RadioButton
     Protected Friend WithEvents rbO As System.Windows.Forms.RadioButton
-    Friend WithEvents IDProp As System.Windows.Forms.TextBox
-    Friend WithEvents IDKota As System.Windows.Forms.TextBox
-    Friend WithEvents IDKec As System.Windows.Forms.TextBox
-    Friend WithEvents IDKab As System.Windows.Forms.TextBox
-    Friend WithEvents IDKel As System.Windows.Forms.TextBox
+    Friend WithEvents IDProp As System.Windows.Forms.Label
+    Friend WithEvents IDKel As System.Windows.Forms.Label
+    Friend WithEvents IDKec As System.Windows.Forms.Label
+    Friend WithEvents IDKab As System.Windows.Forms.Label
+    Friend WithEvents IDKota As System.Windows.Forms.Label
 End Class

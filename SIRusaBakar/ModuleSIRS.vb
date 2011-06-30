@@ -79,9 +79,24 @@ Module ModuleSIRS
         End Try
     End Function
     Public Function hitUmur(ByVal lahir As Date) As String
-        hitUmur = Str((DateDiff(DateInterval.Year, Now(), lahir)) * -1) & " Tahun "
-        hitUmur = hitUmur & Str((DateDiff(DateInterval.Month, Now(), lahir)) * -1) & " Bulan "
-        hitUmur = hitUmur & Str((DateDiff(DateInterval.DayOfYear, Now(), lahir)) * -1) & " Hari"
+        Dim m, d As Integer
+        If lahir > Now Then
+            hitUmur = ""
+        End If
+        m = DateDiff(DateInterval.Month, DateValue("Jan/1/" & Year(Now)), lahir)
+        d = DateDiff(DateInterval.Day, DateValue(DatePart(DateInterval.Month, Now) & "/1/" & Year(Now)), lahir)
+        hitUmur = DateDiff(DateInterval.Year, Now, lahir) * -1
+        If Year(lahir) < Year(Now) Then
+            hitUmur = hitUmur & " # " & (DateDiff(DateInterval.Month, Now, lahir) * -1) + m
+        Else
+            hitUmur = hitUmur & " # " & (DateDiff(DateInterval.Month, Now, lahir) * -1)
+        End If
+        If Month(lahir) < Year(Now) Then
+            hitUmur = hitUmur & " # " & (DateDiff(DateInterval.Day, Now, lahir) * -1) + d
+        Else
+            hitUmur = hitUmur & " # " & (DateDiff(DateInterval.Day, Now, lahir) * -1)
+        End If
+        'hitUmur = hitUmur & " # " & m & " # " & d
     End Function
 
     Public Function ceknull(ByVal cek) As String

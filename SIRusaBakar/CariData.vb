@@ -1,6 +1,6 @@
 Public Class CariData
     Dim a, query As String
-    Public Function getselection(ByVal sql, ByVal title) As String
+    Public Function GetSelection(ByVal sql, ByVal title) As String
         query = sql
         Me.Text = title
         Me.Show()
@@ -21,8 +21,7 @@ Public Class CariData
         load_grid()
     End Sub
     Private Sub pilih()
-        a = DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value
-        Me.Close()
+        a = DataGridView1.Item("ID", DataGridView1.CurrentRow.Index).Value
     End Sub
 
     Private Sub DataGridView1_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
@@ -31,6 +30,7 @@ Public Class CariData
 
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
         pilih()
+        Me.Close()
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click

@@ -93,18 +93,19 @@ Public Class LayMRRegis
     End Sub
     Private Sub tampilDataGrid(ByVal sql As String)
         DataGridView1.DataSource = getTabel(sql)
-        For i As Integer = 0 To 14
+        For i As Integer = 0 To DataGridView1.ColumnCount - 1
             DataGridView1.Columns(i).Visible = False
         Next
 
-        DataGridView1.Columns(3).Visible = True 'Tanggal Regis
-        DataGridView1.Columns(4).Visible = True 'No. Regis
-        DataGridView1.Columns(15).Visible = True 'Nama Pasien
+        DataGridView1.Columns("tglRegis").Visible = True 'Tanggal Regis
+        DataGridView1.Columns("noRegis").Visible = True 'No. Regis
+        'DataGridView1.Columns("namaPasien").Visible = True 'Nama Pasien
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect ' buat select 1 row
+        DataGridView1.AllowUserToAddRows = False
     End Sub
     Private Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
-            MsgBox("Data COA : Tidak Ada", MsgBoxStyle.Information, "Data COA")
+            MsgBox("Data Registrasi : Tidak Ada", MsgBoxStyle.Information, "Data Registrasi")
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
@@ -134,11 +135,11 @@ Public Class LayMRRegis
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
-                Case "kodeCoa"
-                    dc.HeaderText = "Kode COA"
+                Case "tglRegis"
+                    dc.HeaderText = "Tanggal Registrasi"
                     dc.Width = 100
-                Case "namaCoa"
-                    dc.HeaderText = "Nama COA"
+                Case "noRegis"
+                    dc.HeaderText = "Nomor Registrasi"
                     dc.Width = 100
                 Case "tipeCoa"
                     dc.HeaderText = "Tipe COA"
@@ -161,7 +162,7 @@ Public Class LayMRRegis
         Try
             tombolHidup()
             nonAktif()
-            TampilDataGrid("select * from vwTrLayMRRegis")
+            tampilDataGrid("select * from vwLayMRRegis")
             tampilData(0)
             cmbSearch.SelectedIndex = 0
 
