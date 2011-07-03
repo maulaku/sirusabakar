@@ -162,15 +162,15 @@ Public Class MMrInstalasi
         If txtInstalasi.Text = "" Then
             MsgBox("Data Instalasi Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Instalasi dengan Instalasi : " & txtInstalasi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Instalasi dengan Instalasi : " & txtInstalasi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Instalasi dengan Instalasi : " & txtInstalasi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Instalasi dengan Instalasi : " & txtInstalasi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsInstalasi")
         tampilData(0)
         tombolHidup()

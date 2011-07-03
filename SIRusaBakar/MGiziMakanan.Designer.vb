@@ -190,6 +190,7 @@ Partial Class MGiziMakanan
         '
         Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(400, 149)
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.ReadOnly = True
         Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
         Me.txtCatatanSebelumnya.TabIndex = 45
         Me.txtCatatanSebelumnya.Text = ""

@@ -161,15 +161,15 @@ Public Class MMrPekerjaan
         If txtPekerjaan.Text = "" Then
             MsgBox("Data Pekerjaan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Pekerjaan dengan Pekerjaan : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Pekerjaan dengan Pekerjaan : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Pekerjaan dengan Pekerjaan : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Pekerjaan dengan Pekerjaan : " & txtPekerjaan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsPekerjaan")
         tampilData(0)
         tombolHidup()

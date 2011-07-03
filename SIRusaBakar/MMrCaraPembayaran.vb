@@ -162,15 +162,15 @@ Public Class MMrCaraPembayaran
         If txtCaraPembayaran.Text = "" Then
             MsgBox("Data CaraPembayaran Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU CaraPembayaran dengan CaraPembayaran : " & txtCaraPembayaran.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA CaraPembayaran dengan CaraPembayaran : " & txtCaraPembayaran.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU CaraPembayaran dengan CaraPembayaran : " & txtCaraPembayaran.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA CaraPembayaran dengan CaraPembayaran : " & txtCaraPembayaran.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsCaraPembayaran")
         tampilData(0)
         tombolHidup()

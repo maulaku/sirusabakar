@@ -141,6 +141,7 @@ Partial Class MCoa
         '
         Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(398, 150)
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.ReadOnly = True
         Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
         Me.txtCatatanSebelumnya.TabIndex = 33
         Me.txtCatatanSebelumnya.Text = ""

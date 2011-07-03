@@ -3,7 +3,7 @@ Public Class CariData
     Public Function GetSelection(ByVal sql, ByVal title) As String
         query = sql
         Me.Text = title
-        Me.Show()
+        Me.ShowDialog()
         Return a
     End Function
 

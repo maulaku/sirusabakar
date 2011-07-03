@@ -159,15 +159,15 @@ Public Class MMrAgama
         If txtAgama.Text = "" Then
             MsgBox("Data Agama Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Agama dengan Agama : " & txtAgama.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Agama dengan Agama : " & txtAgama.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Agama dengan Agama : " & txtAgama.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Agama dengan Agama : " & txtAgama.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsAgama")
         tampilData(0)
         tombolHidup()

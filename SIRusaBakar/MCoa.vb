@@ -175,15 +175,15 @@ Public Class MCoa
         End If
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        kirimData()
-
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
-
+        If cekdata Then
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA COA dengan Kode COA : " & txtKodeCOA.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
+        End If
         TampilDataGrid("select * from vwMsCoa")
         tampilData(0)
         tombolHidup()
@@ -291,4 +291,15 @@ Public Class MCoa
             tampilData(DataGridView1.CurrentRow.Index)
         End If
     End Sub
+    Private Function cekdata() As Boolean
+        If txtKodeCOA.Text = "" Then
+            Return False
+        ElseIf txtNamaCOA.Text = "" Then
+            Return False
+        ElseIf txtTipeCoa.Text = "" Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 End Class

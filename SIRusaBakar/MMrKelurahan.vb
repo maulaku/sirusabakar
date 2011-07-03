@@ -154,13 +154,18 @@ Public Class MMrKelurahan
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
+        If txtKelurahan.Text = "" Then
+            MsgBox("Data Kelurahan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+            Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Kelurahan dengan Nama Kelurahan : " & txtKelurahan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
+        End If
         TampilDataGrid("select * from vwMsKelurahan")
         tampilData(0)
         tombolHidup()

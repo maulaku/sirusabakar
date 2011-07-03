@@ -741,6 +741,7 @@ Partial Class LayMRDaftarPasien
         Me.IDKel.Name = "IDKel"
         Me.IDKel.Size = New System.Drawing.Size(0, 13)
         Me.IDKel.TabIndex = 59
+        Me.IDKel.Visible = False
         '
         'IDKec
         '
@@ -749,6 +750,7 @@ Partial Class LayMRDaftarPasien
         Me.IDKec.Name = "IDKec"
         Me.IDKec.Size = New System.Drawing.Size(0, 13)
         Me.IDKec.TabIndex = 58
+        Me.IDKec.Visible = False
         '
         'IDKab
         '
@@ -757,6 +759,7 @@ Partial Class LayMRDaftarPasien
         Me.IDKab.Name = "IDKab"
         Me.IDKab.Size = New System.Drawing.Size(0, 13)
         Me.IDKab.TabIndex = 57
+        Me.IDKab.Visible = False
         '
         'IDKota
         '
@@ -765,6 +768,7 @@ Partial Class LayMRDaftarPasien
         Me.IDKota.Name = "IDKota"
         Me.IDKota.Size = New System.Drawing.Size(0, 13)
         Me.IDKota.TabIndex = 56
+        Me.IDKota.Visible = False
         '
         'IDProp
         '
@@ -773,6 +777,7 @@ Partial Class LayMRDaftarPasien
         Me.IDProp.Name = "IDProp"
         Me.IDProp.Size = New System.Drawing.Size(0, 13)
         Me.IDProp.TabIndex = 55
+        Me.IDProp.Visible = False
         '
         'BtnKab
         '

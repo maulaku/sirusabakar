@@ -153,13 +153,15 @@ Public Class MGiziMakanan
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtMakanan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtMakanan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
+        If cekdata Then
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Diet dengan Kode Diet : " & txtMakanan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Diet dengan Kode Diet : " & txtMakanan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
+        End If
         TampilDataGrid("select * from vwMsMakanan")
         tampilData(0)
         tombolHidup()
@@ -284,4 +286,11 @@ Public Class MGiziMakanan
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Function cekdata() As Boolean
+        If txtMakanan.Text = "" Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 End Class

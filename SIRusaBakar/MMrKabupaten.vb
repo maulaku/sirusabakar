@@ -162,15 +162,15 @@ Public Class MMrKabupaten
         If txtKabupaten.Text = "" Then
             MsgBox("Data Kabupaten Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Kabupaten dengan Kabupaten : " & txtKabupaten.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Kabupaten dengan Kabupaten : " & txtKabupaten.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Kabupaten dengan Kabupaten : " & txtKabupaten.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Kabupaten dengan Kabupaten : " & txtKabupaten.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsKabupaten")
         tampilData(0)
         tombolHidup()

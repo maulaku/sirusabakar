@@ -55,9 +55,9 @@ Partial Class MGiziDiet
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(26, 13)
+        Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Diet"
+        Me.Label2.Text = "Nama Diet"
         '
         'DataGridView1
         '
@@ -81,6 +81,7 @@ Partial Class MGiziDiet
         '
         Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(401, 153)
         Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.ReadOnly = True
         Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
         Me.txtCatatanSebelumnya.TabIndex = 37
         Me.txtCatatanSebelumnya.Text = ""

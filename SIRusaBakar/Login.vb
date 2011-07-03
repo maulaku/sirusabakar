@@ -12,7 +12,8 @@ Public Class Login
         If UsernameTextBox.Text <> "" And PasswordTextBox.Text <> "" Then
             If PasswordTextBox.Text = getNumber("select sandiPengguna from msPengguna where status=1 and namaPengguna='" & UsernameTextBox.Text & "'") Then
                 'MainMenu.StUser.Text = UCase(UsernameTextBox.Text)
-                MainMenu.Enabled = True
+                'MainMenu.Enabled = True
+                MainMenu.MenuStrip.Enabled = True
                 a = UCase(UsernameTextBox.Text)
                 Me.Close()
             Else
@@ -25,7 +26,7 @@ Public Class Login
         End If
     End Sub
     Public Function get_login() As String
-        Me.Show()
+        Me.ShowDialog()
         Return a
     End Function
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click

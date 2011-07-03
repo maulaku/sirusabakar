@@ -269,3 +269,18 @@ from msJenisPerusahaan with (NOLOCK)
 where status = 1
 order by id
 GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+create view vwMenuMakanan as
+select m.id, m.kodemenumakanan,m.id_diet,d.kodediet,d.namadiet,m.kelompok,m.waktu
+from msmenumakanan m
+left outer join msdiet d on m.id_diet = d.id
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+select d.id,d.id_menumakanan,m.kodemenumakanan,d.id_makanan,k.namamakanan,d.jumlah
+from msmenumakanandet d
+inner join msmenumakanan m on m.id=d.id_menumakanan
+left outer join msmakanan k on k.id=d.id_makanan
+

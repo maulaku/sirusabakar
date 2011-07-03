@@ -158,15 +158,15 @@ Public Class MMrPropinsi
         If txtPropinsi.Text = "" Then
             MsgBox("Data Propinsi Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data Propinsi BARU dengan Kode Propinsi : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data Propinsi LAMA dengan Kode Propinsi : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data Propinsi BARU dengan Kode Propinsi : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data Propinsi LAMA dengan Kode Propinsi : " & txtPropinsi.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsPropinsi")
         tampilData(0)
         tombolHidup()

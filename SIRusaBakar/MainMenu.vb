@@ -69,10 +69,11 @@ Public Class MainMenu
     End Sub
 
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Dim a As New Login
+        Dim a As New Login
         'If StUser.Text = "UserName" Then
         '    Me.Enabled = False
-        '    StUser.Text = a.get_login
+        MenuStrip.Enabled = False
+        StUser.Text = a.get_login
         'End If
     End Sub
 

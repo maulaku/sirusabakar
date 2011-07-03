@@ -159,15 +159,15 @@ Public Class MMrKecamatan
         If txtKecamatan.Text = "" Then
             MsgBox("Data Kecamatan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Kecamatan dengan Nama Kecamatan: " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Kecamatan dengan Nama Kecamatan : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Kecamatan dengan Nama Kecamatan: " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Kecamatan dengan Nama Kecamatan : " & txtKecamatan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsKecamatan")
         tampilData(0)
         tombolHidup()

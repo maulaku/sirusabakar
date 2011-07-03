@@ -110,8 +110,10 @@ CREATE TABLE msMenuMakananDet (
 	--------------------------------
 	status 				INT DEFAULT 1,
 	--------------------------------
-	dibuatOleh 			INT,
-	waktuBuat 			DATETIME DEFAULT CURRENT_TIMESTAMP,
+	dibuatOleh 					INT,
+	dieditOleh 					INT,
+	waktuBuat 					DATETIME DEFAULT CURRENT_TIMESTAMP,
+	waktuEdit 					DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 	PRIMARY KEY (id)	
 );

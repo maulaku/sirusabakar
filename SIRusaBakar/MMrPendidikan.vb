@@ -162,15 +162,15 @@ Public Class MMrPendidikan
         If txtPendidikan.Text = "" Then
             MsgBox("Data Pendidikan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
+        Else
+            kirimData()
+            Select Case statusForm
+                Case "NEW"
+                    MessageBox.Show("Sukses Input Data BARU Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "EDIT"
+                    MessageBox.Show("Sukses Edit Data LAMA Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Select
         End If
-
-        kirimData()
-        Select Case statusForm
-            Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Pendidikan dengan Pendidikan : " & txtPendidikan.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End Select
         TampilDataGrid("select * from vwMsPendidikan")
         tampilData(0)
         tombolHidup()

@@ -2,7 +2,7 @@ Public Class LayMRDaftarPasien
     Dim status As Integer = 0
     Dim dataCari As String
     Dim list As Integer = 0
-    Dim max As Integer
+    Dim max, x As Integer
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         Try
             If msg.WParam.ToInt32 = Convert.ToInt32(Keys.F2) Then
@@ -19,6 +19,18 @@ Public Class LayMRDaftarPasien
                 btnRefresh.PerformClick()
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Up) Or msg.WParam.ToInt32 = Convert.ToInt32(Keys.Down) Then
                 DataGridView1.Focus()
+            ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Right) Then
+                TabData.Focus()
+                If x + 1 < TabData.TabCount Then
+                    x += 1
+                    TabData.TabPages.Item(x).Focus()
+                End If
+            ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Left) Then
+                TabData.Focus()
+                If x - 1 > 1 Then
+                    x -= 1
+                    TabData.TabPages.Item(x).Focus()
+                End If
             ElseIf msg.WParam.ToInt32 = Convert.ToInt32(Keys.Escape) Then
                 If statusForm = "new" Or statusForm = "edit" Then
                     btnCancel.PerformClick()
@@ -359,13 +371,13 @@ Public Class LayMRDaftarPasien
     End Sub
     Private Sub RPasien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            odbc = "RSBK"
+            'odbc = "RSBK"
             LoadCb()
             tombolHidup()
             nonAktif()
             munculData()
             tampilData()
-
+            x = TabData.TabCount
             cmbSearch.SelectedIndex = 0
             'cmbTitle.SelectedIndex = 0
 
@@ -439,92 +451,93 @@ Public Class LayMRDaftarPasien
 
             If txtNamaPasien.Text = "" Then
                 MsgBox("Data belum Lengkap", MsgBoxStyle.Information, "Save Data Gagal")
+            Else
+                Select Case statusForm
+                    Case "new"
+                        PSQL = "EXEC spInsertMRDaftar" & _
+                                " '" & txtNoMR.Text & "'," & _
+                                "  " & cmbTitle.SelectedValue & "," & _
+                                " '" & txtNamaPasien.Text & "'," & _
+                                " '" & txtPanggilan.Text & "'," & _
+                                " '" & sex & "'," & _
+                                " '" & txtTempatLahir.Text & "'," & _
+                                " '" & cmbTglLahir.Value & "'," & _
+                                "  " & cmbAgama.SelectedValue & "," & _
+                                " '" & txtSukuBangsa.Text & "'," & _
+                                " '" & txtWargaNegara.Text & "'," & _
+                                " '" & golDarah & "'," & _
+                                " '" & cmbStatus.Text & "'," & _
+                                "  " & cmbPendidikan.SelectedValue & "," & _
+                                "  " & cmbPekerjaan.SelectedValue & "," & _
+                                " '" & txtAlamat.Text & "'," & _
+                                " '" & IDProp.Text & "'," & _
+                                " '" & IDKota.Text & "'," & _
+                                " '" & txtKodePos.Text & "'," & _
+                                " '" & txtTelepon.Text & "'," & _
+                                " '" & txtHP.Text & "'," & _
+                                " '" & IDKab.Text & "'," & _
+                                " '" & IDKec.Text & "'," & _
+                                " '" & IDKel.Text & "'," & _
+                                " '" & txtIstri.Text & "'," & _
+                                " '" & txtSuami.Text & "'," & _
+                                " '" & txtAyah.Text & "'," & _
+                                " '" & txtIbu.Text & "'," & _
+                                " '" & statusPenanggung & "'," & _
+                                " '" & txtNamaPenanggung.Text & "'," & _
+                                "  " & cmbHubungan.SelectedValue & "," & _
+                                " '" & txtHubungan.Text & "'," & _
+                                " '" & txtAlamatPenanggung.Text & "'," & _
+                                " '" & txtTeleponPenanggung.Text & "'," & _
+                                " '" & txtHPPenanggung.Text & "'," & _
+                                " '" & txtCatatan.Text & "'," & idUser
+
+                        cmd = New Odbc.OdbcCommand(PSQL, con)
+                        cmd.ExecuteNonQuery()
+                        MessageBox.Show("Sukses Input Data BARU MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Case "edit"
+                        PSQL = "EXEC spUpdateMRDaftar" & _
+                                " '" & idForm & "'," & _
+                                " '" & txtNoMR.Text & "'," & _
+                                "  " & cmbTitle.SelectedValue & "," & _
+                                " '" & txtNamaPasien.Text & "'," & _
+                                " '" & txtPanggilan.Text & "'," & _
+                                " '" & sex & "'," & _
+                                " '" & txtTempatLahir.Text & "'," & _
+                                " '" & cmbTglLahir.Value & "'," & _
+                                "  " & cmbAgama.SelectedValue & "," & _
+                                " '" & txtSukuBangsa.Text & "'," & _
+                                " '" & txtWargaNegara.Text & "'," & _
+                                " '" & golDarah & "'," & _
+                                " '" & cmbStatus.Text & "'," & _
+                                "  " & cmbPendidikan.SelectedValue & "," & _
+                                "  " & cmbPekerjaan.SelectedValue & "," & _
+                                " '" & txtAlamat.Text & "'," & _
+                                " '" & IDProp.Text & "'," & _
+                                " '" & IDKota.Text & "'," & _
+                                " '" & txtKodePos.Text & "'," & _
+                                " '" & txtTelepon.Text & "'," & _
+                                " '" & txtHP.Text & "'," & _
+                                " '" & IDKab.Text & "'," & _
+                                " '" & IDKec.Text & "'," & _
+                                " '" & IDKel.Text & "'," & _
+                                " '" & txtIstri.Text & "'," & _
+                                " '" & txtSuami.Text & "'," & _
+                                " '" & txtAyah.Text & "'," & _
+                                " '" & txtIbu.Text & "'," & _
+                                " '" & statusPenanggung & "'," & _
+                                " '" & txtNamaPenanggung.Text & "'," & _
+                                "  " & cmbHubungan.SelectedValue & "," & _
+                                " '" & txtHubungan.Text & "'," & _
+                                " '" & txtAlamatPenanggung.Text & "'," & _
+                                " '" & txtTeleponPenanggung.Text & "'," & _
+                                " '" & txtHPPenanggung.Text & "'," & _
+                                " '" & txtCatatan.Text & "'," & idUser
+
+                        cmd = New Odbc.OdbcCommand(PSQL, con)
+                        cmd.ExecuteNonQuery()
+                        MessageBox.Show("Sukses Edit Data LAMA MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Select
             End If
-            Select Case statusForm
-                Case "new"
-                    PSQL = "EXEC spInsertMRDaftar" & _
-                            " '" & txtNoMR.Text & "'," & _
-                            "  " & cmbTitle.SelectedValue & "," & _
-                            " '" & txtNamaPasien.Text & "'," & _
-                            " '" & txtPanggilan.Text & "'," & _
-                            " '" & sex & "'," & _
-                            " '" & txtTempatLahir.Text & "'," & _
-                            " '" & cmbTglLahir.Value & "'," & _
-                            "  " & cmbAgama.SelectedValue & "," & _
-                            " '" & txtSukuBangsa.Text & "'," & _
-                            " '" & txtWargaNegara.Text & "'," & _
-                            " '" & golDarah & "'," & _
-                            " '" & cmbStatus.Text & "'," & _
-                            "  " & cmbPendidikan.SelectedValue & "," & _
-                            "  " & cmbPekerjaan.SelectedValue & "," & _
-                            " '" & txtAlamat.Text & "'," & _
-                            " '" & IDProp.Text & "'," & _
-                            " '" & IDKota.Text & "'," & _
-                            " '" & txtKodePos.Text & "'," & _
-                            " '" & txtTelepon.Text & "'," & _
-                            " '" & txtHP.Text & "'," & _
-                            " '" & IDKab.Text & "'," & _
-                            " '" & IDKec.Text & "'," & _
-                            " '" & IDKel.Text & "'," & _
-                            " '" & txtIstri.Text & "'," & _
-                            " '" & txtSuami.Text & "'," & _
-                            " '" & txtAyah.Text & "'," & _
-                            " '" & txtIbu.Text & "'," & _
-                            " '" & statusPenanggung & "'," & _
-                            " '" & txtNamaPenanggung.Text & "'," & _
-                            "  " & cmbHubungan.SelectedValue & "," & _
-                            " '" & txtHubungan.Text & "'," & _
-                            " '" & txtAlamatPenanggung.Text & "'," & _
-                            " '" & txtTeleponPenanggung.Text & "'," & _
-                            " '" & txtHPPenanggung.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
-
-                    cmd = New Odbc.OdbcCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Input Data BARU MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Case "edit"
-                    PSQL = "EXEC spUpdateMRDaftar" & _
-                            " '" & idForm & "'," & _
-                            " '" & txtNoMR.Text & "'," & _
-                            "  " & cmbTitle.SelectedValue & "," & _
-                            " '" & txtNamaPasien.Text & "'," & _
-                            " '" & txtPanggilan.Text & "'," & _
-                            " '" & sex & "'," & _
-                            " '" & txtTempatLahir.Text & "'," & _
-                            " '" & cmbTglLahir.Value & "'," & _
-                            "  " & cmbAgama.SelectedValue & "," & _
-                            " '" & txtSukuBangsa.Text & "'," & _
-                            " '" & txtWargaNegara.Text & "'," & _
-                            " '" & golDarah & "'," & _
-                            " '" & cmbStatus.Text & "'," & _
-                            "  " & cmbPendidikan.SelectedValue & "," & _
-                            "  " & cmbPekerjaan.SelectedValue & "," & _
-                            " '" & txtAlamat.Text & "'," & _
-                            " '" & IDProp.Text & "'," & _
-                            " '" & IDKota.Text & "'," & _
-                            " '" & txtKodePos.Text & "'," & _
-                            " '" & txtTelepon.Text & "'," & _
-                            " '" & txtHP.Text & "'," & _
-                            " '" & IDKab.Text & "'," & _
-                            " '" & IDKec.Text & "'," & _
-                            " '" & IDKel.Text & "'," & _
-                            " '" & txtIstri.Text & "'," & _
-                            " '" & txtSuami.Text & "'," & _
-                            " '" & txtAyah.Text & "'," & _
-                            " '" & txtIbu.Text & "'," & _
-                            " '" & statusPenanggung & "'," & _
-                            " '" & txtNamaPenanggung.Text & "'," & _
-                            "  " & cmbHubungan.SelectedValue & "," & _
-                            " '" & txtHubungan.Text & "'," & _
-                            " '" & txtAlamatPenanggung.Text & "'," & _
-                            " '" & txtTeleponPenanggung.Text & "'," & _
-                            " '" & txtHPPenanggung.Text & "'," & _
-                            " '" & txtCatatan.Text & "'," & idUser
-
-                    cmd = New Odbc.OdbcCommand(PSQL, con)
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Sukses Edit Data LAMA MR dengan No. MR : " & txtNoMR.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Select
         Catch Salah As Exception
             MessageBox.Show(Salah.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -814,22 +827,22 @@ Public Class LayMRDaftarPasien
         IDProp.Text = frm2.GetSelection("select ID,namapropinsi as 'Nama Propinsi' from msPropinsi where status=1", "Pilih Propinsi")
     End Sub
 
-    Private Sub LayMRDaftarPasien_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        Dim x As Integer
-        x = TabData.SelectedIndex
-        If e.KeyCode = Keys.Right Then
-            If x + 1 < TabData.TabCount - 1 Then
-                x += 1
-            End If
-        End If
-        If e.KeyCode = Keys.Left Then
-            If x - 1 > 0 Then
-                x = x - 1
-            End If
-        End If
-        TabData.SelectTab(x)
-        'MsgBox(TabData.SelectedIndex)
-    End Sub
+    'Private Sub LayMRDaftarPasien_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+    '    Dim x As Integer
+    '    x = TabData.SelectedIndex
+    '    If e.KeyCode = Keys.Right Then
+    '        If x + 1 < TabData.TabCount - 1 Then
+    '            x += 1
+    '        End If
+    '    End If
+    '    If e.KeyCode = Keys.Left Then
+    '        If x - 1 > 0 Then
+    '            x = x - 1
+    '        End If
+    '    End If
+    '    TabData.SelectTab(x)
+    '    'MsgBox(TabData.SelectedIndex)
+    'End Sub
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
         list = 0
