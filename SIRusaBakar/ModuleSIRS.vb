@@ -13,7 +13,7 @@ Module ModuleSIRS
         Try
             'con.ConnectionString = "DSN=RSBK;UID=sa;PWD=pingpong;"
             'con.ConnectionString = "DSN=RSBK;"
-            con.ConnectionString = "DSN=" & odbc & ";UID=sa;PWD=pingpong;"
+            con.ConnectionString = "DSN=" & odbc & ";" & "UID=sa;PWD=pingpong;"
             con.Open()
             idUser = 1
         Catch salah As Exception

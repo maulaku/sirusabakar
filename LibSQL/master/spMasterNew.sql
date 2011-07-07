@@ -1257,3 +1257,242 @@ BEGIN
 							  
 END
 GO
+
+--############################################################################# spMsMenuMakanan
+
+IF Objectproperty(Object_Id('spMsMenuMakanan'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsMenuMakanan]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spMsMenuMakanan (
+	/* 1*/ @in_Tindakan				VARCHAR(4),
+	/* 2*/ @in_id		 			INT,
+	/* 3*/ @in_kode_menu			VARCHAR(50),
+	/* 4*/ @in_id_diet				INT,
+	/* 5*/ @in_kelompok				VARCHAR(100),
+	/* 6*/ @in_waktu				VARCHAR(100),
+	/* 7*/ @in_note					VARCHAR(4000),
+	/* 8*/ @in_user					INT,
+	/* 9*/ @out_keterangan			VARCHAR(500) OUTPUT
+	)
+AS
+	DECLARE 	
+		@in_new_note				VARCHAR(5000),
+		@in_new_note_update		VARCHAR(5000),
+		@form_type 					VARCHAR(100),
+		@action_type				VARCHAR(100),
+		@action_desc				VARCHAR(1000),
+		@hitung						INT;
+BEGIN
+	SET @form_type = 'MsMenuMakanan';
+	SET @action_desc =	'NAMA Kode Menu : ' + @in_kode_menu + CHAR(10);
+	SET @in_new_note = 	'DIBUAT          : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
+	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
+	
+	IF @in_Tindakan='NEW'
+		BEGIN	
+			/* Cek data sudah Ada */
+			BEGIN
+				SET @hitung = (SELECT COUNT(kodeMenuMakanan) from MsMenuMakanan where Status = 1 and kodeMenuMakanan = @in_kode_menu group by kodeMenuMakanan);
+				IF @hitung > 1
+					SET @out_keterangan = 'Kode Duplikasi'
+				ELSE				
+				BEGIN	
+					INSERT INTO msMenuMakanan (
+								/* 1*/ kodeMenuMakanan,
+								/* 2*/ id_diet,
+								/* 3*/ kelompok,
+								/* 4*/ waktu,
+								/* 5*/ catatan,
+								/* 6*/ dibuatoleh
+					) VALUES ( 				
+								/* 1*/ @in_kode_menu,	
+		  						/* 2*/ @in_id_diet,	
+		  						/* 3*/ @in_kelompok,
+		  						/* 4*/ @in_waktu,						  
+								/* 5*/ @in_new_note,					  
+								/* 6*/ @in_user
+					);												
+					SET @action_type = 'NEW';					
+				END
+			END
+		END
+------------------------------------------------------------------- New Menu Makanan
+	ELSE IF @in_Tindakan='EDIT'
+		BEGIN	
+			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+										+dbo.fnAmbilCatatanMenuMakanan(@in_id);	
+			IF @in_note = ''
+				BEGIN
+					UPDATE msMenuMakanan SET
+								/* 1*/ kodeMenuMakanan 		= @in_kode_menu,
+								/* 2*/ id_diet 				= @in_id_diet,
+								/* 3*/ kelompok				= @in_kelompok,
+								/* 4*/ waktu 				= @in_waktu,
+								/* 5*/ dieditoleh 			= @in_user,
+								/* 6*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msMenuMakanan SET
+								/* 1*/ kodeMenuMakanan 		= @in_kode_menu,
+								/* 2*/ id_diet 				= @in_id_diet,
+								/* 3*/ kelompok				= @in_kelompok,
+								/* 4*/ waktu 				= @in_waktu,
+								/* 5*/ catatan 				= @in_new_note_update,
+								/* 6*/ dieditoleh 			= @in_user,
+								/* 7*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @action_desc =	@action_desc + CHAR(10) +
+										'NOTE : ' + @in_new_note + CHAR(10);
+				END
+			SET @action_type = 'UPDATE';
+		END		
+------------------------------------------------------------------- Edit Menu Makanan
+	ELSE IF @in_Tindakan='DEL'
+		BEGIN
+			UPDATE msMenuMakanan SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 		= @in_user,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+			SET @action_type = 'DELETE';
+		END
+------------------------------------------------------------------- Delete Menu Makanan
+	
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @form_type,
+				/* 2*/ @action_type,
+				/* 3*/ @action_desc,
+				/* 4*/ @in_user	
+	);
+							  
+END
+GO
+
+--############################################################################# spMsPengguna
+
+IF Objectproperty(Object_Id('spMsPengguna'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsPengguna]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spMsPengguna (
+	/* 1*/ @in_Tindakan				VARCHAR(4),
+	/* 2*/ @in_id		 				INT,
+	/* 3*/ @in_id_karyawan			INT,
+	/* 4*/ @in_namaPengguna			VARCHAR(20),
+	/* 5*/ @in_sandiPengguna		VARCHAR(20),
+	/* 6*/ @in_note					VARCHAR(4000),
+	/* 7*/ @in_user					INT,
+	/* 8*/ @out_keterangan			VARCHAR(500) OUTPUT
+	)
+AS
+	DECLARE 	
+		@in_new_note				VARCHAR(5000),
+		@in_new_note_update		VARCHAR(5000),
+		@form_type 					VARCHAR(100),
+		@action_type				VARCHAR(100),
+		@action_desc				VARCHAR(1000),
+		@hitung						INT;
+BEGIN
+	SET @form_type = 'MsPengguna';
+	SET @action_desc =	'NAMA Kode Pengguna : ' + @in_namaPengguna + CHAR(10);
+	SET @in_new_note = 	'DIBUAT          : ' +  dbo.fnAmbilNamaLengkap(@in_user) + ' , TANGGAL : ' +
+	CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_note + CHAR(10);
+	
+	IF @in_Tindakan='NEW'
+		BEGIN	
+			/* Cek data sudah Ada */
+			BEGIN
+				SET @hitung = (SELECT COUNT(namapengguna) from MsPengguna where Status = 1 and namapengguna = @in_namapengguna group by namapengguna);
+				IF @hitung > 1
+					SET @out_keterangan = 'Kode Duplikasi'
+				ELSE				
+				BEGIN	
+					INSERT INTO msPengguna (
+								/* 1*/ id_karyawan,
+								/* 2*/ namaPengguna,
+								/* 3*/ sandiPengguna,
+								/* 4*/ catatan,
+								/* 5*/ dibuatoleh
+					) VALUES ( 				
+								/* 1*/ @in_id_karyawan,	
+		  						/* 2*/ @in_namaPengguna,
+		  						/* 3*/ @in_sandiPengguna,						  
+								/* 4*/ @in_new_note,					  
+								/* 5*/ @in_user
+					);												
+					SET @action_type = 'NEW';					
+				END
+			END
+		END
+------------------------------------------------------------------- New MsPengguna
+	ELSE IF @in_Tindakan='EDIT'
+		BEGIN	
+			SET @in_new_note_update = @in_new_note + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+										+dbo.fnAmbilCatatanPengguna(@in_id);	
+			IF @in_note = ''
+				BEGIN
+					UPDATE msPengguna SET
+								/* 1*/ id_karyawan 		= @in_id_karyawan,
+								/* 2*/ namaPengguna		= @in_namaPengguna,
+								/* 3*/ sandiPengguna		= @in_sandiPengguna,
+								/* 4*/ dieditoleh 		= @in_user,
+								/* 5*/ waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msPengguna SET
+								/* 2*/ id_karyawan			= @in_id_karyawan,
+								/* 3*/ namaPengguna			= @in_namaPengguna,
+								/* 4*/ sandiPengguna			= @in_sandiPengguna,
+								/* 5*/ catatan 				= @in_new_note_update,
+								/* 6*/ dieditoleh 			= @in_user,
+								/* 7*/ waktuedit	 			= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @action_desc =	@action_desc + CHAR(10) +
+										'NOTE : ' + @in_new_note + CHAR(10);
+				END
+			SET @action_type = 'UPDATE';
+		END		
+------------------------------------------------------------------- Edit MsPengguna
+	ELSE IF @in_Tindakan='DEL'
+		BEGIN
+			UPDATE msPengguna SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 	= @in_user,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+			SET @action_type = 'DELETE';
+		END
+------------------------------------------------------------------- Delete MsPengguna
+	
+	INSERT INTO mshistory (
+				/* 1*/ tipeform,
+				/* 2*/ tipeTindakan,
+				/* 3*/ deskripsiTindakan,
+				/* 4*/ dibuatOleh
+	) VALUES (
+				/* 1*/ @form_type,
+				/* 2*/ @action_type,
+				/* 3*/ @action_desc,
+				/* 4*/ @in_user	
+	);
+							  
+END
+GO

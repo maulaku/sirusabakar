@@ -29,6 +29,7 @@ Partial Class MGiziMenu
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
         Me.grpMakanan = New System.Windows.Forms.GroupBox
+        Me.IDmakanan = New System.Windows.Forms.Label
         Me.btnMakanan = New System.Windows.Forms.Button
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.Button2 = New System.Windows.Forms.Button
@@ -62,6 +63,7 @@ Partial Class MGiziMenu
         Me.txtCatatan = New System.Windows.Forms.TextBox
         Me.Label10 = New System.Windows.Forms.Label
         Me.btnDiet = New System.Windows.Forms.Button
+        Me.IDdiet = New System.Windows.Forms.Label
         Me.grpMakanan.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,6 +138,7 @@ Partial Class MGiziMenu
         '
         'grpMakanan
         '
+        Me.grpMakanan.Controls.Add(Me.IDmakanan)
         Me.grpMakanan.Controls.Add(Me.btnMakanan)
         Me.grpMakanan.Controls.Add(Me.DataGridView1)
         Me.grpMakanan.Controls.Add(Me.Button2)
@@ -150,6 +153,15 @@ Partial Class MGiziMenu
         Me.grpMakanan.TabIndex = 29
         Me.grpMakanan.TabStop = False
         '
+        'IDmakanan
+        '
+        Me.IDmakanan.AutoSize = True
+        Me.IDmakanan.Location = New System.Drawing.Point(16, 45)
+        Me.IDmakanan.Name = "IDmakanan"
+        Me.IDmakanan.Size = New System.Drawing.Size(0, 13)
+        Me.IDmakanan.TabIndex = 9
+        Me.IDmakanan.Visible = False
+        '
         'btnMakanan
         '
         Me.btnMakanan.Location = New System.Drawing.Point(180, 14)
@@ -161,6 +173,7 @@ Partial Class MGiziMenu
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(6, 71)
         Me.DataGridView1.Name = "DataGridView1"
@@ -227,6 +240,7 @@ Partial Class MGiziMenu
         'cmbWaktu
         '
         Me.cmbWaktu.FormattingEnabled = True
+        Me.cmbWaktu.Items.AddRange(New Object() {"Pagi", "Siang", "Malam"})
         Me.cmbWaktu.Location = New System.Drawing.Point(247, 86)
         Me.cmbWaktu.Name = "cmbWaktu"
         Me.cmbWaktu.Size = New System.Drawing.Size(91, 21)
@@ -234,6 +248,7 @@ Partial Class MGiziMenu
         '
         'DataGridView2
         '
+        Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Location = New System.Drawing.Point(392, 34)
         Me.DataGridView2.Name = "DataGridView2"
@@ -342,6 +357,7 @@ Partial Class MGiziMenu
         '
         'cmbSearch
         '
+        Me.cmbSearch.Items.AddRange(New Object() {"Kode Menu", "Kode Diet", "Kelompok"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -417,11 +433,21 @@ Partial Class MGiziMenu
         Me.btnDiet.Text = "..."
         Me.btnDiet.UseVisualStyleBackColor = True
         '
+        'IDdiet
+        '
+        Me.IDdiet.AutoSize = True
+        Me.IDdiet.Location = New System.Drawing.Point(274, 63)
+        Me.IDdiet.Name = "IDdiet"
+        Me.IDdiet.Size = New System.Drawing.Size(0, 13)
+        Me.IDdiet.TabIndex = 40
+        Me.IDdiet.Visible = False
+        '
         'MGiziMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(915, 274)
+        Me.Controls.Add(Me.IDdiet)
         Me.Controls.Add(Me.btnDiet)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label9)
@@ -494,4 +520,6 @@ Partial Class MGiziMenu
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents btnDiet As System.Windows.Forms.Button
     Friend WithEvents btnMakanan As System.Windows.Forms.Button
+    Friend WithEvents IDdiet As System.Windows.Forms.Label
+    Friend WithEvents IDmakanan As System.Windows.Forms.Label
 End Class

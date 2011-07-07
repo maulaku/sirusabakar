@@ -272,15 +272,48 @@ GO
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
-create view vwMenuMakanan as
-select m.id, m.kodemenumakanan,m.id_diet,d.kodediet,d.namadiet,m.kelompok,m.waktu
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsMenuMakanan'))
+DROP VIEW vwMsMenuMakanan
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create view vwMsMenuMakanan as
+select m.id, m.kodemenumakanan,m.id_diet,d.kodediet,d.namadiet,m.kelompok,m.waktu,m.catatan
 from msmenumakanan m
 left outer join msdiet d on m.id_diet = d.id
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsMenuMakananDet'))
+DROP VIEW vwMsMenuMakananDet
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create view vwMsMenuMakananDet as
 select d.id,d.id_menumakanan,m.kodemenumakanan,d.id_makanan,k.namamakanan,d.jumlah
 from msmenumakanandet d
 inner join msmenumakanan m on m.id=d.id_menumakanan
 left outer join msmakanan k on k.id=d.id_makanan
 
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsPengguna'))
+DROP VIEW vwMsPengguna
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create view vwMsPengguna as
+select p.id, p.id_karyawan, p.namapengguna, p.sandipengguna,
+		k.nipkaryawan, k.namalengkap, p.catatan
+from mspengguna p
+inner join mskaryawan k on p.id_karyawan=k.id
+where p.status=1

@@ -13,10 +13,10 @@ Public Class Login
             If PasswordTextBox.Text = getNumber("select sandiPengguna from msPengguna where status=1 and namaPengguna='" & UsernameTextBox.Text & "'") Then
                 'MainMenu.StUser.Text = UCase(UsernameTextBox.Text)
                 'MainMenu.Enabled = True
-                MainMenu.MenuStrip.Enabled = True
                 a = UCase(UsernameTextBox.Text)
                 Me.Close()
             Else
+                a = ""
                 MsgBox("Kombinasi UserName dan Password salah !", MsgBoxStyle.Critical, "Gagal Login")
                 UsernameTextBox.Focus()
             End If
@@ -30,6 +30,7 @@ Public Class Login
         Return a
     End Function
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click
+        a = ""
         Me.Close()
     End Sub
 

@@ -109,3 +109,5 @@ D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRus
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.CariData.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MJenispPerusahaan.resources
 D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.Login.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.ChangePwd.resources
+D:\Documents\Next Solusi\RS Bhakti Kartini\Development\Aplikasi\New folder\SIRusaBakar\obj\Debug\SIRusaBakar.MsPengguna.resources

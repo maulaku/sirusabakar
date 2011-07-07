@@ -67,14 +67,24 @@ Public Class MainMenu
         a.Show()
         a.MdiParent = Me
     End Sub
-
+    Private Sub PreLogin(ByVal val As Boolean)
+        Me.SQLQueryToolStripMenuItem.Enabled = val
+        Me.MasterToolStripMenuItem.Enabled = val
+        Me.MedicalRecordToolStripMenuItem.Enabled = val
+        Me.LaboratoriumToolStripMenuItem.Enabled = val
+        Me.PoliklinikToolStripMenuItem.Enabled = val
+        Me.WindowsToolStripMenuItem.Enabled = val
+    End Sub
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim a As New Login
         'If StUser.Text = "UserName" Then
         '    Me.Enabled = False
-        MenuStrip.Enabled = False
+        PreLogin(False)
         StUser.Text = a.get_login
         'End If
+        If StUser.Text <> "" Then
+            PreLogin(True)
+        End If
     End Sub
 
     Private Sub COAToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem1.Click
@@ -197,10 +207,25 @@ Public Class MainMenu
 
     Private Sub ChangeUserToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangeUserToolStripMenuItem.Click
         Dim a As New Login
-        StUser.Text = "UserName"
-        If StUser.Text = "UserName" Then
-            Me.Enabled = False
+        StUser.Text = ""
+        If StUser.Text = "" Then
+            PreLogin(False)
             StUser.Text = a.get_login
+            If StUser.Text <> "" Then
+                PreLogin(True)
+            End If
         End If
+    End Sub
+
+    Private Sub MasterPenggunaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MasterPenggunaToolStripMenuItem.Click
+        Dim a As New MsPengguna
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub ChangePasswordToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangePasswordToolStripMenuItem.Click
+        Dim a As New ChangePwd
+        a.Show()
+        a.MdiParent = Me
     End Sub
 End Class
