@@ -272,6 +272,23 @@ GO
 
 ------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsAsalPasien'))
+DROP VIEW vwMsAsalPasien
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vwMsAsalPasien AS
+select top (10) id,namaAsalPasien,catatan 
+from msAsalPasien with (NOLOCK)
+where status = 1
+order by id
+GO
+
+------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------------
+
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'vwMsMenuMakanan'))
 DROP VIEW vwMsMenuMakanan
 GO

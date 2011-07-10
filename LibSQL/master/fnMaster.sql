@@ -222,6 +222,28 @@ GO
 
 --#######################################################################--
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanAsalPasien') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION fnAmbilCatatanAsalPasien
+GO
+----------SCALAR VALUED FUNCTION----------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION fnAmbilCatatanAsalPasien(
+	@inId 	INT
+)
+
+RETURNS VARCHAR(200)
+
+BEGIN
+	RETURN (SELECT catatan FROM msAsalPasien WHERE id = @inId)
+END;
+GO
+
+--#######################################################################--
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'fnAmbilCatatanAgama') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
 DROP FUNCTION fnAmbilCatatanAgama
 GO
