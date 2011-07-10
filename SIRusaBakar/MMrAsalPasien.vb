@@ -1,4 +1,4 @@
-Public Class MsPengguna
+Public Class MMrAsalPasien
     Dim status As Integer = 0
     Dim dataCari As String
     Dim keterangan As String
@@ -23,10 +23,10 @@ Public Class MsPengguna
                     btnCancel.PerformClick()
                 Else
                     Dim tny As Integer
-                    tny = MessageBox.Show("Mau Keluar dari Master Pekerjaan ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    tny = MessageBox.Show("Mau Keluar dari Master Asal Pasien ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If tny = vbYes Then
                         Me.Dispose()
-                    ElseIf tny = vbNo Then
+                    Else
                         Return MyBase.ProcessCmdKey(msg, keyData)
                     End If
                 End If
@@ -59,19 +59,15 @@ Public Class MsPengguna
         btnRefresh.Enabled = True
     End Sub
     Sub aktif()
-        txtNIP.Enabled = True
-        txtNamaKaryawan.Enabled = True
-        txtKodePengguna.Enabled = True
-        txtSandi.Enabled = True
+        txtTitle.Enabled = True
         txtCatatan.Enabled = True
+
         DataGridView1.Enabled = False
     End Sub
     Sub nonAktif()
-        txtNIP.Enabled = False
-        txtNamaKaryawan.Enabled = False
-        txtKodePengguna.Enabled = False
-        txtSandi.Enabled = False
+        txtTitle.Enabled = False
         txtCatatan.Enabled = False
+
         DataGridView1.Enabled = True
     End Sub
     Sub TampilDataGrid(ByVal sql As String)
@@ -82,19 +78,14 @@ Public Class MsPengguna
     End Sub
     Sub tampilData(ByVal row As Integer)
         If DataGridView1.RowCount = 0 Then
-            MsgBox("Data Pekerjaan : Tidak Ada", MsgBoxStyle.Information, "Data Diet")
-            txtNIP.Text = ""
+            MsgBox("Data Asal Pasien : Tidak Ada", MsgBoxStyle.Information, "Data Asal Pasien")
             btnSearch.Enabled = False
             btnRefresh.Enabled = False
         Else
             txtCatatan.Text = ""
-            idForm = DataGridView1.Item("id", row).Value
-            idKaryawan.Text = DataGridView1.Item("id_karyawan", row).Value
-            txtNIP.Text = DataGridView1.Item("nipkaryawan", row).Value
-            txtNamaKaryawan.Text = DataGridView1.Item("namalengkap", row).Value
-            txtKodePengguna.Text = DataGridView1.Item("namapengguna", row).Value
-            txtSandi.Text = DataGridView1.Item("sandipengguna", row).Value
-            txtCatatanSebelumnya.Text = (DataGridView1.Item("catatan", row).Value).Replace(ControlChars.Lf, vbCrLf)
+            idForm = DataGridView1.Item(0, row).Value
+            txtTitle.Text = DataGridView1.Item(1, row).Value
+            txtCatatanSebelumnya.Text = (DataGridView1.Item(2, row).Value).Replace(ControlChars.Lf, vbCrLf)
         End If
         formatGrid()
     End Sub
@@ -102,35 +93,23 @@ Public Class MsPengguna
         Dim dc As DataGridViewColumn
         For Each dc In DataGridView1.Columns
             Select Case dc.Name
-                Case "namalengkap"
-                    dc.HeaderText = "Nama Karyawan"
-                Case "namapengguna"
-                    dc.HeaderText = "Kode Pengguna"
-                Case "nipkaryawan"
-                    dc.HeaderText = "NIP"
+                Case "namaAsalPasien"
+                    dc.HeaderText = "Asal Pasien"
+                    dc.Width = 100
             End Select
         Next
     End Sub
     Sub kosong()
-        txtNIP.Text = ""
-        txtNamaKaryawan.Text = ""
-        txtKodePengguna.Text = ""
-        txtSandi.Text = ""
-        txtCatatan.Text = ""
-
+        txtTitle.Text = ""
     End Sub
-    Private Sub MPekerjaan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MTitle_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            odbc = "RSBK"
             tombolHidup()
             nonAktif()
-            TampilDataGrid("select * from vwMsPengguna")
+            TampilDataGrid("select * from vwMsAsalPasien")
             tampilData(0)
 
             cmbSearch.SelectedIndex = 0
-
-            Me.txtSearch.TextBox.Select()
-
         Catch salah As Exception
             MessageBox.Show(salah.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -140,57 +119,54 @@ Public Class MsPengguna
         tombolMati()
         kosong()
         aktif()
-        txtNIP.Focus()
+        txtTitle.Focus()
         txtCatatanSebelumnya.Text = ""
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
-        If txtKodePengguna.Text = "" Then
+        If txtTitle.Text = "" Then
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus Pekerjaan : " + txtKodePengguna.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus Asal Pasien : " + txtTitle.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
                 kirimData()
-                MessageBox.Show("Sukses Delete Data dengan Nama Pekerjaan : " & txtKodePengguna.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan Asal Pasien : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                TampilDataGrid("select * from vwmsPengguna")
+                TampilDataGrid("select * from vwmsAsalPasien")
                 tampilData(0)
-                txtSearch.Text = ""
-                Me.txtSearch.TextBox.Select()
             End If
         End If
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
-        If txtKodePengguna.Text = "" Then
+        If txtTitle.Text = "" Then
             MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
         Else
             statusForm = "EDIT"
             tombolMati()
             aktif()
-            txtNIP.Focus()
+            txtTitle.Focus()
         End If
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        If txtKodePengguna.Text = "" Then
-            MsgBox("Data Pekerjaan Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
+        If txtTitle.Text = "" Then
+            MsgBox("Data AsalPasien Tidak Boleh Kosong !", MsgBoxStyle.Critical, "Simpan Data Gagal")
             Exit Sub
         Else
             kirimData()
             Select Case statusForm
                 Case "NEW"
-                    MessageBox.Show("Sukses Input Data Pengguna Baru : " & txtKodePengguna.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Sukses Input Data BARU AsalPasien dengan Asal Pasien : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "EDIT"
-                    MessageBox.Show("Sukses Edit Data Pengguna : " & txtKodePengguna.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Sukses Edit Data LAMA AsalPasien : " & txtTitle.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Select
         End If
-        TampilDataGrid("select * from vwMsPengguna")
+        TampilDataGrid("select * from vwMsAsalPasien")
         tampilData(0)
         tombolHidup()
         nonAktif()
-        txtSearch.Text = ""
         txtSearch.Focus()
         statusForm = ""
     End Sub
@@ -199,18 +175,16 @@ Public Class MsPengguna
         Select Case statusForm
             Case "NEW"
                 tombolHidup()
-                tampilData(DataGridView1.CurrentRow.Index)
+                tampilData(0)
                 nonAktif()
                 statusForm = ""
-                txtSearch.Text = ""
-                txtSearch.Focus()
-            Case "EDIT"
+            Case "EDIt"
                 tombolHidup()
-                tampilData(DataGridView1.CurrentRow.Index)
+                tampilData(0)
                 nonAktif()
                 statusForm = ""
-                txtSearch.Text = ""
-                txtSearch.Focus()
+            Case Else
+                Me.Close()
         End Select
     End Sub
 
@@ -220,13 +194,13 @@ Public Class MsPengguna
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         If cmbSearch.SelectedIndex = 0 Then
-            dataCari = "namaPengguna"
+            dataCari = "namaAsalPasien"
         End If
 
         If txtSearch.Text = "" Then
             MessageBox.Show("Masukkan data untuk dicari !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
-            TampilDataGrid("SELECT * FROM vwmsPengguna WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
+            TampilDataGrid("SELECT * FROM vwmsAsalPasien WHERE " & dataCari & " LIKE '%" & txtSearch.Text & "%'")
 
             If DataGridView1.RowCount = 0 Then
                 MessageBox.Show("Data tidak ada !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -244,7 +218,7 @@ Public Class MsPengguna
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
-        TampilDataGrid("select * from vwmsPengguna")
+        TampilDataGrid("select * from vwmsAsalPasien")
         tampilData(0)
         txtSearch.Text = ""
         txtSearch.Focus()
@@ -301,21 +275,17 @@ Public Class MsPengguna
 
     Private Sub kirimData()
         Try
-            PSQL = "EXEC spMsPengguna" & _
+            PSQL = "EXEC spMsAsalPasien" & _
                     " '" & statusForm & "'," & _
                     "  " & idForm & "," & _
-                    " '" & idKaryawan.Text & "'," & _
-                    " '" & txtKodePengguna.Text & "'," & _
-                    " '" & txtSandi.Text & "'," & _
+                    " '" & txtTitle.Text & "'," & _
                     " '" & txtCatatan.Text & "'," & _
-                    "  " & idUser
+                    "  " & idUser & "," & _
+                    " '" & keterangan & "'," & _
+                    " '" & keterangan & "'"
             execCmd(PSQL)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-    End Sub
-
-    Private Sub btnNIP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNIP.Click
-
     End Sub
 End Class

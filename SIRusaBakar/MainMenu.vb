@@ -76,15 +76,19 @@ Public Class MainMenu
         Me.WindowsToolStripMenuItem.Enabled = val
     End Sub
     Private Sub MainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim a As New Login
-        'If StUser.Text = "UserName" Then
-        '    Me.Enabled = False
-        PreLogin(False)
-        StUser.Text = a.get_login
+        'Dim a As New Login
+        ''If StUser.Text = "UserName" Then
+        ''    Me.Enabled = False
+        'PreLogin(False)
+        'StUser.Text = a.get_login
+        ''End If
+        'If StUser.Text <> "" Then
+        '    PreLogin(True)
         'End If
-        If StUser.Text <> "" Then
-            PreLogin(True)
-        End If
+
+        Dim a As New LayMRDaftarPasien
+        a.Show()
+        a.MdiParent = Me
     End Sub
 
     Private Sub COAToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COAToolStripMenuItem1.Click
@@ -196,7 +200,7 @@ Public Class MainMenu
     End Sub
 
     Private Sub TitleToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TitleToolStripMenuItem1.Click
-        Dim a As New MMrTitle
+        Dim a As New MMrTitel
         a.Show()
         a.MdiParent = Me
     End Sub
@@ -225,6 +229,12 @@ Public Class MainMenu
 
     Private Sub ChangePasswordToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangePasswordToolStripMenuItem.Click
         Dim a As New ChangePwd
+        a.Show()
+        a.MdiParent = Me
+    End Sub
+
+    Private Sub AsalPasienToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsalPasienToolStripMenuItem.Click
+        Dim a As New MMrAsalPasien
         a.Show()
         a.MdiParent = Me
     End Sub

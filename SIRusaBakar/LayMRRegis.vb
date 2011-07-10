@@ -58,7 +58,7 @@ Public Class LayMRRegis
         btnRefresh.Enabled = True
     End Sub
     Private Sub aktif()
-        txtNoRegis.Enabled = False
+        'txtNoRegis.Enabled = False
         txtNoMR.Enabled = True
         txtNamaPasien.Enabled = True
         cmbAsalPasien.Enabled = True
@@ -75,7 +75,7 @@ Public Class LayMRRegis
         DataGridView1.Enabled = False
     End Sub
     Private Sub nonAktif()
-        txtNoRegis.Enabled = True
+        'txtNoRegis.Enabled = True
         txtNoMR.Enabled = False
         txtNamaPasien.Enabled = False
         cmbAsalPasien.Enabled = False
@@ -90,6 +90,39 @@ Public Class LayMRRegis
         txtNoKartu.Enabled = False
         txtNoPolis.Enabled = False
         DataGridView1.Enabled = True
+    End Sub
+    Private Sub generateNoRegis()
+        Dim lastKode As String
+        Try
+            Call bukaServer()
+            PSQL = "SELECT TOP 1 id,noRegis FROM trLayMRRegis ORDER BY id DESC"
+            cmd = New Odbc.OdbcCommand(PSQL, con)
+            lastKode = cmd.ExecuteScalar
+
+            Dim formatWaktu As String
+            formatWaktu = Format(Now(), "yyyyMMdd")
+
+            If lastKode = "" Then
+                lblNoRegis.Text = lblNoRegis.Text + "00001"
+                Exit Sub
+            End If
+
+            Dim id As Integer = Val(Strings.Mid(lastKode, 3, 5))
+            Select Case id
+                Case 1 To 8 : lblNoRegis.Text = formatWaktu & "00" & id + 1
+                Case 9 To 98 : lblNoRegis.Text = formatWaktu & "0" & id + 1
+                Case 99 To 998 : lblNoRegis.Text = formatWaktu & id + 1
+
+                Case Is = 998 : MsgBox("No. Registrasi Terakhir", MsgBoxStyle.Critical, "Warning")
+                    lblNoRegis.Text = formatWaktu & id + 1
+                Case Is = 99999 : MsgBox("No. Registrasi sudah Habis", MsgBoxStyle.Critical, "Warning")
+                    lblNoRegis.Text = "HABIS"
+                    Me.Dispose()
+            End Select
+            matiServer()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub tampilDataGrid(ByVal sql As String)
         DataGridView1.DataSource = getTabel(sql)
@@ -114,7 +147,7 @@ Public Class LayMRRegis
             txtNoMR.Text = DataGridView1.Item(2, row).Value
             txtNamaPasien.Text = DataGridView1.Item(15, row).Value
             cmbTglRegis.Text = DataGridView1.Item(3, row).Value
-            txtNoRegis.Text = DataGridView1.Item(4, row).Value
+            'txtNoRegis.Text = DataGridView1.Item(4, row).Value
             cmbAsalPasien.Text = DataGridView1.Item(5, row).Value
 
             cmbTujuanBerobat.Text = DataGridView1.Item(6, row).Value
@@ -141,9 +174,6 @@ Public Class LayMRRegis
                 Case "noRegis"
                     dc.HeaderText = "Nomor Registrasi"
                     dc.Width = 100
-                Case "tipeCoa"
-                    dc.HeaderText = "Tipe COA"
-                    dc.Width = 100
             End Select
         Next
     End Sub
@@ -158,18 +188,49 @@ Public Class LayMRRegis
         txtNoPolis.Text = ""
         txtCatatan.Text = ""
     End Sub
-    Private Sub LayMRRegis_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Try
-            tombolHidup()
-            nonAktif()
-            tampilDataGrid("select * from vwLayMRRegis")
-            tampilData(0)
-            cmbSearch.SelectedIndex = 0
+    Private Sub LoadCb()
+        Dim tTitle As New DataTable
+        Dim tAgama As New DataTable
+        Dim tPendidikan As New DataTable
+        Dim tPekerjaan As New DataTable
+        Dim tHubungan As New DataTable
 
-            Me.txtSearch.TextBox.Select()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        'load cmbAsalPasien
+        cmbAsalPasien.Items.Clear()
+        tTitle = getTabel("select id,namaAsalPasien from vwMsAsalPasien")
+        cmbAsalPasien.DataSource = tTitle
+        cmbAsalPasien.DisplayMember = "namaAsalPasien"
+        cmbAsalPasien.ValueMember = "id"
+
+        'load cmbcarapembayaran
+        cmbCaraPembayaran.Items.Clear()
+        tTitle = getTabel("select id,namaCaraPembayaran from vwMsCaraPembayaran")
+        cmbCaraPembayaran.DataSource = tTitle
+        cmbCaraPembayaran.DisplayMember = "namaCaraPembayaran"
+        cmbCaraPembayaran.ValueMember = "id"
+
+        'load cmbtujuanberobat
+        cmbTujuanBerobat.Items.Clear()
+        tTitle = getTabel("select id,namaInstalasi from vwMsInstalasi")
+        cmbTujuanBerobat.DataSource = tTitle
+        cmbTujuanBerobat.DisplayMember = "namaInstalasi"
+        cmbTujuanBerobat.ValueMember = "id"
+
+    End Sub
+    Private Sub LayMRRegis_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Try
+        tombolHidup()
+        nonAktif()
+        tampilDataGrid("select * from vwLayMRRegis")
+        tampilData(0)
+        cmbSearch.SelectedIndex = 0
+        LoadCb()
+        generateNoRegis()
+
+        Me.txtSearch.TextBox.Select()
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.Message, "Error Load Form", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
     End Sub
 
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
@@ -182,44 +243,42 @@ Public Class LayMRRegis
     End Sub
 
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
-        If txtNoRegis.Text = "" Then
+        If lblNoRegis.Text = "" Then
             MsgBox("Tidak bisa melakukan delete!", MsgBoxStyle.Information, "Information")
         Else
             Dim tanya As Integer
-            tanya = MessageBox.Show("Apakah kamu akan menghapus No. Registrasi : " + txtNoRegis.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            tanya = MessageBox.Show("Apakah kamu akan menghapus No. Registrasi : " + lblNoRegis.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If tanya = vbYes Then
                 statusForm = "DEL"
 
-                MessageBox.Show("Sukses Delete Data dengan No. Registrasi : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Delete Data dengan No. Registrasi : " & lblNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                TampilDataGrid("select * from vwTrLayMRRegis")
+                tampilDataGrid("select * from vwTrLayMRRegis")
                 tampilData(0)
             End If
         End If
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
-        If txtNoRegis.Text = "" Then
+        If lblNoRegis.Text = "" Then
             MsgBox("Tidak bisa melakukan Edit!", MsgBoxStyle.Information, "Information")
         Else
             statusForm = "EDIT"
             tombolMati()
             aktif()
-            txtNoRegis.Focus()
+            txtNamaPasien.Focus()
         End If
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
-
         Select Case statusForm
             Case "NEW"
-                MessageBox.Show("Sukses Input Data BARU Regis Pasien dengan No. Regis : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Input Data BARU Regis Pasien dengan No. Regis : " & lblNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Case "EDIT"
-                MessageBox.Show("Sukses Edit Data LAMA Regis Pasien dengan No. Regis : " & txtNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Sukses Edit Data LAMA Regis Pasien dengan No. Regis : " & lblNoRegis.Text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Select
 
-        TampilDataGrid("SELECT * FROM vwTrLayMRRegis")
+        tampilDataGrid("SELECT * FROM vwTrLayMRRegis")
         tampilData(0)
         tombolHidup()
         nonAktif()
@@ -334,5 +393,9 @@ Public Class LayMRRegis
             DataGridView1.CurrentCell = DataGridView1.Item(1, i + 1)
             tampilData(DataGridView1.CurrentRow.Index)
         End If
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
     End Sub
 End Class

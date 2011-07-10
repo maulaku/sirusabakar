@@ -843,6 +843,7 @@ Partial Class LayMRDaftarPasien
         'Label43
         '
         Me.Label43.AutoSize = True
+        Me.Label43.BackColor = System.Drawing.Color.White
         Me.Label43.Location = New System.Drawing.Point(18, 156)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(59, 13)
@@ -868,6 +869,7 @@ Partial Class LayMRDaftarPasien
         'Label42
         '
         Me.Label42.AutoSize = True
+        Me.Label42.BackColor = System.Drawing.Color.White
         Me.Label42.Location = New System.Drawing.Point(18, 182)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(61, 13)
@@ -877,6 +879,7 @@ Partial Class LayMRDaftarPasien
         'Label41
         '
         Me.Label41.AutoSize = True
+        Me.Label41.BackColor = System.Drawing.Color.White
         Me.Label41.Location = New System.Drawing.Point(18, 208)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(55, 13)
@@ -927,6 +930,7 @@ Partial Class LayMRDaftarPasien
         'Label16
         '
         Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.White
         Me.Label16.Location = New System.Drawing.Point(348, 130)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(46, 13)
@@ -936,6 +940,7 @@ Partial Class LayMRDaftarPasien
         'Label13
         '
         Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(348, 156)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(63, 13)
@@ -945,6 +950,7 @@ Partial Class LayMRDaftarPasien
         'Label11
         '
         Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(348, 104)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(53, 13)
@@ -954,6 +960,7 @@ Partial Class LayMRDaftarPasien
         'Label10
         '
         Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(18, 104)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(44, 13)
@@ -963,6 +970,7 @@ Partial Class LayMRDaftarPasien
         'Label9
         '
         Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(18, 15)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(39, 13)
@@ -972,6 +980,7 @@ Partial Class LayMRDaftarPasien
         'Label8
         '
         Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(18, 130)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(29, 13)

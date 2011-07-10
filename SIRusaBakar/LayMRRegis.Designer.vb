@@ -41,7 +41,6 @@ Partial Class LayMRRegis
         Me.Label4 = New System.Windows.Forms.Label
         Me.txtNamaPasien = New System.Windows.Forms.TextBox
         Me.cmbTglRegis = New System.Windows.Forms.DateTimePicker
-        Me.txtNoRegis = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -74,6 +73,7 @@ Partial Class LayMRRegis
         Me.Label5 = New System.Windows.Forms.Label
         Me.txtCatatan = New System.Windows.Forms.TextBox
         Me.Label6 = New System.Windows.Forms.Label
+        Me.lblNoRegis = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,15 +117,15 @@ Partial Class LayMRRegis
         '
         Me.cmbTujuanBerobat.FormattingEnabled = True
         Me.cmbTujuanBerobat.Items.AddRange(New Object() {"Poliklinik", "Fisioterapi", "Laboratorium", "Rontgen", "Hemodialisa", "UGD"})
-        Me.cmbTujuanBerobat.Location = New System.Drawing.Point(363, 88)
+        Me.cmbTujuanBerobat.Location = New System.Drawing.Point(335, 113)
         Me.cmbTujuanBerobat.Name = "cmbTujuanBerobat"
-        Me.cmbTujuanBerobat.Size = New System.Drawing.Size(100, 21)
+        Me.cmbTujuanBerobat.Size = New System.Drawing.Size(179, 21)
         Me.cmbTujuanBerobat.TabIndex = 11
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(258, 91)
+        Me.Label15.Location = New System.Drawing.Point(332, 91)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(80, 13)
         Me.Label15.TabIndex = 10
@@ -162,14 +162,14 @@ Partial Class LayMRRegis
         Me.cmbAsalPasien.Items.AddRange(New Object() {"Umum", "Rujukan"})
         Me.cmbAsalPasien.Location = New System.Drawing.Point(124, 88)
         Me.cmbAsalPasien.Name = "cmbAsalPasien"
-        Me.cmbAsalPasien.Size = New System.Drawing.Size(128, 21)
+        Me.cmbAsalPasien.Size = New System.Drawing.Size(168, 21)
         Me.cmbAsalPasien.TabIndex = 6
         '
         'txtNamaPerujuk
         '
         Me.txtNamaPerujuk.Location = New System.Drawing.Point(124, 115)
         Me.txtNamaPerujuk.Name = "txtNamaPerujuk"
-        Me.txtNamaPerujuk.Size = New System.Drawing.Size(128, 20)
+        Me.txtNamaPerujuk.Size = New System.Drawing.Size(168, 20)
         Me.txtNamaPerujuk.TabIndex = 5
         '
         'txtNoMR
@@ -226,15 +226,15 @@ Partial Class LayMRRegis
         '
         'txtNamaDokter
         '
-        Me.txtNamaDokter.Location = New System.Drawing.Point(363, 115)
+        Me.txtNamaDokter.Location = New System.Drawing.Point(335, 163)
         Me.txtNamaDokter.Name = "txtNamaDokter"
-        Me.txtNamaDokter.Size = New System.Drawing.Size(100, 20)
+        Me.txtNamaDokter.Size = New System.Drawing.Size(179, 20)
         Me.txtNamaDokter.TabIndex = 21
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(258, 117)
+        Me.Label4.Location = New System.Drawing.Point(332, 147)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 13)
         Me.Label4.TabIndex = 20
@@ -249,17 +249,12 @@ Partial Class LayMRRegis
         '
         'cmbTglRegis
         '
+        Me.cmbTglRegis.CustomFormat = "dd MM yyyy"
+        Me.cmbTglRegis.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.cmbTglRegis.Location = New System.Drawing.Point(112, 71)
         Me.cmbTglRegis.Name = "cmbTglRegis"
         Me.cmbTglRegis.Size = New System.Drawing.Size(183, 20)
         Me.cmbTglRegis.TabIndex = 31
-        '
-        'txtNoRegis
-        '
-        Me.txtNoRegis.Location = New System.Drawing.Point(112, 45)
-        Me.txtNoRegis.Name = "txtNoRegis"
-        Me.txtNoRegis.Size = New System.Drawing.Size(183, 20)
-        Me.txtNoRegis.TabIndex = 30
         '
         'Label2
         '
@@ -328,7 +323,7 @@ Partial Class LayMRRegis
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Location = New System.Drawing.Point(24, 98)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(487, 298)
+        Me.GroupBox1.Size = New System.Drawing.Size(532, 298)
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Registrasi"
@@ -345,7 +340,7 @@ Partial Class LayMRRegis
         Me.cmbStatus.FormattingEnabled = True
         Me.cmbStatus.Location = New System.Drawing.Point(402, 45)
         Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(100, 21)
+        Me.cmbStatus.Size = New System.Drawing.Size(136, 21)
         Me.cmbStatus.TabIndex = 35
         '
         'Label23
@@ -363,7 +358,7 @@ Partial Class LayMRRegis
         '
         Me.txtPetugas.Location = New System.Drawing.Point(402, 72)
         Me.txtPetugas.Name = "txtPetugas"
-        Me.txtPetugas.Size = New System.Drawing.Size(100, 20)
+        Me.txtPetugas.Size = New System.Drawing.Size(136, 20)
         Me.txtPetugas.TabIndex = 33
         '
         'Label16
@@ -514,9 +509,9 @@ Partial Class LayMRRegis
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(529, 45)
+        Me.DataGridView1.Location = New System.Drawing.Point(577, 45)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(385, 351)
+        Me.DataGridView1.Size = New System.Drawing.Size(337, 351)
         Me.DataGridView1.TabIndex = 93
         '
         'txtCatatanSebelumnya
@@ -555,12 +550,25 @@ Partial Class LayMRRegis
         Me.Label6.TabIndex = 98
         Me.Label6.Text = "Catatan"
         '
+        'lblNoRegis
+        '
+        Me.lblNoRegis.AutoSize = True
+        Me.lblNoRegis.BackColor = System.Drawing.Color.Transparent
+        Me.lblNoRegis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNoRegis.ForeColor = System.Drawing.Color.Red
+        Me.lblNoRegis.Location = New System.Drawing.Point(110, 48)
+        Me.lblNoRegis.Name = "lblNoRegis"
+        Me.lblNoRegis.Size = New System.Drawing.Size(84, 13)
+        Me.lblNoRegis.TabIndex = 102
+        Me.lblNoRegis.Text = "20110711001"
+        '
         'LayMRRegis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(926, 553)
+        Me.Controls.Add(Me.lblNoRegis)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtCatatan)
@@ -568,7 +576,6 @@ Partial Class LayMRRegis
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.cmbTglRegis)
-        Me.Controls.Add(Me.txtNoRegis)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
@@ -577,6 +584,7 @@ Partial Class LayMRRegis
         Me.Controls.Add(Me.txtPetugas)
         Me.Controls.Add(Me.Label16)
         Me.Name = "LayMRRegis"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Layanan Registrasi Pasien (Medical Record)"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -608,7 +616,6 @@ Partial Class LayMRRegis
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtNamaPasien As System.Windows.Forms.TextBox
     Friend WithEvents cmbTglRegis As System.Windows.Forms.DateTimePicker
-    Friend WithEvents txtNoRegis As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -641,4 +648,5 @@ Partial Class LayMRRegis
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblNoRegis As System.Windows.Forms.Label
 End Class

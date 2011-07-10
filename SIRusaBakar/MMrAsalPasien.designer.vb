@@ -1,14 +1,17 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class MGiziDiet
+Partial Class MMrAsalPasien
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then
-            components.Dispose()
-        End If
-        MyBase.Dispose(disposing)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
     End Sub
 
     'Required by the Windows Form Designer
@@ -19,14 +22,7 @@ Partial Class MGiziDiet
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MGiziDiet))
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.txtNamaDiet = New System.Windows.Forms.TextBox
-        Me.txtCatatanSebelumnya = New System.Windows.Forms.RichTextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtCatatan = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MMrAsalPasien))
         Me.toolStrip = New System.Windows.Forms.ToolStrip
         Me.btnNew = New System.Windows.Forms.ToolStripButton
         Me.btnEdit = New System.Windows.Forms.ToolStripButton
@@ -44,81 +40,25 @@ Partial Class MGiziDiet
         Me.btnSearch = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
         Me.btnCancel = New System.Windows.Forms.ToolStripButton
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtKodeDiet = New System.Windows.Forms.TextBox
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.txtCatatanSebelumnya = New System.Windows.Forms.RichTextBox
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.txtCatatan = New System.Windows.Forms.TextBox
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.txtTitle = New System.Windows.Forms.TextBox
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.toolStrip.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 65)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 13)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Nama Diet"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 101)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(373, 165)
-        Me.DataGridView1.TabIndex = 22
-        '
-        'txtNamaDiet
-        '
-        Me.txtNamaDiet.Location = New System.Drawing.Point(88, 62)
-        Me.txtNamaDiet.Name = "txtNamaDiet"
-        Me.txtNamaDiet.Size = New System.Drawing.Size(297, 20)
-        Me.txtNamaDiet.TabIndex = 24
-        '
-        'txtCatatanSebelumnya
-        '
-        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(401, 153)
-        Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
-        Me.txtCatatanSebelumnya.ReadOnly = True
-        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(253, 113)
-        Me.txtCatatanSebelumnya.TabIndex = 37
-        Me.txtCatatanSebelumnya.Text = ""
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(398, 137)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(105, 13)
-        Me.Label5.TabIndex = 36
-        Me.Label5.Text = "Catatan Sebelumnya"
-        '
-        'txtCatatan
-        '
-        Me.txtCatatan.Location = New System.Drawing.Point(401, 50)
-        Me.txtCatatan.Multiline = True
-        Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(253, 77)
-        Me.txtCatatan.TabIndex = 35
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(398, 34)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
-        Me.Label4.TabIndex = 34
-        Me.Label4.Text = "Catatan"
         '
         'toolStrip
         '
+        Me.toolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnSave, Me.btnDelete, Me.btnRefresh, Me.ToolStripSeparator1, Me.btnFirst, Me.btnPrev, Me.btnNext, Me.btnLast, Me.ToolStripSeparator2, Me.cmbSearch, Me.txtSearch, Me.btnSearch, Me.ToolStripSeparator3, Me.btnCancel})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
-        Me.toolStrip.Size = New System.Drawing.Size(673, 25)
-        Me.toolStrip.TabIndex = 38
+        Me.toolStrip.Size = New System.Drawing.Size(506, 25)
+        Me.toolStrip.TabIndex = 48
         Me.toolStrip.Text = "ToolStrip1"
         '
         'btnNew
@@ -215,7 +155,7 @@ Partial Class MGiziDiet
         'cmbSearch
         '
         Me.cmbSearch.AutoCompleteCustomSource.AddRange(New String() {"Kode Diet", "Nama Diet"})
-        Me.cmbSearch.Items.AddRange(New Object() {"Kode Diet", "Nama Diet"})
+        Me.cmbSearch.Items.AddRange(New Object() {"Titel"})
         Me.cmbSearch.Name = "cmbSearch"
         Me.cmbSearch.Size = New System.Drawing.Size(75, 25)
         '
@@ -247,53 +187,94 @@ Partial Class MGiziDiet
         Me.btnCancel.Size = New System.Drawing.Size(23, 22)
         Me.btnCancel.Text = "Close"
         '
-        'Label1
+        'Label2
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 39)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(54, 13)
-        Me.Label1.TabIndex = 19
-        Me.Label1.Text = "Kode Diet"
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(9, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(73, 13)
+        Me.Label2.TabIndex = 61
+        Me.Label2.Text = "Asal Pasien"
         '
-        'txtKodeDiet
+        'txtCatatanSebelumnya
         '
-        Me.txtKodeDiet.Location = New System.Drawing.Point(88, 36)
-        Me.txtKodeDiet.Name = "txtKodeDiet"
-        Me.txtKodeDiet.Size = New System.Drawing.Size(100, 20)
-        Me.txtKodeDiet.TabIndex = 23
+        Me.txtCatatanSebelumnya.Location = New System.Drawing.Point(244, 160)
+        Me.txtCatatanSebelumnya.Name = "txtCatatanSebelumnya"
+        Me.txtCatatanSebelumnya.Size = New System.Drawing.Size(250, 113)
+        Me.txtCatatanSebelumnya.TabIndex = 60
+        Me.txtCatatanSebelumnya.Text = ""
         '
-        'MGiziDiet
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(241, 144)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(131, 13)
+        Me.Label5.TabIndex = 59
+        Me.Label5.Text = "Catatan Sebelumnya :"
+        '
+        'txtCatatan
+        '
+        Me.txtCatatan.Location = New System.Drawing.Point(244, 54)
+        Me.txtCatatan.Multiline = True
+        Me.txtCatatan.Name = "txtCatatan"
+        Me.txtCatatan.Size = New System.Drawing.Size(250, 77)
+        Me.txtCatatan.TabIndex = 58
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(241, 38)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(59, 13)
+        Me.Label4.TabIndex = 57
+        Me.Label4.Text = "Catatan :"
+        '
+        'txtTitle
+        '
+        Me.txtTitle.Location = New System.Drawing.Point(88, 38)
+        Me.txtTitle.Name = "txtTitle"
+        Me.txtTitle.Size = New System.Drawing.Size(147, 20)
+        Me.txtTitle.TabIndex = 56
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 64)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(223, 209)
+        Me.DataGridView1.TabIndex = 55
+        '
+        'MMrAsalPasien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(673, 283)
-        Me.Controls.Add(Me.toolStrip)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(506, 285)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCatatanSebelumnya)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtCatatan)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtNamaDiet)
-        Me.Controls.Add(Me.txtKodeDiet)
+        Me.Controls.Add(Me.txtTitle)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Name = "MGiziDiet"
-        Me.Text = "Master Diet"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Controls.Add(Me.toolStrip)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "MMrAsalPasien"
+        Me.Text = "Data Asal Pasien"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents txtNamaDiet As System.Windows.Forms.TextBox
-    Friend WithEvents txtCatatanSebelumnya As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents toolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnEdit As System.Windows.Forms.ToolStripButton
@@ -311,6 +292,11 @@ Partial Class MGiziDiet
     Friend WithEvents btnSearch As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnCancel As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtKodeDiet As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtCatatanSebelumnya As System.Windows.Forms.RichTextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtTitle As System.Windows.Forms.TextBox
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
 End Class
