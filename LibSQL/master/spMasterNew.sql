@@ -1496,3 +1496,108 @@ BEGIN
 							  
 END
 GO
+
+
+--############################################################################# spMsAsalPasien -- 8
+
+IF Objectproperty(Object_Id('spMsAsalPasien'), N'isprocedure') = 1
+DROP PROCEDURE [Dbo].[spMsAsalPasien]
+GO
+------------------------------------------
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE spMsAsalPasien (
+	/* 1*/ @in_tindakan					VARCHAR(4)
+	/* 2*/ , @in_id		 				INT
+	/* 3*/ , @in_namaAsalPasien				VARCHAR(100)
+	/* 4*/ , @in_catatan					VARCHAR(4000)
+	/* 5*/ , @in_idPengguna				INT
+	/* 7*/ , @out_str						VARCHAR(500) OUTPUT
+	/* 8*/ , @out_desc					VARCHAR(500) OUTPUT	
+)
+AS
+	DECLARE 	
+		@in_catatanBaru					VARCHAR(5000)
+		, @in_catatanTerbaru				VARCHAR(5000)
+		, @tipeForm 						VARCHAR(100)
+		, @tipeTindakan					VARCHAR(100)
+		, @deskripsiTindakan				VARCHAR(1000)
+		, @jumlah							INT
+	;
+BEGIN
+	SET @tipeForm 					=	'MsAsalPasien';
+	SET @deskripsiTindakan 		=	'NAMA AsalPasien : ' + @in_namaAsalPasien + CHAR(10);
+	SET @in_catatanBaru 			= 	'DIBUAT : ' +  dbo.fnAmbilNamaLengkap(@in_idPengguna) + ' , TANGGAL : ' +
+											CONVERT(VARCHAR(10), CURRENT_TIMESTAMP, 103) + CHAR(10) + CHAR(10) + @in_catatan + CHAR(10);
+	
+	IF @in_tindakan='NEW'
+	------------------------------------------------------------------- New AsalPasien
+		BEGIN	
+			SET @tipeTindakan = 'NEW';	
+			/* Cek data sudah Ada */
+			-- SET @jumlah = (SELECT COUNT(namaAsalPasien) from MsAsalPasien where Status = 1 and NamaAsalPasien = @in_namaAsalPasien group by namaAsalPasien);
+			-- IF @jumlah > 1
+			-- 	SET @out_str = 'Kode Duplikasi'
+			-- ELSE				
+			BEGIN	
+				INSERT INTO msAsalPasien (
+							/* 1*/ namaAsalPasien,
+							/* 2*/ catatan,
+							/* 3*/ dibuatoleh
+				) VALUES ( 				
+							/* 1*/ UPPER(@in_namaAsalPasien),			  									  
+							/* 2*/ @in_catatanBaru,					  
+							/* 3*/ @in_idPengguna
+				);																
+			END
+		END
+
+	ELSE IF @in_tindakan='EDIT'
+	------------------------------------------------------------------- Edit AsalPasien
+		BEGIN	
+			SET @tipeTindakan 		= 	'UPDATE'; 
+			SET @in_catatanTerbaru 	= 	@in_catatanBaru + CHAR(10) + '--------------------' + CHAR(10) + CHAR(10)
+												+	dbo.fnAmbilCatatanAsalPasien(@in_id);	
+			IF @in_catatan = ''
+				BEGIN
+					UPDATE msAsalPasien SET
+								/* 1*/ namaAsalPasien 				= UPPER(@in_namaAsalPasien)
+								/* 2*/ , dieditoleh 			= @in_idPengguna
+								/* 3*/ , waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;													
+				END
+			ELSE
+				BEGIN
+					UPDATE msAsalPasien SET
+								/* 1*/ namaAsalPasien 				= UPPER(@in_namaAsalPasien)
+								/* 2*/ , catatan 				= @in_catatanTerbaru
+								/* 3*/ , dieditoleh 			= @in_idPengguna
+								/* 4*/ , waktuedit	 		= CURRENT_TIMESTAMP
+					WHERE id = @in_id;					
+					SET @deskripsiTindakan =	@deskripsiTindakan + CHAR(10) +
+														'CATATAN : ' + @in_catatanTerbaru + CHAR(10);
+				END
+		END		
+	
+	ELSE IF @in_tindakan='DEL'
+	------------------------------------------------------------------- Delete AsalPasien
+		BEGIN
+			SET @tipeTindakan = 'DELETE';	
+			UPDATE msAsalPasien SET
+						/* 1*/ status 			= 0,
+						/* 2*/ dieditoleh 	= @in_idPengguna,
+						/* 3*/ waktuedit	 	= CURRENT_TIMESTAMP
+			WHERE id = @in_id;
+		END
+	
+	------------------------------------------------------------------ Insert History AsalPasien
+	EXEC spInsMsHistory 	
+		/* 1*/ @tipeForm
+		/* 2*/ , @tipeTindakan
+		/* 3*/ , @deskripsiTindakan
+		/* 4*/ , @in_idpengguna			
+							  
+END
+GO
